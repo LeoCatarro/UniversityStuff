@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "utf-8" />
+	<title>Animação de textura com KeyFrames</title>
+	<script src="../lib/three.js"></script>
+	<script src="../lib/jquery.js"></script>
+    <script src="../lib/jquery.mousewheel.js"></script>
+	<script src="../lib/sim/sim.js"></script>
+	<script src="../lib/sim/animation.js"></script>
+	<script src="../lib/sim/ColladaLoader.js"></script>
+	<script src="js/threejs-keyframe_textura.js"></script>
+	<script>
+
+	var renderer = null;
+	var scene = null;
+	var camera = null;
+	var mesh = null;
+	
+	$(document).ready(
+		function() {
+			var container = document.getElementById("container");
+			var app = new TextureAnimationApp();
+			app.init({ container: container });
+			app.run();
+		}
+	);
+	
+	</script>
+
+</head>
+<body>
+	<center><h1>Animação de textura com KeyFrames</h1></center>
+    <div id="container" style="width:95%; height:80%; position:absolute;"></div>
+	<div id="prompt" style="width:95%; height:6%; bottom:0px; text-align:center; position:absolute;">
+	Clique para animar 
+	</div>
+</body>
+</html>

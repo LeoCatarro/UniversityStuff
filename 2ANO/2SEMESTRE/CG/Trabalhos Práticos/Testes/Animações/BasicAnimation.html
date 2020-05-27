@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <svg width="1060" height="530">
+
+            <rect fill="blue" x="0" y="0" width="1060" height="530"/>
+            
+            <path id="caminho" fill="none" stroke="black" d="
+                M 100 100
+                L 500 100
+                Q 600 100 600 300
+                Q 600 500 900 400
+                L 900 100"
+            />    
+
+            <path id="mySquare" fill="red" stroke="yellow" d="
+                M 100 100
+                L 150 100
+                L 150 50
+                L 100 50
+                L 100 100">
+
+                <animateMotion dur="6s" repeatCount="indefinite" >
+                    <mpath xlink:href="#caminho"/>
+                </animateMotion>
+            </path>
+        </svg>     
+    </body>   
+</html>

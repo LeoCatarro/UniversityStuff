@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8" />
+        <title>Exemplo Animação C2D "Direta"</title>
+        <script type='text/javascript' src='../lib/tween.min.js'></script>
+        <script type = "text/javascript" >
+/////////////////////////////////////////////////////////////////////////////////////
+//
+//  Definição de um objeto gráfico, no seu próprio espaço, escolhido de forma a 
+//  ser o mais conveniente para a construção desse objeto.
+//
+//  Neste "espaço" a construção (da geometria) do objeto pode ignorar
+//  "detalhes" como
+//      - onde o objeto vai ser desenhado
+//      - com que tamanho
+//      - com que orientação
+//      - com que aspeto
+//
+/**
+ *  Esta função "traça" um caminho num contexto de desenho
+ *
+ *  @param c2d {CanvasRenderingContext2D} onde o caminho vai ser traçado.
+ */
+stewie = function(c2d) {
+    //
+    //  Espaço do objeto: [-1,1] x [-1,1]
+    //
+    c2d.beginPath();
+        c2d.moveTo(-0.8, 0);
+        c2d.quadraticCurveTo( 0,-0.8, 0.8,0);
+        c2d.quadraticCurveTo( 0,0.8, -0.8,0);
+        c2d.moveTo(-0.4,-0.1);
+        c2d.lineTo( 0.4, 0.1);
+        c2d.lineTo( 0.4,-0.1);
+        c2d.lineTo(-0.4, 0.1);
+        c2d.lineTo(-0.4,-0.1);
+        c2d.moveTo(-0.4,-0.1);
+    c2d.closePath();
+}
+//
+///////////////////////////////////////////////////////////////////////////////////
+//
+//  Definição do modelo, no seu próprio espaço.
+//
+//      Os objetos que povoam o modelo têm de ser transportados dos seus próprios
+//      espaços para "este" espaço.
+//
+scene = function(c2d, pos, size, rot) {
+    //
+    //  atributos
+    //
+    this.c2d = c2d;
+    this.pos = pos;
+    this.size = size;
+    //
+    //  métodos
+    //
+    /**
+     *  Esta função define um frame da animação.
+     *
+     *  A evolução é controlada pelos atributos .pos, .size e .rot,
+     *  que são automaticamente alterados na biblioteca TWEEN.
+     *
+     */
+    this.animate = function() {
+        //
+        //  fundo
+        //
+        c2d.fillStyle = "khaki";
+        c2d.fillRect(0,0,256,128);
+        //
+        ///////////////////////////////////////////////////////////////
+        //
+        //  stewie: está definido no seu próprio espaço.
+        //
+        c2d.save();
+            //
+            //  Transportar o objeto gráfico do seu próprio espaço
+            //  para o espaço do modelo.
+            //
+            c2d.translate(pos.x, pos.y);
+            c2d.rotate(rot.alpha);
+            c2d.scale(size.width, size.height);
+            //
+            //  Após as transformações acima "estamos" no espaço do objeto.
+            //
+            //  Vamos "construir" o objeto...
+            //
+            stewie(c2d);   
+            //
+            //  ... e regressar ao espaço do modelo.
+            //       
+        c2d.restore();
+        //
+        //  Depois da instrução ".restore()" estamos de novo no espaço do modelo.
+        //
+        c2d.fillStyle = "darkseagreen";
+        c2d.fill("evenodd");
+        c2d.strokeStyle = "steelblue";
+        c2d.stroke();
+        //
+        ///////////////////////////////////////////////////////////////
+        //
+        //  "ciclo de animação"
+        //
+        //  atualizar os parâmetros
+        TWEEN.update();        
+        //  redesenhar quando possível
+        requestAnimationFrame(animate);
+    }
+    //
+    //  "truque"
+    //
+    return this;
+}
+//
+//////////////////////////////////////////////////////////////////////////////////////
+//
+function main() {
+    var cv = document.getElementById("mycanvas");
+    var c = cv.getContext("2d");
+    //
+    //  Parâmetros da animação
+    //
+    //      animar a posição
+    //
+    var pos = {x: 90, y: 100};
+    var pos_target= {x: 120, y: 64};
+    var pos_tween = new TWEEN.Tween(pos).to(pos_target, 5000);
+    pos_tween.easing(TWEEN.Easing.Quadratic.Out);
+    pos_tween.start();
+    //
+    //      animar o tamanho
+    //
+    var size = {width: 32, height: 64};
+    var size_target = {width: 64, height: 32};
+    var size_tween = new TWEEN.Tween(size).to(size_target, 5000);
+    size_tween.easing(TWEEN.Easing.Quadratic.InOut);
+    size_tween.start();
+    //
+    //      animar a rotação
+    //
+    var rot = {alpha: 0};
+    var rot_target = {alpha: 0.25*Math.PI}; // C2D: ângulos em radianos
+    var rot_tween = new TWEEN.Tween(rot)
+        .to(rot_target, 1000)
+        .repeat(10)
+        .yoyo(true);
+    rot_tween.easing(TWEEN.Easing.Bounce.InOut);
+    rot_tween.start();
+    //
+    //  Inicialização do modelo
+    //
+    var s = scene(c,pos,size,rot);
+    //
+    //  Animação
+    //
+    s.animate();
+}
+//
+//
+//
+        </script>
+    </head>
+    <body onload = "main();">
+        <canvas id = "mycanvas" width="256" height="128">
+        </canvas>
+    </body>
+</html>

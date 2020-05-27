@@ -1,0 +1,27 @@
+Matematica:
+	Khan academy
+	Explicamat
+	symbolab(dá a solução de uma expressão matemática)
+	3Blue1Brown(utube)
+	Numberphile(utube)
+
+Programação:
+	SoloLearn
+	exercism.io
+	techquikie(utube)
+	corey schafer python tutorials(utube)
+	coding tech(utube)(conferências, ver: the most common problem in software development and gow to fix it)
+	cs dojo(utube)
+	crashcourse cs(utube)
+	Computerphile(utube)
+
+Engineering:(all utube)
+	crashcourse physics
+	Engineering Explained
+	Learn Engineering
+	Devon Crawford(só para ficar inspirado)
+	Real Engineering
+	Practical Engineering 
+
+Time management:
+	thomas frank(utube)

@@ -1,0 +1,181 @@
+#1
+True
+False
+True
+True
+True
+False
+True
+
+
+#2
+program pav;
+    float r, pi;
+    pi=3.14159265;
+    print("Qual o raio? ");
+    read r;
+	print("Perimetro da circunferencia = "); print(2*pi*r);
+	print("Area do circulo = "); print(pi*r*r);
+	print("Volume da esfera = "); print(4.0/3.0*pi*r*r*r)
+end
+
+
+#3
+program distancia;
+	float v,d;
+	print("Qual a velocidade? ");
+	read(v);
+	d = 1.0/2.0*(v*10)*(v*10);
+	print("A distancia percorrida é ");
+	print(d);
+end
+
+
+
+#4
+program raiz;
+	int r;
+	print("Qual o numero inteiro? ");
+	read(r);
+	if (num<0){
+		print("O numero inserido é negativo.");
+	} else {
+		print("A raiz quadrada é " ); 
+		print(\r);
+	}
+end
+
+
+#5
+program meio;
+	int n1, n2, n3;
+	print ("1º num: ");
+	read(n1);
+	print ("2º num: ");
+	read(n2);
+	print ("3º num: ");
+	read(n3);
+	if (n1<=n2 and n2<=n3 or n3<=n2 and n2<=n1){
+		print("O numero do meio é "); print(n2);
+	} else if (n1<=n3 and n3<=n2 or n2<=n3 and n3<=n1){
+		print("O numero do meio é "); print(n3);
+	} else {
+		print("O numero do meio é "); print(n1);
+	}
+end
+
+
+#6
+program intervalos;
+	int n;
+	print ("Indique um numero: ");
+	read(n);
+	if( n<-10 or n>=5 and n<45 or n>120 and n<=245){
+		print("O numero está dentros dos intervalos");
+	} else {
+		print("O numero está fora dos intervalos");
+	}
+end
+
+
+#7
+program altura;
+	float altura;
+	print ("Indique a altura: ");
+	read(altura);
+	if (altura<1.3){
+		print("É baixissima");
+	} else if (altura<1.6){
+		print("É baixa");
+	} else if (altura<1.75){
+		print("É mediana");
+	} else if (altura<1.9){
+		print("É alta");	
+	} else {
+		print("É altissima");
+	}
+end
+
+
+#8
+program multiplo;
+	float n1, n2;
+	print ("Indique o numero 1: ");
+	read(n1);
+	print ("Indique o numero 2: ");
+	read(n2);
+	# n1 é multiplo de n2 quando o resto da divisao de n1 por n2 é zero
+	if( n1%n2 == 0 ){
+		print("É multiplo");
+	} else {
+		print("Não é múltiplo");
+	}
+end
+
+
+#9
+program capicua;
+	int n, unidades, centenas;
+	print ("Indique um numero com tres algarismos: ");
+	read(n);
+	unidades = n%10;
+	centenas = n/100;
+	# um num de 3 algarismos é capicua quando 
+	# o algarismo das unidades é igual ao das centenas
+	if(unidades == centenas){
+		print("É capicua");
+	} else {
+		print("Não é capicua");
+	}
+end
+
+
+#10
+program quadrante;
+	float x, y;
+	print ("Indique a coordenada x: ");
+	read(x);
+	print ("Indique a coordenada y: ");
+	read(y);
+	if( x==0 or y==0 ){
+		print("O ponto está sobre um dos eixos");
+	} else if( x>0 and y>0 ){
+		print('O ponto encontra-se no 1º quadrante.')
+	} else if( x<0 and y>0 ){
+		print('O ponto encontra-se no 2º quadrante.')
+	} else if( x<0 and y<0 ){
+		print('O ponto encontra-se no 3º quadrante.')
+	} else {
+		print('O ponto encontra-se no 4º quadrante.')
+	}
+end
+
+
+#11
+program distancia;
+	float x1, y1, x2, y2, d;
+	print ("Indique a coordenada x1: ");
+	read(x1);
+	print ("Indique a coordenada y1: ");
+	read(y1);
+	print ("Indique a coordenada x2: ");
+	read(x2);
+	print ("Indique a coordenada y2: ");
+	read(y2);
+	d = \((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+	print("A distancia entre os dois pontos é ");
+	print(d);
+end
+
+
+#12
+program bissexto;
+	int ano;
+	print("Introduza um ano: ");
+	if( ano%400==0 or ano%4==0 and ano%100!=0 ) {
+		print("O ano é bissexto");
+	} else {
+		print("O ano não é bissexto");
+	}
+end
+

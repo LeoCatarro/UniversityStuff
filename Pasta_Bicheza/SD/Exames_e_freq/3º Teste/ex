@@ -1,0 +1,14 @@
+.data
+.asciiz "Tomas"
+.text
+
+jal teste
+nop
+j end
+nop
+
+teste:
+	nop
+	
+end:
+	nop

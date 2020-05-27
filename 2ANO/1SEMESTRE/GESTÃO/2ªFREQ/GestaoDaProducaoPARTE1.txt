@@ -1,0 +1,16 @@
+GESTÃO NA PRODUÇÃO:
+A gestão assegura a execução de objetivos da empresa através da utilização de recrusos
+Segundo Chiavenato(2016): Uma empresa é uma conjunto integrada de vários processos pelas seguintes razões: Cria algo que pode ter valor ; transforma essa ideia em algo de valor ; produz algo de valor ; entrega algo de valor ; que as pessoas querem ou apreciam ; a um preço que estão dispostos a pagar ; ....
+Cada um destes processos é chamado de : Creatividade e Inovação ; Desenvolvimento de produtos ; Produção ; Marketing ; Vendas ; Marketing ; Entrega de valor ; Finanças
+
+Com o processo de Produção a empresa pretende: produzir algo de valor para o mercado a fim de satisfazer necessidades e aspirações dos clientes. Um produto que nao corresponda a essas necessidades é inutil. A GESTAO DE PRODUçÂO é tambem conhecida por GESTAO DAS OPERAÇOES
+Gestão de Produção: define e aplica os procedimentos necessários á transformação de materiais, info e conhecimento em produtos e serviços, acrescendo-lhes valor, utilizando os recursos disponiveis num horizonte temporal pré-definidos
+###########################################################
+Com base no que produzem é possivel classificar as empresas em: primárias ou extractivas ; secundárias ou transformadoras ; terciárias ou prestadoras de serviço ; do terceiro setor
+###########################################################
+A Gestão de produção tem evoliudo ao longo do tempo: Inicialmente, existia uma visão redutora, assim a gest.produ é vista com gestão do processo de fabrico ; Em seguinda, surgiu um 1º paradigma, n oqual a gestao da produção passava pela determinação da oferta e por critérios de eficiencia produtiva
+Novo paradigma: produção determinada pelo mercado e satisfação do cliente. Importante considerar critérios de eficiencia e critérios de eficácia
+Eficiencia: relacionada com os meios ; relacionada com os metodos e procedimentos ; procura a melhor aplicação dos recursos ; ...
+Eficacia: relacionada com os fins ; relacionados com os resultados a alcançar ; procura o melhor alcance dos objetivos ; ...
+###########################################################
+O processo de previsão da procura passa necessariamente por: Definir o periodo de previsão ; identificar as caracteristicas da serie temporal que representa as Vendas ; escolher o modelo de previsão que melhor se adapta ; implementar uma metodolodia de acompanhamento

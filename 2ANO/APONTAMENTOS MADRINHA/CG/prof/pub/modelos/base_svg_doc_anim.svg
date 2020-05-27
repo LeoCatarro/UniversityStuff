@@ -1,0 +1,33 @@
+<svg width = "256" height = "256" viewBox = "0 0 256 256"
+    version = "1.1"
+    baseProfile = "full"
+    xmlns = "http://www.w3.org/2000/svg"
+    xmlns:xlink = "http://www.w3.org/1999/xlink"
+    onload = "StartAnimation(evt)">
+    <script type = "application/javascript"><![CDATA[
+var timevalue = 0;
+var timer_increment = 50;
+var max_time = 5000;
+var text_element;
+function StartAnimation(evt) {
+  text_element = evt.target.ownerDocument.getElementById("bluebox");
+  ShowAndGrowElement();
+}
+function ShowAndGrowElement() {
+  timevalue = timevalue + timer_increment;
+  if (timevalue > max_time)
+    return;
+  // Scale the text string gradually until it is 20 times larger
+  var x = (timevalue * 192.) / max_time;
+  text_element.setAttribute("transform", "translate(" + x + ",0)");
+  // Make the string more opaque
+  opacityfactor = 0.1 + timevalue / max_time;
+  text_element.setAttribute("opacity", opacityfactor);
+  // Call ShowAndGrowElement again <timer_increment> milliseconds later.
+  setTimeout("ShowAndGrowElement()", timer_increment)
+}
+window.ShowAndGrowElement = ShowAndGrowElement
+    ]]></script>
+    <rect x = "0" y = "0" width = "256" height = "128" fill = "khaki" />
+    <rect id = "bluebox" fill = "steelblue" x = "0" y = "16" width = "64" height = "32"/>
+</svg>

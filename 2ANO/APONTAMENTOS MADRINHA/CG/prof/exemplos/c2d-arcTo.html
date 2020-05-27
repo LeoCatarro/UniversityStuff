@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8" />
+        <title>Exemplo do método .arcTo</title>
+        <script type = "text/javascript" >
+
+function d2r(d) {
+	return d * Math.PI  / 180.0;
+}
+
+
+var c;
+var x1, y1, x2, y1, r;
+
+palettes = [
+    ["black", "green", "red", "blue", "yellow"],
+    ["green", "black", "yellow", "red", "blue"],
+    ["#1D2728", "#2C3437", "#9F7368", "#D0A183", "#ECD7B8"],
+    ["#1B2D55", "#DAD8DB", "#1B1B1D", "#EBC36C", "#164130"],
+    ["#5C665F", "#F5F7D6", "#46CF6A", "#D35E3A", "#463AD3"]
+];
+
+color = palettes[4];
+
+function draw_arcto() {
+    c.fillStyle = color[0];
+    c.fillRect(0,0,c.width,c.height);
+    c.save();
+    c.beginPath();
+    c.moveTo(256,256);
+    c.arcTo( x1, y1, x2,y2, r);
+    c.closePath();
+    c.restore();	
+    c.fillStyle = color[1];
+    c.fill();
+    c.strokeStyle = color[2];
+    c.stroke();
+    c.fillStyle = color[3];
+    c.fillRect( x1-4, y1 - 4, 8,8);
+    c.fillStyle = color[4];
+    c.fillRect( x2-4, y2 - 4, 8,8);
+    c.restore();
+} 
+
+function updateParms() {
+    x1 = document.getElementById("x1").value;
+    y1 = document.getElementById("y1").value;
+    x2 = document.getElementById("x2").value;
+    y2 = document.getElementById("y2").value;
+    r = document.getElementById("r").value;
+    draw_arcto(c, x1, y1, x2,y2, r);
+}
+
+function main() {
+    var cv = document.getElementById("mycanvas");
+    c = cv.getContext("2d");
+    c.width = cv.width;
+    c.height = cv.height;
+
+    updateParms();
+
+}
+        </script>
+    </head>
+    <body onload = "main();">
+        <h1>Teste para os parâmetros do método <code>.arcTo</code></h1>
+        <canvas id = "mycanvas" width = "512px" height = "521px">
+        </canvas>
+        <form>
+            <label>arcTo
+            <fieldset>
+                <label> x1
+                <input id="x1" type="range" min="0" max="512" value="216" step="4" onchange="updateParms();" ></input>
+                </label>
+                <label> y1
+                <input id="y1" type="range" min="0" max="512" value="360" step="4" onchange="updateParms();" ></input>
+                </label>
+                <label> x2
+                <input id="x2" type="range" min="0" max="512" value="64" step="4"  onchange="updateParms();"></input>
+                </label>
+                <label> y2
+                <input id="y2" type="range" min="" max="512" value="360" step="4" onchange="updateParms();" ></input>
+                </label>
+                <label> r
+                <input id="r" type="range" min="0" max="512" value="128" step="4"  onchange="updateParms();"></input>
+                </label>
+            </fieldset>
+            </label>
+        </form>
+    </body>
+</html>

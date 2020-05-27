@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A Terra com relevo</title>
+	<meta charset = "utf-8" />
+	<script src="../lib/jquery.js"></script>
+	<script src="../lib/jquery.mousewheel.js"></script>
+	<script src="../lib/three.js"></script>
+	<script src="../lib/sim/sim.js"></script>
+	<!-- Única alteração em relação a terra_base.html -->
+	<script src="js/terra_relevo.js"></script>
+	<script type = "text/javascript">
+		var renderer = null;
+		var scene = null;
+		var camera = null;
+		var mesh = null;
+		$(document).ready(
+			function() {
+				var container = document.getElementById("container");
+				var app = new EarthApp();
+				app.init({ container: container });
+				app.run();
+			} );
+	</script>
+
+</head>
+<body>
+    <div id = "container"
+    	style = "
+    		width : 98%;
+    		height : 98%;
+    		overflow : hidden;
+    		position : absolute;
+    		background-color : #000000">
+    </div>
+</body>
+</html>

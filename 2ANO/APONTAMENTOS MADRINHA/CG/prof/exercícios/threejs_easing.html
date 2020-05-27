@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8" />
+        <title>Animação threejs com tweenjs</title>
+        <script src = "../lib/three.js"></script>
+        <script src = "../lib/OrbitControls.js"></script>
+  <script type='text/javascript' src='../lib/tween.min.js'></script>  
+        <script type = "text/javascript" >
+/**
+ * 
+ * Setup the rendering context and build a model
+ *
+ **/         
+function init(mesh) {  
+  //
+  //  Document
+  //
+  renderer = new THREE.WebGLRenderer({ alpha: true });
+  renderer.setClearColor("khaki")
+  renderer.setSize(512,512);
+  document.body.appendChild(renderer.domElement);
+  //
+  //  Scene (World, Model)
+  //
+  scene = new THREE.Scene();
+  //
+  //  Camera (and TrackballControls)
+  //
+  camera = new THREE.PerspectiveCamera(
+    35,       // abertura
+    512/512,  // proporção largura/altura
+    0.1,      // corte perto
+    10000     // corte longe
+    );
+  camera.position.set( -2.5, 0, 20 );
+  camera.lookAt( scene.position );
+  controls = new THREE.OrbitControls(camera);
+  //
+  //  Lights
+  //  
+  var ambient_light = new THREE.AmbientLight(0x7F7F7F);
+  scene.add( ambient_light );
+  scene.ambient_light = ambient_light;
+  //
+  var point_light_1 = new THREE.PointLight(0x3F3F3F);
+  point_light_1.position.set(5, 0, 0);
+  scene.add( point_light_1 );
+  scene.point_light_1 = point_light_1;
+  // //
+  var point_light_2 = new THREE.PointLight(0x3F3F3F);
+  point_light_2.position.set(-5, 0, 0);
+  scene.add( point_light_2 );
+  //
+  scene.point_light_2 = point_light_2
+  //  Parâmetros da animação
+  //      animar a posição
+  //
+  var pos = {x: 2, z: -1, s: 0.01};
+  var target_pos= { x: 0, z: 0, s: 1};
+  var pos_t = new TWEEN.Tween(pos).to(target_pos, 5000);
+  pos_t.easing(TWEEN.Easing.Elastic.InOut).yoyo( true ).repeat( Infinity );
+  pos_t.start();
+  //
+  //
+  //
+  scene.add( mesh );
+  scene.mesh = mesh;
+  //
+  //  Return camera, scene, etc
+  //
+  return {
+    camera: camera,
+    scene: scene,
+    renderer: renderer,
+    controls: controls,
+    anim: pos
+  }
+}
+/**
+ *
+ * Animate the model
+ *
+ */
+function animate(step) {
+  step.scene.mesh.keel.position.set( step.anim.x, 0, step.anim.z);
+  step.scene.mesh.keel.scale.set(step.anim.s, 2, step.anim.s);
+  step.controls.update();
+  step.renderer.render( step.scene, step.camera);
+  requestAnimationFrame( function() { animate(step); });
+  TWEEN.update();
+}
+/**
+ *
+ *  Make a model
+ *
+ */
+function model() {
+  //
+  var keel_g = keel_geometry();
+  var keel_m = new THREE.MeshLambertMaterial( {color: "darkseagreen" } );
+  keel_m.side = THREE.DoubleSide;
+  var keel = new THREE.Mesh(keel_g, keel_m);
+  keel.scale.set(1,2,1);
+  //
+  var bow_g = bow_geometry();
+  var bow_m =  new THREE.MeshLambertMaterial( {color: "crimson" } );
+  bow_m.side = THREE.DoubleSide;
+  var bow = new THREE.Mesh(bow_g, bow_m);
+  bow.rotation.y = -Math.PI / 2;
+  bow.position.set(0,2,0);
+  //
+  var stern_g = bow_geometry();
+  var stern_m =  new THREE.MeshLambertMaterial( {color: "steelblue" } );
+  stern_m.side = THREE.DoubleSide;
+  var stern = new THREE.Mesh(stern_g, stern_m);
+  stern.scale.set(1,-1,1);
+  stern.position.set(0,-2,0);
+  stern.rotation.y = -Math.PI / 2;
+  //
+  var boat = new THREE.Object3D();
+  boat.add(keel);
+  boat.keel = keel;
+  boat.add(bow);
+  boat.bow = bow;
+  boat.add(stern);
+  boat.stern = stern;
+  boat.rotation.y = Math.PI / 2;
+  boat.scale.set(1, 1.5, 1.75);
+
+  return boat;
+}
+/**
+ *
+ *  Model: Keel geometry
+ *
+ */
+function keel_geometry() {
+  //
+  //  Geometry
+  //
+  var cross_section_points = [
+    new THREE.Vector2( 0.9, -1.),
+    new THREE.Vector2( 0.9, 0.5),
+    new THREE.Vector2( 0.0, 0.9),
+    new THREE.Vector2( -.9, 0.5),
+    new THREE.Vector2( -.9, -1.),
+    new THREE.Vector2( -1., -1.),
+    new THREE.Vector2( -1., 0.5),
+    new THREE.Vector2( 0.0, 1.0),
+    new THREE.Vector2( 1.0, 0.5),
+    new THREE.Vector2( 1.0, -1.),
+    new THREE.Vector2( 0.9, -1.) ];
+  var cross_section = new THREE.Shape(cross_section_points);
+  //
+  //  Spine
+  //
+  var spine_points = [
+    new THREE.Vector3(0, -1, 0),
+    new THREE.Vector3(0, 1, 0) ];
+  //
+  var spine =  new THREE.CatmullRomCurve3( spine_points );
+  //
+  var parameters = {
+    extrudePath   : spine // <-- the spine goes here
+  };
+  //
+  //  Geometry
+  //
+  return new THREE.ExtrudeGeometry( cross_section, parameters );
+}
+/**
+ *
+ *  Model: Bow geometry
+ *
+ */
+function bow_geometry() {
+  //
+  //  Coordinates
+  //
+  var coordinates = [  
+    new THREE.Vector3(0.9, 0.0, -1.),
+    new THREE.Vector3(0.9, 0.0, 0.5),
+    new THREE.Vector3(0.0, 0.0, 0.9),
+    new THREE.Vector3(-.9, 0.0, 0.5),
+    new THREE.Vector3(-.9, 0.0, -1.),
+    new THREE.Vector3(-1., 0.0, -1.),
+    new THREE.Vector3(-1., 0.0, 0.5),
+    new THREE.Vector3(0.0, 0.0, 1.0),
+    new THREE.Vector3(1.0, 0.0, 0.5),
+    new THREE.Vector3(1.0, 0.0, -1.),
+    new THREE.Vector3(0.0, 1.9, -1.),
+    new THREE.Vector3(0.0, 1.9, -.5),
+    new THREE.Vector3(0.0, 2.0, -1.),
+    new THREE.Vector3(0.0, 2.0, -.5) ];
+  //
+  //  Faces (triangles!)
+  //
+  var faces = [
+    //
+    new THREE.Face3(0, 1, 8),
+    new THREE.Face3(0, 8, 9),
+    new THREE.Face3(1, 2, 7),
+    new THREE.Face3(1, 7, 8),
+    new THREE.Face3(2, 3, 7),
+    new THREE.Face3(3, 6, 7),
+    new THREE.Face3(3, 4, 6),
+    new THREE.Face3(4, 5, 6 ),
+    //
+    new THREE.Face3(0, 10, 11),
+    new THREE.Face3(0, 11, 1),
+    new THREE.Face3(4, 3, 11),
+    new THREE.Face3(4, 11, 10),
+    new THREE.Face3(3, 2, 11),
+    new THREE.Face3(2, 1, 11),
+    //
+    new THREE.Face3(5, 13, 6),
+    new THREE.Face3(5, 12, 13),
+    new THREE.Face3(7, 6, 13),
+    new THREE.Face3(8, 7, 13),
+    new THREE.Face3(9, 8, 13),
+    new THREE.Face3(9, 13, 12 ),
+    //
+    new THREE.Face3(0, 9, 10),
+    new THREE.Face3(9, 12, 10 ),
+    new THREE.Face3(5, 4, 10),
+    new THREE.Face3(5, 10, 12 ) ];
+  //
+  //  Geometry
+  //
+  var bow = new THREE.Geometry();
+  bow.vertices = coordinates;
+  bow.faces = faces;
+  bow.computeFaceNormals(); // get the right "outside"
+  bow.computeBoundingSphere(); // to help the rendering system
+  return bow;
+}
+/**
+ *
+ *  Entry function
+ *
+ */
+function main() {
+  var step = init(model());
+  animate(step);
+}
+        </script>
+    </head>
+    <body onload = "main();">
+    </body>
+</html>

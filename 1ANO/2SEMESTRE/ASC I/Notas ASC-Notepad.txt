@@ -1,0 +1,1231 @@
+
+
+
+############### Notas ASC ###############
+############### Reorder without sb/lw ###############
+PASSAR DE: 0x12345678 para 0x78563412
+sll $t1, $t0, 24
+
+srl $t2, $t0, 8
+sll $t2, $t2, 24
+srl $t2, $t2, 8
+
+srl $t3, $t0, 16
+sll $t3, $t3, 24
+srl $t3, $t3, 16
+
+srl $t4, $t0, 24
+
+or $t5, $t1, $t2
+or $t6, $t5, $t3
+or $t0, $t6, $t4
+
+
+############### Change with XOR ###############
+No fim: t0=t1 e t1=t0
+
+xor $t0, $t0, $t1
+xor $t1, $t1, $t0
+xor $t0, $t0, $t1
+
+
+############### Func: sum3 ###############
+Somar 3 valores passados como argumentos:
+
+sum3:    
+add $v0, $a0, $a1
+add $v0, $v0, $a2
+
+jr $ra
+nop
+
+
+############### Func: leap_year ###############
+Indica se o ano Г© bissexto ou nao
+
+jal leap_year
+addi $a0, $a0, 1040
+j over
+nop
+
+leap_year:
+li $t0, 400
+div $a0, $t0
+mfhi $t1
+beq $t1, $zero, END
+addi $v0, $zero, 1
+
+li $t0, 4
+div $a0, $t0
+mfhi $t1
+seq $t1, $zero, $t1
+
+li $t0, 100
+div $a0, $t0
+mfhi $t2
+seq $t2, $zero, $t2
+
+blt $t2, $t1, END
+addi $v0, $zero, 1
+
+move $v0, $zero
+
+END:
+jr $ra
+nop
+
+over:
+nop
+
+
+############### Func: max3 ###############
+Retorna o maior de 3 numeros internos(com sinal)
+
+max3:
+slt $t1,$a0,$a1
+beq $t1,$zero, L
+nop
+slt $t1, $a1,$a2
+beq $t1,$zero, P
+nop
+j T
+nop
+L:
+slt $t1,$a0,$a2
+beq $t1,$zero,V
+nop
+T:
+add $v0,$zero,$a2
+j End
+nop
+V:
+add $v0,$zero,$a0
+j End
+nop
+P:
+add $v0,$zero,$a1
+End:
+jr $ra
+nop
+
+
+############### Func: abs ###############
+Devolve o valor absoluto do numero pedido
+abs:
+slt $t1 ,$a0,$zero
+bne $t1,$zero,L
+nop
+add $v0,$zero,$a0
+j Fim
+nop
+L:
+sub $v0,$zero,$a0
+Fim:
+jr $ra
+nop
+
+
+
+############### Func: swap_int ###############
+Efetua a troca de 2 numeros inteiros em memoria:
+
+swap_int:
+lw $t1,0($a0)
+lw $t0,0($a1)
+sw $t1,0($a1)
+sw $t0,0($a0)
+jr $ra
+nop
+
+
+############### Ciclos: factorial ###############
+factorial:
+li $v0,1
+A:
+beq $a0,$zero,L
+nop
+mult $v0,$a0
+mflo $v0
+addi $a0,$a0,-1
+beq $zero,$zero,A
+nop
+L:
+jr $ra
+nop
+
+
+############### Ciclos: count_zeros ###############
+count_zeros:
+    add $v0,$zero,$zero
+    addi $t1,$zero,1
+    addi $t5,$zero,32
+    T:
+    beq $t5,$zero,End
+    nop
+    and $t0,$t1,$a0
+    srl $a0,$a0,1
+    addi $t5,$t5,-1
+    bne $t0,$t1,P 
+    nop
+    beq $zero,$zero,T
+    nop
+    P:
+    addi $v0,$v0,1
+    beq $zero,$zero,T
+    nop
+    End:
+    jr $ra
+    nop
+
+
+############### Ciclos: Summe ###############
+Summe:
+sub $t1 ,$a1,$a0
+addi $t1,$t1,1
+add $t4,$zero,$a0
+add $t2,$zero,$zero
+A:
+beq $t1 ,$zero,L
+nop
+add $t4,$t4,$t2
+add $t2 ,$zero ,$a0
+addi $t2, $t2,1
+addi $a0,$a0 ,1
+beq $zero,$zero, A
+addi $t1,$t1,-1
+L:
+add $v0, $zero, $t4
+jr $ra
+nop
+
+
+############### Ciclos: count_ones ###############
+count_ones:
+    add $v0,$zero,$zero
+    addi $t1,$zero,1
+    addi $t5,$zero,32
+    T:
+    beq $t5,$zero,End
+    nop
+    and $t0,$t1,$a0
+    srl $a0,$a0,1
+    addi $t5,$t5,-1
+    beq $t0,$t1,P 
+    nop
+    beq $zero,$zero,T
+    nop
+    P:
+    addi $v0,$v0,1
+    beq $zero,$zero,T
+    nop
+    End:
+    jr $ra
+    nop
+
+
+############### Arrays: zahl ###############
+zahl:
+ori $v0, $zero, 0
+addi $sp, $sp, -4
+sw $s0, 0($sp)
+
+L:
+
+lb $s0, 0($a0)
+addi $a0, $a0, 1
+
+bne $s0, $a1, SKIP
+nop
+addi $v0, $v0, 1
+
+SKIP:
+bne $s0, $zero, L
+nop
+lw $s0, 0($sp)
+addi $sp, $sp, 4
+jr $ra
+nop
+
+
+############### Arrays: strlen ###############
+strlen:
+    addi $v0,$zero,0
+    L:   
+    lb $t0,0($a0)
+    addi $a0,$a0,1
+    beq $t0,$zero , End
+    nop
+    addi $v0,$v0,1
+    beq $zero,$zero,L
+    nop
+    End:
+    jr $ra
+    nop
+
+
+############### Notas Teoricas: ###############
+-->Capacidade de memoria: Quantidade total de informaГ§ГЈo que a memoria pode armazenar
+
+-->Overflow: o resultado de uma operaГ§ГЈo estГЎ fora da gama de valores representaveis com os bits disponiveis
+
+-->Registos: fazem parte do CPU; sГЈo usados para guardar valores durante a execuГ§ГЈo do programa; os registos disponiveis e o seu tamanho depende da arquitetura e do conj de instruГ§Гµes implementada no CPU
+
+-->EndereГ§o de memoria: PosiГ§ao de um byte em memoria identificada numericamente
+
+-->EspaГ§o de EndereГ§amento: conjunto de endereГ§os de memoria que podem ser acedidos
+
+-->Byte: Quant de inf que ocupa uma pos de memoria, geralmente de 8bits na maioria as arquiteturas
+
+-->RISC: programas maiores, usados em qualquer contexto, executam instruГ§ГЈo mais simples
+CISC: mais curtos, registos especificos para funГ§Гµes, instruГ§Гµes mais complexas
+
+-->Todas as recursivas guardam o $ra na pilha
+
+--> Preservados:        N Preservados:
+$s0-$s7              $t0--$t9
+gp                   $a0--$a3
+sp                   $v0--$v1
+fp                    at
+
+-->a instruГ§ГЈo depois de branch ou jump Г© sempre executada
+
+-->Deslocamento: qd somado a um registo(tem que ser multiplo de 4); numero de 16 com sinal 
+
+--> shift-left de n bits:multiplicaГ§ГЈo por 2^n; shift-right: divisГЈo por 2^n
+
+-->ExtensГЈo de sinal: sra e addi
+   ExtensГЈo com zeros:andi, ori e todas as logicas
+
+-->AlocaГ§ГЈo de constantes:
+Globais-Data(memoria)
+Locais:Registos(CPU);Stack(memoria);Code(memoria)
+Constantes em geral: juntar os dois!
+
+
+############### Reorder with sb/lw/srl ###############
+Inverter bytes em memoria: Ordem Little Endian
+
+lw $t1, 0($t0)
+
+sb $t1, 3($t0)
+
+srl $t1, $t1, 8
+sb $t1, 2($t0)
+
+srl $t1, $t1, 8
+sb $t1, 1($t0)
+
+srl $t1, $t1, 8
+sb $t1, 0($t0)
+
+
+############### t2=2Г—t0+3Г—(t0в€’t1) with add e sub ###############
+
+
+add $t2, $t0, $t0
+sub $t3, $t0, $t1
+add $t4, $t3, $t3
+add $t5, $t4, $t3
+
+add $t2, $t2, $t5
+
+
+############### Miss: Converte_String ###############
+MISSAO QUASE IMPOSSIVEL: (converte_char/converte_string)
+
+converte_string:
+addi $sp,$sp, -4
+sw $ra,0($sp)
+addi $sp,$sp, -4
+sw $s0,0($sp)
+move $s0, $a0
+L1:
+lb $a0, 0($s0)
+jal converte_char
+nop
+sb $v0, 0($s0)
+bne $v0, $zero, L1
+addi $s0, $s0, 1
+lw $s0,0($sp)
+addi $sp,$sp, 4
+lw $ra,0($sp)
+addi $sp,$sp, 4
+jr $ra
+nop
+
+
+############### Miss: Absdiff ###############
+MISSAO QUASE IMPOSSIVEL:(absdiff)
+absdiff:
+addi $sp,$sp,-4
+sw $ra,0($sp)
+sub $a0, $a0, $a1
+jal abs # calcula valor absoluto de a0
+nop
+sll $v0,$v0,1
+lw $ra,0($sp)
+addi $sp,$sp,4
+jr $ra
+nop
+
+
+############### Miss: Soma ###############
+MISSAO QUASE IMPOSSIVEL:(soma)
+soma:
+addi $sp,$sp,-8
+sw $ra,0($sp)
+sw $t0,4($sp)
+
+move $v0, $zero
+beq $a1, $zero, L
+nop
+
+lw $t0, 0($a0)
+addi $a0, $a0, 4
+addi $a1, $a1, -1
+jal soma
+nop
+add $v0, $v0, $t0
+
+L:
+lw $ra,0($sp)
+addi $sp,$sp,4
+lw $t0,0($sp)
+addi $sp,$sp,4
+jr $ra
+nop
+
+
+############### Rec: Fatorial ###############
+RECURSIVA:(fatorial)
+
+factorial:
+	addi $sp, $sp,-8
+	sw $ra, 0($sp)
+	sw $s0, 4($sp)
+    
+	li $v0, 1
+	beq $a0, $zero, RETURN
+	nop
+	move $s0, $a0
+	addi $a0, $a0, -1
+	jal factorial   # chamada recursiva
+	nop
+	mul $v0, $v0, $s0
+RETURN:
+
+	lw $ra, 0($sp)
+  	lw $s0, 4($sp)
+  	addi $sp, $sp,8
+  	jr $ra
+  	nop
+###############Set do bit 25 mantendo = os outros#############################
+lui $t5, 0x0200
+or $t0, $t0, $t5
+
+#############Notas 3ªFreq#################
+-->Pseudo-instruçoes: n tem cod maq, convertidas e usadas pelo assembler, n pertence á arquitetura
+
+-->Kernel Mode vs User mode: acesso a maior conj de enderecos e instruçoes(kernel); menor conj de endereços e instruçoes(user); mudança de User para Kernel feita através de Interrupts ou Traps
+
+-->Trap:instrucao especial que gera excepcao e que interrompe o fluxo normal de exec do prog para passar o controlo para o S.O
+
+-->Interrupt:forma de excepcao gerada por hardware. Acontece, por exemplo, por um temporizador, mov do rato, quando chega novo input que requer atençao do S.O
+
+-->Excepcao: a exec de uma instrucao pode ser interrompida se ocorrer uma situação imprevista, ex:overflow ou endereço invalido.
+
+EXCEPÇOES:
+-->Arithmetic Overflow: quando a soma de 2 numeros nao pode ser representada nos registos disponivel
+     -add, faz a soma, deteta overflow, provoca exepcao
+     -addu, faz a soma, nao deteta overflow, nao provoca excepcao	
+
+-->Adress Error: ocorre quando
+     -fetch de um endereço nao alinhado(nao multiplo de 4)
+     -load ou store de um endereço nao alinhado
+     -referencia a um espaço de endereçamento Kernel, quando o CPU está em User
+
+-->Trap:quando uma instrução de trap resulta em true e gera excepcao
+
+-->SystemCall:ocorre quando é executada uma instruçao de syscall
+
+-->Reserved Instruction:quando é executada uma instruçao que nao esta definida na arquitetura ou implementada
+
+-->Floating Point:quando o coprocessador de virgula flutuante(CP1) pretende sinalizar umas excepcao deste tipo
+-->Interrupt:tipicamente gerada por hardware
+
+ENDEREÇOS DO KERNEL MODE:
+-->BadVAdd(CP0, reg8)-registo de leitura que contem endereço que causou uma das excepçoes
+-->Status(CP0, reg12)-registo de leitura/escrita que contem o modo(user/kernel), ativaçao/desativacao de interrupçoes e estados de diagnostico do processador
+-->Cause(CP0, reg13)-registo so de leitura que contem a causa da ultima excepcao nos bits 6 a 2. Contem mais informaçao
+-->EPC(CP0, reg14)-registo de leitura/escrita que contem o endereço da instrucao a retomar a excepcao normal apos uma excepcao ou serviço do S.O
+
+
+############### Reorder without sb/lw  ###############
+PASSAR DE: 0x12345678 para 0x78563412
+sll $t1, $t0, 24
+
+srl $t2, $t0, 8
+sll $t2, $t2, 24
+srl $t2, $t2, 8
+
+srl $t3, $t0, 16
+sll $t3, $t3, 24
+srl $t3, $t3, 16
+
+srl $t4, $t0, 24
+
+or $t5, $t1, $t2
+or $t6, $t5, $t3
+or $t0, $t6, $t4
+
+
+
+############### Change with XOR  ###############
+No fim: t0=t1 e t1=t0
+
+xor $t0, $t0, $t1
+xor $t1, $t1, $t0
+xor $t0, $t0, $t1
+
+
+############### Func: sum3 ###############
+Somar 3 valores passados como argumentos:
+
+sum3:    
+add $v0, $a0, $a1
+add $v0, $v0, $a2
+
+jr $ra
+nop
+
+
+
+############### Func: leap_year ###############
+Indica se o ano Г© bissexto ou nao
+
+jal leap_year
+addi $a0, $a0, 1040
+j over
+nop
+
+leap_year:
+li $t0, 400
+div $a0, $t0
+mfhi $t1
+beq $t1, $zero, END
+addi $v0, $zero, 1
+
+li $t0, 4
+div $a0, $t0
+mfhi $t1
+seq $t1, $zero, $t1
+
+li $t0, 100
+div $a0, $t0
+mfhi $t2
+seq $t2, $zero, $t2
+
+blt $t2, $t1, END
+addi $v0, $zero, 1
+
+move $v0, $zero
+
+END:
+jr $ra
+nop
+
+over:
+nop
+
+
+############### Func: max3 ###############
+Retorna o maior de 3 numeros internos(com sinal)
+
+max3:
+slt $t1,$a0,$a1
+beq $t1,$zero, L
+nop
+slt $t1, $a1,$a2
+beq $t1,$zero, P
+nop
+j T
+nop
+L:
+slt $t1,$a0,$a2
+beq $t1,$zero,V
+nop
+T:
+add $v0,$zero,$a2
+j End
+nop
+V:
+add $v0,$zero,$a0
+j End
+nop
+P:
+add $v0,$zero,$a1
+End:
+jr $ra
+nop
+
+
+############### Func: abs ###############
+Devolve o valor absoluto do numero pedido
+
+abs:
+slt $t1 ,$a0,$zero
+bne $t1,$zero,L
+nop
+add $v0,$zero,$a0
+j Fim
+nop
+L:
+sub $v0,$zero,$a0
+Fim:
+jr $ra
+nop
+
+
+
+
+############### Func: swap_int  ###############
+Efetua a troca de 2 numeros inteiros em memoria:
+
+swap_int:
+lw $t1,0($a0)
+lw $t0,0($a1)
+sw $t1,0($a1)
+sw $t0,0($a0)
+jr $ra
+nop
+
+
+############### Ciclos: factorial ###############
+factorial:
+li $v0,1
+A:
+beq $a0,$zero,L
+nop
+mult $v0,$a0
+mflo $v0
+addi $a0,$a0,-1
+beq $zero,$zero,A
+nop
+L:
+jr $ra
+nop
+
+
+
+############### Ciclos: count_zeros ###############
+count_zeros:
+    add $v0,$zero,$zero
+    addi $t1,$zero,1
+    addi $t5,$zero,32
+    T:
+    beq $t5,$zero,End
+    nop
+    and $t0,$t1,$a0
+    srl $a0,$a0,1
+    addi $t5,$t5,-1
+    bne $t0,$t1,P 
+    nop
+    beq $zero,$zero,T
+    nop
+    P:
+    addi $v0,$v0,1
+    beq $zero,$zero,T
+    nop
+    End:
+    jr $ra
+    nop
+
+
+############### Ciclos: Summe ###############
+Summe:
+sub $t1 ,$a1,$a0
+addi $t1,$t1,1
+add $t4,$zero,$a0
+add $t2,$zero,$zero
+A:
+beq $t1 ,$zero,L
+nop
+add $t4,$t4,$t2
+add $t2 ,$zero ,$a0
+addi $t2, $t2,1
+addi $a0,$a0 ,1
+beq $zero,$zero, A
+addi $t1,$t1,-1
+L:
+add $v0, $zero, $t4
+jr $ra
+nop
+
+
+############### Ciclos: count_ones  ###############
+count_ones:
+    add $v0,$zero,$zero
+    addi $t1,$zero,1
+    addi $t5,$zero,32
+    T:
+    beq $t5,$zero,End
+    nop
+    and $t0,$t1,$a0
+    srl $a0,$a0,1
+    addi $t5,$t5,-1
+    beq $t0,$t1,P 
+    nop
+    beq $zero,$zero,T
+    nop
+    P:
+    addi $v0,$v0,1
+    beq $zero,$zero,T
+    nop
+    End:
+    jr $ra
+    nop
+
+
+
+
+############### Arrays: zahl ###############
+zahl:
+ori $v0, $zero, 0
+addi $sp, $sp, -4
+sw $s0, 0($sp)
+
+L:
+
+lb $s0, 0($a0)
+addi $a0, $a0, 1
+
+bne $s0, $a1, SKIP
+nop
+addi $v0, $v0, 1
+
+SKIP:
+bne $s0, $zero, L
+nop
+lw $s0, 0($sp)
+addi $sp, $sp, 4
+jr $ra
+nop
+
+
+############### Arrays: strlen ###############
+strlen:
+    addi $v0,$zero,0
+    L:   
+    lb $t0,0($a0)
+    addi $a0,$a0,1
+    beq $t0,$zero , End
+    nop
+    addi $v0,$v0,1
+    beq $zero,$zero,L
+    nop
+    End:
+    jr $ra
+    nop
+
+
+
+############### Notas(2ªFreq) ###############
+-->Capacidade de memoria: Quantidade total de informaГ§ГЈo que a memoria pode armazenar
+
+-->Overflow: o resultado de uma operaГ§ГЈo estГЎ fora da gama de valores representaveis com os bits disponiveis
+
+-->Registos: fazem parte do CPU; sГЈo usados para guardar valores durante a execuГ§ГЈo do programa; os registos disponiveis e o seu tamanho depende da arquitetura e do conj de instruГ§Гµes implementada no CPU
+
+-->EndereГ§o de memoria: PosiГ§ao de um byte em memoria identificada numericamente
+
+-->EspaГ§o de EndereГ§amento: conjunto de endereГ§os de memoria que podem ser acedidos
+
+-->Byte: Quant de inf que ocupa uma pos de memoria, geralmente de 8bits na maioria as arquiteturas
+
+-->RISC: programas maiores, usados em qualquer contexto, executam instruГ§ГЈo mais simples
+CISC: mais curtos, registos especificos para funГ§Гµes, instruГ§Гµes mais complexas
+
+-->Todas as recursivas guardam o $ra na pilha
+
+--> Preservados:        N Preservados:
+$s0-$s7              $t0--$t9
+gp                   $a0--$a3
+sp                   $v0--$v1
+fp                    at
+
+-->a instrucao depois de branch ou jump Г© sempre executada
+
+-->Deslocamento: qd somado a um registo(tem que ser multiplo de 4); numero de 16 com sinal 
+
+--> shift-left de n bits:multiplicaГ§ГЈo por 2^n; shift-right: divisao por 2^n
+
+-->Extensao de sinal: sra e addi
+   Extensao com zeros:andi, ori e todas as logicas
+
+-->Alocaçao de constantes:
+Globais-Data(memoria)
+Locais:Registos(CPU);Stack(memoria);Code(memoria)
+Constantes em geral: juntar os dois!
+
+
+
+
+############### Reorder with sb/lw/srl  ###############
+Inverter bytes em memoria: Ordem Little Endian
+
+lw $t1, 0($t0)
+
+sb $t1, 3($t0)
+
+srl $t1, $t1, 8
+sb $t1, 2($t0)
+
+srl $t1, $t1, 8
+sb $t1, 1($t0)
+
+srl $t1, $t1, 8
+sb $t1, 0($t0)
+
+
+############### Miss: Converte_String ###############
+MISSAO QUASE IMPOSSIVEL: (converte_char/converte_string)
+
+converte_string:
+addi $sp,$sp, -4
+sw $ra,0($sp)
+addi $sp,$sp, -4
+sw $s0,0($sp)
+move $s0, $a0
+L1:
+lb $a0, 0($s0)
+jal converte_char
+nop
+sb $v0, 0($s0)
+bne $v0, $zero, L1
+addi $s0, $s0, 1
+lw $s0,0($sp)
+addi $sp,$sp, 4
+lw $ra,0($sp)
+addi $sp,$sp, 4
+jr $ra
+nop
+
+
+############### Miss: Absdiff ###############
+MISSAO QUASE IMPOSSIVEL:(absdiff)
+
+absdiff:
+addi $sp,$sp,-4
+sw $ra,0($sp)
+sub $a0, $a0, $a1
+jal abs # calcula valor absoluto de a0
+nop
+sll $v0,$v0,1
+lw $ra,0($sp)
+addi $sp,$sp,4
+jr $ra
+nop
+
+
+############### Miss: Soma ###############
+MISSAO QUASE IMPOSSIVEL:(soma)
+soma:
+addi $sp,$sp,-8
+sw $ra,0($sp)
+sw $t0,4($sp)
+
+move $v0, $zero
+beq $a1, $zero, L
+nop
+
+lw $t0, 0($a0)
+addi $a0, $a0, 4
+addi $a1, $a1, -1
+jal soma
+nop
+add $v0, $v0, $t0
+
+L:
+lw $ra,0($sp)
+addi $sp,$sp,4
+lw $t0,0($sp)
+addi $sp,$sp,4
+jr $ra
+nop
+
+
+
+############### Rec: Fatorial ###############
+RECURSIVA:(fatorial)
+
+factorial:
+	addi $sp, $sp,-8
+	sw $ra, 0($sp)
+	sw $s0, 4($sp)
+    
+	li $v0, 1
+	beq $a0, $zero, RETURN
+	nop
+	move $s0, $a0
+	addi $a0, $a0, -1
+	jal factorial   # chamada recursiva
+	nop
+	mul $v0, $v0, $s0
+RETURN:
+
+	lw $ra, 0($sp)
+  	lw $s0, 4($sp)
+  	addi $sp, $sp,8
+  	jr $ra
+  	nop
+
+
+############### Set bit X25 e mantendo igual os outros ###############
+lui $t5, 0x0200
+or $t0, $t0, $t5
+
+
+############### Notas(3ªFreq) ###############
+-->Pseudo-instruçoes: n tem cod maq, convertidas e usadas pelo assembler, n pertence á arquitetura
+
+-->Kernel Mode vs User mode: acesso a maior conj de enderecos e instruçoes(kernel); menor conj de endereços e instruçoes(user); mudança de User para Kernel feita através de Interrupts ou Traps
+
+-->Trap:instrucao especial que gera excepcao e que interrompe o fluxo normal de exec do prog para passar o controlo para o S.O
+
+-->Interrupt:forma de excepcao gerada por hardware. Acontece, por exemplo, por um temporizador, mov do rato, quando chega novo input que requer atençao do S.O
+
+-->Excepcao: a exec de uma instrucao pode ser interrompida se ocorrer uma situação imprevista, ex:overflow ou endereço invalido.
+
+EXCEPÇOES:
+-->Arithmetic Overflow: quando a soma de 2 numeros nao pode ser representada nos registos disponivel
+     -add, faz a soma, deteta overflow, provoca exepcao
+     -addu, faz a soma, nao deteta overflow, nao provoca excepcao	
+
+-->Adress Error: ocorre quando
+     -fetch de um endereço nao alinhado(nao multiplo de 4)
+     -load ou store de um endereço nao alinhado
+     -referencia a um espaço de endereçamento Kernel, quando o CPU está em User
+
+-->Trap:quando uma instrução de trap resulta em true e gera excepcao
+
+-->SystemCall:ocorre quando é executada uma instruçao de syscall
+
+-->Reserved Instruction:quando é executada uma instruçao que nao esta definida na arquitetura ou implementada
+
+-->Floating Point:quando o coprocessador de virgula flutuante(CP1) pretende sinalizar umas excepcao deste tipo
+
+-->Interrupt:tipicamente gerada por hardware
+
+ENDEREÇOS DO KERNEL MODE:
+-->BadVAdd(CP0, reg8)-registo de leitura que contem endereço que causou uma das excepçoes
+-->Status(CP0, reg12)-registo de leitura/escrita que contem o modo(user/kernel), ativaçao/desativacao de interrupçoes e estados de diagnostico do processador
+-->Cause(CP0, reg13)-registo so de leitura que contem a causa da ultima excepcao nos bits 6 a 2. Contem mais informaçao
+-->EPC(CP0, reg14)-registo de leitura/escrita que contem o endereço da instrucao a retomar a excepcao normal apos uma excepcao ou serviço do S.O
+
+
+############### Notas(4ªFreq) ###############
+CÓDIGO MÁQUINA:
+-->Instrução nop: 0x00000000
+   Instrução executado no nop: sll $zero, $zero, 0
+
+-->Instruções do tipo J:
+No endereço que corresponde a label passar para binario e tirar os primeiros 4 bits e os 2 ultimos, para add ao OpCode da instruçao J ou jal.
+
+-->Branch: 32 bits para cima e 32 para baixo
+
+VIRGULA FLUTUANTE:
+-->codificaçao de numeros em virgula flutuante:
++/-
+-->Precisão Simples:float
+sinal(1bit)||expoente(8bits)||significando(23bits)
+
+o exp é baise 2e0= 127
+
+NOTA:significando: o que está a direita da virgula
+
+-->Precisão Dupla:double
+sinal(1bit)||expoente(11bits)||significando(52bits)
+
+o EXP é baised 2e0 = 1023
+
+-->Infinito:Inf
+1.0/0.0=Inf ou -1.0/0.0=-Inf
+Log(0.0)=-Inf
+Propriedades:
+x+inf=inf    x/inf=0.0     exp(-inf)=0.0  1/-0.0=-inf
+
+-->Not a Number:NaN
+0.0/0.0=NaN   0.0/Inf=NaN   0.0*Inf=NaN
+Inf-Inf=NaN
+
+Formato:
+0  11111111 1000000....00000 NaN
+Propriedades:
+x+NaN=NaN   Nan==Nan  FALSE   NaN!=NaN TRUE
+1eNaN=1
+
+-->Zero:+0.0|-0.0
+Propriedades:
+-0.0==0.0 TRUE   1/+-0.0=+-Inf   0e0=1
+
+-->A adição é comutativa: x+y =y+x
+-->A adição não é associativa
+
+
+############### Ciclos: exp2 ###############
+exp2:
+addi $a0, $zero, 3
+jal exp2
+nop
+syscall
+exp2:
+add $t0, $zero, $zero
+addi $v0, $zero, 1
+
+FOR: slt $t1, $t0, $a0
+beq $t1, $zero, ENDFOR
+nop
+
+add $v0, $v0, $v0
+
+addi $t0, $t0, 1
+beq $zero, $zero, FOR
+nop
+
+ENDFOR: jr $ra
+nop
+
+
+############### Ciclos: log2 ###############
+log2:
+li $v0, 10
+syscall
+log2:
+add $t0, $zero, $a0
+addi $v0, $zero, 0
+addi $t1, $zero, 1
+addi $t2, $zero, 2
+
+FOR: beq $t0, $t1, ENDFOR
+nop
+
+div $t0, $t2
+mflo $t0
+
+addi $v0, $v0, 1
+beq $zero, $zero, FOR
+nop
+
+ENDFOR: jr $ra
+nop
+
+
+############### Ciclos: Collatz(NOT WORKING) ###############
+collatz:
+    addi $sp, $sp, -8
+    sw $ra, 0($sp)
+    li $t1, 1
+    li $v0, 0
+    sw $v0, 4($sp)		  
+    while:
+    beq $a0, $t1, END	#WHILE n!=1
+    nop
+    jal f
+    nop
+    move $a0, $v0				
+    lw $v0, 4($sp)			
+    addi $v0, $v0, 1			
+    sw $v0, 4($sp)				
+    j while
+    nop 
+    END:
+    lw $ra, 0($sp)
+    lw $v0, 4($sp)
+    jr $ra
+    addi $sp, $sp, 8
+
+
+############### Notas de Funções ###############
+-->O resto da div inteira por 256
+sra $t1, $t0, 8
+sll $t1, $t1, 8
+sub $t2, $t0, $t1
+
+-->Trocar os valores de $t0 e $t1 sem XOR:
+subu $t0, $t0, $t1
+addu $t1, $t1, $t0
+subu $t0, $t1, $t0
+
+
+############### Análise de Código-Funções ###############
+--> Calcula o numero de bytes ocupados por uma string, incluindo o caracter nulo
+foo:
+addi $v0, $a0, 0
+L:lb $t0, 0($a0)
+bne $t0, $zero, L
+addi $a0, $a0, 1
+jr $ra
+sub $v0, $a0, $v0
+
+-->Verifica se os nmrs do array são negativos , e em caso afirmativo converte-os para positivos
+        .data
+A:      .word -3, -2, -1, 0, 1, 2
+
+        .text
+
+        # ...
+
+        addi  $t8, $zero, 6
+        lui   $t9, 0x1001
+        ori   $t9, $t9, 0x0000
+
+run:    beq   $t8, $zero, fim
+        addi  $t8, $t8, -1
+        lw    $t0, 0($t9)
+        addi  $t9, $t9, 4
+        slt   $t1, $t0, $zero
+        beq   $t1, $zero, run
+        nop
+        sub   $t0, $zero, $t0
+        sw    $t0, -4($t9)
+        j     run
+        nop
+fim:
+        # ...
+
+-->Devolve o endereço do caracter nulo de uma string
+foo:
+L:      lb    $t0, 0($a0)
+        bne   $t0, $zero, L
+        addi  $a0, $a0, 1
+        jr    $ra
+        addi  $v0, $a0, -1
+
+--> Calcula o numero de bytes ocupados por uma string, sem o caracter nulo
+foo:
+addi $v0, $a0, 1
+L:lb $t0, 0($a0)
+bne $t0, $zero, L
+addi $a0, $a0, 1
+jr $ra
+sub $v0, $a0, $v0
+
+--> Count-bits
+count_bits:
+        addiu $sp, $sp, -8
+        sw    $ra, 4($sp)
+        sw    $s0, 0($sp)
+        beq   $a0, $zero, L
+        xor   $v0, $v0, $v0
+        andi  $s0, $a0, 1
+        srl   $a0, $a0, 1
+        jal   count_bits
+        nop
+        add   $v0, $v0, $s0
+L:
+        lw    $s0, 0($sp)
+        lw    $ra, 4($sp)
+        addiu $sp, $sp, 8
+        jr    $ra
+        nop
+******OU********
+count_bits:
+        xor   $v0, $v0, $v0
+L1:
+        andi  $t0, $a0, 1
+        beq   $t0, $zero, L2
+        srl   $a0, $a0, 1
+        addi  $v0, $v0, 1
+L2:     bne   $a0, $zero, L1
+        nop
+        jr    $ra
+        nop
+
+
+############### Func: max2 ###############
+max2:
+slt $t0, $a0, $a1
+bne $t0, $zero, L
+nop
+beq $t0, $zero, V
+nop 
+
+L: move $v0, $a1
+   jr $ra
+   nop
+
+V: move $v0, $a0
+   jr $ra
+   nop
+
+
+############### Analise de Desempenho ###############
+-->
+1º Executar esta:
+1000 = Freq x nanosegundos
+Depois:
+nmr de ciclos x nanosegundos
+
+
+############### Excepções ###############
+GERAM EXECPÇOES:
+
+--> sw, lw e ultimo sub
+ori $t0, $zero, 1
+sw $v0, 0($t0)
+sll $t1, $t0, 31
+lw $v0, 0($t1)
+sub $t0, $zero, $t0
+xor $t2, $t1, $t0
+sub $t2, $t2, $t0
+
+--> 1ºaddi e lw
+lui $a0, 0x8000
+addi $a0, $a0, -1
+lw $t0, 2($zero)
+lb $t0, 2($zero)
+lui $t1, 0xffff
+ori $t1, $t1, 0xffff
+addi $t1, $t1, 1
+
+
+############### Arrays: to_upper ###############
+.data
+input: .space 20
+newline: .asciiz "\n"
+
+.text
+main:
+    li $v0, 8
+    li $a1, 20
+    la $a0, input
+    syscall
+
+    li $v0, 4
+    li $t0, 0
+
+loop:
+    lb $t1, input($t0)
+    beq $t1, 0, exit
+    blt $t1, 'a', case
+    bgt $t1, 'z', case
+    sub $t1, $t1, 32
+    sb $t1, input($t0)
+
+case: 
+    addi $t0, $t0, 1
+    j loop
+
+exit:
+    li $v0, 4
+    la $a0, input
+    syscall
+
+    li $v0, 10
+    syscall
+
+
+############### Buffer Overflow ###############
+alterar o valor das vars locais
+escerver o cod.maq por cima das instruçoes...
+alterar o valor do ra da função

@@ -1,0 +1,64 @@
+1 
+converte_string:
+addi $sp,$sp, -4
+sw $ra,0($sp)
+addi $sp,$sp, -4
+sw $s0,0($sp)
+move $s0, $a0
+L1:
+lb $a0, 0($s0)
+jal converte_char
+nop
+sb $v0, 0($s0)
+bne $v0, $zero, L1
+addi $s0, $s0, 1
+lw $s0,0($sp)
+addi $sp,$sp, 4
+lw $ra, 0($sp)
+addi $sp, $sp, 4
+jr $ra
+nop
+
+
+2
+ absdiff:
+addi $sp,$sp,-4
+sw $ra,0($sp)
+sub $a0, $a0, $a1
+jal abs # calcula valor absoluto de a0
+nop
+sll $v0,$v0,1
+lw $ra,0($sp)
+addi $sp,$sp,4
+jr $ra
+nop
+
+3
+ soma:
+addi $sp,$sp,-8
+sw $ra,0($sp)
+sw $t0,4($sp)
+
+move $v0, $zero
+beq $a1, $zero, L
+nop
+
+lw $t0, 0($a0)
+addi $a0, $a0, 4
+addi $a1, $a1, -1
+jal soma
+nop
+add $v0, $v0, $t0
+
+L:
+lw $ra,0($sp)
+addi $sp,$sp,4
+lw $t0,0($sp)
+addi $sp,$sp,4
+jr $ra
+nop
+lw $ra,0($sp)
+addi $sp,$sp, 4
+jr $ra
+nop
+

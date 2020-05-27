@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+    <head>
+        <meta encoding="utf-8">
+        <title>Exemplo x3dom: Caixa</title>
+        <script src="../lib/x3dom-full.js"></script>
+        <link rel="stylesheet" href="../lib/x3dom.css">
+    </head>
+    <body>
+        <x3d width="500px" height="400px">
+            <scene>
+                <switch whichCoice = "-1">
+                    <cylinder def = "rod"
+                        radius = "0.05"
+                        height = "5.0" >
+                    </cylinder>
+                    <cone def = "cap"
+                        bottomRadius = "0.10"
+                        height = "0.2" >
+                    </cone>
+                </switch>
+                <transform def = "x-axis">
+                    <transform rotation = "0 0 1 -1.57" >
+                        <shape>
+                            <appearance>
+                                <twosidedmaterial diffuseColor = "red"></twosidedmaterial>
+                            </appearance>
+                            <X3DGeometryNode use = "rod">
+                            </X3DGeometryNode>
+                        </shape>
+                        <transform translation = "0 2.5 0" >
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "red"></twosidedmaterial>
+                                </appearance>
+                                <X3DGeometryNode use = "cap">
+                                </X3DGeometryNode>
+                            </shape>
+                        </transform>
+                        <transform translation = "0.0 2.5 0">
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "red"></twosidedmaterial>
+                                </appearance>
+                                <text string = "X">
+                                    <fontstyle size = "0.5">
+                                    </fontstyle>
+                                </text>
+                            </shape>
+                        </transform>
+                    </transform>
+                </transform>
+                <transform def = "y-axis">
+                    <transform >
+                        <shape>
+                            <appearance>
+                                <twosidedmaterial diffuseColor = "green"></twosidedmaterial>
+                            </appearance>
+                            <X3DGeometryNode use = "rod">
+                            </X3DGeometryNode>
+                        </shape>
+                        <transform translation = "0 2.5 0" >
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "green"></twosidedmaterial>
+                                </appearance>
+                                <X3DGeometryNode use = "cap">
+                                </X3DGeometryNode>
+                            </shape>
+                        </transform>
+                        <transform translation = "0.0 2.5 0">
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "green"></twosidedmaterial>
+                                </appearance>
+                                <text string = "Y">
+                                    <fontstyle size = "0.5">
+                                    </fontstyle>
+                                </text>
+                            </shape>
+                        </transform>
+                    </transform>
+                </transform>
+                <transform def = "z-axis">
+                    <transform rotation = "1 0 0 1.57" >
+                        <shape>
+                            <appearance>
+                                <twosidedmaterial diffuseColor = "blue"></twosidedmaterial>
+                            </appearance>
+                            <X3DGeometryNode use = "rod">
+                            </X3DGeometryNode>
+                        </shape>
+                        <transform translation = "0 2.5 0" >
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "blue"></twosidedmaterial>
+                                </appearance>
+                                <X3DGeometryNode use = "cap">
+                                </X3DGeometryNode>
+                            </shape>
+                        </transform>
+                        <transform translation = "0.0 2.5 0">
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "blue"></twosidedmaterial>
+                                </appearance>
+                                <text string = "Z">
+                                    <fontstyle size = "0.5">
+                                    </fontstyle>
+                                </text>
+                            </shape>
+                        </transform>
+                    </transform>
+                </transform>
+                <transform def = "the-shape">
+                    <shape>
+                        <appearance>
+                            <twosidedmaterial
+                                diffuseColor = "orange" >
+                            </twosidedmaterial>
+                        </appearance>
+                        <box size = "2 2 2">
+                        </box>
+                    </shape>
+                </transform>
+            </scene>
+        </x3d>
+    </body>
+</html>

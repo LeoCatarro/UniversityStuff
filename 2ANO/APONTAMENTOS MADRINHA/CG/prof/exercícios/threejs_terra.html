@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8" />
+        <title>Texturas threejs</title>
+        <script src = "../lib/three.js"></script>
+        <script src = "../lib/OrbitControls.js"></script>
+        <script type = "text/javascript" >
+/**
+ *  Make a model of the Earth
+ */
+function earth() {
+  //
+  var geometry =  new THREE.SphereGeometry(3, 32, 32);
+  //
+  var loader = new THREE.TextureLoader();
+  var diffuseMap = loader.load("../media/earth_surface.jpg");
+  var specularMap = loader.load("../media/earth_specular.jpg");
+  var normalMap = loader.load("../media/earth_normals.jpg");
+  var material = new THREE.MeshPhongMaterial({
+    color: 0xFFFFFF, specular: 0xFFFFFF,
+    map: diffuseMap,
+    specularMap: specularMap,
+    normalMap: normalMap
+  });
+
+  var mesh = new THREE.Mesh(geometry, material);
+  return mesh
+}/**
+ * Animate the model
+ */
+function animate(step) {
+  requestAnimationFrame( function() { animate(step); });
+  step.scene.mesh.rotation.y += 0.005;
+  step.controls.update();
+  step.renderer.render( step.scene, step.camera);
+}
+/**
+ * Setup the rendering context and build a model
+ **/         
+function init(mesh) {  
+  //
+  renderer = new THREE.WebGLRenderer({ alpha: true });
+  renderer.setClearColor("black")
+  renderer.setSize(512,512);
+  document.body.appendChild(renderer.domElement);
+  //
+  //  Scene (World, Model)
+  //
+  scene = new THREE.Scene();
+  //
+  //  Camera (and TrackballControls)
+  //
+  camera = new THREE.PerspectiveCamera(
+    45,       // abertura
+    512/512,  // proporção largura/altura
+    1,      // corte perto
+    10000     // corte longe
+    );
+  camera.position.set( 0, 0, 8 );
+  camera.lookAt( scene.position );
+  controls = new THREE.OrbitControls(camera);
+  //
+  //  Lights
+  //  
+  var ambient_light = new THREE.AmbientLight(0xFFFFFF);
+  scene.add( ambient_light );
+  //
+  var sun = new THREE.PointLight( 0xffffff, 3, 450);
+  sun.position.set(-300, 0, 300);
+  scene.add(sun);
+  //
+  //
+  //
+  scene.mesh = mesh;
+  scene.add( mesh );
+  //
+  //  Return camera, scene, etc
+  //
+  return {
+    camera: camera,
+    scene: scene,
+    renderer: renderer,
+    controls: controls
+  }
+}
+/**
+ *  Entry function
+ */
+function main() {
+  var step = init(earth());
+  animate(step);
+}
+        </script>
+    </head>
+    <body onload = "main();">
+    </body>
+</html>

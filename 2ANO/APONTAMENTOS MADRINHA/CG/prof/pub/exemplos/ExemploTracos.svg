@@ -1,0 +1,93 @@
+<svg
+    width= "256"
+    height="320"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <style>
+        .limitline {
+            stroke-width: 1;
+            stroke-dasharray:1 1;
+            stroke: crimson;
+        }
+        .label {
+            stroke-width: 0.1;
+            stroke: steelblue;
+            fill: steelblue;
+            font-family: sans-serif;
+            text-anchor: middle;
+            font-size: 8px;
+        }
+    </style>
+    <defs>
+        <g id = "base">
+            <line x1 = "0" y1 = "0" x2 = "0" y2 = "32" stroke = "black"/>
+        </g>
+        <g id = "junction">
+            <path stroke = "black" fill = "none" stroke-width = "12" 
+                d = "M -8 0 l 16 16 l -16 16 m 0 0" />                
+            <line x1 = "16" y1 = "4" x2 = "16" y2 = "28" stroke-width = "0.5" stroke = "slateblue" />
+        </g>        
+        <g id = "ju2">
+            <g>
+                <path stroke = "black" fill = "none" stroke-width = "6" stroke-linejoin="miter"
+                    d = "M -8 8 l 24 8 l -24 8 m 0 0" />
+                <line x1 = "16" y1 = "4" x2 = "16" y2 = "28" stroke-width = "0.5" stroke = "slateblue" />
+            </g>
+        </g>
+    </defs>
+    <g transform="translate(64,32)">
+        <g transform = "translate(0,0)">
+            <text class = "label" x = "25" y = "-8">
+                espessura
+            </text>
+            <line class="limitline" x1 = "-20" y1 = "0" x2 = "100" y2 = "0"/>
+            <line class="limitline" x1 = "-20" y1 = "32" x2 = "100" y2 = "32"/>
+            <use xlink:href="#base"  transform = "translate(00,00)" stroke-width="0.15"/>
+            <use xlink:href="#base"  transform = "translate(20,00)" stroke-width="1"/>
+            <use xlink:href="#base"  transform = "translate(40,00)" stroke-width="2"/>
+            <use xlink:href="#base"  transform = "translate(60,00)" stroke-width="4"/>
+            <use xlink:href="#base"  transform = "translate(80,00)" stroke-width="8"/>
+        </g>
+        <g transform = "translate(0,64)">
+            <text class = "label" x = "25" y = "-8">
+                tracejado
+            </text>
+            <line class="limitline" x1 = "-20" y1 = "0" x2 = "100" y2 = "0"/>
+            <line class="limitline" x1 = "-20" y1 = "32" x2 = "100" y2 = "32"/>
+            <use xlink:href="#base"  transform = "translate(00,00)"/>
+            <use xlink:href="#base"  transform = "translate(20,00)" stroke-dasharray="2 2"/>
+            <use xlink:href="#base"  transform = "translate(40,00)" stroke-dasharray="1 2"/>
+            <use xlink:href="#base"  transform = "translate(60,00)" stroke-dasharray="2 1 4 1"/>
+            <use xlink:href="#base"  transform = "translate(80,00)" stroke-dasharray="1 2 2 1"/>
+        </g>
+        <g transform = "translate(0,128)">
+            <text class = "label" x = "25" y = "-8">
+                extremidades
+            </text>
+            <line class="limitline" x1 = "-20" y1 = "0" x2 = "100" y2 = "0"/>
+            <line class="limitline" x1 = "-20" y1 = "32" x2 = "100" y2 = "32"/>
+            <use xlink:href="#base"  transform = "translate(00,00)" stroke-width="16" stroke-linecap="butt"/>
+            <use xlink:href="#base"  transform = "translate(40,00)" stroke-width="16" stroke-linecap="round"/>
+            <use xlink:href="#base"  transform = "translate(80,00)" stroke-width="16" stroke-linecap="square"/>
+        </g>
+        <g transform = "translate(0,192)">
+            <text class = "label" x = "25" y = "-8">
+                junções
+            </text>
+            <line class="limitline" x1 = "-20" y1 = "0" x2 = "100" y2 = "0"/>
+            <line class="limitline" x1 = "-20" y1 = "32" x2 = "100" y2 = "32"/>
+            <use xlink:href="#junction"  transform = "translate(00,00)" stroke-linejoin="miter"/>
+            <use xlink:href="#junction"  transform = "translate(40,00)" stroke-linejoin="round"/>
+            <use xlink:href="#junction"  transform = "translate(80,00)" stroke-linejoin="bevel"/>
+        </g>
+        <g transform = "translate(0,256)">
+            <text class = "label" x = "25" y = "-8">
+                controlo junções
+            </text>
+            <line class="limitline" x1 = "-20" y1 = "0" x2 = "100" y2 = "0"/>
+            <line class="limitline" x1 = "-20" y1 = "32" x2 = "100" y2 = "32"/>
+            <use xlink:href="#ju2"  transform = "translate(20,00)" stroke-miterlimit = "1" />
+            <use xlink:href="#ju2"  transform = "translate(60,00)" stroke-miterlimit = "4" />
+        </g>
+    </g>
+</svg>

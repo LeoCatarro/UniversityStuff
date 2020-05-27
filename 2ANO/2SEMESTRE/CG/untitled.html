@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script>
+function primes(a,b){
+
+	let aux;
+	let arr = [];
+	let i = 2;
+	let count;
+
+	while(a < b)
+	{
+		aux = 0;
+		for(i=2 ; i<=b/2 ; ++i)
+		{
+			if(a % i === 0)
+			{	
+				aux = 1;
+				break;
+			}	
+		}
+		if(aux === 0)
+		{	
+			arr.push(i);
+		}	
+		++a;
+	}	
+	return arr;
+}
+
+function main(){
+	let consola = document.getElementById("xpto");
+	let resposta = primes(20,50);
+	console.log(resposta);
+	consola.innerHTML = resposta; 
+}
+
+        </script>
+    </head>
+    <body onload="main();">
+        <p id="xpto" />
+    </body>
+</html>

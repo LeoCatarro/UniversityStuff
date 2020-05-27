@@ -1,0 +1,194 @@
+#1
+program maiormenor;
+	int n1, n2;
+	
+	print("Insira o numero 1: ");
+	read(n1);
+	print("Insira o numero 2: ");
+	read(n2);
+	if( n1>n2 ){
+		print(1);
+	} elseif( n1<n2 ){
+		print(-1);
+	} else {
+		print(0);
+	}
+end
+
+
+#2
+program hipotenusa;
+	int c1, c2, h;
+	
+	print("Insira o cateto 1: ");
+	read(c1);
+	print("Insira o cateto 2: ");
+	read(c2);
+	h = \(c1*c1+c2*c2);
+	print( "A hipotenusa e " );
+	print( h );
+end
+
+
+#3
+program conta;
+	int n, conta;
+	
+	print("Qual o limite de contagem? ");
+	read(n);
+	conta=1;
+	while (conta<n ){
+		print(conta);
+		conta=conta+1;
+	}
+	while( conta>=0 ){
+		print(conta);
+		conta=conta-1;
+	}
+end
+
+
+#4
+program soma;
+	float f, soma;
+
+	print("Insira um real: ");
+	read(f);
+	soma=0;
+	while( f!=0 ){
+		soma=soma+f;
+		print("Insira um real: ");
+		read(f);
+	}
+	print( "A soma é " );
+	print(soma);
+end
+
+
+#5
+program media;
+	float f, soma;
+	int num;
+
+	print("Insira um real: ");
+	read(f);
+	soma=0;
+	num=0;
+	while( f!=0 ){
+		soma=soma+f;
+		num=num+1;
+		print("Insira um real: ");
+		read(f);
+	}
+	print( "Valores introduzidos: " );
+	print(num);
+	print( "Media: " );
+	print(soma/(float)num);
+end
+
+
+#6
+program raizquadrada;
+	float a, x, y, epsilon;
+	print(“Introduza um numero: ”);
+	read(a);
+	epsilon = 0.00001;
+	x = a/2;          # estimativa anterior
+	y = (x+a/x)/2;    # nova estimativa
+	while( (y-x)*(y-x) >= epsilon*epsilon ){
+		x = y;
+		y = (x+a/x)/2;
+	}
+	print( “A raiz quadrada é “ );
+	print( y );
+end
+
+
+#7
+program combustivel;
+	float litros, total;
+	int combustivel, dia;
+	
+	print(“Quantos litros? ”);
+	read( litros );
+	print(“Qual o combustivel ((1:gasoleo, 2:gasolina95, 3:gasolina98)? ”);
+	read(combustivel);
+	if( combustivel==1 ){
+		print( "Qual o dia do abastecimento? " );
+		if( dia<14 ){
+			total=1.149*litros;
+		} else {
+			total=(1.149-0.023)*litros;
+		}
+	} elseif( combustivel==2 ){
+		if( dia<14 ){
+			total=1.364*litros;
+		} else {
+			total=(1.149-0.021)*litros;
+		}
+	} else {
+		total=1.414*litros;
+	}
+	print( "O custo e de ");
+	print( total );
+end
+
+
+#8
+program fatorial;
+	int fact, n;
+	fact=1;
+	
+	print(“Qual o numero? ”);
+	read( n );
+	if( n<0 ){
+		print("Valor negativo");
+	} else {
+		while( n>0 ){
+			fact=fact*n;
+		}
+	}
+	print("O factorial é ");
+	print(fact);
+end
+
+
+#9
+program multiplos;
+	int a, b, i;
+	
+	print("Valor a: ");
+	read(a);
+	print("Valor b: ");
+	read(b);
+	i=1;
+	while( i<=50 ){
+		if( i%a==0 or i%b==0 ){
+			print(i);
+		}
+		i=i+1;
+	}
+end
+
+#9
+program multiplos2;
+	int a, b, i;
+	
+	print("Valor a: ");
+	read(a);
+	print("Valor b: ");
+	read(b);
+	i=1;
+	while( i<=50 ){
+		if( i%a==0 or i%b==0 ){
+			print(i); print(":");
+			if( i%a==0 ){
+				print(a);
+			}
+			if( i%b==0 ){
+				print(b);
+			}
+		}
+		i=i+1;
+	}
+end

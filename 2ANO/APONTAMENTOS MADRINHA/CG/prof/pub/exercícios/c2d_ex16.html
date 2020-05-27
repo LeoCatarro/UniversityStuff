@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script>
+function draw_background(c, color) {
+    c.fillStyle = color;
+    c.fillRect(0,0,256,256);
+}
+
+function star(n, r) {
+    points = new Array(2 *  n);
+    var step_angle = Math.PI  / n;
+    var angle = 0.0;
+    for(var i = 0; i < 2 * n; i++) {
+        var radius = 1.0;
+        if (i % 2 == 0) {
+            radius = r;
+        }
+
+        points[i] = {
+            x: radius * Math.cos(angle),
+            y: radius * Math.sin(angle)
+        }
+
+        angle = angle + step_angle;
+    }
+    return points;
+}
+ 
+function draw_points(c, a) {
+    var n = a.length;
+
+    c.beginPath();
+        c.moveTo( a[0].x, a[0].y );
+        for( var i = 1; i < n; i++) {
+            c.lineTo( a[i].x, a[i].y );
+        }
+        c.lineTo( a[0].x, a[0].y );
+    c.closePath();
+}
+
+function nagon(n) {
+    var points = new Array(n);
+    var step_angle = 2.0 * Math.PI  / n;
+    var angle = 0.0;
+    for (var i = 0; i < n; i++) {
+        points[i] = {
+            x: Math.cos(angle),
+            y: Math.sin(angle)
+        }
+        angle = angle + step_angle;
+    }
+    return points;
+}
+
+function print_points(a) {
+    var n = a.length;
+    for (var i = 0; i < n; i++) {
+        console.log(a[i].x + " " + a[i].y);
+    }
+}
+
+
+function main() {
+    //
+    //  n-ágono regular.
+    //
+    var nagon_ctx = document.getElementById("nagon").getContext("2d");
+    draw_background(nagon_ctx, "crimson");
+    var num_points = 8;
+    var nagon_points = nagon(num_points);
+    var alpha_0 = Math.PI / num_points;
+
+    nagon_ctx.save();
+        nagon_ctx.translate(128, 128);
+        nagon_ctx.rotate( -alpha_0 );
+        nagon_ctx.scale(64, 64);
+        draw_points(nagon_ctx, nagon_points);
+    nagon_ctx.restore();
+    nagon_ctx.strokeStyle = "white";
+    nagon_ctx.lineWidth = 8;
+    nagon_ctx.stroke();
+    nagon_ctx.fillStyle = "khaki";
+    nagon_ctx.fill();
+    //
+    //  Estrela
+    //
+    var star_ctx = document.getElementById("star").getContext("2d");
+    draw_background(star_ctx, "steelblue");
+
+    var num_points = 7;
+    var star_points = star(num_points, 0.2);
+    var alpha_0 = Math.PI / num_points + Math.PI / 2.0;
+
+    star_ctx.save();
+        star_ctx.translate(128, 128);
+        star_ctx.rotate( -alpha_0 );
+        star_ctx.scale(64, 64);
+        draw_points(star_ctx, star_points);
+    star_ctx.restore();
+    star_ctx.strokeStyle = "white";
+    star_ctx.lineWidth = 2;
+    star_ctx.stroke();
+    star_ctx.fillStyle = "khaki";
+    star_ctx.fill();
+}
+        </script>
+    </head>
+    <body onload="main();">
+        <div>
+            <canvas id="nagon" width="256" height="256" />
+        </div>
+        <div>
+            <canvas id="star" width="256" height="256" />
+        </div>
+    </body>
+</html>

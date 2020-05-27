@@ -1,0 +1,1 @@
+C:\Users\Leonardo\Desktop\ENSINO\ SUPERIOR\2º\ ANO\1º\ SEMESTRE\PI\Trabalho\ PI\Exercicios\ para\ o\ Trabalho\PerfectNumbers\target\debug\PerfectNumbers-523ce9086401dc72.exe: C:\Users\Leonardo\Desktop\ENSINO\ SUPERIOR\2º\ ANO\1º\ SEMESTRE\PI\Trabalho\ PI\Exercicios\ para\ o\ Trabalho\PerfectNumbers\src\main.rs

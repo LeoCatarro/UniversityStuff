@@ -1,0 +1,218 @@
+--TABELAS TRABALHO1(BD)
+
+Create table motorista (
+    NomeMotorista varchar(50),
+    NCartaCond char(5) primary key,
+    DataNasc Date,
+    Nbi char(4)
+);
+
+insert into motorista values('Manuel Duarte' , 'L-123' , '1976/01/14' , '1234');
+insert into motorista values('Fernando Nobre' , 'L-124' , '1977/01/14' , '1235');
+insert into motorista values('Anibal Silva' , 'L-125' , '1978/01/14' , '1236');
+insert into motorista values('Francisco Lopes' , 'L-126' , '1979/01/14' , '1237');
+--INFO ADICIONADA
+insert into motorista values('João Frade' , 'L-127' , '1980/01/14' , '1238');
+insert into motorista values('Josefina Manela' , 'L-128' , '1975/01/14' , '1239');
+
+
+
+Create table telefone (
+    Nbi char(4),
+    Telefone char(9),
+    primary key (Nbi,Telefone)
+);
+
+insert into telefone values('1234' , '266262626');
+insert into telefone values('1234' , '939393939');
+insert into telefone values('1235' , '266262627');
+insert into telefone values('1235' , '939393940');
+insert into telefone values('1236' , '266262628');
+insert into telefone values('1236' , '939393941');
+insert into telefone values('1237' , '266262629');
+--INFO ADICIONADA
+insert into telefone values('1238' , '266262630');
+insert into telefone values('1239' , '266262631');
+
+
+Create table modelo (
+    Marca varchar(20),
+    Modelo varchar(30) primary key,
+    Nlugares char(2),
+    Consumo varchar(12)
+); 
+
+insert into modelo values('Renault' , 'Espace' , '7' , '7.1 aos 100');
+insert into modelo values('Mercedes' , 'CLK' , '7' , '9.1 aos 100');
+insert into modelo values('Honda' , 'Civic' , '5' , '5.1 aos 100');
+insert into modelo values('Mercedes' , 'classe S' , '5' , '6.51 aos 100');
+--INFO ADICIONADA
+insert into modelo values('Audi' , 'R8' , '2' , '16 aos 100');
+insert into modelo values('Seat' , 'Ibiza' , '5' , '20 aos 100');
+
+
+Create table taxi (
+    Modelo varchar(30),
+    Ano Integer,
+    Kms char(8),
+    Matricula char(8) primary key,
+    foreign key (Modelo) references modelo on delete restrict 
+);
+
+insert into taxi values('Espace' , '2015' , '123098' , '22-AA-22');
+insert into taxi values('CLK' , '2014' , '234554' , '21-AA-22');
+insert into taxi values('Civic' , '2012' , '89764' , '20-AA-22');
+insert into taxi values('classe S' , '2015' , '79744' , '19-AA-22');
+--INFO ADICIONADA
+insert into taxi values('R8' , '2019' , '1234566' , '13-AA-13');
+insert into taxi values('Ibiza' , '2004' , '1000000' , '12-AA-12');
+
+
+Create table servico (
+    DataInicioS text,
+    DataFimS text,
+    Kms char(8),
+    Valor Float,
+    Matricula char(8),
+    CoordGPSInic varchar(50),
+    CordGPSfim varchar(50),
+    primary key (Matricula,DataInicioS),
+    foreign key (Matricula) references taxi on delete restrict
+);
+
+insert into servico values('2016/01/02 8:12:00' , '2016/01/02 8:32:00' , '12' , '5.25' , '19-AA-22' , '0,75' , '0,76');
+insert into servico values('2016/01/02 8:43:00' , '2016/01/02 8:52:00' , '7' , '3.25' , '19-AA-22' , '0.80' , '0.81');
+insert into servico values('2016/01/02 8:53:00' , '2016/01/02 9:59:00' , '98' , '53.25' , '19-AA-22' , '0.85' , '0.86');
+insert into servico values('2016/01/02 10:13:00' , '2016/01/02 10:29:00' , '18' , '19.25' , '19-AA-22' , '0.90' , '0.91');
+insert into servico values('2016/01/02 11:10:00' , '2016/01/02 11:29:00' , '23' , '22.25' , '19-AA-22' , '0.95' , '0.96');
+insert into servico values('2016/01/02 12:00:00' , '2016/01/02 13:29:00' , '21' , '42.25' , '19-AA-22' , '1.0' , '1.01');
+insert into servico values('2016/01/02 15:20:00' , '2016/01/02 15:29:00' , '9' , '12.25' , '19-AA-22' , '1.05' , '1.06');
+--INFO ADICIONADA!
+insert into servico values('2016/01/04 15:30:00' , '2016/01/04 15:39:00' , '10' , '32.25' , '20-AA-22' , '1.1' , '1.11');
+insert into servico values('2016/01/04 12:00:00' , '2016/01/04 13:29:00' , '50' , '2.25' , '20-AA-22' , '1.15' , '1.16');
+insert into servico values('2016/01/03 15:30:00' , '2016/01/03 15:39:00' , '10' , '32.25' , '21-AA-22' , '1.3' , '1.31');
+insert into servico values('2016/01/03 15:40:00' , '2016/01/03 15:49:00' , '1' , '1.25' , '21-AA-22' , '1.35' , '1.36');
+insert into servico values('2016/01/06 16:20:00' , '2016/01/06 16:29:00' , '25' , '55.25' , '13-AA-13' , '1.4' , '1.41');
+insert into servico values('2016/01/05 16:50:00' , '2016/01/05 16:59:00' , '53' , '100.25' , '12-AA-12' , '1.45' , '1.46');
+
+
+Create table turno (
+    DataInicioT text,
+    DataFimT text,
+    KmInicio varchar(8),
+    KmFim varchar(8),
+    Matricula char(8),
+    Nbi char(4),
+    primary key (Nbi,DataInicioT),
+    foreign key (Matricula) references taxi on delete restrict
+);
+
+insert into turno values('2016/01/02 08:00:00', '2016/01/02 17:00:00' , '79744' , '79944' , '19-AA-22' , '1234');
+insert into turno values('2016/01/02 08:00:00', '2016/01/02 17:00:00' , '89764' , '89964' , '20-AA-22' , '1235');
+insert into turno values('2016/01/03 08:00:00', '2016/01/03 17:00:00' , '234554' , '234954' , '21-AA-22' , '1236');
+insert into turno values('2016/01/03 08:00:00', '2016/01/03 17:00:00' , '123098' , '123498' , '22-AA-22' , '1237');
+--INFROMACAO ADICIONADA
+insert into turno values('2016/01/05 08:00:00', '2016/01/05 17:00:00' , '1000000' , '1001000' , '12-AA-12' , '1239');
+insert into turno values('2016/01/06 08:00:00', '2016/01/06 17:00:00' , '252444' , '262444' , '13-AA-13' , '1238');
+--INFO ADICIONADA PARA UM CONDUTOR CONDUZIR TODOS OS TAXIS!!
+insert into turno values('2016/01/04 08:00:00', '2016/01/04 14:00:00' , '79740' , '79945' , '20-AA-22' , '1234');
+insert into turno values('2016/01/05 08:00:00', '2016/01/05 15:00:00' , '79741' , '79946' , '21-AA-22' , '1234');
+insert into turno values('2016/01/06 08:00:00', '2016/01/06 16:00:00' , '79742' , '79947' , '22-AA-22' , '1234');
+insert into turno values('2016/01/02 10:00:00', '2016/01/02 17:00:00' , '79743' , '79948' , '12-AA-12' , '1234');
+insert into turno values('2016/01/03 09:00:00', '2016/01/03 17:00:00' , '79744' , '79949' , '13-AA-13' , '1234');
+
+
+Create table cliente1 (
+    NomeCliente varchar(50),
+    Morada varchar(100),
+    CodigoPostal varchar(20),
+    Nif char(12) primary key
+); 
+
+insert into cliente1 values('Jose Silva' , 'Rua Antonio Silva 23' , '7100-434 Evora' , '600700800900');
+insert into cliente1 values('Francisco Passos' , 'Rua Manuel Passos 12' , '7000-131 Evora' , '600700800901');
+insert into cliente1 values('Pedro Sousa' , 'Rua Joaquim Sousa 21' , '7500-313 Evora' , '600700800902');
+--INFO ADICIONADA
+insert into cliente1 values('Gonçalo Cardoso' , 'Rua do Giraldo' , '7500-512 Evora' , '600700800903');
+insert into cliente1 values('Filipe Sousa' , 'Rua Joaquim Sousa 21' , '7500-131 Evora' , '600700800904');
+insert into cliente1 values('Mandela carvalho' , 'Rua Serpa Pinto 2' , '7500-400 Evora' , '600700800905');
+insert into cliente1 values('André Postiga' , 'Rua da Piedade' , '7500-001 Evora' , '600700800906');
+insert into cliente1 values('Teddy Fast' , 'Rua Internacional' , '7500-747 Evora' , '600700800907');
+
+
+
+Create table pedido (
+    Nif char(12) ,
+    MoradaInicio varchar(100),
+    CodigoPostalInicio varchar(20),
+    DataPedido varchar(20),
+    Matricula char(8),
+    DataInicio text,
+    primary key (Nif, DataInicio),
+    foreign key (Nif) references cliente1 on  delete restrict
+);
+
+insert into pedido values('600700800900' , 'Rua Silva Pais 33' , '7120-212 Evora' , '2016/01/02 9:00:00' , '19-AA-22' , '2016/01/02 9:43:00');
+--INFO ADICIONADA
+insert into pedido values('600700800901' , 'Rua Pais Silva 12' , '7120-213 Evora' , '2016/01/02 10:00:00' , '20-AA-22' , '2016/01/02 10:43:00');
+insert into pedido values('600700800902' , 'Rua Castro Oliveira 5' , '7120-214 Evora' , '2016/01/02 11:00:00' , '21-AA-22' , '2016/01/02 11:43:00');
+insert into pedido values('600700800903' , 'Rua Ideias Zero 3' , '7120-215 Evora' , '2016/01/03 12:00:00' , '22-AA-22' , '2016/01/03 12:43:00');
+insert into pedido values('600700800904' , 'Rua do Bolso 2' , '7120-216 Evora' , '2016/01/06 13:00:00' , '13-AA-23' , '2016/01/06 13:43:00');
+insert into pedido values('600700800905' , 'Rua da Telepizza 5' , '7120-217 Evora' , '2016/01/05 14:00:00' , '12-AA-12' , '2016/01/05 14:43:00');
+insert into pedido values('600700800906' , 'Rua do McDonaldo 6' , '7120-218 Evora' , '2016/01/02 15:00:00' , '19-AA-22' , '2016/01/02 15:43:00');
+insert into pedido values('600700800907' , 'Rua do Desespero 1111' , '7120-000 Evora' , '2016/01/03 16:00:00' , '22-AA-22' , '2016/01/03 16:43:00');
+
+--#################################################################################################
+--EXERCICIOS RESOLVIDOS EM SQL
+--5.a)
+Select Matricula
+From taxi NATURAL INNER JOIN modelo
+Where Marca = 'Mercedes';
+--###############################################################################################
+--5.b)
+select NomeMotorista
+from motorista NATURAL INNER JOIN turno NATURAL INNER JOIN taxi NATURAL INNER JOIN modelo
+where Marca = 'Mercedes';
+--##############################################################################################
+--5.c)
+select Telefone
+from telefone NATURAL INNER JOIN turno NATURAL INNER JOIN pedido
+where Nif like '600700800900';
+--##############################################################################################
+--5.d)
+select Marca, Modelo
+from taxi NATURAL INNER JOIN turno NATURAL INNER JOIN motorista NATURAL INNER JOIN modelo
+where NomeMotorista = 'Anibal Silva';
+--##############################################################################################
+--5.e)
+select NomeMotorista
+from motorista NATURAL INNER JOIN cliente1 NATURAL INNER JOIN turno NATURAL INNER JOIN pedido
+EXCEPT
+select NomeMotorista
+from motorista NATURAL INNER JOIN cliente1 NATURAL INNER JOIN turno NATURAL INNER JOIN pedido
+where NomeCliente = 'Jose Silva';
+--###############################################################################################
+--5.f)
+select NomeMotorista
+from motorista NATURAL INNER JOIN turno NATURAL INNER JOIN taxi NATURAL INNER JOIN modelo
+EXCEPT
+select NomeMotorista
+from motorista NATURAL INNER JOIN turno NATURAL INNER JOIN taxi NATURAL INNER JOIN modelo
+where Marca = 'Mercedes';
+--################################################################################################
+--5.g)
+select NomeMotorista
+from motorista
+where not exists((select matricula from taxi)
+                 except
+                 (select matricula from turno where motorista.Nbi=turno.Nbi));
+--#####################################
+--5.h)
+select NCartaCond, count(servico.DataInicioS) as total
+from motorista NATURAL INNER JOIN servico NATURAL INNER JOIN turno
+group by NCartaCond;
+--####################################################################################
+--5.i)
+select NomeMotorista, sum(Valor) as total
+from servico NATURAL INNER JOIN turno NATURAL INNER JOIN motorista
+group by NomeMotorista; 

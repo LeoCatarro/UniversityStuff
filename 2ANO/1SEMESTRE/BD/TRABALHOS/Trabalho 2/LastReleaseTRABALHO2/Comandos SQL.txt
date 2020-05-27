@@ -1,0 +1,670 @@
+--2ºTRABALHO BD
+--TABELAS DA BD
+
+create table filmes (
+    URL varchar(500) primary key,
+    FilmePath varchar(500),
+    Resumo varchar(500),
+    DataEstreia Date,
+    LocalFilmagem varchar(50),
+    Titulo_Original varchar(50),
+    Titulo_PT varchar(50),
+    Titulo_ENG varchar(50),
+    Lingua_Dobrada varchar(50),
+    Lingua_Original varchar(50)
+);
+--INSERÇÕES NA TABELA FILMES
+--Joker
+insert into filmes values('https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt','C:\Desktop','In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker.','2019/10/03','USA','Joker','Joker','Joker','Brazilian','English');
+--Ad Astra
+insert into filmes values('https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt','C:\Desktop','Astronaut Roy McBride undertakes a mission across an unforgiving solar system to uncover the truth about his missing father and his doomed expedition that now, 30 years later, threatens the universe.','2019/09/19','USA','Ad Astra','Ad Astra','Ad Astra','','English');                       
+--Us
+insert into filmes values('https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt','C:\Desktop','A familys serene beach vacation turns to chaos when their doppelgängers appear and begin to terrorize them.','2019/03/21','USA','Us','Nós','Us','','English');
+--Marriage Story
+insert into filmes values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','C:\Desktop','Noah Baumbachs incisive and compassionate look at a marriage breaking up and a family staying together.','2019/12/06','USA','Marriage Story','História de um Casamento','Marriage Story','','English');
+--Jumanji: The Next Level
+insert into filmes values('https://www.imdb.com/title/tt7975244/?ref_=adv_li_tt','C:\Desktop','In Jumanji: The Next Level, the gang is back but the game has changed. As they return to rescue one of their own, the players will have to brave parts unknown from arid deserts to snowy mountains, to escape the worlds most dangerous game.','2019/12/12','Canada,USA','Jumanji: The Next Level','Jumanji: O Nível Seguinte','Jumanji: The Next Level','','English');
+--The Lion King
+insert into filmes values('https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt','C:\Desktop','After the murder of his father, a young lion prince flees his kingdom only to learn the true meaning of responsibility and bravery.','2019/07/18','USA','The Lion King','O Rei Leão','The Lion King','French','English');
+--Assalto ao Poder
+insert into filmes values('https://www.imdb.com/title/tt6189022/?ref_=adv_li_tt','C:\Desktop','Mike Banning is framed for the attempted assassination of the President and must evade his own agency and the FBI as he tries to uncover the real threat.','2019/08/22','UK','Angel Has Fallen','Assalto ao Poder','Angel Has Fallen','','English');
+--Toy Story 4
+insert into filmes values('https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt','C:\Desktop','When a new toy called "Forky" joins Woody and the gang, a road trip alongside old and new friends reveals how big the world can be for a toy.','2019/06/27','Pixar Animation Studios(USA)','Toy Story 4','Toy Story 4','Toy Story 4','','English');
+--Projeto Gemini
+insert into filmes values('https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt','C:\Desktop','An over-the-hill hitman faces off against a younger clone of himself.','2019/10/10','USA','Gemini Man','Projeto Gemini','Gemini Man','French','English');
+--Rambo:Last Blood
+insert into filmes values('https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt','C:\Desktop','Rambo must confront his past and unearth his ruthless combat skills to exact revenge in a final mission.','2019/09/26','USA','Rambo: Last Blood','Rambo: A Última Batalha','Rambo: Last Blood','Spanish','English');
+
+
+create table premios (
+    NomePremio varchar(100) primary key
+);
+--INSERÇÕES TABELA PREMIOS:
+insert into premios values('Óscar');
+insert into premios values('Primetime Emmy Award');
+insert into premios values('BAFTA');
+insert into premios values('Globo de Ouro');
+insert into premios values('Tony Awards');
+insert into premios values('SAG Awards');
+insert into premios values('Academy Awards');
+insert into premios values('BAFTA Awards');
+insert into premios values('Framboesa de Ouro');
+insert into premios values('Critics Choice Awards');
+insert into premios values('Teen Choice Awards');
+insert into premios values('Kids Choice Awards');
+insert into premios values('Shorty Awards');
+insert into premios values('Golden Apple Awards');
+insert into premios values('Golden Camera');
+insert into premios values('Festival de Veneza');
+insert into premios values('First Look');
+insert into premios values('Óscar da Academia');
+insert into premios values('Leão de Ouro');
+insert into premios values('Bandung Film Festival for Imported Film');
+insert into premios values('Satellite Award');
+insert into premios values('Independent Spirit Robert Altman');
+insert into premios values('NewYork Film Critics Circle Award');
+insert into premios values('Gotham Independent Film Award');
+insert into premios values('Los Angeles Film Critics Association Award');
+insert into premios values('Badung Film Festival');
+insert into premios values('Emmys');
+insert into premios values('');
+
+
+create table clientes1 (
+    Login varchar(50) primary key,
+    DataAdesao varchar(50),
+    Pass varchar(20),
+    Morada varchar(100),
+    NomeCliente varchar(50),
+    NumCredito char(16)
+);
+--INSERÇÕES NA TABELA CLIENTES1:
+insert into clientes1 values('Miguel1234','Janeiro de 2019','1234','Rua Miguel Torga,nº10,Montemor','Miguel','1213141516171819');
+insert into clientes1 values('XXX4321','Agosto de 2018','4321','Rua Bento Gonçalves,nº50,FVF','xxx','2123242526272829');
+
+create table f_c (
+    URL varchar(500),
+    Login varchar(50),
+    DataVisualizacao Date,
+    primary key (URL,Login),
+    foreign key (URL) references filmes on delete restrict,
+    foreign key (Login) references clientes1 on delete restrict
+);
+insert into f_c values('https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt','Miguel1234','2019/12/02');
+insert into f_c values('https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt','Miguel1234','2019/09/22');
+insert into f_c values('https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt','Miguel1234','2019/09/19');
+insert into f_c values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','Miguel1234','2019/05/22');
+
+insert into f_c values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','XXX4321','2018/02/02');
+insert into f_c values('https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt','XXX4321','2019/03/30');
+insert into f_c values('https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt','XXX4321','2019/12/02');
+insert into f_c values('https://www.imdb.com/title/tt6189022/?ref_=adv_li_tt','XXX4321','2019/12/02');
+insert into f_c values('https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt','XXX4321','2019/12/02');
+insert into f_c values('https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt','XXX4321','2019/09/22');
+
+create table pagamento (
+    Mensalidades varchar(5),
+    DataPagamento varchar(50),
+    Login varchar(50),
+    primary key (Mensalidades,Login),
+    foreign key (Login) references clientes1 on delete restrict
+);
+--INSERÇÕES TABELA PAGAMENTO;
+--Cliente Miguel1234:
+insert into pagamento values('2','Outubro de 2019','Miguel1234');
+insert into pagamento values('1','Outubro de 2019','Miguel1234');
+insert into pagamento values('0','Novembro de 2019','Miguel1234');
+--Cliente XXX4321:
+insert into pagamento values('3','Novembro de 2019','XXX4321');
+insert into pagamento values('1','Dezembro de 2019','XXX4321');
+insert into pagamento values('2','Agosto de 2019','XXX4321');
+
+
+create table genero1 (
+    FilmeGen varchar(15) primary key
+);
+--INSERÇÕES TABELA GENERO1:
+insert into genero1 values('Thriller');
+insert into genero1 values('Drama');
+insert into genero1 values('Crime');
+insert into genero1 values('Adventure');
+insert into genero1 values('Mystery');
+insert into genero1 values('Horror');
+insert into genero1 values('Romance');
+insert into genero1 values('Comedy');
+insert into genero1 values('Action');
+insert into genero1 values('Animation');
+insert into genero1 values('Sci-fi');
+insert into genero1 values('Fantasia');
+
+
+create table f_g (
+    URL varchar(500),
+    FilmeGen varchar(15),
+    primary key (FilmeGen,URL),
+    foreign key (FilmeGen) references genero1 on delete restrict,
+    foreign key (URL) references filmes on delete restrict
+);
+--INSERÇÕES TABELA f_g:
+--Filme: Joker
+insert into f_g values('https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt','Thriller');
+insert into f_g values('https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt','Drama');
+insert into f_g values('https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt','Crime');
+--Filme: Ad Astra
+insert into f_g values('https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt','Adventure');
+insert into f_g values('https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt','Mystery');
+insert into f_g values('https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt','Drama');
+--Filme: Us
+insert into f_g values('https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt','Thriller');
+insert into f_g values('https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt','Horror');
+insert into f_g values('https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt','Mystery');
+--Filme: Marriage Story
+insert into f_g values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','Romance');
+insert into f_g values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','Drama');
+insert into f_g values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','Comedy');
+--Filme:Jumanji: The Next Level
+insert into f_g values('https://www.imdb.com/title/tt7975244/?ref_=adv_li_tt','Action');
+insert into f_g values('https://www.imdb.com/title/tt7975244/?ref_=adv_li_tt','Adventure');
+insert into f_g values('https://www.imdb.com/title/tt7975244/?ref_=adv_li_tt','Comedy');
+--Filme: The Lion King
+insert into f_g values('https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt','Drama');
+insert into f_g values('https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt','Animation');
+insert into f_g values('https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt','Fantasia');
+--Filme: Assalto ao Poder
+insert into f_g values('https://www.imdb.com/title/tt6189022/?ref_=adv_li_tt','Thriller');
+insert into f_g values('https://www.imdb.com/title/tt6189022/?ref_=adv_li_tt','Action');
+--Filme: Toy Story 4
+insert into f_g values('https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt','Comedy');
+insert into f_g values('https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt','Animation');
+insert into f_g values('https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt','Adventure');
+--Filme: Projeto Gemini
+insert into f_g values('https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt','Action');
+insert into f_g values('https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt','Drama');
+insert into f_g values('https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt','Sci-fi');
+--Filme: Rambo:Last Blood
+insert into f_g values('https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt','Thriller');
+insert into f_g values('https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt','Action');
+insert into f_g values('https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt','Adventure');
+
+
+create table f_p (
+    NomePremio varchar(50),
+    URL varchar(500),
+    primary key (NomePremio,URL),
+    foreign key (NomePremio) references premios on delete restrict,
+    foreign key (URL) references filmes on delete restrict
+);
+--INSERÇÕES TABELA f_p:
+--Joker
+insert into f_p values('Leão de Ouro','https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt');
+--Ad Astra
+insert into f_p values('','https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt');
+--Us
+insert into f_p values('Badung Film Festival','https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt');
+insert into f_p values('NewYork Film Critics Circle Award','https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt');
+--Marriage Story
+insert into f_p values('Los Angeles Film Critics Association Award','https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt');
+insert into f_p values('Independent Spirit Robert Altman','https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt');
+insert into f_p values('Satellite Award','https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt');
+insert into f_p values('Gotham Independent Film Award','https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt');
+insert into f_p values('NewYork Film Critics Circle Award','https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt');
+--Jumanji:The Next Level
+insert into f_p values('Globo de Ouro','https://www.imdb.com/title/tt7975244/?ref_=adv_li_tt');
+--The Lion King
+insert into f_p values('Globo de Ouro','https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt');
+--Assalto ao Poder
+insert into f_p values('Óscar','https://www.imdb.com/title/tt6189022/?ref_=adv_li_tt');
+--Toy Story 4
+insert into f_p values('Bandung Film Festival for Imported Film','https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt');
+--Projeto Gemini
+insert into f_p values('Óscar','https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt');
+--Rambo:Last Blood
+insert into f_p values('','https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt');
+
+
+
+create table elenco (
+    Nome varchar(100) primary key,
+    DataNasc Date,
+    Nac varchar(50)
+);
+--INSERÇÕES TABELA ELENCO(ATORES):
+--Joker
+insert into elenco values('Joaquin Phoenix','1974/10/28','Puertorriqueno');
+insert into elenco values('Robert De Niro','1943/08/17','American');
+insert into elenco values('Zazie Beetz','1991/02/20','German');
+insert into elenco values('Frances Conroy','1953/11/13','American');
+--Ad Astra
+insert into elenco values('Brad Pitt','1963/12/18','American');
+insert into elenco values('Tommy Lee Jones','1946/09/15','American');
+insert into elenco values('Ruth Negga','1982/01/07','Ethiopian');
+insert into elenco values('Donald SuthherLand','1935/07/17','French');
+--Us
+insert into elenco values('Lupita Nyongo','1983/03/01','Mexican');
+insert into elenco values('Anna Diop','1988/02/06','Senegalan');
+insert into elenco values('Elisabeth Moss','1982/07/24','Amercian');
+insert into elenco values('Tim Heidecker','1976/02/03','American');
+--Marriage Story
+insert into elenco values('Adam Driver','1983/11/19','American');
+insert into elenco values('Scarlett Johansson','1984/11/22','French');
+insert into elenco values('Julia Greer','1989/03/23','American');
+insert into elenco values('Wallace Shawn','1943/11/12','American');
+--Jumanji: The Next Level
+insert into elenco values('Karen Gillan','1987/11/28','Scottish');
+insert into elenco values('Marin Hinkle','1966/03/23','Tanzanian');
+insert into elenco values('Madison Iseman','1997/02/14','American');
+insert into elenco values('Dwayne Johnson','1972/05/02','American');
+--The Lion King
+insert into elenco values('Rowan Atkinson','1955/01/06','British');
+insert into elenco values('Matthew Broderick','1962/03/21','American');
+insert into elenco values('Niketa Calame-Harris','1980/11/10','American');
+insert into elenco values('Jim Cummings','1952/11/03','American');
+--Assalto ao Poder
+insert into elenco values('Gerard Butler','1969/11/13','Scottish');
+insert into elenco values('Frederick Schmidt','1968/02/24','French');
+insert into elenco values('Danny Huston','1962/05/14','Italian');
+insert into elenco values('Rocci Williams','1987/05/23','American');
+--Toy Story 4
+insert into elenco values('Tom Hanks','1956/07/09','American');
+insert into elenco values('Tim Allen','1953/06/13','American');
+insert into elenco values('Annie Potts','1952/10/28','American');
+insert into elenco values('Tony Hale','1970/09/30','American');
+--Projeto Gemini
+insert into elenco values('Will Smith','1968/09/25','American');
+insert into elenco values('Clive Owen','1964/10/03','Scottish');
+insert into elenco values('Douglas Hodge','1960/02/25','Scottish');
+insert into elenco values('Ralph Brown','1957/06/18','Scottish');
+--Rambo:Last Blood
+insert into elenco values('Sylvester Stallone','1946/07/06','American');
+insert into elenco values('Paz Vega','1976/01/02','Spanish');
+insert into elenco values('Adriana Barraza','1956/03/05','Mexican');
+insert into elenco values('Yvette Monreal','1992/07/09','Mexican');
+--INSERÇÕES TABELA ELENCO(DIRETORES):
+--Joker
+insert into elenco values('Todd Phillips','1970/12/20','American');
+--Us
+insert into elenco values('Jordan Peele','1979/02/21','American');
+--Ad Astra
+insert into elenco values('James Gray','1969/04/14','American');
+--Marriage Story
+insert into elenco values('Noah Baumbach','1969/09/03','American');
+--Jumanji: The Next Level
+insert into elenco values('Jake Kasdan','1974/10/28','American');
+--The Lion King
+insert into elenco values('Jon Favreau','1966/10/19','American');
+--Assalto ao Poder
+insert into elenco values('Ric Roman Waugh','1968/02/20','American');
+--Toy Story 4
+insert into elenco values('Josh Cooley','1980/05/24','American');
+--Projeto Gemini
+insert into elenco values('Ang Lee','1954/10/23','Republic of China');
+--Rambo:Last Blood
+insert into elenco values('Adrian Grunberg','1975/03/14','American');
+
+
+create table f_e (
+    URL varchar(500),
+    Nome varchar(100),
+    primary key (URL,Nome),
+    foreign key (URL) references filmes on delete restrict,
+    foreign key (Nome) references elenco on delete restrict
+);
+--INSERÇÕES TABELA f_e(ATORES):
+--Joker
+insert into f_e values('https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt','Joaquin Phoenix');
+insert into f_e values('https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt','Robert De Niro');
+insert into f_e values('https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt','Zazie Beetz');
+insert into f_e values('https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt','Frances Conroy');
+--Ad Astra
+insert into f_e values('https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt','Brad Pitt');
+insert into f_e values('https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt','Tommy Lee Jones');
+insert into f_e values('https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt','Ruth Negga');
+insert into f_e values('https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt','Donald SuthherLand');
+--Us
+insert into f_e values('https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt','Lupita Nyongo');
+insert into f_e values('https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt','Anna Diop');
+insert into f_e values('https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt','Elisabeth Moss');
+insert into f_e values('https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt','Tim Heidecker');
+--Marriage Story
+insert into f_e values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','Adam Driver');
+insert into f_e values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','Scarlett Johansson');
+insert into f_e values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','Julia Greer');
+insert into f_e values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','Wallace Shawn');
+--Jumanji: The Next Level
+insert into f_e values('https://www.imdb.com/title/tt7975244/?ref_=adv_li_tt','Karen Gillan');
+insert into f_e values('https://www.imdb.com/title/tt7975244/?ref_=adv_li_tt','Marin Hinkle');
+insert into f_e values('https://www.imdb.com/title/tt7975244/?ref_=adv_li_tt','Madison Iseman');
+insert into f_e values('https://www.imdb.com/title/tt7975244/?ref_=adv_li_tt','Dwayne Johnson');
+--The Lion King
+insert into f_e values('https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt','Rowan Atkinson');
+insert into f_e values('https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt','Matthew Broderick');
+insert into f_e values('https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt','Niketa Calame-Harris');
+insert into f_e values('https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt','Jim Cummings');
+--Assalto ao Poder
+insert into f_e values('https://www.imdb.com/title/tt6189022/?ref_=adv_li_tt','Gerard Butler');
+insert into f_e values('https://www.imdb.com/title/tt6189022/?ref_=adv_li_tt','Frederick Schmidt');
+insert into f_e values('https://www.imdb.com/title/tt6189022/?ref_=adv_li_tt','Danny Huston');
+insert into f_e values('https://www.imdb.com/title/tt6189022/?ref_=adv_li_tt','Rocci Williams');
+--Toy Story 4
+insert into f_e values('https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt','Tom Hanks');
+insert into f_e values('https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt','Tim Allen');
+insert into f_e values('https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt','Annie Potts');
+insert into f_e values('https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt','Tony Hale');
+--Projeto Gemini
+insert into f_e values('https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt','Will Smith');
+insert into f_e values('https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt','Clive Owen');
+insert into f_e values('https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt','Douglas Hodge');
+insert into f_e values('https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt','Ralph Brown');
+--Rambo:Last Blood
+insert into f_e values('https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt','Sylvester Stallone');
+insert into f_e values('https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt','Paz Vega');
+insert into f_e values('https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt','Adriana Barraza');
+insert into f_e values('https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt','Yvette Monreal');
+--INSERÇÕES TABELA f_e(DIRETORES):
+--Joker
+insert into f_e values('https://www.imdb.com/title/tt7286456/?ref_=fn_al_tt','Todd Phillips');
+--Us
+insert into f_e values('https://www.imdb.com/title/tt2935510/?ref_=adv_li_tt','Jordan Peele');
+--Ad Astra
+insert into f_e values('https://www.imdb.com/title/tt6857112/?ref_=adv_li_tt','James Gray');
+--Marriage Story
+insert into f_e values('https://www.imdb.com/title/tt7653254/?ref_=adv_li_tt','Noah Baumbach');
+--Jumanji: The Next Level
+insert into f_e values('https://www.imdb.com/title/tt7975244/?ref_=adv_li_tt','Jake Kasdan');
+--The Lion King
+insert into f_e values('https://www.imdb.com/title/tt6105098/?ref_=adv_li_tt','Jon Favreau');
+--Assalto ao Poder
+insert into f_e values('https://www.imdb.com/title/tt6189022/?ref_=adv_li_tt','Ric Roman Waugh');
+--Toy Story 4
+insert into f_e values('https://www.imdb.com/title/tt1979376/?ref_=adv_li_tt','Josh Cooley');
+--Projeto Gemini
+insert into f_e values('https://www.imdb.com/title/tt1025100/?ref_=adv_li_tt','Ang Lee');
+--Rambo:Last Blood
+insert into f_e values('https://www.imdb.com/title/tt1206885/?ref_=adv_li_tt','Adrian Grunberg');
+
+create table atores (
+    Nome varchar(100) primary key
+);
+--INSERÇÕES TABELA ATORES:
+--Joker
+insert into atores values('Joaquin Phoenix');
+insert into atores values('Robert De Niro');
+insert into atores values('Zazie Beetz');
+insert into atores values('Frances Conroy');
+--Ad Astra
+insert into atores values('Brad Pitt');
+insert into atores values('Tommy Lee Jones');
+insert into atores values('Ruth Negga');
+insert into atores values('Donald SuthherLand');
+--Us
+insert into atores values('Lupita Nyongo');
+insert into atores values('Anna Diop');
+insert into atores values('Elisabeth Moss');
+insert into atores values('Tim Heidecker');
+--Marriage Story
+insert into atores values('Adam Driver');
+insert into atores values('Scarlett Johansson');
+insert into atores values('Julia Greer');
+insert into atores values('Wallace Shawn');
+--Jumanji: The Next Level
+insert into atores values('Karen Gillan');
+insert into atores values('Marin Hinkle');
+insert into atores values('Madison Iseman');
+insert into atores values('Dwayne Johnson');
+--The Lion King
+insert into atores values('Rowan Atkinson');
+insert into atores values('Matthew Broderick');
+insert into atores values('Niketa Calame-Harris');
+insert into atores values('Jim Cummings');
+--Assalto ao Poder
+insert into atores values('Gerard Butler');
+insert into atores values('Frederick Schmidt');
+insert into atores values('Danny Huston');
+insert into atores values('Rocci Williams');
+--Toy Story 4
+insert into atores values('Tom Hanks');
+insert into atores values('Tim Allen');
+insert into atores values('Annie Potts');
+insert into atores values('Tony Hale');
+--Projeto Gemini
+insert into atores values('Will Smith');
+insert into atores values('Clive Owen');
+insert into atores values('Douglas Hodge');
+insert into atores values('Ralph Brown');
+--Rambo:Last Blood
+insert into atores values('Sylvester Stallone');
+insert into atores values('Paz Vega');
+insert into atores values('Adriana Barraza');
+insert into atores values('Yvette Monreal');
+
+
+
+create table a_p (
+    Nome varchar(100),
+    NomePremio varchar(50),
+    N_R varchar(20),
+    primary key (Nome,NomePremio,N_R),
+    foreign key (Nome) references atores on delete restrict,
+    foreign key (NomePremio) references premios on delete restrict
+);
+--INSERÇÕES TABELA ATORES:
+--Joker
+insert into a_p values('Joaquin Phoenix','Óscar','Nomeado');
+insert into a_p values('Robert De Niro','Óscar','Recebeu');
+insert into a_p values('Robert De Niro','BAFTA','Nomeado');
+insert into a_p values('Zazie Beetz','Primetime Emmy Award','Nomeado');
+insert into a_p values('Frances Conroy','Globo de Ouro','Recebeu');
+insert into a_p values('Frances Conroy','Tony Awards','Nomeado');
+--Ad Astra
+insert into a_p values('Brad Pitt','Óscar','Nomeado');
+insert into a_p values('Brad Pitt','SAG Awards','Recebeu');
+insert into a_p values('Tommy Lee Jones','Academy Awards','Recebeu');
+insert into a_p values('Tommy Lee Jones','BAFTA Awards','Nomeado');
+insert into a_p values('Ruth Negga','Óscar','Nomeado');
+insert into a_p values('Donald SuthherLand','Framboesa de Ouro','Recebeu');
+insert into a_p values('Donald SuthherLand','Globo de Ouro','Recebeu');
+--Us
+insert into a_p values('Lupita Nyongo','Globo de Ouro','Recebeu');
+insert into a_p values('Lupita Nyongo','Óscar','Recebeu');
+insert into a_p values('Anna Diop','Óscar','Recebeu');
+insert into a_p values('Anna Diop','Globo de Ouro','Recebeu');
+insert into a_p values('Elisabeth Moss','Óscar','Recebeu');
+insert into a_p values('Elisabeth Moss','Globo de Ouro','Recebeu');
+insert into a_p values('Tim Heidecker','Óscar','Recebeu');
+insert into a_p values('Tim Heidecker','Globo de Ouro','Nomeado');
+--Marriage Story
+insert into a_p values('Adam Driver','Globo de Ouro','Recebeu');
+insert into a_p values('Adam Driver','Tony Awards','Nomeado');
+insert into a_p values('Scarlett Johansson','Globo de Ouro','Nomeado');
+insert into a_p values('Scarlett Johansson','Tony Awards','Nomeado');
+insert into a_p values('Julia Greer','Tony Awards','Recebeu');
+insert into a_p values('Julia Greer','Globo de Ouro','Nomeado');
+insert into a_p values('Wallace Shawn','Tony Awards','Recebeu');
+insert into a_p values('Wallace Shawn','Globo de Ouro','Recebeu');
+--Jumanji: The Next Level
+insert into a_p values('Karen Gillan','Globo de Ouro','Recebeu');
+insert into a_p values('Marin Hinkle','Globo de Ouro','Nomeado');
+insert into a_p values('Madison Iseman','Critics Choice Awards','Nomeado');
+insert into a_p values('Karen Gillan','Globo de Ouro','Nomeado');
+insert into a_p values('Marin Hinkle','Critics Choice Awards','Nomeado');
+insert into a_p values('Madison Iseman','Critics Choice Awards','Recebeu');
+insert into a_p values('Dwayne Johnson','Globo de Ouro','Recebeu');
+insert into a_p values('Dwayne Johnson','Teen Choice Awards','Recebeu');
+insert into a_p values('Dwayne Johnson','Kids Choice Awards','Recebeu');
+insert into a_p values('Dwayne Johnson','Globo de Ouro','Nomeado');
+insert into a_p values('Dwayne Johnson','Shorty Awards','Recebeu');
+--The Lion King
+insert into a_p values('Rowan Atkinson','Globo de Ouro','Recebeu');
+insert into a_p values('Matthew Broderick','Óscar','Nomeado');
+insert into a_p values('Niketa Calame-Harris','Óscar','Nomeado');
+insert into a_p values('Jim Cummings','Óscar','Nomeado');
+insert into a_p values('Rowan Atkinson','Globo de Ouro','Nomeado');
+insert into a_p values('Matthew Broderick','Globo de Ouro','Nomeado');
+insert into a_p values('Niketa Calame-Harris','Globo de Ouro','Recebeu');
+insert into a_p values('Jim Cummings','Globo de Ouro','Recebeu');
+--Assalto ao Poder
+insert into a_p values('Gerard Butler','Globo de Ouro','Recebeu');
+insert into a_p values('Frederick Schmidt','Globo de Ouro','Recebeu');
+insert into a_p values('Danny Huston','Globo de Ouro','Nomeado');
+insert into a_p values('Rocci Williams','Globo de Ouro','Recebeu');
+insert into a_p values('Gerard Butler','Globo de Ouro','Nomeado');
+insert into a_p values('Frederick Schmidt','Globo de Ouro','Nomeado');
+insert into a_p values('Danny Huston','Globo de Ouro','Recebeu');
+insert into a_p values('Rocci Williams','Globo de Ouro','Nomeado');
+--Toy Story 4
+insert into a_p values('Tom Hanks','Óscar','Nomeado');
+insert into a_p values('Tim Allen','Óscar','Nomeado');
+insert into a_p values('Annie Potts','Óscar','Nomeado');
+insert into a_p values('Tony Hale','Óscar','Recebeu');
+insert into a_p values('Tom Hanks','Óscar','Recebeu');
+insert into a_p values('Tim Allen','Óscar','Recebeu');
+insert into a_p values('Annie Potts','Óscar','Recebeu');
+insert into a_p values('Tony Hale','Óscar','Nomeado');
+--Projeto Gemini
+insert into a_p values('Will Smith','Óscar','Recebeu');
+insert into a_p values('Clive Owen','Óscar','Nomeado');
+insert into a_p values('Douglas Hodge','Globo de Ouro','Recebeu');
+insert into a_p values('Ralph Brown','Óscar','Recebeu');
+insert into a_p values('Will Smith','Globo de Ouro','Nomeado');
+insert into a_p values('Clive Owen','Globo de Ouro','Recebeu');
+insert into a_p values('Douglas Hodge','Globo de Ouro','Nomeado');
+insert into a_p values('Ralph Brown','Óscar','Nomeado');
+--Rambo:Last Blood
+insert into a_p values('Sylvester Stallone','Academy Awards','Nomeado');
+insert into a_p values('Sylvester Stallone','Academy Awards','Recebeu');
+insert into a_p values('Sylvester Stallone','Framboesa de Ouro','Nomeado');
+insert into a_p values('Sylvester Stallone','Golden Apple Awards','Recebeu');
+insert into a_p values('Sylvester Stallone','BAFTA Awards','Nomeado');
+insert into a_p values('Sylvester Stallone','BAFTA Awards','Recebeu');
+insert into a_p values('Sylvester Stallone','Globo de Ouro','Nomeado');
+insert into a_p values('Sylvester Stallone','Globo de Ouro','Recebeu');
+insert into a_p values('Sylvester Stallone','Golden Camera','Recebeu');
+insert into a_p values('Paz Vega','Academy Awards','Recebeu');
+insert into a_p values('Adriana Barraza','Academy Awards','Recebeu');
+insert into a_p values('Yvette Monreal','Academy Awards','Recebeu');
+insert into a_p values('Paz Vega','Academy Awards','Nomeado');
+insert into a_p values('Adriana Barraza','Academy Awards','Nomeado');
+insert into a_p values('Yvette Monreal','Academy Awards','Nomeado');
+
+
+
+create table diretores (
+    Nome varchar(100) primary key
+);
+--INSERÇÃO NA TABELA DIRETORES:
+--Joker
+insert into diretores values('Todd Phillips');
+--Us
+insert into diretores values('Jordan Peele');
+--Ad Astra
+insert into diretores values('James Gray');
+--Marriage Story
+insert into diretores values('Noah Baumbach');
+--Jumanji: The Next Level
+insert into diretores values('Jake Kasdan');
+--The Lion King
+insert into diretores values('Jon Favreau');
+--Assalto ao Poder
+insert into diretores values('Ric Roman Waugh');
+--Toy Story 4
+insert into diretores values('Josh Cooley');
+--Projeto Gemini
+insert into diretores values('Ang Lee');
+--Rambo:Last Blood
+insert into diretores values('Adrian Grunberg');
+
+
+create table d_p (
+    Nome varchar(100),
+    NomePremio varchar(50),
+    N_R varchar(20),
+    primary key (Nome,NomePremio,N_R),
+    foreign key (Nome) references diretores on delete restrict,
+    foreign key (NomePremio) references premios on delete restrict
+);
+--INSERÇÃO NA TABELA DIRETORES:
+--Joker
+insert into d_p values('Todd Phillips','Globo de Ouro','Recebeu');
+insert into d_p values('Todd Phillips','Festival de Veneza','Recebeu');
+--Us
+insert into d_p values('Jordan Peele','Emmys','Recebeu');
+insert into d_p values('Jordan Peele','Óscar','Recebeu');
+--Ad Astra
+insert into d_p values('James Gray','Globo de Ouro','Nomeado');
+--Marriage Story
+insert into d_p values('Noah Baumbach','Globo de Ouro','Nomeado');
+--Jumanji: The Next Level
+insert into d_p values('Jake Kasdan','Globo de Ouro','Nomeado');
+--The Lion King
+insert into d_p values('Jon Favreau','Globo de Ouro','Nomeado');
+--Assalto ao Poder
+insert into d_p values('Ric Roman Waugh','Globo de Ouro','Nomeado');
+--Toy Story 4
+insert into d_p values('Josh Cooley','Globo de Ouro','Nomeado');
+--Projeto Gemini
+insert into d_p values('Ang Lee','Óscar da Academia','Recebeu');
+--Rambo:Last Blood
+insert into d_p values('Adrian Grunberg','First Look','Recebeu');
+
+
+
+--##########################################################################################################################################
+--Exercicio 10##############################################################################################################################
+--##########################################################################################################################################
+--a) 
+select distinct Titulo_Original
+from filmes NATURAL INNER JOIN f_g NATURAL INNER JOIN genero1 
+where FilmeGen='Thriller'
+INTERSECT
+select distinct Titulo_Original
+from filmes NATURAL INNER JOIN f_g NATURAL INNER JOIN genero1 
+where FilmeGen='Mystery';
+--##########################################################################################################################################
+--b) 
+select NomeCliente
+from clientes1 NATURAL INNER JOIN pagamento
+where DataPagamento='Dezembro de 2019';
+--##########################################################################################################################################
+--c)  
+select Titulo_Original
+from filmes NATURAL INNER JOIN f_e NATURAL INNER JOIN elenco
+where Lingua_Original='English' AND Nac='French';
+--##########################################################################################################################################
+--d)  
+select count(Mensalidades)*3 as Total
+from pagamento
+where DataPagamento='Novembro de 2019';
+--##########################################################################################################################################
+--e)  
+select Titulo_Original
+from f_c NATURAL INNER JOIN filmes
+where DataVisualizacao='2019/12/02';
+--##########################################################################################################################################
+--f)  
+select Titulo_Original
+from f_c NATURAL INNER JOIN filmes NATURAL INNER JOIN clientes1
+where Login='XXX4321';
+--##########################################################################################################################################
+--g)   
+select Nome
+from diretores
+EXCEPT
+select Nome
+from filmes NATURAL INNER JOIN f_g NATURAL INNER JOIN genero1 NATURAL INNER JOIN elenco NATURAL INNER JOIN diretores NATURAL INNER JOIN f_e
+where FilmeGen='Fantasia';
+--###########################################################################################################################################
+--h) 
+select Titulo_Original, count(NomePremio) as NumPremios
+from filmes NATURAL INNER JOIN f_p NATURAL INNER JOIN premios
+group by Titulo_Original
+order by NumPremios desc;
+--###########################################################################################################################################
+--i)  
+select Titulo_Original, count(NomePremio) as NumPremios
+from atores NATURAL INNER JOIN a_p NATURAL INNER JOIN filmes NATURAL INNER JOIN f_e
+group by Titulo_Original
+order by NumPremios desc;
+--###########################################################################################################################################
+--j)
+
+--###########################################################################################################################################

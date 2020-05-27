@@ -1,0 +1,53 @@
+9--EXERCICIOS RESOLVIDOS EM SQL
+--5.a)
+Select Matricula
+From taxi NATURAL INNER JOIN modelo
+Where Marca = 'Mercedes';
+--###############################################################################################
+--5.b)
+select NomeMotorista
+from motorista NATURAL INNER JOIN turno NATURAL INNER JOIN taxi NATURAL INNER JOIN modelo
+where Marca = 'Mercedes';
+--##############################################################################################
+--5.c)
+select Telefone
+from telefone NATURAL INNER JOIN turno NATURAL INNER JOIN pedido
+where Nif like '600700800900';
+--##############################################################################################
+--5.d)
+select Marca, Modelo
+from taxi NATURAL INNER JOIN turno NATURAL INNER JOIN motorista NATURAL INNER JOIN modelo
+where NomeMotorista = 'Anibal Silva';
+--##############################################################################################
+--5.e)
+select NomeMotorista
+from motorista NATURAL INNER JOIN cliente1 NATURAL INNER JOIN turno NATURAL INNER JOIN pedido
+EXCEPT
+select NomeMotorista
+from motorista NATURAL INNER JOIN cliente1 NATURAL INNER JOIN turno NATURAL INNER JOIN pedido
+where NomeCliente = 'Jose Silva';
+--###############################################################################################
+--5.f)
+select NomeMotorista
+from motorista NATURAL INNER JOIN turno NATURAL INNER JOIN taxi NATURAL INNER JOIN modelo
+EXCEPT
+select NomeMotorista
+from motorista NATURAL INNER JOIN turno NATURAL INNER JOIN taxi NATURAL INNER JOIN modelo
+where Marca = 'Mercedes';
+--################################################################################################
+--5.g)
+select NomeMotorista
+from motorista
+where not exists((select matricula from taxi)
+                 except
+                 (select matricula from turno where motorista.Nbi=turno.Nbi));
+--#####################################
+--5.h)
+select NCartaCond, count(servico.DataInicioS) as total
+from motorista NATURAL INNER JOIN servico NATURAL INNER JOIN turno
+group by NCartaCond;
+--####################################################################################
+--5.i)
+select NomeMotorista, sum(Valor) as total
+from servico NATURAL INNER JOIN turno NATURAL INNER JOIN motorista
+group by NomeMotorista

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>Full Scene</title>
+        <link rel='stylesheet' type='text/css' href='lib/x3dom.css'>
+        </link>
+        <script type='text/javascript' src='lib/x3dom.js'>
+        </script>
+    </head>
+    <body>
+        <X3D
+            width='500px'
+            height='400px'
+            profile = 'Interactive' >
+
+            <Scene>
+
+                <!--                
+                    Transformation Hierachy
+                -->
+                
+                <NavigationInfo
+                    headlight = 'false' >
+                </NavigationInfo>
+                
+                <Viewpoint
+                    position = '0 4 24'
+                    orientation = '0 -.25 -1 0' >
+                </Viewpoint>
+            
+                <Background
+                    skyColor = '0 0.7 0.9'>
+                </Background>
+
+                <PointLight
+                    DEF = 'light1'
+                    location = '10 12 4' >
+                </PointLight>
+                
+                <switch whichCoice = "-1">
+                    <box def = "base"
+                        size = "1 2 2.5">
+                    </box>
+                    <box def = "braço"
+                        size = "0.5 1 0.5">
+                    </box>
+                    <cylinder def = "pilar"
+                        radius = "0.40"
+                        height = "3">
+                    </cylinder>
+                    <sphere def = "roda"
+                        radius = "0.35">
+                    </sphere>
+                    <cylinder def = "corda"
+                        radius = "0.02"
+                        height = "1">
+                    </cylinder>
+                    <sphere def = "gancho"
+                        radius = "0.20">
+                    </sphere>
+                </switch>
+                
+                <transform DEF = "table">
+                    <transform def = "baseGrua">
+                        <transform>
+                            <transform rotation = "0 0 1 -1.57">
+                                <shape>
+                                    <appearance>
+                                        <twosidedmaterial diffuseColor = "yellow">
+                                        </twosidedmaterial>
+                                    </appearance>
+                                    <X3DGeometryNode use = "base">
+                                    </X3DGeometryNode>
+                                </shape>
+                            </transform>
+                            <transform def = "pilarGrua">
+                                <transform>
+                                    <transform translation = "0 1.1 0">
+                                        <shape>
+                                            <appearance>
+                                                <twosidedmaterial diffuseColor = "yellow">
+                                                </twosidedmaterial>
+                                            </appearance>
+                                            <X3DGeometryNode use = "pilar">
+                                            </X3DGeometryNode>
+                                        </shape>
+                                    </transform>
+                                    <transform def = "braçoGrua">
+                                        <transform>
+                                            <transform
+                                                translation = "0.5 2.2 0"
+                                                rotation = "0 0 1 -1.00">
+                                                <shape>
+                                                    <appearance>
+                                                        <twosidedmaterial diffuseColor = "gray">
+                                                        </twosidedmaterial>
+                                                    </appearance>
+                                                    <X3DGeometryNode use = "braço">
+                                                    </X3DGeometryNode>
+                                                </shape>
+                                            </transform>
+                                            <transform def = "cordaGrua">
+                                                <transform>
+                                                    <transform 
+                                                        translation = "1 2.5 0" 
+                                                        rotation = "0 0 1 -1.00">
+                                                        <shape>
+                                                            <appearance>
+                                                                <twosidedmaterial diffuseColor = "black">
+                                                                </twosidedmaterial>
+                                                            </appearance>
+                                                            <X3DGeometryNode use = "corda">
+                                                            </X3DGeometryNode>
+                                                        </shape>
+                                                    </transform>
+                                                    <transform translation = "1.43 2.3 0">
+                                                        <shape>
+                                                            <appearance>
+                                                                <twosidedmaterial diffuseColor = "black">
+                                                                </twosidedmaterial>
+                                                            </appearance>
+                                                            <X3DGeometryNode use = "corda">
+                                                            </X3DGeometryNode>
+                                                        </shape>
+                                                    </transform>
+                                                    <transform def = "ganchoGrua">
+                                                        <transform translation = "1.43 1.7 0">
+                                                            <shape>
+                                                                <appearance>
+                                                                    <twosidedmaterial diffuseColor = "black">
+                                                                    </twosidedmaterial>
+                                                                </appearance>
+                                                                <X3DGeometryNode use = "gancho">
+                                                                </X3DGeometryNode>
+                                                            </shape>
+                                                        </transform>
+                                                    </transform>
+                                                </transform>
+                                            </transform>
+                                        </transform>
+                                    </transform>
+                                </transform>
+                            </transform>
+                            <transform def = "rodaFrenteDireita">
+                                <transform translation = "1 -0.5 0.8">
+                                    <shape>
+                                        <appearance>
+                                            <twosidedmaterial diffuseColor = "black">
+                                            </twosidedmaterial>
+                                        </appearance>
+                                        <X3DGeometryNode use = "roda">
+                                        </X3DGeometryNode>
+                                    </shape>
+                                </transform>
+                                <transform translation = "1.17 -0.5 0.8">
+                                    <shape>
+                                        <appearance>
+                                            <twosidedmaterial diffuseColor = "gray">
+                                            </twosidedmaterial>
+                                        </appearance>
+                                        <X3DGeometryNode use = "gancho">
+                                        </X3DGeometryNode>
+                                    </shape>
+                                </transform>
+                            </transform>
+                            <transform def = "rodaTrasDireita">
+                                <transform translation = "1 -0.5 -0.8">
+                                    <shape>
+                                        <appearance>
+                                            <twosidedmaterial diffuseColor = "black">
+                                            </twosidedmaterial>
+                                        </appearance>
+                                        <X3DGeometryNode use = "roda">
+                                        </X3DGeometryNode>
+                                    </shape>
+                                </transform>
+                                <transform translation = "1.17 -0.5 -0.8">
+                                    <shape>
+                                        <appearance>
+                                            <twosidedmaterial diffuseColor = "gray">
+                                            </twosidedmaterial>
+                                        </appearance>
+                                        <X3DGeometryNode use = "gancho">
+                                        </X3DGeometryNode>
+                                    </shape>
+                                </transform>
+                            </transform>
+                            <transform def = "rodaFrenteEsquerda">
+                                <transform translation = "-1 -0.5 0.8">
+                                    <shape>
+                                        <appearance>
+                                            <twosidedmaterial diffuseColor = "black">
+                                            </twosidedmaterial>
+                                        </appearance>
+                                        <X3DGeometryNode use = "roda">
+                                        </X3DGeometryNode>
+                                    </shape>
+                                </transform>
+                                <transform translation = "-1.17 -0.5 0.8">
+                                    <shape>
+                                        <appearance>
+                                            <twosidedmaterial diffuseColor = "gray">
+                                            </twosidedmaterial>
+                                        </appearance>
+                                        <X3DGeometryNode use = "gancho">
+                                        </X3DGeometryNode>
+                                    </shape>
+                                </transform>
+                            </transform>
+                            <transform def = "rodaTrasEsquerda">
+                                <transform translation = "-1 -0.5 -0.8">
+                                    <shape>
+                                        <appearance>
+                                            <twosidedmaterial diffuseColor = "black">
+                                            </twosidedmaterial>
+                                        </appearance>
+                                        <X3DGeometryNode use = "roda">
+                                        </X3DGeometryNode>
+                                    </shape>
+                                </transform>
+                                <transform translation = "-1.17 -0.5 -0.8">
+                                    <shape>
+                                        <appearance>
+                                            <twosidedmaterial diffuseColor = "gray">
+                                            </twosidedmaterial>
+                                        </appearance>
+                                        <X3DGeometryNode use = "gancho">
+                                        </X3DGeometryNode>
+                                    </shape>
+                                </transform>
+                            </transform>
+                        </transform>
+                    </transform>
+                </transform>
+                
+                <!--
+                    Behaviour Graph
+                -->
+                <TimeSensor DEF = 'tictac'
+                    loop = 'true'
+                    cycleInterval = '10'>
+                </TimeSensor>
+    
+                <PositionInterpolator DEF = 'tablePath'
+                    key="0.0
+                         0.3
+                         0.6
+                         0.9
+                         1.0"
+                    keyValue="-2 0 0
+                              0 0 0
+                              4 8 1
+                              -5 3 1
+                              -2 0 0">
+                </PositionInterpolator>
+                
+                <ROUTE
+                    fromNode = 'tictac' fromField = 'fraction_changed'
+                    toNode = 'tablePath' toField = 'set_fraction'>
+                </ROUTE>
+                <ROUTE
+                    fromNode = 'tablePath' fromField = 'value_changed'
+                    toNode = 'table' toField = 'translation'>
+                </ROUTE>
+            
+            </Scene>
+            
+        </X3D>
+    </body>
+</html>

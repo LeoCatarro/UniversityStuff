@@ -1,0 +1,20 @@
+Requesitos de Utilizador:
+
+Funcionais:
+->Consulta dos resultados de cada torneio, em tempo real
+->Possibilidade de incrição nos diversos torneios
+->Opção de pagamento, para pessoas externas á Universidade
+
+
+
+Nao Funcionais:
+->Capacidade minima de 5000 inscrições
+
+
+Requesitos do Sistema:
+
+->Base de Dados que suporte 5000 entradas
+->O sistema deve listar o nome de cada participante e atual pontuação
+->Ter interface gráfica
+->Inscrição e verifição com o email instituicional
+->O sistiema deve listar os torneios existentes e resultados globais

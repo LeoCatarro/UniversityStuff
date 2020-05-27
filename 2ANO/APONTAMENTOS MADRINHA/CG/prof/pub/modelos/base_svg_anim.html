@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8" />
+        <title>Documento Base SVG anim embebido</title>
+<script type='text/javascript' src='../lib/tween.min.js'></script>
+<script type="text/javascript">
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  "Objeto simples" (não tem heranças nem polimorfismo, apenas atributos e métodos)
+//
+scene = function(element_, pos_, size_) {
+    //
+    //  atributos
+    //
+    this.element = element_;
+    this.pos = pos_;
+    this.size = size_;
+    //
+    //  métodos
+    //
+    this.animate = function() {
+        element.setAttribute("fill", "steelblue");
+        element.setAttribute("x", pos.x);
+        element.setAttribute("y", pos.y);
+        element.setAttribute("width", size.width);
+        element.setAttribute("height", size.height);
+        //
+        //  "ciclo de animação"
+        //
+        //  redesenhar quando possível
+        //
+        requestAnimationFrame(this.animate);
+        //  atualizar os parâmetros
+        TWEEN.update();        
+    }
+    //
+    //  "truque"
+    //
+    return this;
+}
+//
+//////////////////////////////////////////////////////////////////////////////////////
+//
+function main() {
+    var bluebox = document.getElementById("bluebox");
+    //
+    //  Parâmetros da animação
+    //
+    //      animar a posição
+    //
+    var pos = {x: 32, y: 64};
+    var target_pos= { x: 128, y: 64};
+    var pos_t = new TWEEN.Tween(pos).to(target_pos, 5000);
+    pos_t.easing(TWEEN.Easing.Elastic.InOut);
+    pos_t.start();
+    //
+    //      animar o tamanho
+    //
+    var size = {width: 32, height: 64};
+    var target_size = {width: 64, height: 32};
+    var size_t = new TWEEN.Tween(size).to(target_size, 5000);
+    size_t.easing(TWEEN.Easing.Quadratic.InOut);
+    size_t.start();
+    //
+    //  Inicialização do modelo
+    //
+    var s = scene(bluebox,pos,size);
+    //
+    //  Animação
+    //
+    s.animate();
+}
+</script>
+    </head>
+    <body onload="main()">
+        <svg>
+            <rect x = "0" y = "0" width="256" height = "256" fill="khaki" />
+            <rect id = "bluebox"/>
+        </svg>
+    </body>
+</html>
+
+

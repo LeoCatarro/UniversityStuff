@@ -1,0 +1,15 @@
+Titulo do Projeto: 
+Desenvolvimento da Linguagem Rust
+
+
+Nomes e numeros:
+Miguel Barreto 42417
+João Silveirinha 42575
+José Santos 43017
+Leonardo Catarro 43025
+
+Objetivos:
+Aprender e desenvolver o nosso conhecimento nesta linguagem de programação
+
+Calendário:
+A cada semana ter resolvidos dois exercicios do site exercism.io das dificuldades média e dificil

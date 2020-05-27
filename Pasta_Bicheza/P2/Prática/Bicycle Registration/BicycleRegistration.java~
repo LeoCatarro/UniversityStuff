@@ -1,0 +1,17 @@
+class BicycleRegistration {
+
+	public static void main(String[] args) {
+		
+		Bicycle bike = new Bicycle();
+
+		bike.setName("Tomás Rosendo");
+
+		bike.setID("TR");
+
+		String ownerName = bike.getName();
+
+		String ownerID = bike.getID();
+
+		System.out.print(ownerName + " owns a bicycle with the ID: " + ownerID);
+	}
+}

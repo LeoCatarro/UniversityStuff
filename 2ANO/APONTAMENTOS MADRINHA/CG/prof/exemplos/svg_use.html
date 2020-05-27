@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Exemplo SVG elemento use</title>
+</head>
+
+<body>
+  <svg>
+	<g stroke="black" stroke-width="2" fill="none" >
+		<ellipse id="g1" cx="100" cy="100" rx="75" ry="40" />
+		<use xlink:href="#g1" transform="rotate(30 100 100)"/>
+		<use xlink:href="#g1" transform="rotate(60 100 100)" />
+	</g>        
+  </svg>
+
+</body>
+</html>

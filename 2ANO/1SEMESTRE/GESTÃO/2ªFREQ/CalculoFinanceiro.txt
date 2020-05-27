@@ -1,0 +1,38 @@
+CÁLCULO FINANCEIRO
+-->Capitalização
+As empresas obtêm rendimentos que vão aplicar de dois modos:
+        ?uma parte, no consumo, adquirindo os bens e serviços necessário à satisfação das suas necessidades:
+        ?a parte restante,na poupança,que pode ter dois destinos: entesouramento ou investimento;
+
+Se o rendimento for entesourado, mantem-se sob a forma de moeda, isto é, CAPITAL MONETARIO IMPRODUTIVO.
+Se o rendimento for invenstido, o capital monetario torna-se produtivo, podendo o investimento revestir em duas formas:
+        ?aplicado a qql ati económica, produzindo lucro(de momento incerto) transforma-se em CAPITAL ECONOMICO
+        ?aplicado a qql ati financeira, produz lucro(momento certo), transforma-se em CAPITAL FINANCEIRO
+##########################################################
+-->PROCESSO DE CAPITALIZAÇÃO
+Capital Acumulado = Capital Inicial +Juros
+Cn=C0 + J        Cn=C0 x (1+i)
+###########################################################
+-->REGIME DE JURO SIMPLES(RJS)
+J = C0 x i x n         (JURO TOTAL)
+jn = C0 x i             (JURO DE CADA PERIDO)
+Cn = C0 + J
+###########################################################
+-->REGIME DE JURO COMPOSTO(RJC)
+J = Cn - C0
+jn = C0 x (1 + i)^n-1 x i
+Cn = C0 x (1 + i)^n
+###########################################################
+-->RENDAS
+Uma renda é definida como uma sucessão de capitais que vencem periodicamente ao longo do tempo
+Ao intervalo de tempo entre cada vencimento, isto é, o tempo que vai de um vencimento de capital até ao vencimento imediamtamente a seguir, denominado de periodo de renda
+Cada um dos capitais que se vence periodicamente é o termo da renda
+
+Renda temporária inteira constante imediata:
+Quando os termos são constantes e em número finito, o seu período coincide com o período da taxa de juro e o primeiro termo se vence um período após a negociação. Em vez de renda imediata, também se pode dizer, normal ou postecipada.
+Valor atual:
+a (n/i) = ( 1-(1 + i)^-n )/ i
+Capital de divida inicial
+C = T x a (n/i)               T:(prestação a pagar periodicamente)
+Valor Acumulado:
+s (n/i) = (1 + i)^n / i

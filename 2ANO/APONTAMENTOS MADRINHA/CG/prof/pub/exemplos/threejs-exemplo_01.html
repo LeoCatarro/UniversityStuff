@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Exemplo Three.js #01</title>
+	        <meta charset = "utf-8" />
+		<script src = "../lib/three.js"></script>
+		<script>
+//
+//	Variáveis globais: isto é mau, mau, mau.
+//
+var renderer = null,
+scene = null,
+camera = null,
+cube = null,
+animating = true;
+motion = 0.01;
+
+//
+//	Função inicial: constrói o modelo e chama o ciclo de desenho/animação
+//
+function onLoad() {
+	//
+    // Obter o elemento <div> onde vai estar o exemplo
+    //
+    var container = document.getElementById("container");
+    //
+    // Criar o renderer Three.js e juntá-lo ao <div>
+    //
+    renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+    container.appendChild( renderer.domElement );
+    //
+    // Criar uma cena
+    //
+    scene = new THREE.Scene();
+    //
+    // Colocar uma câmera
+    //
+    camera = new THREE.PerspectiveCamera(
+    	45,
+    	container.offsetWidth / container.offsetHeight, 1, 4000 );
+    camera.position.set( 0, 0, 3 );
+    //
+    // Criar uma luz direccional para se ver os objectos
+    //
+    var light = new THREE.DirectionalLight( 0xffffff, 1.5);
+    light.position.set(0, 0, 1);
+    scene.add( light );
+    //
+    ////////////////////////////////////////////////////////////
+    //
+    // Criar um cubo iluminado, com textura, e juntá-lo à cena
+    //
+    ////////////////////////////////////////////////////////////
+    //
+    // Primeiro, obter o mapa da textura
+    //
+    var mapUrl = "../media/sun.jpg";
+    var map = THREE.ImageUtils.loadTexture(mapUrl);
+    //
+    // Segundo, criar um material Phong para mostrar a iluminação com base no mapa da textura
+    //
+    var material = new THREE.MeshPhongMaterial({ map: map });
+    //
+    // Terceiro, criar um cubo
+    //
+    var geometry = new THREE.SphereGeometry(1, 4, 4);
+    //
+    // Quarto, juntar a geometria e o material numa mesh
+    //
+    cube = new THREE.Mesh(geometry, material);
+    //
+    // Quinto, fazer uma pequena transformação, para se ver logo que é um sólido
+    //
+    cube.rotation.x = Math.PI / 5;
+    cube.rotation.y = Math.PI / 5;
+    //
+    // Por fim, juntar o resultado à cena
+    //
+    scene.add( cube );
+    //
+    ////////////////////////////////////////////////////////////
+    //
+    // Usar um controlador de rato para ligar/desligar a animação
+    //
+    addMouseHandler();
+    //
+    // Correr o ciclo de desenho
+    run();
+    //
+}
+////////////////////////////////////////////////////////////
+//
+//	ANIMAÇÃO
+//
+////////////////////////////////////////////////////////////
+function run() {
+	//
+    // Desenhar a cena
+    //
+    renderer.render( scene, camera );
+    //
+    // Rodar o cubo para a próxima imagem da cena
+    //
+    if (animating) {
+    	cube.position.y += motion;
+        if (Math.abs(cube.position.y) > 2) {
+            motion *= -1.0;
+        }
+    }
+    //
+    // Solicitar a próxima imagem da animação
+    //
+    window.requestAnimationFrame(run);
+}
+////////////////////////////////////////////////////////////
+//
+//	INTERACÇÃO
+//
+////////////////////////////////////////////////////////////
+function addMouseHandler() {
+	//
+	//	Delegar o evento mouseup à função onMouseUp
+	//
+	var dom = renderer.domElement;
+	dom.addEventListener( 'mouseup', onMouseUp, false);
+}
+//
+//	Controlar eventos "onmouseup"
+//
+function onMouseUp(event) {
+	//
+	//	Impedir a propagação deste evento (se aplicável)
+	//
+	event.preventDefault();
+	//
+	//	Alternar animar/não animar
+	//
+	animating = !animating;
+}
+		</script>
+	</head>
+	<body onload="onLoad();" style="">
+		<h1>Exemplo Three.js #01</h1>
+		<!--
+			Em vez de se declarar "directamente" um elemento <canvas> no documento,
+			a função "onload" vai usar este <div> como um "parágrafo" para ser colocado
+			um <canvas> gerado pelo Three.js
+		-->
+		<div id = "container"
+			style="width:95%; height:80%; position:absolute;">
+		</div>
+		<div id="prompt"
+			style="width:95%; height:6%; bottom:0; position:absolute;">
+			Clique para animar/parar o cubo.
+		</div>
+	</body>
+</html>

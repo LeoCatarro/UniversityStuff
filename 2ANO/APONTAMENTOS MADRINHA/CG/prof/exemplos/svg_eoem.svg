@@ -1,0 +1,156 @@
+<svg width="256" height="128" viewBox="0 0 256 128"
+    version="1.1"
+    baseProfile="full"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    onload="animate(evt)">
+    <title>
+      Exemplo Animação SVG Documento
+    </title>
+    <script type="application/javascript"><![CDATA[
+// ----------------------------------------------------------------      
+//
+//  Parâmetros de controlo da animação
+//
+// "tempo" atual
+//
+var timevalue = 0;
+//
+// "salto" entre "tempos" consecutivos
+//
+var timer_increment = 50;
+//
+// último "tempo"
+//
+var max_time = 5000; 
+//
+// o elemento que vai ser animado
+//
+var anim_element;
+//
+// ----------------------------------------------------------------
+//
+/**
+ *  Início da animação
+ */
+function animate(evt) {
+  anim_element = evt.target.ownerDocument.getElementById("face");
+  step_anim();
+}
+//
+// ----------------------------------------------------------------
+//
+/**
+ *  Passo da animação
+ */
+function step_anim() {
+  // ----------------------------------------------------------------
+  //
+  //  "Tratar" do tempo
+  //
+  timevalue = timevalue + timer_increment;
+  //
+  //  É mais fácil "pensar" no tempo a variar em [0, 1] do que em [0, max_time].
+  //
+  var t = (0.0 + timevalue)/max_time;
+  //
+  //  Parar a animação ao fim de um certo tempo
+  //
+  if (timevalue > max_time) return;
+  //
+  // ----------------------------------------------------------------
+  //
+  //  Calcular os atributos da animação em função de "t". Por exemplo,
+  //    pos.x, pos.y, size.width, size.height, rot
+  //
+  //  x: t = 0.0 => 32; t = 1.0 => 224
+  //
+  var x =  32 +  (224 - 32) * t;
+  //
+  //  y: t = 0.0 => 32; t = 1.0 => 96
+  //
+  var y =  32 +  (96 - 32) * t;
+  //
+  //  w: t = 0.0 => 32; t = 1.0 => 64
+  //
+  var w =  32 +  (65 - 32) * t;
+  //
+  //  h: t = 0.0 => 64; t = 1.0 => 32
+  //
+  var h =  64 +  (32 - 64) * t;
+  //
+  //  rot: t = 0.0 => 0; t = 1.0 => 360
+  //
+  var rot =  0 +  (360 - 0) * t;
+  //
+  //  NB: a "interpolação linear" [0, 1] -> [a, b] é calculada por
+  //
+  //        f(t) = a + (b - a)*t
+  // ----------------------------------------------------------------
+  //
+  //  Aplicar os atributos da animação
+  //
+  anim_element.setAttribute("transform", 
+    "translate(" + x + "," + y + ")" +
+    "rotate(" + rot + ")" +
+    "scale(" + w + "," + h +")");
+  //
+  // ----------------------------------------------------------------
+  //
+  //  Ciclo de animação  
+  //
+  setTimeout("step_anim()", timer_increment)
+}
+    ]]></script>
+    <defs>
+      <g id="stewie">
+        <!--
+          As coordenadas deste caminho estão definidas no referencial do
+          "espaço do objeto" : [-1, 1] x [-1, 1]
+
+          Definição de um objeto gráfico, no seu próprio espaço, escolhido de forma a ser o mais conveniente para a construção desse objeto.
+    
+          Neste "espaço" a construção (da geometria) do objeto pode ignorar
+          "detalhes" como
+              - onde o objeto vai ser desenhado
+              - com que tamanho
+              - com que orientação
+              - com que aspeto    
+        -->
+        <path d="
+          M -.8 0.0
+          Q 0.0 -.8 0.8 0.0
+          Q 0.0 0.8 -.8 0.0
+          M -.4 -.1
+          L 0.4 0.1
+          L 0.4 -.1
+          L -.4 0.1
+          L -.4 -.1
+          M -.4 -.1
+          Z"
+          />
+      </g>
+    </defs>
+    <!--
+
+      Background: Espaço do modelo
+
+    -->
+    <rect x="0" y="0" width="256" height="128" fill="khaki" />
+    <!--
+
+      Stewie: Espaço do objeto
+
+    -->
+    <g id="face"
+      transform="translate(128,65)scale(32,32)rotate(45)"
+      stroke-width="0.03"
+      fill="darkseagreen"
+      stroke="steelblue">
+      <!--
+        A "passagem" do espaço do objeto para o espaço do modelo é feita pelo
+        atributo "transform".
+      -->
+      <use xlink:href="#stewie" fill-rule="evenodd"/>
+    </g>
+</svg>

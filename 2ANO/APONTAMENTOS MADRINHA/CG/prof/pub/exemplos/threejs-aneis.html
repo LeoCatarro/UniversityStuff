@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Construção dos anéis de Saturno</title>
+  <meta charset = "utf-8" />
+  <script src="../lib/jquery.js"></script>
+  <script src="../lib/jquery.mousewheel.js"></script>
+  <script src="../lib/three.js"></script>
+  <script src="../lib/sim/sim.js"></script>
+  <script src="js/aneis.js"></script>
+  <script type = "text/javascript">
+    var renderer = null;
+    var scene = null;
+    var camera = null;
+    var mesh = null;
+    $(document).ready(
+      function() {
+        var container = document.getElementById("container");
+        var app = new RingsApp();
+        app.init({ container: container });
+        app.run();
+      } );
+  </script>
+
+</head>
+<body>
+  <h1>Os anéis de Saturno</h1>
+  <div id = "container"
+    style = "
+      width : 98%;
+      height : 98%;
+      overflow : hidden;
+      position : absolute;
+      background-color : #FFFFFF">
+  </div>
+</body>
+</html>

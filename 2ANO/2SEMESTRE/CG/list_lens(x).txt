@@ -1,0 +1,5 @@
+function list_lens(x) {
+  let result = new Array(x.length);
+  for (let i in x) result[i] = x[i].length;
+  return result;
+}

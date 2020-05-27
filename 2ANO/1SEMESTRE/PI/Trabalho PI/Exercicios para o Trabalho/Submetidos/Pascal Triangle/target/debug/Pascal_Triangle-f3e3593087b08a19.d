@@ -1,0 +1,1 @@
+C:\Users\Leonardo\Desktop\ENSINO\ SUPERIOR\2º\ ANO\1º\ SEMESTRE\PI\Trabalho\ PI\Exercicios\ para\ o\ Trabalho\Pascal\ Triangle\target\debug\Pascal_Triangle-f3e3593087b08a19.exe: C:\Users\Leonardo\Desktop\ENSINO\ SUPERIOR\2º\ ANO\1º\ SEMESTRE\PI\Trabalho\ PI\Exercicios\ para\ o\ Trabalho\Pascal\ Triangle\src\main.rs

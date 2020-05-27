@@ -1,0 +1,31 @@
+GESTÃO DE RECURSOS HUMANOS(GRH)
+É a função que contempla as atividades de compreensao, manutenção, desenvolvimento, aplicação e integração do potencial do recurso "pessoas" nas atividades e processos organizacionais. A GRH envolve todas as decisões e ações que afetam a natrueza da relação entre a organização e os seus colaboradores(os seus RH)
+###########################################################RELEVANCIAS DA GRH:
+Assenta em: A importancia critica que os RH tem na obtençao de vantagens competitivas sustentaveis ; as praticas de RH necessitam de estar integradas com a estrategia da organização ; os especialistas de RH ajudam os outros gestores a alcançarem os objetivos com a eficiencias, eficacia e equidade
+###########################################################
+DIMENSOES DA GRH: *1*estratégia ; *2*gestao do emprego ; *3*recrutamento e seleção ; *4*formação e desenvolvimento ; *5*manutenção de RH
+
+*1* Dimensão estratégia: revelam as percepçoes sobre: formulação da estratégia ; periodicidade de revisão ; estatuto do responsável ; instrumento de regulamentação coletiva
+*2*Gestao do emprego: percepção tida em relação: planeamento quatitativo e qualitativo ; requesitos basicos ; carreiras profissionais ; afetação e desafetação ; avaliaçao dos desempenhos e auditoria
+*3*Recrutamento e seleção: aqui encontram-se: pesquisa e analise do mercado de trabalho ; formas de recrutamento ; tecnicas de seleção ; criterios de escolha ; plano de integração
+*4*Formação e desenvolvimento: enquandra-se aspetos relacionados com: plano de formação ; plano de informação e comunicação ; avaliação da eficacia
+*5*Manutenção de RH: assumem-se aspetos importantes sobre: ploticia salarial e de beneficios ; ambiente e condições de segurança ; ação social ; relações de trabalho
+###########################################################POLITICAS DE GHR:
+*1*De fornecimento: pesquisa de mercado de RH, recrutamento, seleção e integração
+*2*De aplicação: analise e discriminação de funções, planeamento dos RH, plano de carreiras e avaliação de desempenho
+*3*De manutenção: administração de salário, plano de beneficios sociais Higiene e Segurança
+*4*De desenvolvimento: formação, desenvolvimento dos RH e organizacional
+*5*De controlo: base de dados, sistemas de informação e auditoria dos RH
+###########################################################MODELOS DE RH: existem varios, mas ambos evidenciam a natureza sistemica e contigente da FRH que consegeue produzir impacto visiveis na performance da organização
+Modelo De Fombrun,Ticky e Devanna(1984)
+                                      *1<-Desenvolvimento de RH
+                        *1                     ^
+Seleção -> Performance -> Avaliação
+                        *2                     v
+                                        *2<-Recompensas
+###########################################################
+ABORDAGEM DE GRH: a que possuiu maior impacto nos ultimos anos foi a que introduziu a filosofia de Marketing na GRH. Assume-se,neste caso,  que cada colaborador é um Cliente interno que deve: ser remunerado ; valorizado ; mantido com bons niveis de satisfação ; estar implicado/comprometido com a organização
+###########################################################
+VARIAVEIS DO RH MIX:
+RH Mix(diverge em): Remuneração(remuneração base ; especial ; beneficios-base,...) ; Valorização(carreiras, promoções, formação,...) ; Satisfação(clima social, ausencia de conflitos sociais, boa supervisao e relacionamento) ; Implicação(trabalho de equipa, imagem e comunicação interna, imagem externa e relações com a comunidade)
+TODOS CONVERGEM PARA Clientes Internos/Trabalhadores

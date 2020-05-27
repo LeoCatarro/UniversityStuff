@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8" />
+        <title>Documento Base WebGL</title>
+        <script type = "text/javascript" >
+//
+//  Tela e contexto de desenho
+//
+function initWebGL(canvas) {
+  var gl;
+  try {
+    gl = canvas.getContext("webgl");
+    console.log("WebCL context\t\t\tOK");
+  } catch (e) {
+    var msg = "Erro: " + e.toString();
+    alert(msg); console.log(msg);
+    throw Error(msg);
+  }
+  return gl;
+}
+//
+//  Vista
+//
+function initViewport(gl, canvas) {
+  gl.viewport(0, 0, canvas.width, canvas.height);
+}
+//
+//  Matrizes de transformação
+//    modelView: OBJECTO --> MUNDO
+//    projection: MUNDO --> DISPOSITIVO
+//
+var
+  modelViewMatrix,
+  projectionMatrix;
+//
+function initMatrices() {
+  var z = -13.333; 
+  modelViewMatrix = new Float32Array( [
+    1, 0, 0, 0,
+    0, 1, 0, 0,
+    0, 0, 1, 0,
+    0, 0, z, 1 ] );
+  var a = 2.41421,
+      b = -1.002002,
+      c = -0.2002002;
+  projectionMatrix =  new Float32Array( [
+    a, 0, 0, 0,
+    0, a, 0, 0,
+    0, 0, b, -1,
+    0, 0, c, 0 ] );
+  console.log("Matrices\t\t\tOK");
+}
+//
+//  Memória (exemplo: um quadrado)
+//
+function createSquare(gl) {
+  var vertexBuffer;
+  vertexBuffer = gl.createBuffer();
+  gl.bindBuffer(
+    gl.ARRAY_BUFFER,
+    vertexBuffer );
+  var vertices = [ 
+    0.5, 0.5, 0.0,
+    -.5, 0.5, 0.0,
+    0.5, -.5, 0.0,
+    -.5, -.5, 0.0 ];
+  gl.bufferData(
+    gl.ARRAY_BUFFER,
+    new Float32Array(vertices), // data type for performance
+    gl.STATIC_DRAW );
+  var square = {
+    buffer: vertexBuffer,
+    vertSize: 3,
+    nVerts: 4,
+    primtype: gl.TRIANGLE_STRIP };
+  console.log("Square\t\t\t\tOK")
+  return square;
+}
+//
+//  Shaders
+//    vertex: OBJECTO --> MUNDO --> DISPOSITIVO
+//    fragment: CORES
+//
+function createShader(gl, str, type) {
+  var shader;
+  if (type == "fragment") {
+    shader = gl.createShader(gl.FRAGMENT_SHADER);
+  } else if (type == "vertex") {
+    shader = gl.createShader(gl.VERTEX_SHADER);
+  } else {
+    return null;
+  }
+  gl.shaderSource(shader, str);
+  gl.compileShader(shader);
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    alert(gl.getShaderInfoLog(shader));
+    return null;
+  }
+  console.log("createShader\t\t\tOK");
+  return shader;
+}
+//
+var vertexShaderSource = 
+"attribute vec3 vertexPos;\n" +
+"uniform mat4 modelViewMatrix;\n" +
+"uniform mat4 projectionMatrix;\n" +
+"void main(void) {\n" +
+"  gl_Position = projectionMatrix * modelViewMatrix * vec4(vertexPos, 1.0);\n" +
+"}\n";
+//
+var fragmentShaderSource = 
+"void main(void) {\n" +
+"  gl_FragColor = vec4(1.0,0.0,0.0,1.0);\n" +
+"}\n";
+//
+var
+  shaderProgram,
+  shaderVertexPositionAttribute,
+  shaderProjectionMatrixUniform,
+  shaderModelViewMatrixUniform;
+//
+function initShader(gl) {
+  var fragmentShader = createShader(gl, fragmentShaderSource, "fragment");
+  var vertexShader = createShader(gl, vertexShaderSource, "vertex");
+  // ----------
+  shaderProgram = gl.createProgram();
+  gl.attachShader(shaderProgram, vertexShader);
+  gl.attachShader(shaderProgram, fragmentShader);
+  gl.linkProgram(shaderProgram);
+  // ----------
+  shaderVertexPositionAttribute = gl.getAttribLocation(shaderProgram, "vertexPos");
+  gl.enableVertexAttribArray(shaderVertexPositionAttribute);
+  // ----------
+  shaderProjectionMatrixUniform = gl.getUniformLocation(shaderProgram, "projectionMatrix");
+  // ----------
+  shaderModelViewMatrixUniform = gl.getUniformLocation(shaderProgram, "modelViewMatrix");
+  // ----------
+  if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+    alert("Could not initialise shaders");
+    console.log("initShader\t\t\tFAIL");
+  } else {
+    console.log("initShader\t\t\tOK");
+  }
+}
+//
+//  Draw
+//
+function draw(gl, x) {
+  gl.clearColor(0.0, 0.0, 0.2, 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.bindBuffer(gl.ARRAY_BUFFER, x.buffer);
+  gl.useProgram(shaderProgram);
+  gl.vertexAttribPointer(
+    shaderVertexPositionAttribute,
+    x.vertSize, gl.FLOAT, false, 0, 0 );
+  gl.uniformMatrix4fv(
+    shaderProjectionMatrixUniform,
+    false, projectionMatrix);
+  gl.uniformMatrix4fv(
+    shaderModelViewMatrixUniform,
+    false, modelViewMatrix);
+  gl.drawArrays(x.primtype, 0, x.nVerts);
+  console.log("Draw\t\t\t\tOK")
+}
+//
+//  Main
+//
+function main() {
+  var canvas = document.getElementById("my-webgl-canvas");
+ 	var gl = initWebGL(canvas);
+  initViewport(gl, canvas);
+  initMatrices();
+  var square = createSquare(gl);
+  initShader(gl);
+  draw(gl, square);
+}
+        </script>
+    </head>
+    <body onload = "main();">
+        <canvas id = "my-webgl-canvas" width = "500" height = "500">
+        </canvas>
+    </body>
+</html>

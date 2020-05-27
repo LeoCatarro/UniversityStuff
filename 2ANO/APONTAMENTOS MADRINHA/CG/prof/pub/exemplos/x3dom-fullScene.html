@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <title>Full Scene</title>
+        <link rel='stylesheet' type='text/css' href='../lib/x3dom.css'>
+        </link>
+        <script type='text/javascript' src='../lib/x3dom.js'>
+        </script>
+    </head>
+    <body>
+        <X3D
+            width='500px'
+            height='400px'
+            profile = 'Interactive' >
+
+            <Scene>
+
+                <!--                
+                    Transformation Hierachy
+                -->
+                
+                <NavigationInfo
+                    headlight = 'false' >
+                </NavigationInfo>
+                
+                <Viewpoint
+                    position = '0 4 24'
+                    orientation = '0 -.25 -1 0' >
+                </Viewpoint>
+            
+                <Background
+                    skyColor = '0 0.7 0.9'>
+                </Background>
+
+                <PointLight
+                    DEF = 'light1'
+                    location = '10 12 4' >
+                </PointLight>
+                
+                <!-- Hidden components -->
+                <Switch whichChoice = '-1'>
+                    
+                    <Shape DEF = 'leg'>
+                        <Appearance>
+                            <Material
+                                diffuseColor = 'red' >
+                            </Material>
+                        </Appearance>
+                        <Cylinder
+                            height = '5'
+                            radius = '0.5' >
+                        </Cylinder>
+                    </Shape>
+                    
+                    <Shape DEF = 'top'>
+                        <Appearance>
+                            <Material
+                                diffuseColor = 'green' >
+                            </Material>
+                        </Appearance>
+                        <Box
+                            size = '8 0.5 8'>
+                        </Box>
+                    </Shape>
+                </Switch>
+
+                <!-- Geometry construction -->
+                <Transform DEF = 'table'>
+                    <Transform translation = '-2 0 -2' >
+                        <Shape USE = 'leg'></Shape>
+                    </Transform>
+                
+                    <Transform translation = '-2 0 2' >
+                        <Shape USE = 'leg'></Shape>
+                    </Transform>
+                    
+                    <Transform translation = '2 0 -2' >
+                        <Shape USE = 'leg'></Shape>
+                    </Transform>
+                    
+                    <Transform translation = '2 0 2' >
+                        <Shape USE = 'leg'></Shape>
+                    </Transform>
+
+                    <Transform translation = '0 2.5 0' >
+                        <Shape USE = 'top'></Shape>
+                    </Transform>
+                </Transform>
+                
+                <!--
+                    Behaviour Graph
+                -->
+                <TimeSensor DEF = 'tictac'
+                    loop = 'true'
+                    cycleInterval = '10'>
+                </TimeSensor>
+    
+                <PositionInterpolator DEF = 'tablePath'
+                    key="0.0
+						 0.3
+						 0.6
+						 0.9
+						 1.0"
+					keyValue="-2 0 0
+							  0 0 0
+							  4 8 1
+							  -5 3 1
+							  -2 0 0">
+                </PositionInterpolator>
+                
+                <ROUTE
+                    fromNode = 'tictac' fromField = 'fraction_changed'
+                    toNode = 'tablePath' toField = 'set_fraction'>
+                </ROUTE>
+                <ROUTE
+                    fromNode = 'tablePath' fromField = 'value_changed'
+                    toNode = 'table' toField = 'translation'>
+                </ROUTE>
+            
+            </Scene>
+            
+        </X3D>
+    </body>
+</html>

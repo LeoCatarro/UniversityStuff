@@ -1,0 +1,5 @@
+LINGUAGENS:kotlin OU rust OU swift OU go
+
+
+Fazer 2 exericios a cada semana, do medium e do hard!
+No fim do semestre apresentar os exericios feitos!

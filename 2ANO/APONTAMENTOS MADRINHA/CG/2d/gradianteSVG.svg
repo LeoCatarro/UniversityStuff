@@ -1,0 +1,17 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100" height="100"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <defs>
+        
+        <linearGradient id="grad1">
+            <stop offset="0" stop-color="blue"/>
+            <stop offset="1" stop-color="red"/>
+        </linearGradient>
+        
+    </defs>
+    
+    <rect x="25" y="25" width="50" height="50" fill="url(#grad1)"/>
+    
+</svg>

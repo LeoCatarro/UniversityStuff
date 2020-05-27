@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+    <head>
+        <meta encoding="utf-8">
+        <title>Exemplo x3dom: Grelha de elevação</title>
+        <script src="../lib/x3dom-full.js"></script>
+        <link rel="stylesheet" href="../lib/x3dom.css">
+    </head>
+    <body>
+        <x3d width="500px" height="400px">
+            <Scene>
+                <Switch whichCoice = "-1">
+                    <Cylinder def = "rod"
+                        radius = "0.05"
+                        height = "5.0" >
+                    </Cylinder>
+                    <Cone def = "cap"
+                        bottomRadius = "0.10"
+                        height = "0.2" >
+                    </Cone>
+                </Switch>
+                <Transform def = "x-axis">
+                    <Transform rotation = "0 0 1 -1.57" >
+                        <Shape>
+                            <Appearance>
+                                <TwoSidedMaterial diffuseColor = "red"></TwoSidedMaterial>
+                            </Appearance>
+                            <X3DGeometryNode use = "rod">
+                            </X3DGeometryNode>
+                        </Shape>
+                        <Transform translation = "0 2.5 0" >
+                            <Shape>
+                                <Appearance>
+                                    <TwoSidedMaterial diffuseColor = "red"></TwoSidedMaterial>
+                                </Appearance>
+                                <X3DGeometryNode use = "cap">
+                                </X3DGeometryNode>
+                            </Shape>
+                        </Transform>
+                        <Transform translation = "0.0 2.5 0">
+                            <Shape>
+                                <Appearance>
+                                    <TwoSidedMaterial diffuseColor = "red"></TwoSidedMaterial>
+                                </Appearance>
+                                <Text string = "X">
+                                    <FontStyle size = "0.5">
+                                    </FontStyle>
+                                </Text>
+                            </Shape>
+                        </Transform>
+                    </Transform>
+                </Transform>
+                <Transform def = "y-axis">
+                    <Transform >
+                        <Shape>
+                            <Appearance>
+                                <TwoSidedMaterial diffuseColor = "green"></TwoSidedMaterial>
+                            </Appearance>
+                            <X3DGeometryNode use = "rod">
+                            </X3DGeometryNode>
+                        </Shape>
+                        <Transform translation = "0 2.5 0" >
+                            <Shape>
+                                <Appearance>
+                                    <TwoSidedMaterial diffuseColor = "green"></TwoSidedMaterial>
+                                </Appearance>
+                                <X3DGeometryNode use = "cap">
+                                </X3DGeometryNode>
+                            </Shape>
+                        </Transform>
+                        <Transform translation = "0.0 2.5 0">
+                            <Shape>
+                                <Appearance>
+                                    <TwoSidedMaterial diffuseColor = "green"></TwoSidedMaterial>
+                                </Appearance>
+                                <Text string = "Y">
+                                    <FontStyle size = "0.5">
+                                    </FontStyle>
+                                </Text>
+                            </Shape>
+                        </Transform>
+                    </Transform>
+                </Transform>
+                <Transform def = "z-axis">
+                    <Transform rotation = "1 0 0 1.57" >
+                        <Shape>
+                            <Appearance>
+                                <TwoSidedMaterial diffuseColor = "blue"></TwoSidedMaterial>
+                            </Appearance>
+                            <X3DGeometryNode use = "rod">
+                            </X3DGeometryNode>
+                        </Shape>
+                        <Transform translation = "0 2.5 0" >
+                            <Shape>
+                                <Appearance>
+                                    <TwoSidedMaterial diffuseColor = "blue"></TwoSidedMaterial>
+                                </Appearance>
+                                <X3DGeometryNode use = "cap">
+                                </X3DGeometryNode>
+                            </Shape>
+                        </Transform>
+                        <Transform translation = "0.0 2.5 0">
+                            <Shape>
+                                <Appearance>
+                                    <TwoSidedMaterial diffuseColor = "blue"></TwoSidedMaterial>
+                                </Appearance>
+                                <Text string = "Z">
+                                    <FontStyle size = "0.5">
+                                    </FontStyle>
+                                </Text>
+                            </Shape>
+                        </Transform>
+                    </Transform>
+                </Transform>
+                <Transform def = "the-Shape" translation = "-1.5 0 -1.5">
+                    <Shape>
+                        <Appearance>
+                            <TwoSidedMaterial
+                                diffuseColor = "orange" >
+                            </TwoSidedMaterial>
+                        </Appearance>
+                        <ElevationGrid
+                            xDimension = "4"
+                            zDimension = "4"
+                            height = "
+                            0.2 0.1 0.1 0.0 -0.1
+                            0.1 0.2 0.4 0.1 -0.1
+                            0.1 0.4 0.2 0.1 -0.1
+                            0.0 0.1 0.1 0.2 -0.1
+                            "
+                        ></ElevationGrid>
+                    </Shape>
+                </Transform>
+            </Scene>
+        </X3D>
+    </body>
+</html>

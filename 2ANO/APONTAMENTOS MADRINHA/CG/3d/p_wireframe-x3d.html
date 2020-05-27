@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Extrusões e Reticulados X3D</title>
+    <script type='text/javascript' src='lib/x3dom-full.js'>            
+    </script>
+    <link rel='stylesheet' type='text/css' href='lib/x3dom.css' />
+</head>
+    <body>
+        <x3d width="512px" height="512px">
+            <scene>
+                <background skyColor="0.9375 0.8984 0.5469"><!-- khaki -->
+                </background>
+                <switch whichChoice="-1">   
+                    <indexedfaceset id="obj"
+                        coordIndex="
+                            0 1 2 3 -1
+                            4 0 1 -1
+                            4 1 2 -1
+                            4 2 3 -1
+                            4 3 0 -1
+                            ">
+                        <coordinate point="
+                             1.0  1.0  0.0
+                             1.0 -1.0  0.0
+                            -1.0 -1.0  0.0
+                            -1.0  1.0  0.0
+                             0.0  0.0  3.0
+                             ">
+                        </coordinate>
+                    </indexedfaceset>
+                </switch>
+                <transform translation="0 0 0">
+                  <shape>
+                    <appearance>
+                      <twosidedmaterial diffuseColor="crimson"></twosidedmaterial>
+                    </appearance>
+                    <x3dgeometrynode use="obj"></x3dgeometrynode>
+                  </shape>
+                </transform>
+            </scene>
+        </x3d>
+    </body>
+</html>
+

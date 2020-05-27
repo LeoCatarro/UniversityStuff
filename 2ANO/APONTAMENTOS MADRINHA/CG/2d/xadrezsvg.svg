@@ -1,0 +1,18 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="500" height="500"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <defs>
+    
+        <g id="tabuleiro">
+           <rect x="0" y="0" width="1" height="1" fill="black"/> 
+           <rect x="1" y="0" width="1" height="1" fill="white"/> 
+           <rect x="0" y="1" width="1" height="1" fill="white"/> 
+           <rect x="1" y="1" width="1" height="1" fill="black"/> 
+        </g>
+        
+    </defs>
+    <use xlink:href = "#tabuleiro" transform="translate(100,100)scale(50,50)"/>
+    
+</svg>

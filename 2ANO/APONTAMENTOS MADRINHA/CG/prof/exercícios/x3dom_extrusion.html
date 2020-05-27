@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Extrusões X3D</title>
+        <script type='text/javascript' src='../lib/x3dom-full.js'>            
+        </script>
+        <link rel='stylesheet' type='text/css' href='../lib/x3dom.css' />
+    </head>
+    <body>
+        <x3d width="512px" height="512px">
+            <scene>
+
+                <switch whichCoice = "-1">
+                    <cylinder def = "rod"
+                        radius = "0.05"
+                        height = "5.0" >
+                    </cylinder>
+                    <cone def = "cap"
+                        bottomRadius = "0.10"
+                        height = "0.2" >
+                    </cone>
+                </switch>
+                <transform def = "x-axis">
+                    <transform rotation = "0 0 1 -1.57" >
+                        <shape>
+                            <appearance>
+                                <twosidedmaterial diffuseColor = "darkred"></twosidedmaterial>
+                            </appearance>
+                            <X3DGeometryNode use = "rod">
+                            </X3DGeometryNode>
+                        </shape>
+                        <transform translation = "0 2.5 0" >
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "darkred"></twosidedmaterial>
+                                </appearance>
+                                <X3DGeometryNode use = "cap">
+                                </X3DGeometryNode>
+                            </shape>
+                        </transform>
+                        <transform translation = "0.0 2.5 0">
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "darkred"></twosidedmaterial>
+                                </appearance>
+                                <text string = "X">
+                                    <fontstyle size = "0.5">
+                                    </fontstyle>
+                                </text>
+                            </shape>
+                        </transform>
+                    </transform>
+                </transform>
+                <transform def = "y-axis">
+                    <transform >
+                        <shape>
+                            <appearance>
+                                <twosidedmaterial diffuseColor = "olivedrab"></twosidedmaterial>
+                            </appearance>
+                            <X3DGeometryNode use = "rod">
+                            </X3DGeometryNode>
+                        </shape>
+                        <transform translation = "0 2.5 0" >
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "olivedrab"></twosidedmaterial>
+                                </appearance>
+                                <X3DGeometryNode use = "cap">
+                                </X3DGeometryNode>
+                            </shape>
+                        </transform>
+                        <transform translation = "0.0 2.5 0">
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "olivedrab"></twosidedmaterial>
+                                </appearance>
+                                <text string = "Y">
+                                    <fontstyle size = "0.5">
+                                    </fontstyle>
+                                </text>
+                            </shape>
+                        </transform>
+                    </transform>
+                </transform>
+                <transform def = "z-axis">
+                    <transform rotation = "1 0 0 1.57" >
+                        <shape>
+                            <appearance>
+                                <twosidedmaterial diffuseColor = "darkslateblue"></twosidedmaterial>
+                            </appearance>
+                            <X3DGeometryNode use = "rod">
+                            </X3DGeometryNode>
+                        </shape>
+                        <transform translation = "0 2.5 0" >
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "darkslateblue"></twosidedmaterial>
+                                </appearance>
+                                <X3DGeometryNode use = "cap">
+                                </X3DGeometryNode>
+                            </shape>
+                        </transform>
+                        <transform translation = "0.0 2.5 0">
+                            <shape>
+                                <appearance>
+                                    <twosidedmaterial diffuseColor = "darkslateblue"></twosidedmaterial>
+                                </appearance>
+                                <text string = "Z">
+                                    <fontstyle size = "0.5">
+                                    </fontstyle>
+                                </text>
+                            </shape>
+                        </transform>
+                    </transform>
+                </transform>
+                <shape>
+                    <appearance>
+                        <material diffuseColor="khaki" transparency="0.25"/>
+                    </appearance>
+                    <extrusion
+                        convex="false"
+                        crossSection="
+                            0.9 -1.
+                            0.9 0.5
+                            0.0 0.9
+                            -.9 0.5
+                            -.9 -1.
+                            -1. -1.
+                            -1. 0.5
+                            0.0 1.0
+                            1.0 0.5
+                            1.0 -1.
+                            0.9 -1."
+                        spine="
+                            0 -1 0
+                            0 1 0"
+                    ></extrusion>
+                </shape>
+                <!--
+                <transform translation="0 -1 0">
+                    <shape>
+                        <appearance>
+                            <material diffuseColor="steelblue" >
+                            </material>                
+                        </appearance>
+                        <sphere radius="0.1"></sphere>
+                    </shape>
+                </transform>
+                <transform translation="-1 -0.5 0">
+                    <shape>
+                        <appearance>
+                            <material diffuseColor="indianred" >
+                            </material>                
+                        </appearance>
+                        <sphere radius="0.1"></sphere>
+                    </shape>
+                </transform>
+                <transform translation="-1 0.5 0">
+                    <shape>
+                        <appearance>
+                            <material diffuseColor="darkgoldenrod" >
+                            </material>                
+                        </appearance>
+                        <sphere radius="0.1"></sphere>
+                    </shape>
+                </transform>
+                <transform translation="0 1 0">
+                    <shape>
+                        <appearance>
+                            <material diffuseColor="olive" >
+                            </material>                
+                        </appearance>
+                        <sphere radius="0.1"></sphere>
+                    </shape>
+                </transform>
+                -->
+            </scene>
+        </x3d>
+    </body>
+</html>
+<!--
+                    <group>
+                        <transform translation="0 -1 0">
+                            <sphere radius="0.1"></sphere>
+                        </transform>
+                        <transform translation="0 -0.5 -1">
+                            <sphere radius="0.1"></sphere>
+                        </transform>
+                        <transform translation="0 0.5 -1">
+                            <sphere radius="0.1"></sphere>
+                        </transform>
+                        <transform translation="0 1 0">
+                            <sphere radius="0.1"></sphere>
+                        </transform>                        
+                    </group>
+                        crossSection="
+                            0.9 1.0
+                            0.9 -0.1
+                            0.0 -0.9
+                            -0.9 -0.1
+                            -0.9 1.0
+                            -1.0 1.0
+                            -1.0 -0.1
+                            0.0 -1.0
+                            1.0 -0.1
+                            1.0 1.0
+                            0.9 1.0"
+-->

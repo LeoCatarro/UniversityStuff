@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8" />
+        <title>Documento Base Three.js</title>
+        <script src = "../lib/three.js"></script>
+        <script type = "text/javascript" >
+function main() {
+  var renderer = new THREE.WebGLRenderer();
+  renderer.setSize(500,500);
+  document.body.appendChild(renderer.domElement);
+
+  var scene = new THREE.Scene();
+
+  var camera = new THREE.PerspectiveCamera(
+    35,       // abertura
+    500/500,  // proporção largura/altura
+    0.1,      // corte perto
+    10000     // corte longe
+    );
+  camera.position.set( -2.5, 0, 20 );
+  //camera.position.set( 0, 0, 0 );
+  camera.lookAt( scene.position );
+
+  var geometry = new THREE.BoxGeometry( 5, 5, 5 );
+  var material = new THREE.MeshLambertMaterial( {color: 0x00FF00 } );
+  var mesh = new THREE.Mesh( geometry, material );
+  scene.add( mesh );
+  
+  var light = new THREE.PointLight( 0xFFFF00 );
+  light.position.set( -15, 10, 10 );
+  scene.add( light );
+
+  renderer.render( scene, camera );
+}
+        </script>
+    </head>
+    <body onload = "main();">
+    </body>
+</html>

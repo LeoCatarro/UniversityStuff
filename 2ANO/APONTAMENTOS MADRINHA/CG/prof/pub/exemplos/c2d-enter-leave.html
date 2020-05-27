@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script>
+
+/*
+function contorno(p) {
+    p.ellipse(50,50,45,45,0,0,2*Math.PI);
+}
+
+function nariz(p) {
+    p.moveTo(50,33);
+    p.lineTo(40,66);
+    p.lineTo(60,66);
+    p.lineTo(50,33);
+}
+
+function boca(p) {
+    p.rect(33,70,33,5);
+}
+
+function olho_esquerdo(p) {
+    p.ellipse(33,35,10,10,0,0,2*Math.PI);
+}
+
+function olho_direito(p) {
+    p.ellipse(66,35,10,10,0,0,2*Math.PI);
+}
+
+function rosto(p) {
+    contorno(p);
+    nariz(p);
+    boca(p);
+    olho_esquerdo(p);
+    olho_direito(p);
+}
+*/
+
+function contorno() {
+    var p = new Path2D();
+    p.ellipse(50,50,45,45,0,0,2*Math.PI);
+    return p;
+}
+
+function nariz() {
+    var p = new Path2D();
+    p.moveTo(50,33);
+    p.lineTo(40,66);
+    p.lineTo(60,66);
+    p.lineTo(50,33);
+    return p;
+}
+
+function boca() {
+    var p = new Path2D();
+    p.rect(33,70,33,5);
+    return p;
+}
+
+function olho_esquerdo() {
+    var p = new Path2D();
+    p.ellipse(33,35,10,10,0,0,2*Math.PI);
+    return p;
+}
+
+function olho_direito() {
+    var p = new Path2D();
+    p.ellipse(66,35,10,10,0,0,2*Math.PI);
+    return p;
+}
+
+function rosto(c) {
+    var p_contorno = contorno();
+    var p_nariz = nariz();
+    var p_boca = boca();
+    var p_olho_esquerdo = olho_esquerdo();
+    var p_olho_direito = olho_direito();
+
+    c.strokeStyle = "black"; 
+
+    c.fillStyle = "tan";
+    c.fill(p_contorno); c.stroke(p_contorno);
+    c.fillStyle = "wheat";
+    c.fill(p_nariz); c.stroke(p_nariz);
+    c.fillStyle = "lightcoral";
+    c.fill(p_boca); c.stroke(p_boca);
+    c.fillStyle = "powderblue";
+    c.fill(p_olho_esquerdo); c.stroke(p_olho_esquerdo);
+    c.fill(p_olho_direito); c.stroke(p_olho_direito);
+}
+
+function example_myPath(p) {
+    p.moveTo(0,50);
+    p.quadraticCurveTo( 50,0, 100,50 );
+    p.quadraticCurveTo( 50,100, 0,50 );
+    p.moveTo(25,40);
+    p.lineTo(75,60);
+    p.lineTo(75,40);
+    p.lineTo(25,60);
+    p.lineTo(25,40)
+}
+
+function example_arcTo(p) {
+    p.moveTo(64,64);
+    p.lineTo(128,64);
+    p.arcTo( 192,64, 192,192, 32);
+    p.lineTo(192,192);
+    p.moveTo(64,192);
+}
+
+function example_simplePath(p) {
+    p.moveTo(64,64);
+    p.lineTo(128,192);
+    p.lineTo(192,64);
+}
+
+function set_defaultStyle(c) {
+    c.strokeStyle = "steelblue";
+    c.fillStyle = "khaki";
+    c.fillRule = "evenodd"
+}
+
+function new_PathWith(f) {
+    var p = new Path2D();
+    f(p);
+    return p;
+}
+
+function example_transform(c) {
+    c.fillRect(0,0,64,16);
+    c.translate(32,32);
+    c.fillRect(0,0,64,16);    
+}
+
+/**
+ * Contorno do rosto definido no espaço do objeto: [-1,-1] x [-1,-1]
+ *
+ */
+function contorno_1(c) {
+    c.beginPath();
+        c.ellipse( 0,0, 1,1, 0, 0,2*Math.PI);
+    c.closePath();
+}
+
+/**
+ * Nariz do rosto definido no espaço do objeto: [-1,-1] x [-1,-1]
+ *
+ */
+function nariz_1(c) {
+    c.beginPath();
+        c.moveTo(0,-1);
+        c.lineTo(-1,1);
+        c.lineTo(1,1);
+        c.lineTo(0,-1);
+    c.closePath();
+}
+
+/**
+ * Boca do rosto definida no espaço do objeto: [-1,-1] x [-1,-1]
+ *
+ */
+function boca_1(c) {
+    c.beginPath();
+        c.rect(-1,-1,2,2);
+    c.closePath();
+}
+
+
+/**
+ * Olho do rosto definido no espaço do objeto: [-1,-1] x [-1,-1]
+ *
+ */
+function olho_1(c) {
+    c.beginPath();
+        c.ellipse(0,0, 1,1, 0, 0,2*Math.PI);
+    c.closePath();
+}
+
+/**
+ * Rosto definido no espaço do objeto: [-1,1] x [-1,1]
+ *
+ */
+function rosto_1(c) {
+    c.strokeStyle = "black"; 
+    c.lineWidth = 0.04;
+    //
+    //  Contorno
+    //      centro: 0.0, 0.0
+    //      tamanho: 2,2
+    c.save();
+        contorno_1(c);
+    c.restore();
+    c.fillStyle = "tan";
+    c.fill();
+    c.stroke();
+    //
+    //  Nariz
+    //      centro: 0.0, 0.0
+    //      tamanho: 0.2, 0.33 
+    c.save();   // "Entrar" no espaço do objeto
+        c.translate(0.0,0.0);
+        c.scale(0.2,0.33);
+        nariz_1(c);
+    c.restore(); // Repor "este espaço"
+    c.fillStyle = "wheat";
+    c.fill();
+    c.stroke();
+    //
+    //  Boca
+    //      centro: 0, 0.6
+    //      tamanho: 0.33, 0.05
+    c.save();
+        c.translate(0,0.6);
+        c.scale(0.33,0.05);
+        boca_1(c);
+    c.restore();
+    c.fillStyle = "lightcoral";
+    c.fill();
+    c.stroke();
+    //
+    //  Olho Esquerdo
+    //      centro: 0.33,0.35
+    //      tamanho: 0.1,0.1
+    c.save();
+        c.translate(-0.33,-0.35);
+        c.scale(0.25,0.25);
+        olho_1(c);
+    c.restore();
+    c.fillStyle = "powderblue";
+    c.fill();
+    c.stroke();
+    //
+    //  Olho Direito
+    //      centro: 0.66,0.35
+    //      tamanho: 0.1,0.1
+    c.save();
+        c.translate(0.33,-0.35);
+        c.scale(0.25,0.25);
+        olho_1(c);
+    c.restore();
+    c.fillStyle = "powderblue";
+    c.fill();
+    c.stroke();
+}
+
+function example_spaces(c) {
+    c.save();
+        c.translate(50,50);
+        c.scale(33,33);
+        rosto_1(c);
+    c.restore();
+}
+
+
+function enter(c, dx, dy, sx, sy) {
+    c.save();
+    c.translate(dx,dy);
+    c.scale(sx,sy);
+}
+
+function leave(c, fs, ss) {
+    c.restore();
+    c.fillStyle = fs;
+    c.strokeStyle = ss;
+    c.fill();
+    c.stroke();
+}
+/**
+ * Rosto definido no espaço do objeto: [-1,1] x [-1,1]
+ *
+ */
+function rosto_2(c, reh) {
+    c.strokeStyle = "black"; 
+    c.lineWidth = 0.04;
+    //
+    //  Contorno
+    //      centro: 0.0, 0.0
+    //      tamanho: 2,2
+    enter(c, 0,0,1,1);
+    contorno_1(c);
+    leave(c, "tan", c.strokeStyle);
+    //
+    //  Nariz
+    //      centro: 0.0, 0.0
+    //      tamanho: 0.2, 0.33 
+    enter(c, 0,0, 0.2, 0.33);
+    nariz_1(c);
+    leave(c, "wheat", c.strokeStyle);
+    //
+    //  Boca
+    //      centro: 0, 0.6
+    //      tamanho: 0.33, 0.05
+    enter(c, 0,0.6, 0.33,0.05);
+    boca_1(c);
+    leave(c, "lightcoral", c.strokeStyle);
+    //
+    //  Olho Esquerdo
+    //      centro: 0.33,0.35
+    //      tamanho: 0.1,0.1
+    enter(c, -0.33,-0.35, 0.25,0.25);
+    olho_1(c);
+    leave(c, "powderblue", c.strokeStyle);
+    //
+    //  Olho Direito
+    //      centro: 0.66,0.35
+    //      tamanho: 0.1,0.1
+    enter(c, 0.33,-0.35, 0.25, reh);
+    olho_1(c);
+    leave(c, "powderblue", c.strokeStyle);
+}
+
+function example_spaces_2(c) {
+    enter(c, 150,150, 100,100);
+    rosto_2(c, 0.02);
+    leave(c, c.fillStyle, c.strokeStyle);
+}
+
+function demo_grads(c) {
+    var g = c.createLinearGradient(0,0,64,0);
+    g.addColorStop(0.0, "steelblue");
+    g.addColorStop(1.0, "khaki");
+    c.fillStyle = g;
+    c.fillRect(0,0,64,12);
+}
+
+function demo_pattern(c) {
+    var image = new Image();
+    image.src = "best.png";
+    image.onload = function() {     
+        var pattern = c.createPattern(image, "repeat");
+        c.fillStyle = pattern;
+        c.fillRect(0,0,256,128);
+    }
+}
+
+function main() {
+    var c2d = document.getElementById("acanvas").getContext("2d");
+    set_defaultStyle(c2d);
+    example_spaces_2(c2d);
+}
+        </script>
+    </head>
+    <body onload="main();">
+        <canvas id="acanvas" width="256" height="256" />
+    </body>
+</html>

@@ -1,0 +1,200 @@
+#1, assumindo que o limite inferior pertence ao intervalo e o superior nao
+
+preto: x>=2 and x<4 or x>=7 and x<9 or x>=11 and x<14
+azul: x>=0 and x<2 or x>=11 and x<14
+verde: x>=2 and x<4 or x>=9 and x<11
+vermelho: x>=7 and x<9
+
+
+#2
+program muliplo_impar;
+	int n;
+	
+	input( "Introduza um numero inteiro: ");
+	read(n);
+	if( n%2==1 ){
+		if( n%3==0 ){
+			printf"É multiplo de 3 e impar");
+		} else {
+			print("É impar");
+		}
+	} else if( n%3==0 ){
+		print("É multiplo de 3");
+	} else {
+		printf "Não é multiplo de 3 nem é impar" );
+	}
+end
+
+
+#3
+program raizes;
+	float a, b, c, aux;
+	
+	input( "Introduza o coeficiente a: ");
+	read(a);
+	input( "Introduza o coeficiente b: ");
+	read(b);	
+	input( "Introduza o coeficiente c: ");
+	read(c);
+	if( a==0 ){
+		print( "O polinomio não tem raizes");
+	} else {
+		aux=b*b-4*a*c;
+		if( aux==0 ){
+			print( "O polinomio tem uma raiz" );
+			print( -b/(2*a) );
+		} else {
+			print( "O polinomio tem duas raizes" );
+			print( -b + \aux / (2*a) );
+			print( -b - \aux / (2*a) );
+	}
+
+
+#4
+program maximo;
+	int n, max;
+	
+	input( "Introduza um numero (0 para terminar): ");	
+	read(n);
+	max=n;
+	if( n==0 ){
+		print( "Nenhum numero foi introduzido" );
+	} else {
+		while( n!=0 ){
+			if( n>max ){
+				max=n;
+			}
+			read(n);
+		}
+		print( "O maximo introduzido foi ");
+		print( max );
+	}
+end
+	
+
+#5
+program maximo2;
+	int n, max, indice, contador;
+	
+	contador=0;
+	input( "Introduza um numero (0 para terminar): ");	
+	read(n);
+	max=n;
+	if( n==0 ){
+		print( "Nenhum numero foi introduzido" );
+	} else {
+		while( n!=0 ){
+			if( n>max ){
+				max=n;
+				indice=n;
+			}
+			contador=contador+1;
+			read(n);
+		}
+		print( "O maximo introduzido foi ");
+		print( max );
+		print( "O indice do maximo foi ");
+		print( indice );
+	}
+end
+
+
+#6
+# nao é o algoritmo mais eficiente mas é mais simples de perceber
+program maxdc;
+	int a, b, i;
+	
+	input( "Introduza o numero a: ");	
+	read(a);
+	input( "Introduza o numero b: ");	
+	read(b);
+	if( a<b ){
+		i=a;
+	} else {
+		i=b;
+	}
+	while( i>=1 and (a%i!=0 or b%i!=0) ){
+		i=i-1;
+	}
+	print( "O maximo divisor comum é ");
+	print(i);
+end
+
+
+#7
+program minmc;
+	int a, b, i;
+	
+	input( "Introduza o numero a: ");	
+	read(a);
+	input( "Introduza o numero b: ");
+	read(b);
+	i=1;
+	while( (a*i)%b != 0 ){
+		i=i+1;
+	}
+	print( "O minimo multiplo comum é ");
+	print( a*i );
+end
+
+
+#8
+program fracionarios;
+	int n1, d1, n2, d2;
+	
+	input( "Introduza n1: "); read( n1 );
+	input( "Introduza d1: "); read( d1 );
+	input( "Introduza n2: "); read( n2 );
+	input( "Introduza d2: "); read( d2 );
+	if( d1==d2 ){
+		print( "nr: ");
+		print( n1+n2 );
+		print( "dr: ");
+		print( d1 );
+	} else {
+		print( "nr: ");
+		print( n1*d2+n2*d1 );
+		print( "dr: ");
+		print( d1*d2 );	}
+	}
+end
+
+
+#9 
+program quadrados;
+	int n, cent, dez, uni;
+	
+	input( "Introduza um numero de 3 algarismos: ");
+	read( n );
+	cent = n/100;
+	dez = (n - cent*100) / 10;
+	unid = n%100;
+	if( n == cent*cent+dez*dez+uni*uni ){
+		print( "O numero e um quadrado perfeito");
+	} else {
+		print( "O numero nao e um quadrado perfeito");
+	}
+end
+
+
+#10
+program serie;
+	float x, res, i, pot;
+	
+	input( "Introduza um valor real: ");
+	read( x );
+	res=x;
+	pot=x;
+	i=2;
+	while( i<10 ){
+		pot=pot*x*x;
+		if( i%2==0 ){
+			res = res - 1/(2*i-1)*pot;
+		} else {
+			res = res + 1/(2*i-1)*pot;
+		}
+		i=i+1;
+	}
+	print( "A soma dos 10 primeiros termos é ");
+	print( res );
+end

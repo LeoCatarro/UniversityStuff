@@ -1,0 +1,65 @@
+bissexto:
+
+jal leap_year
+addi $a0, $a0, 1040
+j over
+nop
+
+leap_year:
+
+li $t0, 400
+div $a0, $t0
+mfhi $t1
+beq $t1, $zero, END
+addi $v0, $zero, 1
+
+li $t0, 4
+div $a0, $t0
+mfhi $t1
+seq $t1, $zero, $t1
+
+li $t0, 100
+div $a0, $t0
+mfhi $t2
+seq $t2, $zero, $t2
+
+blt $t2, $t1, END
+addi $v0, $zero, 1
+
+move $v0, $zero
+
+END:
+jr $ra
+nop
+
+over:
+nop
+
+###########################################################################
+
+somas num intervalo
+
+
+addi $a0, $a0, 3
+jal Summe
+addi $a1, $a1, 5
+j over
+nop
+
+Summe:
+
+move $t0, $zero
+
+Summeloop:
+
+beq $a0, $a1, END
+add $t0, $t0, $a0
+
+j Summeloop
+addi $a0, $a0, 1
+
+END:
+jr $ra
+move $v0, $t0
+
+over:

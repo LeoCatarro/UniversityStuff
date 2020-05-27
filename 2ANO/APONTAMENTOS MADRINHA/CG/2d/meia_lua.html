@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script>
+		function main() {
+			var c = document.getElementById("acanvas").getContext("2d");
+			var p = new Path2D();
+			//outer line
+			p.moveTo(300,0);
+			p.arcTo(0,150,300,300,150);
+			p.lineTo(300,300);
+			
+			//iner line
+			p.arcTo(0,150,300,0,200);
+			p.lineTo(300,0);
+			p.closePath();
+			c.stroke(p);		
+		}
+        </script>
+    </head>
+    <body onload="main();">
+	<!--SVG Image-->
+    	<svg width="300" height="300"
+		xmlns="http://www.w3.org/2000/svg"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		>
+		<path stroke="black" fill="blue" d="M 300 0 Q 0 150 300 300 Q 150 150 300 0"/>
+   	</svg>
+	<!--canvas Model-->
+	<canvas id="acanvas" width="500" height="500" />
+    </body>
+</html>

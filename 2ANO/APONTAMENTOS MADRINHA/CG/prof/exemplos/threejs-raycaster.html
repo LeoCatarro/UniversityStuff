@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Testes com intersecções e raios</title>
+	<meta charset = "utf-8" />
+	<script src="../lib/three.js"></script>
+	<script src= "js/threejs_basic.js"></script>
+	<script src="js/threejs-raycaster.js"></script>
+	<script>
+function main() {
+	//
+	//	Fazer um "contexto" para o THREEJS.
+	//
+	var context = makeContext3JS("container");
+	//
+	//	Colocar neste contexto
+	//
+	//		- um raycaster (para determinar intersecções)
+	//		- um vector 2D com as coordenadas do rato no referencial viewport
+	//		- uma função para actualizar o modelo
+	//
+	context.raycaster = new THREE.Raycaster();
+	context.mouse = new THREE.Vector2();
+	context.update = updateRaycaster;
+	//
+	//	Colocar nesse contexto um modelo gráfico (com dois cubos).
+	//
+	setRaycasterModel(context);
+	//
+	//	Associar eventos "mousemove" de forma a actualizar as coordenadas do rato.
+	//
+	window.addEventListener( 'mousemove', onMouseMove(context), false);
+	//
+	//	Fazer a animação.
+	//
+	run(context);
+}	
+	</script>
+</head>
+<body onload = "main();">
+	<center><h1>Testes com intersecções e raios</h1></center>
+    <div id="container" style="width:95%; height:80%; position:absolute;">
+    </div>
+	<div id="prompt" style="width:95%; height:6%; bottom:30px; text-align:center; position:absolute;">
+	Mover o apontador para activar objectos.
+	</div>
+</body>
+</html>

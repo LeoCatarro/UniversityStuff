@@ -1,0 +1,23 @@
+tirar requisitos de faltas dos requisitos de utilizador
+
+por nos requisitos de utilizador: aluno poder submeter faltas
+
+sistema não é ator dos use cases
+
+ter um autenticação 
+
+use cases: fazer include de login para justificaçao de faltas
+
+melhorar descrição dos uses cases
+
+classe que relaciona alunos com aula ( instancias criadas apos passar o cartao)
+especie entidiade-relação (BAse de dados) 
+
+Diagrama de sequencias:
+	ter instancias das classes no retangulos azuis
+
+Diagrama de atividades(atividade passar cartao)
+	Se passa cartao, nao verificar se nao passa;
+	nomes explicitos;
+	Melhor organização
+	

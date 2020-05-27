@@ -1,0 +1,24 @@
+Requisitos de Utilizador:
+	->Criação do relatório e do gráfico de assiduidade dos alunos, por semestre;
+	->Os alunos podem justificar faltas;
+	->Possivel consultar data, hora, duração e tipo das aulas futuras;
+	->No sistema deve se poder consultar a lista de alunos inscritos, com respetivas faltas;
+	->Docentes e alunos devem passar o cartão no inicio de cada aula;
+	->O aluno e docente serão notificados caso o aluno em questão atinga 25% de faltas;
+	->O diretor de curso, aluno e docentes serão notificados, caso o aluno atinga 50% de faltas;
+
+####################################################################################################################
+
+Requisitos de Sistema:
+x ADDED ->O sistema deve possuir uma base de dados, para guardar toda a informação sobre a presença dos docentes e alunos;
+x	->O sistema deve possuir uma configuração persistente, onde estão definidas as aulas (data, hora, duração e tipo);
+x	->O sistema deve importar a lista de alunos inscritos à disciplina a partir do SIIUE;
+x	->Na hora da aula, o docente e os alunos passam os seus cartões no leitor de cartões, sendo contabilizada a sua presença nessa aula;
+x	->Quando o docente não passa o seu cartão, considera-se que não houve aula e, consequentemente, não são contabilizadas as faltas;
+x	->Sempre que um aluno atinja 25% de faltas, o sistema deve enviar um email ao aluno e outro aos docentes a informar sobre esta situação;
+x	->Sempre que um aluno atinja 50% de faltas, o sistema deve enviar um email ao aluno, aos docentes e ao director de curso a informar sobre esta situação;
+x	->Se um aluno passa o seu cartão depois de decorrida 1h sobre a hora de início da aula, apenas será considerada meia presença;
+x	->A cada hora de aula, o sistema deve avaliar as condições acima, enviando automaticamente os emails necessários;
+x	->A qualquer momento, o docente deve poder alterar o estado de faltas como justificadas ou injustificadas;
+x	->No final do semestre é gerado um relatório com a seguinte informação: Listagem dos alunos com número de presenças ; listagem de alunos com 25% a 50% de faltas; listagem de alunos com +50% faltas; gráfico de presenças;
+x ADDED	->O aluno pode submeter, na plataforma, a(s) justificação(ões) da(s) falta(s).

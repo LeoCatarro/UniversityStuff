@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "utf-8" />
+    <title>Animação SVG embebido com tweenjs</title>
+    <script type='text/javascript' src='../lib/tween.min.js'></script>
+    <script type = "text/javascript" >
+
+face = function(e, pos, size, rot) {
+    //
+    //  atributos
+    //
+    this.e = e;
+    this.pos = pos;
+    this.size = size;
+    this.rot = rot;
+    //
+    //  métodos
+    //
+    /**
+     *  Esta função define um frame da animação.
+     *
+     *  A evolução é controlada pelos atributos .pos, .size e .rot,
+     *  que são automaticamente alterados na biblioteca TWEEN.
+     *
+     */
+    this.animate = function() {
+        //
+        //  Transformar o objeto
+        //
+        e.setAttribute("transform",
+            "translate(" + pos.x + "," + pos.y + ")" +
+            "rotate(" + rot.alpha + ")" +
+            "scale(" + size.width + "," + size.height +")");
+        //
+        ///////////////////////////////////////////////////////////////
+        //
+        //  "ciclo de animação"
+        //
+        //  atualizar os parâmetros da interpolação...
+        TWEEN.update();   
+        //     
+        //  redesenhar quando possível
+        //
+        requestAnimationFrame(animate);
+        //
+        //
+        //
+    }
+    //
+    //  "truque"
+    //
+    return this;
+}
+//
+//
+//
+function main() {
+    var e = document.getElementById("face");
+    //
+    //  Parâmetros da animação
+    //
+    //      animar a posição
+    //
+    var pos = {x: 90, y: 100};
+    var pos_target= {x: 120, y: 64};
+    var pos_tween = new TWEEN.Tween(pos).to(pos_target, 5000);
+    pos_tween.easing(TWEEN.Easing.Quadratic.Out);
+    pos_tween.start();
+    //
+    //      animar o tamanho
+    //
+    var size = {width: 32, height: 64};
+    var size_target = {width: 64, height: 32};
+    var size_tween = new TWEEN.Tween(size).to(size_target, 5000);
+    size_tween.easing(TWEEN.Easing.Quadratic.InOut);
+    size_tween.start();
+    //
+    //      animar a rotação
+    //
+    var rot = {alpha: 0};
+    var rot_target = {alpha: 45}; // SVG: ângulos em graus
+    var rot_tween = new TWEEN.Tween(rot)
+        .to(rot_target, 1000)
+        .repeat(10)
+        .yoyo(true);
+    rot_tween.easing(TWEEN.Easing.Bounce.InOut);
+    rot_tween.start();
+    //
+    //  Inicialização do modelo
+    //
+    var f = face(e,pos,size,rot);
+    //
+    //  Animação
+    //
+    f.animate();
+}    
+    </script>
+</head>
+<body onload="main()">
+    <svg width="256" height="128" viewBox="0 0 256 128"
+        version="1.1"
+        baseProfile="full"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <g id="stewie">
+                <!--
+                As coordenadas deste caminho estão definidas no referencial do
+                "espaço do objeto" : [-1, 1] x [-1, 1]
+
+                Definição de um objeto gráfico, no seu próprio espaço, escolhido de forma a ser o mais conveniente para a construção desse objeto.            
+                
+                Neste "espaço" a construção (da geometria) do objeto pode ignorar
+                "detalhes" como
+                    - onde o objeto vai ser desenhado
+                    - com que tamanho
+                    - com que orientação
+                    - com que aspeto    
+                  -->
+                <path d="
+                M -.8 0.0
+                Q 0.0 -.8 0.8 0.0
+                Q 0.0 0.8 -.8 0.0
+                M -.4 -.1
+                L 0.4 0.1
+                L 0.4 -.1
+                L -.4 0.1
+                L -.4 -.1
+                M -.4 -.1
+                Z"
+                />
+            </g>
+        </defs>
+        <!--
+
+        Background: Espaço do modelo
+
+        -->
+        <rect x="0" y="0" width="256" height="128" fill="khaki" />
+        <!--
+
+        Stewie: Espaço do objeto ==> Espaço do modelo
+
+        -->
+        <g id="face"
+            transform="translate(128,65)scale(32,32)rotate(45)"
+            stroke-width="0.03"
+            fill="darkseagreen"
+            stroke="steelblue">
+            <!--
+            A "passagem" do espaço do objeto para o espaço do modelo é feita pelo
+            atributo "transform".
+            -->
+            <use xlink:href="#stewie" fill-rule="evenodd"/>
+        </g>
+    </svg>
+</body>
+</html>

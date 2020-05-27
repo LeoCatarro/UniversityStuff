@@ -1,0 +1,133 @@
+#1
+sim
+sim
+não
+não #(porque consideramos que o ; não pertence à instrução)
+sim
+nao
+
+
+#2
+2
+0
+11
+9992
+15
+-4
+
+
+#3
+program usd2eur;
+	float usd, eur;
+	print("Valor em usd? ");
+	read(usd);
+	eur = usd*0.85;
+	print("Em euros sao ");
+	print(eur);
+end
+
+
+#4
+program eur2usd;
+	float usd, eur;
+	print("Valor em eur? ");
+	read(eur);
+	usd = eur/0.85;
+	print("Em usd sao ");
+	print(usd);
+end
+
+
+#5
+program operacoes;
+	float num1, num2;
+	print("1º numero? ");
+	read(num1);
+	print("2º numero? ");
+	read(num2);
+	print( "Soma = " ); print( num1+num2 );
+	print( "Diferenca = " ); print( num1-num2 );
+	print( "Produto = " ); print( num1*num2 );
+	print( "Divisao = " ); print( num1//num2 );
+	print( "Resto = " ); print( num1%num2 );
+# tambem poderia declarar uma variavel para cada calculo e depois mostrar (print) a variavel
+# ou entao usar apenas uma variavel que iria conter caa um os resultados a vez
+end
+
+
+#6
+program temperaturas;
+	float tc, tk, tf;
+	print("Qual a temperatura em graus celsius? ");
+	read(tc);
+	tk = tc+273.15;
+	tf = tc*9.0/5.0+32.0;
+	print( "Em Kelvin sao " ); print( tk );
+	print( "Em Fahrenheit sao " ); print( tf );
+end
+
+
+#7
+program ordem;
+	float r;
+	int n;
+	string s;
+	print( "Insira um numero real: " );
+	read(r);
+	print( "Insira uma string: " );
+	read(s);
+	print( "Insira um numero inteiro: " );
+	read(n);
+	print( "inteiro: " ); print(n);
+	print( "string: " ); print(s);
+	print( "real: " ); print(r);
+end
+
+
+#8
+program algarismos;
+	int num;
+	int centenas, dezenas, unidades;
+	print("Insira um número: " );
+	read(num);
+	centenas = num/100;
+	unidades = num%10;
+	dezenas = (num-centenas*100)/10
+	print(centenas);
+	print(dezenas);
+	print(unidades);
+end
+
+
+
+#9
+program segundos;
+	int num, dias, horas, minutos, segundos, aux;
+	print( "Quantos segundos? " );
+	read(num);
+	segundos = num % 60
+	aux = num // 60
+	minutos = aux % 60
+	aux = aux // 60
+	horas = aux % 24
+	dias = aux // 24
+	print( "Correspondem a " );
+	print(dias); print( "dias, " );
+	print(horas); print( "horas, " );
+	print(minutos); print( "minutos e " );
+	print(segundos); print("segundos.");
+end
+
+
+#10
+program tresacasas;
+	float f, aux;
+	int n;
+	print("Insira um número: " );
+	read(f);
+	aux = f*1000;
+	n = (int)f;
+	f = (float)n/1000.0
+	print( "Numero com 3 casas decimais: " );
+	print(f);
+end

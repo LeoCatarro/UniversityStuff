@@ -1,0 +1,38 @@
+main:	
+	jal leap_year	
+	li $a0, 1443 #Year
+	j over
+	nop
+	
+leap_year:
+	li $t0, 400
+	div  $a0, $t0
+	mfhi  $t1
+	#if( year % 400 == 0){ Branch to END with v0 = 1;}
+	seq $v0, $t1, $zero
+	bne $v0, $zero, END
+	nop
+	#else{
+	li $t0, 4
+	li $t1, 100
+	div $a0, $t0
+	mfhi $t2 	# yaer % 4
+	div $a0, $t1
+	mfhi $t3	# yaer % 100
+	
+	seq $t4, $t2, $zero
+	sne $t5, $t3, $zero
+	
+	seq $v0, $t4, $t5	# if( year % 4 == 0 && year % 100 != 0){ v0 = 1 }else{ v0 = 0}
+	
+	j END
+	nop
+	
+	
+
+END:
+	jr $ra
+	nop
+	
+over:
+	nop

@@ -1,0 +1,23 @@
+A definição do periodo de previsão depende: Das caracteristicas intrinsecas da empresa e dos mercados em que opera ; Da iniciativa a que está associada(Atividade regular->curto prazo , Introdução de um novo produto->médio prazo , elaboração da estratégia da empresa->longo prazo)
+###########################################################
+As caracteristicas da série temporal determinam a escolha modelo de previsão: Componente aleatória(observações sem comportamento identificável) ; Componente Cíclica(comportamento repetitivo em longos períodos) ; Componente Sazonal(comportamento repetitivo em períodos curtos) ; Componente de tendencia(crescimento ou decrescimo a médio e longo prazo)
+###########################################################A escolha do modelo de previsão deve basear-se naquele que apresentar menor erro de previsão:
+Erro de previsão: Afastamento das previsões relativamente ás observações disponiveis ; várias formas de medir o erro de previsão uma delas é o desvio absoluto médio(MAD)
+###########################################################
+Quais os modelos de previsão de procura?
+*1*Com base em técnicas qualitativas: Método de Delphi ; Pesquisa de mercado ; Informação da equipa de vendas
+*2*Com base em técnicas quantitativas: procura no periodo anterior ; modelos baseados nos históricos da procura(modelos de medias moveis ou aritmeticas ; modelos de regressao ; modelo de Holt ; modelo de holt-winter)
+###########################################################
+Deve ocorrer um planeamento agregado da produção
+O objetivo consiste em optimizar a capacidade produtiva da empresa: Antecipar as necessidades de recursos produtos para garantir a satisfação dos clientes(produtos com elevados niveis de qualidade , cumprir os prazos de entrega das encomendas)
+O plano agregado de produção determina: volumes de produção ; mão de obra ; inventários(stocks) ; estratégia de minimização de custos
+Para elaborar um plano agregado de produção é necessário: definir as variaveis controláveis relevantes ; determinar o periodo de planeamento adequando ; traduzir a produção numa uni de medida expressiva da capacidade produtiva ; determinar a estrutura de custos relevantes ; utilizar a estratégia de produção
+###########################################################
+Os principais custos relevantes associados ás atividades produtivos são: custos com a alteração dos volumos de produção(sub-utilização da mao de obra , necessidade de mao de obra extraordinaria , sub-contratação da produção) ; custos com a alteração de volume de mao de obra(contratação ou despedimento do pessoal) ; custos de manutenção de inventário
+###########################################################
+Estratégias de planeamento agregado da produção: 
+*1*Estratégias puras
+        Produção Nivelada(alterações da procura acomodadas com stocks)
+        Ajustamento á procura(altera-se o nº de trabalhadores com a procura)
+*2*Estratégias Mistas
+        Alteração do nº de trabalhadores ; utilização de stocks ; horas extraordinárias ; sub-contratação

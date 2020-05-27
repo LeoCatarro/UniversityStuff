@@ -1,0 +1,42 @@
+As atividades de marketing: a segmentação
+        As empresas tem 3 formas de encarar o mercado
+                Marketing de massas: todos os consumidores são iguais
+        Marketing individualizado: todos os consumidores são diferentes(Mass Costumization)
+        Segmentação: mercado composto por sub-grupos com comportamentos distintos
+
+        A segmentação consiste em identifcar grupos distintos
+                Internamente Homogéneos
+                Externamente heterógeneos: cada segmento tem os seus concorrentes e oportunidades de valor ; segmentar o mercado ajuda a empresa a ajustar as suas competencias às necessidades dos consumidores(clusters , multidimensional scalling , analise fatorial)
+###########################################################
+As atividades de marketing: o posicionamento
+        Posicionamento-->associação chaves que as pessoas fazem á marca
+        Ao definir o posicionamento que a empresa está a identificar a associação que pretende que o consumidor faça: deve ser unico
+        O eixo diferenciador deve ser as preferencias dos consumidores que: ainda nao estao satifeitos pela concorrencia ; requerem recursos e competencias que a empresa dispoe
+###########################################################As atividades de marketing: o marketing-mix(oferta propriamente dita)
+        As suas compnentes sao as variaveis que a empresa tem ao seu dispor para influenciar o comportamento dos consumidores : Produto ; preço ; distribuição ; comunicação
+        Produto:
+                Pacote de beneficios que o cliente recebe quando adquire o produto: beneficios funcionais ; psicologicos ; sociais
+                Um produto pode apresentar-se como: um bem fisico ; um servico ; uma ideia
+                É essencial o desenvolvimento de novos produtos
+                Marca: ajuda a identificar os produtos ; ajuda na avaliação dos produtos ; permite basear a decisão
+                A embalagem e rotulagem: Função tecnica(conservação e proteção durante transporte e armazenamento) ; Funçao de marketing(atrair o cliente ; informar ; causar boa imagem)
+        Preço:
+                Custo monetário atribuidos aos produtos no mercado ; afeta a imagem do produto e influencia as decioes
+                Estratégias: Preço baixo-->qualidade/preço ; Preço alto--> satisfação de necessidades
+                3 grandes decisoes relativamente ao preço: fixar o preço ; efetuar adfaptaçoes ao preço ; introduzir alterações ao preço
+                Fixar o preço--> inumeras influencias: valor percebido pelo cliente ; preços da concorrencia ; custos da empresa ; obejtivos de organização, ...
+                Fixar uma estrutura de preços e nao um preço unico: zonas geo diferentes ; prazos de pagamentos ; diferentes momentos de compra
+                Alterações no preço: alterações de custos ; alterações dos preços da concorrencia ; objetivos de vendas nao cumpridos
+        Distribuição:
+                Sistema que permite a entrega do produto: certo ; no momento certo ; nas quantidades certas ; com os serviços necessarios á venda e ao consumo
+                É uma via de criação de valor para o cliente: requer elevados investimentos ; pouco flexivel
+        Comunicação(Qualquer sinal que a empresa emite em direção   ao seu alvo):
+                Comunicação informal: embalagens ; design das instalaçoes ; discursos
+                Comunicaçao formal-->mix da comunicação: publicidade ; força de vendas ; promoçao de vendas ; relações publicas
+                Necessidade de informar o publico alvo
+                Facilitar o processo de decisao de compra
+                Criação de uma imagem junto do consumidor
+                Publicidade(qql forma de apresentaçao e promoçao pessoal de ideias, bens ou serviços): orgaos de comunicação social ; outdoors ; catálogos ; maillings ; ...
+                Força de vendas(qql apresentação oral face a face com um ou mais clientes com o objetivo de efetuar a venda)
+                Promoção de vendas(todos os incentivos de custo prazo que visam estimular as vendas de um produto)
+                Relações publicas(construir boas relaçoes com o publico, atraves de noticias e das construção de uma imagem da organização)                           
