@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf8">
+    <title>Base X3D</title>
+    <!-- X3DOM:  Declarative 3D Models -->
+    <script 
+        type='application/javascript' 
+        src='lib/x3dom/x3dom-full.js'>
+    </script>
+    <link 
+        rel='stylesheet' 
+        type='text/css' 
+        href='lib/x3dom/x3dom.css' />
+</head>
+
+<body>
+    <x3d width="1060px" height="530px" showStat="true">
+        <scene>
+            <shape>
+                <appearance>
+                    <twosidedmaterial diffuseColor="crimson">
+                    </twosidedmaterial>
+                </appearance>
+                <cylinder></cylinder>
+            </shape>
+            <Transform translation="2 0 0">
+                <shape>
+                    <box></box> 
+                    <appearance>
+                        <twosidedmaterial diffuseColor="seagreen">
+                        </twosidedmaterial>
+                    </appearance>               
+                </shape>
+            </Transform>
+        </scene>
+    </x3d>
+</body>
+</html>
