@@ -1,6 +1,10 @@
 /*******************************************************************************************
-					**FUNÇÕES PARA DEFINIR O BACKGROUND**
+									**BACKGROUND**
 ********************************************************************************************/
+/*
+	-->Partes do Background
+*/
+
 function wave(x,y)
 {
 	let wave = document.getElementById("acanvas").getContext("2d");
@@ -39,11 +43,8 @@ function wave(x,y)
 	}
 }
 
-function background()
+function sky()
 {
-/****************************************************************************
-								**SKY && SUN && CLOUDS && BIRDS**
-****************************************************************************/
 	let sky = document.getElementById("acanvas").getContext("2d");
 
 	let sky_gradient = sky.createLinearGradient(0,0,acanvas.width, acanvas.height);
@@ -53,104 +54,58 @@ function background()
 	sky.beginPath();
 		sky.fillStyle =sky_gradient;
 		sky.fillRect(0, 0, acanvas.width, acanvas.height);
+	sky.closePath();
+}
 
+function sun(x,y,r)
+{
 	let sun = document.getElementById("acanvas").getContext("2d");
+	
+	this.x=x;
+	this.y=y;
+	this.r=r;
+	
 	sun.beginPath();
 		sun.fillStyle = "Gold";
-		sun.arc(50, 50, 35, 0, 2 * Math.PI);
+		sun.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
 	sun.fill();
-	
+}
+
+function clouds()
+{
 	let clouds = document.getElementById("acanvas").getContext("2d");
 
-	let x_clouds = 50; 
-	let y_clouds = 80;  
-	let r_clouds = 15;
+	const x_clouds = [50,270,680,950];
+	const y_clouds = [80,50,120,75];
+	const r_clouds = 15;
 
+	for(let i=0 ; i< x_clouds.length ; i++)
+	{
 		clouds.beginPath();
 			clouds.fillStyle = "white";
-				clouds.arc(x_clouds, y_clouds, r_clouds, 0, 2*Math.PI);
+				clouds.arc(x_clouds[i], y_clouds[i], r_clouds, 0, 2*Math.PI);
 				clouds.fill();
 			clouds.beginPath();
-				clouds.arc(x_clouds+20, y_clouds-10, r_clouds, 0, 2*Math.PI);
+				clouds.arc(x_clouds[i]+20, y_clouds[i]-10, r_clouds, 0, 2*Math.PI);
 				clouds.fill();
 				clouds.beginPath();
-				clouds.arc(x_clouds+20, y_clouds+10, r_clouds, 0, 2*Math.PI);
+				clouds.arc(x_clouds[i]+20, y_clouds[i]+10, r_clouds, 0, 2*Math.PI);
 				clouds.fill();
 
-				clouds.arc(x_clouds+40, y_clouds-10, r_clouds, 0, 2*Math.PI);
+				clouds.arc(x_clouds[i]+40, y_clouds[i]-10, r_clouds, 0, 2*Math.PI);
 				clouds.fill();
 				clouds.beginPath();
-				clouds.arc(x_clouds+40, y_clouds+10, r_clouds, 0, 2*Math.PI);
+				clouds.arc(x_clouds[i]+40, y_clouds[i]+10, r_clouds, 0, 2*Math.PI);
 				clouds.fill();
 			clouds.beginPath();
-				clouds.arc(x_clouds+60, y_clouds, r_clouds, 0, 2*Math.PI);
+				clouds.arc(x_clouds[i]+60, y_clouds[i], r_clouds, 0, 2*Math.PI);
 				clouds.fill();
+	}
+}
 
-		x_clouds = 270; y_clouds = 50;
-
-		clouds.beginPath();
-			clouds.arc(x_clouds, y_clouds, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+20, y_clouds-10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+20, y_clouds+10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+40, y_clouds-10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+40, y_clouds+10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+60, y_clouds, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-
-		x_clouds = 680;  y_clouds = 120;
-
-		clouds.beginPath();
-			clouds.arc(x_clouds, y_clouds, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+20, y_clouds-10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+20, y_clouds+10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+40, y_clouds-10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+40, y_clouds+10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+60, y_clouds, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-
-		x_clouds = 950; y_clouds = 75;
-
-		clouds.beginPath();
-			clouds.arc(x_clouds, y_clouds, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+20, y_clouds-10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+20, y_clouds+10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+40, y_clouds-10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds+40, y_clouds+10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-		clouds.beginPath();
-				clouds.arc(x_clouds+60, y_clouds, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-
-
-		let bird = document.getElementById("acanvas").getContext("2d");
+function birds()
+{
+	let bird = document.getElementById("acanvas").getContext("2d");
 		
 		bird.beginPath();
 			bird.strokeStyle="#666666";
@@ -173,9 +128,10 @@ function background()
 			bird.arc(800,100,20,0,Math.PI,true);
 		bird.stroke();		
 		bird.lineWidth=1;	
-/****************************************************************************
-								**MAR**
-****************************************************************************/
+}
+
+function ocean()
+{
 	let mar = document.getElementById("acanvas").getContext("2d");
 	let mar_gradient = mar.createLinearGradient(0,330,acanvas.width,480);
 		mar_gradient.addColorStop(0.33,"#33ccff");
@@ -185,9 +141,10 @@ function background()
 			mar.fillStyle=mar_gradient;
 			mar.fillRect(0,330,acanvas.width,480);
 		mar.closePath();
-/****************************************************************************
-								**PRAIA**
-****************************************************************************/
+}
+
+function beach()
+{
 	let praia = document.getElementById("acanvas").getContext("2d");
 	let praia_gradient = praia.createLinearGradient(0,450,acanvas.width,acanvas.height);
 		praia_gradient.addColorStop(0.33, "#f4ebca");
@@ -286,9 +243,28 @@ function background()
 		cesto.stroke();
 		cesto.lineWidth=1;
 }
+
+/*
+	-->Background Completo
+*/
+
+function background()
+{
+	sky();
+	sun(50,50,35);
+	clouds();
+	birds();
+	ocean();
+	beach();
+}
+
 /*******************************************************************************************
-						**FUNÇÃO PARA DEFINIR O MODELO**
+								**MODELO DA FIGURA**
 ********************************************************************************************/
+/*
+	-->Partes do Modelo
+*/
+
 function head(x,y)  
 {
 	let h = document.getElementById("acanvas").getContext("2d");
@@ -604,6 +580,10 @@ function l_arm(x,y)
 	
 }
 
+/*
+	-->Modelo Completo
+*/
+
 function model(x,y)
 {
 	this.x=x;
@@ -646,7 +626,7 @@ function model(x,y)
 	}		
 }
 /*******************************************************************************************
-					**FUNÇÃO PARA DEFINIR O OBJETO COMPANHEIRO**
+							**OBJETO COMPANHEIRO**
 ********************************************************************************************/
 function object(x,y)
 {
@@ -694,6 +674,7 @@ function object(x,y)
 *********************************************************************************************/
 function main()
 {
+	
 	//Definir Background	
 	background();
 	let onda = new wave(-155,330);
@@ -711,7 +692,7 @@ function main()
 		background();
 		objeto.update();
 		modelo.update();
-		onda.update();						
+		onda.update();					
 	}	
 	//Animação
 	animate();	
