@@ -75,9 +75,9 @@ function clouds()
 {
 	let clouds = document.getElementById("acanvas").getContext("2d");
 
-	const x_clouds = [50,270,680,950];
-	const y_clouds = [80,50,120,75];
-	const r_clouds = 15;
+	let x_clouds = [50,270,680,950];
+	let y_clouds = [80,50,120,75];
+	let r_clouds = 15;
 
 	for(let i=0 ; i< x_clouds.length ; i++)
 	{
@@ -106,28 +106,22 @@ function clouds()
 function birds()
 {
 	let bird = document.getElementById("acanvas").getContext("2d");
+
+	let x_birds = [590,570,890,870,840,800]; let y_birds = [30,30,50,50,100,100]; let r_birds = [10,10,10,10,20,20];
+	let color_bird = ["#666666","#333333","#262626"];
+	let width_bird = [1,2,3];
 		
+	let i=0;
+	while ( i<x_birds.length )
+	{
 		bird.beginPath();
-			bird.strokeStyle="#666666";
-			bird.lineWidth=1;
-			bird.arc(590,30,10,0,Math.PI,true);
-			bird.arc(570,30,10,0,Math.PI,true);
+			bird.strokeStyle = color_bird[i];
+			bird.lineWidth = width_bird[i];
+			bird.arc(x_birds[i], y_birds[i], r_birds[i], 0, Math.PI,true);
+			bird.arc(x_birds[i+1], y_birds[i+1], r_birds[i+1], 0, Math.PI,true);
 		bird.stroke();
-
-		bird.beginPath();
-			bird.strokeStyle="#333333";
-			bird.lineWidth=2;
-			bird.arc(890,50,10,0,Math.PI,true);
-			bird.arc(870,50,10,0,Math.PI,true);
-		bird.stroke();
-
-		bird.beginPath();
-			bird.strokeStyle="#262626";
-			bird.lineWidth=3;
-			bird.arc(840,100,20,0,Math.PI,true);
-			bird.arc(800,100,20,0,Math.PI,true);
-		bird.stroke();		
-		bird.lineWidth=1;	
+		i+=2;
+	}
 }
 
 function ocean()
@@ -143,22 +137,8 @@ function ocean()
 		mar.closePath();
 }
 
-function beach()
+function beach_umbrella()
 {
-	let praia = document.getElementById("acanvas").getContext("2d");
-	let praia_gradient = praia.createLinearGradient(0,450,acanvas.width,acanvas.height);
-		praia_gradient.addColorStop(0.33, "#f4ebca");
-		praia_gradient.addColorStop(0.66, "#f5e9bd");
-		praia_gradient.addColorStop(0.99, "#efdfaa");
-
-	praia.beginPath()
-		praia.fillStyle=praia_gradient;
-		praia.fillRect(0,450,acanvas.width,acanvas.height);
-	praia.closePath();				
-/****************************************************************************
-						**Chapéu de Sol && Toalhas && Outros**
-****************************************************************************/
-
 	let umbrella = document.getElementById("acanvas").getContext("2d");
 
 		umbrella.beginPath();
@@ -221,7 +201,11 @@ function beach()
 		umbrella.fill();
 		umbrella.lineWidth = 1;
 
-		let toalha = document.getElementById("acanvas").getContext("2d");
+}
+
+function beach_towel()
+{
+	let toalha = document.getElementById("acanvas").getContext("2d");
 
 		toalha.beginPath();
 			toalha.fillStyle="Seagreen";
@@ -229,9 +213,11 @@ function beach()
 			toalha.fillRect(350,470,40,80);
 
 			toalha.fillRect(950,470,40,80);
+}
 
-		
-		let cesto = document.getElementById("acanvas").getContext("2d");
+function picnic_basket()
+{
+	let cesto = document.getElementById("acanvas").getContext("2d");
 		
 		cesto.beginPath();
 			cesto.fillStyle="SaddleBrown";
@@ -242,6 +228,30 @@ function beach()
 			cesto.lineTo(860,460);
 		cesto.stroke();
 		cesto.lineWidth=1;
+}
+
+function beach()
+{
+	let praia = document.getElementById("acanvas").getContext("2d");
+	let praia_gradient = praia.createLinearGradient(0,450,acanvas.width,acanvas.height);
+		praia_gradient.addColorStop(0.33, "#f4ebca");
+		praia_gradient.addColorStop(0.66, "#f5e9bd");
+		praia_gradient.addColorStop(0.99, "#efdfaa");
+
+	praia.beginPath()
+		praia.fillStyle=praia_gradient;
+		praia.fillRect(0,450,acanvas.width,acanvas.height);
+	praia.closePath();				
+	
+	/*
+	-->Chapéu de Sol && Toalhas && Outros
+	*/
+
+	beach_umbrella();
+
+	beach_towel();
+		
+	picnic_basket()
 }
 
 /*
@@ -694,6 +704,7 @@ function main()
 		modelo.update();
 		onda.update();					
 	}	
+	
 	//Animação
 	animate();	
 }
