@@ -3,37 +3,312 @@
 <head>
     <meta charset="utf8">
     <title>Base X3D</title>
-    <!-- X3DOM:  Declarative 3D Models -->
-    <script 
-        type='application/javascript' 
-        src='lib/x3dom/x3dom-full.js'>
-    </script>
-    <link 
-        rel='stylesheet' 
-        type='text/css' 
-        href='lib/x3dom/x3dom.css' />
+    <script type='application/javascript' src='lib/x3dom/x3dom-full.js'></script>
+    <link rel='stylesheet' type='text/css' href='lib/x3dom/x3dom.css' />
+
+    <style>
+        x3d
+        {
+            border: 2px solid black;
+            background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-empty-business-office-lobby-background-illustration-backgroundfresh-backgroundillustration-backgroundvastopenbusiness-image_60446.jpg);
+            background-size: 100%;
+        }
+
+        video.absolutive
+        {
+            right: 500px;
+        }
+    </style>
+
 </head>
 
 <body>
+    <audio id="myAudio" volume="100">
+        <source src="BellRing.mp3" type="audio/mpeg">
+    </audio> 
+    <video id="myVideo" width="50" height="75" volume=0>
+        <source src="PCVideo.mp4" type="video/mp4">
+        <source src="PCVideo.mp4" type="video/ogg">
+    </video>
+    <script>
+        var x = document.getElementById("myAudio"); 
+
+        function playAudio() { 
+            x.play(); 
+        } 
+
+
+
+        var vid = document.getElementById("myVideo");
+
+        function playVid() {
+            vid.play();
+        } 
+    </script>
+
     <x3d width="1060px" height="530px" showStat="true">
-        <scene>
+       <scene>
+            <!--
+                    SECRETÁRIA(Mesa)
+            -->
+
             <shape>
                 <appearance>
-                    <twosidedmaterial diffuseColor="crimson">
-                    </twosidedmaterial>
+                    <material diffuseColor="#ffa64d">
+                    </material>
                 </appearance>
-                <cylinder></cylinder>
+                <Box size="6,0.10,2.5"></Box>
             </shape>
-            <Transform translation="2 0 0">
+
+            <!--
+                    SECRETÁRIA(Pés)
+            -->
+
+            <Transform translation="2.2,-1.25,1">
                 <shape>
-                    <box></box> 
                     <appearance>
-                        <twosidedmaterial diffuseColor="seagreen">
-                        </twosidedmaterial>
-                    </appearance>               
+                        <material diffuseColor="#bfbfbf">
+                        </material>
+                    </appearance>
+                    <Box size="0.25,2.5,0.25"></Box>
+                </shape>
+            </Trasform>
+
+            <Transform translation="-4.4,0,0">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="#bfbfbf">
+                        </material>
+                    </appearance>
+                    <Box size="0.25,2.5,0.25"></Box>
+                </shape>
+            </Trasform>
+
+            <Transform translation="0,0,-2">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="#bfbfbf">
+                        </material>
+                    </appearance>
+                    <Box size="0.25,2.5,0.25"></Box>
+                </shape>
+            </Trasform>
+
+            <Transform translation="4.4,0,0">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="#bfbfbf">
+                        </material>
+                    </appearance>
+                    <Box size="0.25,2.5,0.25"></Box>
                 </shape>
             </Transform>
-        </scene>
+            
+            <!--
+                    CAMPAINHA
+            -->
+
+            <Transform translation="0,1.35,0">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="#1a0d00">
+                        </material>
+                    </appearance>
+                    <box size="0.20,0.1,0.20"></Box> 
+                </shape>
+            </Transform>
+
+            <Transform translation="0,1.4,0">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="#1a0d00">
+                        </material>
+                    </appearance>
+                    <box size="0.15,0.1,0.15"></Box> 
+                </shape>
+                </Transform>
+                
+                <Transform translation="0,1.5,0">
+                    <shape>
+                        <appearance>
+                            <material diffuseColor="#1a0d00">
+                            </material>
+                        </appearance>
+                        <box size="0.1,0.1,0.1"></Box> 
+                    </shape>
+                </Transform>
+    
+                <Transform translation="0,1.55,0">
+                    <shape onclick="playAudio(myAudio)">
+                        <appearance>
+                            <material diffuseColor="gold">
+                            </material>
+                        </appearance>
+                        <Cone topRadius="0.1" height="0.1" bottomRadius="0.15"></Cone>
+                    </shape>
+                </Transform>
+    
+            <!--
+                    DESKTOP
+            -->
+
+            <Transform translation="2.5,1.3,0">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="black">
+                        </material>
+                    </appearance>
+                    <box size="1,0.1,0.5"></Box> 
+                </shape>
+            </Transform>
+            
+            <Transform translation="2.5,1.5,0">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="black">
+                        </material>
+                    </appearance>
+                    <box size="0.5,0.5,0.2"></Box> 
+                </shape>
+            </Transform>  
+
+            <Transform translation="2.5,2.6,0">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="black">
+                        </material>
+                    </appearance>
+                    <box size="3.5,2,0.2"></Box> 
+                </shape>
+            </Transform>
+
+            <Transform translation="2.5,2.6,0.06">
+                <shape onclick="playVid(myVideo)">
+                    <appearance>
+                        <material diffuseColor="white">
+                        </material>
+                    </appearance>
+                    <box size="3.2,1.7,0.1"></Box> 
+                </shape>
+            </Transform>
+
+            <!--
+                    CESTO DO LIXO
+            -->
+
+            <Transform translation="-1.5,-1,1">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="brown">
+                        </material>
+                    </appearance>
+                    <Cone topRadius="0.5" height="1" bottomRadius="0.45"></Cone>
+                </shape>
+            </Transform>
+
+            <Transform translation="-1.5,-0.98,1">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="black">
+                        </material>
+                    </appearance>
+                    <Cone topRadius="0.47" height="1" bottomRadius="0.42"></Cone>
+                </shape>
+            </Transform>
+
+            <!--
+                    FOLHAS
+            -->
+
+            <Transform translation="4,1.3,1">
+                <shape id="folha">
+                    <appearance>
+                        <material diffuseColor="white">
+                        </material>
+                    </appearance>
+                    <box size="0.75,0.01,1.5"></Box> 
+                </shape>
+            </Transform>
+
+            <Transform rotation="0.0 1.0 0.0 -0.3" translation="4,1.3,1">
+                <shape id="folha">
+                    <appearance>
+                        <material diffuseColor="white">
+                        </material>
+                    </appearance>
+                    <box size="0.75,0.01,1.5"></Box> 
+                </shape>
+            </Transform>
+
+            <!--
+                    CADEIRA(Estrutura)
+            -->
+            
+            <Transform translation="2.4,0,4">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="brown">
+                        </material>
+                    </appearance>
+                    <box size="1.5,0.1,1.5"></Box> 
+                </shape>
+            </Transform>
+
+            <Transform translation="2.4,0.95,4.8">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="brown">
+                        </material>
+                    </appearance>
+                    <box size="1.5,2,0.1"></Box> 
+                </shape>
+            </Transform>
+
+            <!--
+                    CADEIRA(Pés)
+            -->
+
+            <Transform translation="2.95,-0.75, 4.7">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="#bfbfbf">
+                        </material>
+                    </appearance>
+                    <Box size="0.25,1.4,0.25"></Box>
+                </shape>
+            </Trasform>
+
+            <Transform translation="-1.1,0, 0">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="#bfbfbf">
+                        </material>
+                    </appearance>
+                    <Box size="0.25,1.4,0.25"></Box>
+                </shape>
+            </Trasform>
+
+            <Transform translation="0,0,-1.3">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="#bfbfbf">
+                        </material>
+                    </appearance>
+                    <Box size="0.25,1.4,0.25"></Box>
+                </shape>
+            </Trasform>
+
+            <Transform translation="1.1,0,0">
+                <shape>
+                    <appearance>
+                        <material diffuseColor="#bfbfbf">
+                        </material>
+                    </appearance>
+                    <Box size="0.25,1.4,0.25"></Box>
+                </shape>
+            </Trasform>
+
+       </scene>
     </x3d>
 </body>
 </html>

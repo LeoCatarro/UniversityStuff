@@ -1,9 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             
-    <!--######################################-->
-    <!--#            TRABALHO SVG            #-->              
-    <!--######################################-->
-    <!-- FUNDO --> 
+    <!--
+        BACKGROUND
+    -->
         <!-- #Fundo Marinho# -->
                 <defs>
                     <linearGradient id="gradiente_fundo" x1="50%" y1="0%" x2="50%" y2="100%">
@@ -49,10 +48,13 @@
                     M 0 0
                     L -1060 0"
                 />
-        <!--                                                                                                       -->
-    <!--#############################-->        
-    <!--   EXTRAS DO FUNDO MARINHO   -->
-    <!--#############################-->    
+        <!--   
+
+                                                                                                            -->
+    <!--
+        BACKGROUND EXTRAS
+    -->        
+      
         <!--                                         #Peixes#                                                      -->
             <!-- Cardume: Peixes 1 -->
                 <defs>
@@ -305,10 +307,13 @@
                 Q 730 395 780 400
                 Q 788 405 794 425"
                 />                  
-        <!--                                                                                                       -->
-    <!--######################-->        
-    <!--   MODELO DA FIGURA   -->
-    <!--######################-->
+        <!--  
+
+                                                                                                             -->
+    <!--
+        MODEL
+    -->
+
         <!--                                        #Cabeça#                                                       -->
             <!-- Pescoço -->            
                 <rect x = "170" y = "395" width = "20" height = "10" stroke="black" fill="#ffcccc">
@@ -403,9 +408,11 @@
                     </animateMotion>
                 </path>
         <!--                                                                                                       -->
-    <!--######################-->        
-    <!--  OBJETO COMPANHEIRO  -->
-    <!--######################-->    
+
+    <!--
+        OBJETO COMPANHEIRO
+    -->  
+
         <!--                                        #Tridente#                                                     -->
                 <path id="tridente" stroke="brown" stroke-width="0.5%" fill="none" d="
                     M 100 374
@@ -443,9 +450,11 @@
                     </animateMotion>
                 </path> 
          <!--                                                                                                      -->       
-    <!--################################-->        
-    <!--  RESTANTE DO MODELO DA FIGURA  -->
-    <!--################################-->            
+
+    <!--
+        RESTANTE MODELO DA FIGURA
+    --> 
+              
         <!--                                         #Braços#                                                      -->
             <!-- Braço Direita --> 
                 <rect id="right_arm" x = "150" y = "370" width = "70" height = "10" stroke="black" fill="#ffcccc">
