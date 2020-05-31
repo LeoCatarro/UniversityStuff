@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf8">
+    <title>Testes X3DOM(Animação)</title>
+    <script 
+        type='application/javascript' 
+        src='lib/x3dom/x3dom-full.js'>
+    </script>
+    <link 
+        rel='stylesheet' 
+        type='text/css' 
+        href='lib/x3dom/x3dom.css' />
+
+    <style>
+        x3d
+        {
+            border: 5px solid black;
+        } 
+    </style>    
+</head>
+
+<body>
+    <h1>Testes Animação em X3D</h1>
+    <p>VIDEO AUXILIAR: https://www.youtube.com/watch?v=omiHQfmvtnM </p>
+    <x3d width="400px" height="400px">
+        <scene>
+            <!--
+
+                FORMA A ANIMAR
+
+            -->
+            <Transform DEF="circulo">
+                <shape>
+                    <appearance>
+                        <twosidedmaterial diffuseColor="crimson">
+                        </twosidedmaterial>
+                    </appearance>
+                    <sphere></sphere>
+                </shape>
+            </Transform>
+            <!--
+
+                ANIMAÇÃO
+
+            -->   
+            <!-- Definição o Sensor de Tempo -->
+            <TimeSensor DEF="clock" cycleInterval="2" loop="true"></TimeSensor>
+            
+            <!-- Definir as Posições -->
+            <PositionInterpolator DEF="movethings" key="0 0.5 1" keyValue="0 0 0  0 3 0  0 0 0"></PositionInterpolator>
+
+            <!-- Ligar Valores -->
+            <ROUTE fromNode="clock" fromField="fraction_changed" toNode="movethings" toField="set_fraction">  </ROUTE>
+            <ROUTE fromNode="movethings" fromField="value_changed" toNode="circulo" toField="translation">  </ROUTE>
+        </scene>
+    </x3d>
+</body>
+</html>

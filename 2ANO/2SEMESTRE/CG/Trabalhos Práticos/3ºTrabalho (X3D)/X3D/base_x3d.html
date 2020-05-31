@@ -13,10 +13,6 @@
             background-image:url("Background.jpg");
             background-size: 100%;
         }
-        .monitor_screen
-        {
-            background-image:url("Background.jpg");
-        }
     </style>
 
 </head>
@@ -33,16 +29,10 @@
         } 
 
 
-
-        var vid = document.getElementById("myVideo");
-
-        function playVid() {
-            vid.play();
-        } 
     </script>
 
     <x3d width="1060px" height="530px" showStat="true">
-       <scene>
+        <scene>
             <!--
                     SECRETÁRIA(Mesa)
             -->
@@ -153,8 +143,12 @@
             </Transform>
 
             <Transform translation="0,1.3,-0.94">
-                <shape DEF="monitor_screen">
-                    <box size="3.2,1.7,0.1"></Box> 
+                <shape>
+                    <appearance>
+                        <material diffuseColor="gray">
+                        </material>    
+                    </appearance>        
+                    <box size="3.2,1.7,0.1"></Box>         
                 </shape>
             </Transform>
 
@@ -253,8 +247,7 @@
                 <shape USE="chair_foot">   
                 </shape>
             </Transform>
-
-       </scene>
+    </scene> 
     </x3d>
 </body>
 </html>

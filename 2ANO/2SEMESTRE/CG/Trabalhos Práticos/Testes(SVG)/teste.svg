@@ -1,0 +1,72 @@
+<svg width="1060" height="530"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+       
+        <!--######################################-->
+        <!--##           TRABALHO SVG           ##-->              
+        <!--######################################-->
+
+        <!-- FUNDO --> 
+            <!-- Céu & Praia -->
+                <!-- Céu -->
+                <rect x="0" y="0" width = "1060" height= "330" style="fill:LightBlue" />
+                <!-- Praia -->
+                <rect x="0" y="330" width = "1060" height= "380" style="fill:blue" />
+                <rect x="0" y="380" width = "1060" height= "530" style="fill:yellow" />
+            <!--Sol & Nuvens-->
+                <!-- Sol -->
+                <circle cx="75" cy="75" r="50" style="fill:yellow" />
+                <!-- Nuvens -->
+                    <circle cx="140" cy="110" r="30" style="fill:white" />
+
+                    <circle cx="160" cy="100" r="30" style="fill:white" />
+                    <circle cx="160" cy="120" r="30" style="fill:white" />
+
+                    <circle cx="190" cy="100" r="30" style="fill:white" />
+                    <circle cx="190" cy="120" r="30" style="fill:white" />
+
+                    <circle cx="210" cy="110" r="30" style="fill:white" />
+                    <!---->
+                    <circle cx="550" cy="150" r="25" style="fill:white" />
+
+                    <circle cx="570" cy="140" r="30" style="fill:white" />
+                    <circle cx="570" cy="160" r="30" style="fill:white" />
+
+                    <circle cx="600" cy="140" r="30" style="fill:white" />
+                    <circle cx="600" cy="160" r="30" style="fill:white" />
+
+                    <circle cx="620" cy="150" r="25" style="fill:white" />
+                     
+                    <circle cx="930" cy="90"  r="30" style="fill:white" />
+
+                    <circle cx="950" cy="80"  r="30" style="fill:white" />
+                    <circle cx="950" cy="100" r="30" style="fill:white" />
+
+                    <circle cx="980" cy="80"  r="30" style="fill:white" />
+                    <circle cx="980" cy="100" r="30" style="fill:white" />
+
+                    <circle cx="1000" cy="90"  r="30" style="fill:white" /> 
+                       
+            <!-- Barco Extra --> 
+                <!--Estrutura do Barco-->
+                <path stroke="black" fill="white" d = "
+                    M 300 330
+                    L 500 330
+                    L 525 305
+                    L 275 305
+                    L 300 330"
+                />  
+                <!-- Suporte da Vela do Barco -->
+                <path stroke="black" fill="white" d = "   
+                    M 395 305
+                    L 395 205
+                    L 405 205
+                    L 405 305"
+                />
+                <!-- Vela do Barco -->
+                <path stroke="black" fill="red" d = "
+                    M 405 295
+                    L 495 295
+                    L 405 205"
+                />
+    </svg>
