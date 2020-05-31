@@ -10,13 +10,12 @@
         x3d
         {
             border: 2px solid black;
-            background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20190222/ourmid/pngtree-empty-business-office-lobby-background-illustration-backgroundfresh-backgroundillustration-backgroundvastopenbusiness-image_60446.jpg);
+            background-image:url("Background.jpg");
             background-size: 100%;
         }
-
-        video.absolutive
+        .monitor_screen
         {
-            right: 500px;
+            background-image:url("Background.jpg");
         }
     </style>
 
@@ -26,10 +25,6 @@
     <audio id="myAudio" volume="100">
         <source src="BellRing.mp3" type="audio/mpeg">
     </audio> 
-    <video id="myVideo" width="50" height="75" volume=0>
-        <source src="PCVideo.mp4" type="video/mp4">
-        <source src="PCVideo.mp4" type="video/ogg">
-    </video>
     <script>
         var x = document.getElementById("myAudio"); 
 
@@ -64,38 +59,8 @@
                     SECRETÁRIA(Pés)
             -->
 
-            <Transform translation="2.2,-1.25,1">
-                <shape>
-                    <appearance>
-                        <material diffuseColor="#bfbfbf">
-                        </material>
-                    </appearance>
-                    <Box size="0.25,2.5,0.25"></Box>
-                </shape>
-            </Trasform>
-
-            <Transform translation="-4.4,0,0">
-                <shape>
-                    <appearance>
-                        <material diffuseColor="#bfbfbf">
-                        </material>
-                    </appearance>
-                    <Box size="0.25,2.5,0.25"></Box>
-                </shape>
-            </Trasform>
-
-            <Transform translation="0,0,-2">
-                <shape>
-                    <appearance>
-                        <material diffuseColor="#bfbfbf">
-                        </material>
-                    </appearance>
-                    <Box size="0.25,2.5,0.25"></Box>
-                </shape>
-            </Trasform>
-
-            <Transform translation="4.4,0,0">
-                <shape>
+            <Transform translation="2.8,-1.3,-1">
+                <shape DEF="desk_foot">
                     <appearance>
                         <material diffuseColor="#bfbfbf">
                         </material>
@@ -103,12 +68,27 @@
                     <Box size="0.25,2.5,0.25"></Box>
                 </shape>
             </Transform>
+
+            <Transform translation="-2.8,-1.3,-1">
+                <shape USE="desk_foot">
+                </shape>
+            </Transform>
+
+            <Transform translation="-2.8,-1.3,1">
+                <shape USE="desk_foot">
+                </shape>
+            </Transform>
+
+            <Transform translation="2.8,-1.3,1">
+                <shape USE="desk_foot">
+                </shape>
+            </Transform>
             
             <!--
                     CAMPAINHA
             -->
 
-            <Transform translation="0,1.35,0">
+            <Transform translation="-2.8,0.1,-1">
                 <shape>
                     <appearance>
                         <material diffuseColor="#1a0d00">
@@ -118,7 +98,7 @@
                 </shape>
             </Transform>
 
-            <Transform translation="0,1.4,0">
+            <Transform translation="-2.8,0.2,-1">
                 <shape>
                     <appearance>
                         <material diffuseColor="#1a0d00">
@@ -127,18 +107,8 @@
                     <box size="0.15,0.1,0.15"></Box> 
                 </shape>
                 </Transform>
-                
-                <Transform translation="0,1.5,0">
-                    <shape>
-                        <appearance>
-                            <material diffuseColor="#1a0d00">
-                            </material>
-                        </appearance>
-                        <box size="0.1,0.1,0.1"></Box> 
-                    </shape>
-                </Transform>
     
-                <Transform translation="0,1.55,0">
+            <Transform translation="-2.8,0.25,-1">
                     <shape onclick="playAudio(myAudio)">
                         <appearance>
                             <material diffuseColor="gold">
@@ -146,13 +116,13 @@
                         </appearance>
                         <Cone topRadius="0.1" height="0.1" bottomRadius="0.15"></Cone>
                     </shape>
-                </Transform>
+            </Transform>
     
             <!--
                     DESKTOP
             -->
 
-            <Transform translation="2.5,1.3,0">
+            <Transform translation="0,0.1,-1">
                 <shape>
                     <appearance>
                         <material diffuseColor="black">
@@ -162,7 +132,7 @@
                 </shape>
             </Transform>
             
-            <Transform translation="2.5,1.5,0">
+            <Transform translation="0,0.21,-1">
                 <shape>
                     <appearance>
                         <material diffuseColor="black">
@@ -172,7 +142,7 @@
                 </shape>
             </Transform>  
 
-            <Transform translation="2.5,2.6,0">
+            <Transform translation="0,1.3,-1">
                 <shape>
                     <appearance>
                         <material diffuseColor="black">
@@ -182,12 +152,8 @@
                 </shape>
             </Transform>
 
-            <Transform translation="2.5,2.6,0.06">
-                <shape onclick="playVid(myVideo)">
-                    <appearance>
-                        <material diffuseColor="white">
-                        </material>
-                    </appearance>
+            <Transform translation="0,1.3,-0.94">
+                <shape DEF="monitor_screen">
                     <box size="3.2,1.7,0.1"></Box> 
                 </shape>
             </Transform>
@@ -196,8 +162,8 @@
                     CESTO DO LIXO
             -->
 
-            <Transform translation="-1.5,-1,1">
-                <shape>
+            <Transform translation="-4,-2,0">
+                <shape DEF="paper_basket">
                     <appearance>
                         <material diffuseColor="brown">
                         </material>
@@ -206,13 +172,13 @@
                 </shape>
             </Transform>
 
-            <Transform translation="-1.5,-0.98,1">
+            <Transform translation="-4,-1.98,0">
                 <shape>
                     <appearance>
                         <material diffuseColor="black">
                         </material>
                     </appearance>
-                    <Cone topRadius="0.47" height="1" bottomRadius="0.42"></Cone>
+                    <Cone topRadius="0.45" height="1" bottomRadius="0.40"></Cone>
                 </shape>
             </Transform>
 
@@ -220,8 +186,8 @@
                     FOLHAS
             -->
 
-            <Transform translation="4,1.3,1">
-                <shape id="folha">
+            <Transform translation="1.8,0.05,0">
+                <shape DEF="folha">
                     <appearance>
                         <material diffuseColor="white">
                         </material>
@@ -230,13 +196,8 @@
                 </shape>
             </Transform>
 
-            <Transform rotation="0.0 1.0 0.0 -0.3" translation="4,1.3,1">
-                <shape id="folha">
-                    <appearance>
-                        <material diffuseColor="white">
-                        </material>
-                    </appearance>
-                    <box size="0.75,0.01,1.5"></Box> 
+            <Transform rotation="0.0 1.0 0.0 -0.3" translation="1.8,0.05,0">
+                <shape USE="folha">
                 </shape>
             </Transform>
 
@@ -244,7 +205,7 @@
                     CADEIRA(Estrutura)
             -->
             
-            <Transform translation="2.4,0,4">
+            <Transform translation="0,-1.2,3">
                 <shape>
                     <appearance>
                         <material diffuseColor="brown">
@@ -254,7 +215,7 @@
                 </shape>
             </Transform>
 
-            <Transform translation="2.4,0.95,4.8">
+            <Transform translation="0,-0.2,3.8">
                 <shape>
                     <appearance>
                         <material diffuseColor="brown">
@@ -268,45 +229,30 @@
                     CADEIRA(Pés)
             -->
 
-            <Transform translation="2.95,-0.75, 4.7">
-                <shape>
+            <Transform translation="-0.6,-1.9,2.4">
+                <shape DEF="chair_foot">
                     <appearance>
                         <material diffuseColor="#bfbfbf">
                         </material>
                     </appearance>
                     <Box size="0.25,1.4,0.25"></Box>
                 </shape>
-            </Trasform>
+            </Transform>
 
-            <Transform translation="-1.1,0, 0">
-                <shape>
-                    <appearance>
-                        <material diffuseColor="#bfbfbf">
-                        </material>
-                    </appearance>
-                    <Box size="0.25,1.4,0.25"></Box>
+            <Transform translation="0.6,-1.9,2.4">
+                <shape USE="chair_foot">   
                 </shape>
-            </Trasform>
+            </Transform>
 
-            <Transform translation="0,0,-1.3">
-                <shape>
-                    <appearance>
-                        <material diffuseColor="#bfbfbf">
-                        </material>
-                    </appearance>
-                    <Box size="0.25,1.4,0.25"></Box>
+            <Transform translation="0.6,-1.9,3.6">
+                <shape USE="chair_foot">   
                 </shape>
-            </Trasform>
+            </Transform>
 
-            <Transform translation="1.1,0,0">
-                <shape>
-                    <appearance>
-                        <material diffuseColor="#bfbfbf">
-                        </material>
-                    </appearance>
-                    <Box size="0.25,1.4,0.25"></Box>
+            <Transform translation="-0.6,-1.9,3.6">
+                <shape USE="chair_foot">   
                 </shape>
-            </Trasform>
+            </Transform>
 
        </scene>
     </x3d>
