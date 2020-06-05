@@ -85,6 +85,7 @@ function clouds()
 			clouds.fillStyle = "white";
 				clouds.arc(x_clouds[i], y_clouds[i], r_clouds, 0, 2*Math.PI);
 				clouds.fill();
+	
 			clouds.beginPath();
 				clouds.arc(x_clouds[i]+20, y_clouds[i]-10, r_clouds, 0, 2*Math.PI);
 				clouds.fill();
@@ -94,6 +95,7 @@ function clouds()
 
 				clouds.arc(x_clouds[i]+40, y_clouds[i]-10, r_clouds, 0, 2*Math.PI);
 				clouds.fill();
+
 				clouds.beginPath();
 				clouds.arc(x_clouds[i]+40, y_clouds[i]+10, r_clouds, 0, 2*Math.PI);
 				clouds.fill();
@@ -156,13 +158,15 @@ function beach_umbrella()
 			umbrella.arc(950,430,10,Math.PI,2*Math.PI,true);
 			umbrella.arc(970,430,10,Math.PI,2*Math.PI,true);
 		umbrella.fill();
+
 		umbrella.beginPath();
 			umbrella.fillStyle="brown";
 			umbrella.arc(830,430,10,Math.PI,2*Math.PI,true);
 			umbrella.arc(850,430,10,Math.PI,2*Math.PI,true);
 			umbrella.arc(870,430,10,Math.PI,2*Math.PI,true);
 			umbrella.arc(890,430,10,Math.PI,2*Math.PI,true);	
-		umbrella.fill();	
+		umbrella.fill();
+
 		umbrella.beginPath();
 			umbrella.fillStyle="crimson";
 			umbrella.moveTo(820,430);
@@ -186,13 +190,15 @@ function beach_umbrella()
 			umbrella.arc(350,390,10,Math.PI,2*Math.PI,true);
 			umbrella.arc(370,390,10,Math.PI,2*Math.PI,true);
 		umbrella.fill();
+
 		umbrella.beginPath();
 			umbrella.fillStyle="brown";
 			umbrella.arc(230,390,10,Math.PI,2*Math.PI,true);
 			umbrella.arc(250,390,10,Math.PI,2*Math.PI,true);
 			umbrella.arc(270,390,10,Math.PI,2*Math.PI,true);
 			umbrella.arc(290,390,10,Math.PI,2*Math.PI,true);	
-		umbrella.fill();	
+		umbrella.fill();
+
 		umbrella.beginPath();
 			umbrella.fillStyle="crimson";
 			umbrella.moveTo(220,390);
@@ -209,10 +215,13 @@ function beach_towel()
 
 		toalha.beginPath();
 			toalha.fillStyle="Seagreen";
+
 			toalha.fillRect(250,470,40,80);
+		
 			toalha.fillRect(350,470,40,80);
 
 			toalha.fillRect(950,470,40,80);
+			toalha.lineWidth=1;
 }
 
 function picnic_basket()
@@ -221,8 +230,8 @@ function picnic_basket()
 		
 		cesto.beginPath();
 			cesto.fillStyle="SaddleBrown";
+			cesto.strokeStyle="SaddleBrown"
 			cesto.fillRect(830,480,60,20);
-			cesto.strokeStyle="SaddleBrown";
 			cesto.lineWidth=5;
 			cesto.moveTo(860,480);
 			cesto.lineTo(860,460);
@@ -659,9 +668,7 @@ function object(x,y)
 				prancha.quadraticCurveTo(this.x+100,this.y-13,this.x+100,this.y);
 				prancha.quadraticCurveTo(this.x+100,this.y+13,this.x+50,this.y+13);
 				prancha.quadraticCurveTo(this.x,this.y+13,this.x,this.y);
-		prancha.fill();	
-		
-		
+		prancha.fill();		
 	}
 
 	this.update = function() 
