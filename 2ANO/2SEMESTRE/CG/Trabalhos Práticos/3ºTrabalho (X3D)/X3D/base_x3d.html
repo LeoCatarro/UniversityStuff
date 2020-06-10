@@ -75,7 +75,7 @@
                 <shape USE="desk_foot">
                 </shape>
             </Transform>
-            
+   
             <!--
 
                 CAMPAINHA
@@ -269,15 +269,14 @@
             -->
             <!-- Animação: Secretária -->
                 <!-- Definição o Sensor de Tempo -->
-                <TimeSensor DEF="start_anim" description="Touch To Activate"></TimeSensor>
-                <TimeSensor DEF="move_anim" cycleInterval="4"></TimeSensor>
+                <TimeSensor DEF="time" cycleInterval="1.0" loop="false" startTime="0.0" stopTime="4.0"> </TimeSensor>
                 
-                <!-- Definir as Posições -->
-                <PositionInterpolator DEF="movethings" key="0 0 1" keyValue="0 10 0  0 5 0  0 0 0"></PositionInterpolator>
+                <!-- Definir as Posições --> 
+	            <PositionInterpolator DEF="move" key="0.0  0.5  1.0" keyValue="0.0 5.0 0.0   0.0 1.0 0.0   0.0 0.0 0.0"> </PositionInterpolator>       
+        
                 <!-- Ligar Valores -->
-                <ROUTE fromNode="start_anim" fromField="touchTime" toNode="move_anim" toField="startTime">  </ROUTE>
-                <ROUTE fromNode="move_anim" fromField="fraction_changed" toNode="movethings" toField="set_fraction">  </ROUTE>
-                <ROUTE fromNode="movethings" fromField="value_changed" toNode="desk" toField="translation">  </ROUTE>
+                <Route fromNode="touch" fromField ="touchTime" toNode="time" toField="set_startTime"> </Route> 
+                <Route fromNode="timer" fromField ="fraction_changed" toNode="desk" toField="set_translation"> </Route>  
         </scene> 
     </x3d>
 </body>

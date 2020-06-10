@@ -29,15 +29,15 @@ function wave(x,y)
 	}
 	this.update = function() 
 	{
-		if(this.x + 250 >= innerWidth)
+		if(this.x <= 0)
 		{
 			this.x = inicio;
-			this.x+=2;
+			this.x-=2;
 			this.draw();
 		}
 		else
 		{
-			this.x+=2;
+			this.x-=2;
 			this.draw();
 		}		
 	}
@@ -646,12 +646,15 @@ function main()
     background();
 	
     //Definir Objeto Companheiro
-    let objeto = new object(1020,377);
+    let objeto = new object(1020,337);
     objeto.draw()
 	
 	//Definir o Modelo(pessoa)
-    let modelo = new model(1060,300);
-    modelo.draw();
+    let modelo = new model(1060,260);
+	modelo.draw();
+	
+	let onda = new wave(1150,340);
+	onda.draw();
 	
 	
 	//Função de Animação
@@ -660,7 +663,8 @@ function main()
 		requestAnimationFrame(animate);	
 		background();
 		objeto.update();
-		modelo.update();					
+		modelo.update();
+		onda.update();					
 	}	
 	
 	//Animação
