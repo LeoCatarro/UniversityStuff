@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf8">
+
+    <title>Base Threejs</title><!--
+        THREE.JS:   Imperative 3D Models
+    -->
+    <script type='application/javascript' src='lib/threejs/three.min.js'></script>
+    <script type='application/javascript' src='lib/threejs/OrbitControls.js'></script>
+
+    <script type="application/javascript">
+/**
+ * Animate the model
+ */
+function animate(step) {
+    requestAnimationFrame(function () {
+        animate(step);
+    });
+    step.controls.update();
+    step.renderer.render(step.scene, step.camera);
+}
+/**
+ * Setup the rendering context and build a model
+ **/
+function init() {
+    //
+    let renderer = new THREE.WebGLRenderer({
+        alpha: true
+    });
+    //renderer.setClearColor("khaki")
+    let size = Math.min(parent.innerWidth, 512);
+    renderer.setSize(size, size);
+    let div_container = document.getElementById("container");
+    div_container.appendChild(renderer.domElement);
+    //
+    //  Scene (World, Model)
+    //
+    let scene = new THREE.Scene();
+    //
+    //  Camera (and TrackballControls)
+    //
+    let camera = new THREE.PerspectiveCamera(
+        45, // abertura
+        512 / 512, // proporção largura/altura
+        1, // corte perto
+        10000 // corte longe
+    );
+    camera.position.set(0, 0, 8);
+    camera.lookAt(scene.position);
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    //
+    //  Lights
+    //  
+    let ambient_light = new THREE.AmbientLight(0xFFFFFF);
+    scene.add(ambient_light);
+    //
+    //
+    //
+    let geometry = new THREE.CylinderGeometry();
+    //
+    let material =  new THREE.MeshLambertMaterial({
+        color: "crimson"
+    });
+    material.side = THREE.DoubleSide;
+
+    let mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+    //
+    //  Return camera, scene, etc
+    //
+    return {
+        camera: camera,
+        scene: scene,
+        renderer: renderer,
+        controls: controls
+    }
+}
+/**
+ *  Entry function
+ */
+function main() {
+    let step = init();
+    animate(step);
+}
+    </script>
+</head>
+
+<body>
+
+    <div id="container"></div>
+    <script>main();</script></p>
+</body>
+
+</html>
