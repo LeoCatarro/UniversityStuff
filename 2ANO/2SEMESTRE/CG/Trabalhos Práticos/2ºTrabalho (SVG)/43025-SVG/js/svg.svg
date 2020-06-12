@@ -55,14 +55,12 @@
         CAMINHOS DA ANIMAÇÃO
 
     -->
-        <!-- Caminho a Seguir(modelo) -->   
-        <!--                         
-        <path id="caminho" stroke="none" fill="none" d="
-            M -100 250
-            L 800 0
-            L 1070 0 "
-        /> 
-        -->                                       
+        <!-- Caminho a Seguir(modelo) -->                            
+            <path id="caminho" stroke="none" fill="none" d="
+                M -100 250
+                L 800 0
+                L 1070 0 "
+            />                                       
         <!-- Caminho a Seguir(Peixes) -->
             <!-- Peixe1 (Laranjas e Brancos)-->
                 <path id="caminho_peixe1" stroke="none" fill="none" d="
@@ -436,7 +434,7 @@
             Barbatana 
             
         -->
-        <path id="barbatana" stroke="none" fill="#00ffaa" d="
+        <path id="barbatana" stroke="none" fill="#00cc88" d="
             M 128 152
             Q 124 136 128 128
             C 100 120 70 140 60 138
@@ -451,7 +449,7 @@
             </animateMotion>    
         </path>
 
-        <path id="escamas_barbatana" stroke="black" fill="none" d="
+        <path id="escamas_barbatana" stroke="#006644" fill="none" d="
             M 124 132
             Q 122 136 124 140
             M 124 142
@@ -524,16 +522,17 @@
             </animateMotion>
         </circle>
 
-        <path id="cabelo" stroke="none" fill="brown" d="
-            M 180 127
-            Q 198 139 180 151
-            Q 196 150 196 139
-            Q 196 128 180 127">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-            </animateMotion>
-        </path>
-
+        <path id="cabelo" stroke="none" fill="#00cc88" d="
+                M 180 127
+                Q 190 130 190 133
+                Q 189 138 190 146
+                Q 190 145 180 151
+                Q 196 154 196 139
+                Q 196 124 180 127">
+                <animateMotion dur="9s" repeatCount="indefinite" >
+                    <mpath xlink:href="#caminho"/>
+                </animateMotion>
+            </path>
     <!--########################-->        
     <!--   OBJETO COMPANHEIRO   -->
     <!--########################-->

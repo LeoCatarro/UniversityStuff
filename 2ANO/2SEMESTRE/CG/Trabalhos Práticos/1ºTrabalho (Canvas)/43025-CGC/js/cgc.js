@@ -368,6 +368,7 @@ function hair(x,y)
 	
 	}
 }
+
 function head(x,y)  
 {
 	let h = document.getElementById("acanvas").getContext("2d");
@@ -380,7 +381,7 @@ function head(x,y)
 	{
         //Pescoço
         h.beginPath();
-            h.fillStyle="pink";
+            h.fillStyle="#ffc61a";
             h.moveTo(this.x,this.y);
             h.lineTo(this.x,this.y-18);
             h.lineTo(this.x-18,this.y-18);
@@ -398,10 +399,21 @@ function head(x,y)
         h.fill();
 		//Boca
         h.beginPath();
-            h.arcTo(this.x-18,this.y-28,this.x-16,this.y-28,6);
             h.moveTo(this.x-26,this.y-12);
             h.quadraticCurveTo(this.x-22,this.y-14,this.x-22,this.y-16);
-        h.stroke();
+		h.stroke();
+		//Olho
+		h.beginPath();
+			h.moveTo(this.x-18,this.y-28)
+			h.lineWidth=5;
+			h.lineTo(this.x-16,this.y-28);
+			h.lineWidth=1;
+		h.stroke();
+		//Sobrancelha
+		h.beginPath();
+			h.moveTo(this.x-18,this.y-32);
+			h.quadraticCurveTo(this.x-16,this.y-34,this.x-14, this.y-32);
+		h.stroke();		
 	}
 
 	this.update = function()
@@ -415,14 +427,8 @@ function head(x,y)
 function body(x,y) 
 {
 	let body = document.getElementById("acanvas").getContext("2d");
-	let body_gradient = body.createLinearGradient(0,330,acanvas.width,480);
-			body_gradient.addColorStop(0.33,"#ffb833");
-			body_gradient.addColorStop(0.66,"#ffa500");
-
 	let calcoes = document.getElementById("acanvas").getContext("2d");		
-	let calcoes_gradient = calcoes.createLinearGradient(0,330,acanvas.width,480);
-		calcoes_gradient.addColorStop(0.33,"#808080");
-		calcoes_gradient.addColorStop(0.66,"#666666");
+
 
 	this.x=x;  
 	this.y=y;
@@ -432,7 +438,7 @@ function body(x,y)
 	{
         //-->Blusa
         body.beginPath();
-			body.fillStyle=body_gradient;
+			body.fillStyle="#ff8000";
 			body.moveTo(this.x ,this.y);
 			body.lineTo(this.x+16,this.y-2);
 			body.quadraticCurveTo(this.x+32,this.y+2,this.x+40,this.y-40);
@@ -449,7 +455,7 @@ function body(x,y)
             
         //--> Calções
         calcoes.beginPath();
-        calcoes.fillStyle=calcoes_gradient;
+        calcoes.fillStyle="#666666";
 			calcoes.moveTo(this.x,this.y);
 			calcoes.quadraticCurveTo(this.x-4,this.y+10,this.x+4,this.y+30);
 			calcoes.quadraticCurveTo(this.x+10,this.y+32,this.x+20,this.y+28);
@@ -480,7 +486,7 @@ function r_leg(x,y)
 	this.draw = function()
 	{
         rLeg.beginPath();
-        rLeg.fillStyle="pink";
+        rLeg.fillStyle="#ffc61a";
         rLeg.moveTo(this.x,this.y);
         rLeg.lineTo(this.x-6,this.y+22);
         rLeg.quadraticCurveTo(this.x-10,this.y+28,this.x,this.y+34);
@@ -508,7 +514,7 @@ function l_leg(x,y)
 	this.draw = function()
 	{
 		lLeg.beginPath();
-        	lLeg.fillStyle="pink";
+        	lLeg.fillStyle="#ffc61a";
             lLeg.moveTo(this.x,this.y);
             lLeg.lineTo(this.x+6,this.y+6);
             lLeg.lineTo(this.x+6,this.y+6);
@@ -537,7 +543,7 @@ function r_arm(x,y)
 	this.draw = function()
 	{
 		rArm.beginPath();
-			rArm.fillStyle="pink";
+			rArm.fillStyle="#ffc61a";
 			rArm.moveTo(this.x,this.y);
 			rArm.lineTo(this.x-12,this.y+4);
 			rArm.lineTo(this.x-16,this.y+30);
@@ -571,7 +577,7 @@ function l_arm(x,y)
 	this.draw = function()
 	{
         lArm.beginPath();
-			lArm.fillStyle="pink";
+			lArm.fillStyle="#ffc61a";
 			lArm.moveTo(this.x,this.y);
 			lArm.quadraticCurveTo(this.x+12,this.y+10,this.x+52,this.y+21);
 			lArm.quadraticCurveTo(this.x+67,this.y+16,this.x+32,this.y+6);
@@ -658,9 +664,15 @@ function object(x,y)
 
 	let prancha = document.getElementById("acanvas").getContext("2d");
 	
-	let prancha_gradient = prancha.createLinearGradient(200, 0, 860, 0);
-		prancha_gradient.addColorStop(0.33, "#ff4d4d");
-		prancha_gradient.addColorStop(0.66, "#ff1a1a");
+	let prancha_gradient = prancha.createLinearGradient(this.x+25,this.y+5, this.x+25,this.y-35);
+		prancha_gradient.addColorStop(0.20, "yellow");
+		prancha_gradient.addColorStop(0.20, "seagreen");
+		prancha_gradient.addColorStop(0.30, "seagreen");
+		prancha_gradient.addColorStop(0.30, "white");
+		prancha_gradient.addColorStop(0.50, "white");
+		prancha_gradient.addColorStop(0.50, "seagreen");
+		prancha_gradient.addColorStop(0.60, "seagreen");
+		prancha_gradient.addColorStop(0.60, "yellow");
 	
 	this.draw = function()
 	{
