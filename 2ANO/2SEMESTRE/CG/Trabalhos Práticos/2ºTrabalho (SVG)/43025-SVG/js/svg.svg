@@ -29,13 +29,14 @@
                     L 0 475"
                 />
         <!--                                                                                                       -->
-            
+           
         <!--                                    #Caminho a Seguir(modelo)#                                         -->
                 <path id="caminho" stroke="none" fill="none" d="
                     M -100 250
                     L 800 0
                     L 1070 0 "
                 />
+                
         <!--                                                                                                       -->
         <!--                                   #Caminho a Seguir(Peixes)#                                          -->
             <!-- Peixe1 -->
@@ -347,29 +348,8 @@
         </animateMotion>
     </path>
     
-    <path id="braço_esquerdo" stroke="black" fill="#ffc61a" d=
-        "M 164 152
-        Q 174 158 205 158
-        Q 210 163 205 163
-        Q 174 160 164 160
-        Q 160 160 158 152">
-        <animateMotion dur="3s" repeatCount="indefinite" >
-            <mpath xlink:href="#caminho"/>
-        </animateMotion>
-    </path>    
-    <!--
-    <path id="cauda" stroke="black" fill="#00ffaa" d=
-        "M 128 152
-        Q 124 136 128 128
-        Q 70 120 60 138
-        Q 60 120 40 120
-        Q 55 126 50 144
-        Q 55 155 40 168
-        Q 60 160 60 148
-        Q 100 158 128 152
-        M 169 149"
-    />
-    -->
+       
+
     <path id="cauda" stroke="black" fill="#00ffaa" d=
         "M 128 152
         Q 124 136 128 128
@@ -472,6 +452,53 @@
         <animateMotion dur="3s" repeatCount="indefinite" >
             <mpath xlink:href="#caminho"/>
         </animateMotion>
-    </path>                     
+    </path>
+
+    <path id="tridente" stroke="brown" stroke-width="0.25%" fill="none" d="
+                    M 100 160
+                    L 275 160
+
+                    M 275 160
+                    Q 275 144 300 144
+
+                    M 275 160
+                    L 310 160
+
+                    M 275 160
+                    Q 275 176 300 176">
+                    <animateMotion dur="3s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </path>    
+                <path id="bicos_tridente" stroke="brown" fill="brown" d="
+                    M 300 138
+                    L 300 150
+                    L 310 144
+                    L 300 138
+                    
+                    M 310 154
+                    L 310 166
+                    L 320 160
+                    L 310 154
+                    
+                    M 300 169
+                    L 300 181
+                    L 310 176
+                    L 300 169">
+                    <animateMotion dur="3s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </path>
+
+            <path id="braço_esquerdo" stroke="black" fill="#ffc61a" d=
+                "M 164 152
+                Q 174 158 205 158
+                Q 210 163 205 163
+                Q 174 160 164 160
+                Q 160 160 158 152">
+                <animateMotion dur="3s" repeatCount="indefinite" >
+                    <mpath xlink:href="#caminho"/>
+                </animateMotion>
+            </path>                               
 </svg>
 
