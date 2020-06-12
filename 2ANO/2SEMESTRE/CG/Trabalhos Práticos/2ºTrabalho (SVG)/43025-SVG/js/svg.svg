@@ -391,22 +391,11 @@
         </animateMotion>
      </circle>
 
-     <path id="sobrancelhas" stroke="none" fill="none" d=
-     "M 186 132
-     Q 188 134 186 136
-     M 186 142
-     Q 188 144 186 146">
-        <animateMotion dur="9s" repeatCount="indefinite" >
-            <mpath xlink:href="#caminho"/>
-        </animateMotion>
-     </path>
-
-     <path id="cabelo" stroke="none" fill="brown" d=
-    "M 180 127
-    Q 192 128 190 139 
-    Q 194 146 180 151
-    Q 196 150 196 139
-    Q 196 128 180 127">
+     <path id="cabelo" stroke="none" fill="brown" d="
+        M 180 127
+        Q 198 139 180 151
+        Q 196 150 196 139
+        Q 196 128 180 127">
         <animateMotion dur="9s" repeatCount="indefinite" >
             <mpath xlink:href="#caminho"/>
         </animateMotion>
