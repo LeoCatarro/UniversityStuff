@@ -1,0 +1,151 @@
+<!--                                        #Cabeça#                                                       -->
+            <!-- Pescoço -->            
+                <rect x = "170" y = "395" width = "20" height = "10" stroke="none" fill="#ffcccc">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion> 
+                </rect> 
+            <!-- Cabeça -->
+                <circle id="model_head" cx="200" cy="400" r="15" stroke="none" fill="#ffcccc">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>    
+                </circle>
+            <!-- Olhos -->
+                <circle id="left_eye" cx="205" cy="398" r="2" fill="black">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion> 
+                </circle>    
+                <circle id="right_eye" cx="205" cy="408" r="2" fill="black">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </circle>    
+            <!-- Boca -->
+                <path id="boca" stroke="black" fill="none" d="
+                    M 195 398
+                    L 195 408
+                    Q 185 403 195 398">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion> 
+                </path>    
+        <!--                                                                                                       -->
+        <!--                                      #Corpo#                                                          -->
+            <!-- Corpo -->
+                <rect id="model_body" x="110" y="380" width="70" height="40" stroke="none" fill="#ffcccc">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </rect>
+            <!-- Peito -->
+                <circle id="peito_dir" stroke="none" fill="#ff9999" cx="165" cy="390" r="2">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </circle>
+                <circle id="peito_es" stroke="none" fill="#ff9999" cx="165" cy="410" r="2">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </circle>    
+            <!-- Admoninal -->
+                <path id="peito" stroke="#ff9999" fill="none" stroke-width="0.33%" d="
+                    M 160 385
+                    Q 160 400 170 400
+                    Q 160 400 160 415
+            
+                    M 140 385
+                    L 140 398
+
+                    M 140 405
+                    L 140 418
+                    
+                    M 130 385
+                    L 130 398
+
+                    M 130 405
+                    L 130 418
+
+                    M 120 385
+                    L 120 398
+
+                    M 120 405
+                    L 120 418">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </path>    
+        <!--                                                                                                       -->
+        <!--                                      #Barbatana#                                                      -->
+                <path id="barbatana" stroke="none" fill="#008000" d="
+                    M 110 380
+                    Q 100 390 40 390
+                    Q 40 380 20 370
+                    L 20 430
+                    Q 40 420 40 410
+                    Q 100 410 110 420
+                    L 110 380">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </path>
+        <!--                                                                                                       -->
+    <!--######################-->        
+    <!--  OBJETO COMPANHEIRO  -->
+    <!--######################-->    
+        <!--                                        #Tridente#                                                     -->
+                <path id="tridente" stroke="brown" stroke-width="0.5%" fill="none" d="
+                    M 100 374
+                    L 275 374
+
+                    M 275 374
+                    Q 275 354 300 354
+
+                    M 275 374
+                    L 310 374
+
+                    M 275 374
+                    Q 275 394 300 394">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </path>    
+                <path id="bicos_tridente" stroke="brown" fill="brown" d="
+                    M 300 348
+                    L 300 360
+                    L 320 354
+                    L 300 348
+                    
+                    M 310 368
+                    L 310 380
+                    L 330 374
+                    L 310 368
+                    
+                    M 300 388
+                    L 300 400
+                    L 320 394
+                    L 300 388">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </path> 
+         <!--                                                                                                      -->       
+    <!--################################-->        
+    <!--  RESTANTE DO MODELO DA FIGURA  -->
+    <!--################################-->            
+        <!--                                         #Braços#                                                      -->
+            <!-- Braço Direita --> 
+                <rect id="right_arm" x = "150" y = "370" width = "70" height = "10" stroke="none" fill="#ffcccc">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </rect>    
+            <!-- Braço Esquerda --> 
+                <rect id="left_arm" x = "110" y = "420" width = "70" height = "10" stroke="none" fill="#ffcccc">
+                    <animateMotion dur="5s" repeatCount="indefinite" >
+                        <mpath xlink:href="#caminho"/>
+                    </animateMotion>
+                </rect>    
+        <!--                                       
