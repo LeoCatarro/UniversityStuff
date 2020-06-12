@@ -1,18 +1,32 @@
 /*******************************************************************************************
 									**BACKGROUND**
 ********************************************************************************************/
+
 /*
 	-->Partes do Background
 */
+
+function ocean()
+{
+	let mar = document.getElementById("acanvas").getContext("2d");
+	let mar_gradient = mar.createLinearGradient(0,330,acanvas.width,480);
+		mar_gradient.addColorStop(0.33,"#1ab2ff");
+		mar_gradient.addColorStop(0.66,"#0088cc");
+
+	mar.beginPath()
+		mar.fillStyle=mar_gradient;
+		mar.fillRect(0,330,acanvas.width,480);
+	mar.closePath();
+}
 
 function wave(x,y)
 {
 	let wave = document.getElementById("acanvas").getContext("2d");
 	let wave_gradient = wave.createLinearGradient(0,330,acanvas.width,480);
-		wave_gradient.addColorStop(0.33,"#33ccff");
-		wave_gradient.addColorStop(0.66,"#00ace6");
-
-	this.x=x;
+		wave_gradient.addColorStop(0.33,"#1ab2ff");
+		wave_gradient.addColorStop(0.66,"#0088cc");
+	
+		this.x=x;
 	this.y=y;
 	let inicio=x;
 
@@ -29,7 +43,7 @@ function wave(x,y)
 	}
 	this.update = function() 
 	{
-		if(this.x <= 0)
+		if(this.x <= -50)
 		{
 			this.x = inicio;
 			this.x-=2;
@@ -83,23 +97,25 @@ function clouds()
 	{
 		clouds.beginPath();
 			clouds.fillStyle = "white";
-				clouds.arc(x_clouds[i], y_clouds[i], r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-			clouds.beginPath();
-				clouds.arc(x_clouds[i]+20, y_clouds[i]-10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds[i]+20, y_clouds[i]+10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
+			clouds.arc(x_clouds[i], y_clouds[i], r_clouds, 0, 2*Math.PI);
+		clouds.fill();
 
-				clouds.arc(x_clouds[i]+40, y_clouds[i]-10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
-				clouds.beginPath();
-				clouds.arc(x_clouds[i]+40, y_clouds[i]+10, r_clouds, 0, 2*Math.PI);
-				clouds.fill();
+		clouds.beginPath();
+			clouds.arc(x_clouds[i]+20, y_clouds[i]-10, r_clouds, 0, 2*Math.PI);
+			clouds.fill();
 			clouds.beginPath();
-				clouds.arc(x_clouds[i]+60, y_clouds[i], r_clouds, 0, 2*Math.PI);
-				clouds.fill();
+			clouds.arc(x_clouds[i]+20, y_clouds[i]+10, r_clouds, 0, 2*Math.PI);
+			clouds.fill();
+
+			clouds.arc(x_clouds[i]+40, y_clouds[i]-10, r_clouds, 0, 2*Math.PI);
+			clouds.fill();
+			clouds.beginPath();
+			clouds.arc(x_clouds[i]+40, y_clouds[i]+10, r_clouds, 0, 2*Math.PI);
+		clouds.fill();
+
+		clouds.beginPath();
+			clouds.arc(x_clouds[i]+60, y_clouds[i], r_clouds, 0, 2*Math.PI);
+		clouds.fill();
 	}
 }
 
@@ -124,82 +140,69 @@ function birds()
 	}
 }
 
-function ocean()
-{
-	let mar = document.getElementById("acanvas").getContext("2d");
-	let mar_gradient = mar.createLinearGradient(0,330,acanvas.width,480);
-		mar_gradient.addColorStop(0.33,"#33ccff");
-		mar_gradient.addColorStop(0.66,"#00ace6");
-
-		mar.beginPath()
-			mar.fillStyle=mar_gradient;
-			mar.fillRect(0,330,acanvas.width,480);
-		mar.closePath();
-}
-
 function beach_umbrella()
 {
 	let umbrella = document.getElementById("acanvas").getContext("2d");
 
-		umbrella.beginPath();
-			umbrella.strokeStyle="brown";
-			umbrella.lineWidth = 6;
-			umbrella.moveTo(900,500);
-			umbrella.lineTo(900,378);
-		umbrella.stroke();	
+	umbrella.beginPath();
+		umbrella.strokeStyle="brown";
+		umbrella.lineWidth = 6;
+		umbrella.moveTo(900,500);
+		umbrella.lineTo(900,378);
+	umbrella.stroke();	
 
-		umbrella.beginPath();
-			umbrella.lineWidth = 1;
-			umbrella.fillStyle="brown";
-			umbrella.arc(910,430,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(930,430,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(950,430,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(970,430,10,Math.PI,2*Math.PI,true);
-		umbrella.fill();
-		umbrella.beginPath();
-			umbrella.fillStyle="brown";
-			umbrella.arc(830,430,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(850,430,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(870,430,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(890,430,10,Math.PI,2*Math.PI,true);	
-		umbrella.fill();	
-		umbrella.beginPath();
-			umbrella.fillStyle="crimson";
-			umbrella.moveTo(820,430);
-			umbrella.quadraticCurveTo(830,380,900,380);
-			umbrella.quadraticCurveTo(970,380,980,430);
-		umbrella.fill();
+	umbrella.beginPath();
 		umbrella.lineWidth = 1;
+		umbrella.fillStyle="brown";
+		umbrella.arc(910,430,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(930,430,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(950,430,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(970,430,10,Math.PI,2*Math.PI,true);
+	umbrella.fill();
+	umbrella.beginPath();
+		umbrella.fillStyle="brown";
+		umbrella.arc(830,430,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(850,430,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(870,430,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(890,430,10,Math.PI,2*Math.PI,true);	
+	umbrella.fill();	
+	umbrella.beginPath();
+		umbrella.fillStyle="crimson";
+		umbrella.moveTo(820,430);
+		umbrella.quadraticCurveTo(830,380,900,380);
+		umbrella.quadraticCurveTo(970,380,980,430);
+	umbrella.fill();
+	umbrella.lineWidth = 1;
 //####################################################################
-		umbrella.beginPath();
-			umbrella.strokeStyle="brown";
-			umbrella.lineWidth = 6;
-			umbrella.moveTo(300,500);
-			umbrella.lineTo(300,348);
-		umbrella.stroke();	
+	umbrella.beginPath();
+		umbrella.strokeStyle="brown";
+		umbrella.lineWidth = 6;
+		umbrella.moveTo(300,500);
+		umbrella.lineTo(300,348);
+	umbrella.stroke();	
 
-		umbrella.beginPath();
-			umbrella.lineWidth = 1;
-			umbrella.fillStyle="brown";
-			umbrella.arc(310,390,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(330,390,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(350,390,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(370,390,10,Math.PI,2*Math.PI,true);
-		umbrella.fill();
-		umbrella.beginPath();
-			umbrella.fillStyle="brown";
-			umbrella.arc(230,390,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(250,390,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(270,390,10,Math.PI,2*Math.PI,true);
-			umbrella.arc(290,390,10,Math.PI,2*Math.PI,true);	
-		umbrella.fill();	
-		umbrella.beginPath();
-			umbrella.fillStyle="crimson";
-			umbrella.moveTo(220,390);
-			umbrella.quadraticCurveTo(230,350,300,350);
-			umbrella.quadraticCurveTo(380,350,380,390);
-		umbrella.fill();
+	umbrella.beginPath();
 		umbrella.lineWidth = 1;
+		umbrella.fillStyle="brown";
+		umbrella.arc(310,390,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(330,390,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(350,390,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(370,390,10,Math.PI,2*Math.PI,true);
+	umbrella.fill();
+	umbrella.beginPath();
+		umbrella.fillStyle="brown";
+		umbrella.arc(230,390,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(250,390,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(270,390,10,Math.PI,2*Math.PI,true);
+		umbrella.arc(290,390,10,Math.PI,2*Math.PI,true);	
+	umbrella.fill();	
+	umbrella.beginPath();
+		umbrella.fillStyle="crimson";
+		umbrella.moveTo(220,390);
+		umbrella.quadraticCurveTo(230,350,300,350);
+		umbrella.quadraticCurveTo(380,350,380,390);
+	umbrella.fill();
+	umbrella.lineWidth = 1;
 
 }
 
@@ -207,27 +210,81 @@ function beach_towel()
 {
 	let toalha = document.getElementById("acanvas").getContext("2d");
 
-		toalha.beginPath();
-			toalha.fillStyle="Seagreen";
-			toalha.fillRect(250,470,40,80);
-			toalha.fillRect(350,470,40,80);
-
-			toalha.fillRect(950,470,40,80);
+	toalha.beginPath();
+		toalha.fillStyle="#39ac6b";
+		toalha.fillRect(250,470,40,80);
+		toalha.fillStyle="#33995f";
+		toalha.fillRect(350,470,40,80);
+		toalha.fillStyle="#267347";
+		toalha.fillRect(950,470,40,80);
 }
 
 function picnic_basket()
 {
 	let cesto = document.getElementById("acanvas").getContext("2d");
 		
-		cesto.beginPath();
-			cesto.fillStyle="SaddleBrown";
-			cesto.fillRect(830,480,60,20);
-			cesto.strokeStyle="SaddleBrown";
-			cesto.lineWidth=5;
-			cesto.moveTo(860,480);
-			cesto.lineTo(860,460);
-		cesto.stroke();
-		cesto.lineWidth=1;
+	cesto.beginPath();
+		cesto.fillStyle="SaddleBrown";
+		cesto.fillRect(830,480,60,20);
+		cesto.strokeStyle="SaddleBrown";
+		cesto.lineWidth=5;
+		cesto.moveTo(860,480);
+		cesto.lineTo(860,460);
+	cesto.stroke();
+	cesto.lineWidth=1;
+}
+
+function beach_toys()
+{
+	let castle = document.getElementById("acanvas").getContext("2d");
+
+	castle.beginPath();
+		castle.fillStyle="#a6a6a6";
+		castle.moveTo(55,500);
+		castle.lineTo(100,500);
+
+		castle.lineTo(100,460);
+		castle.lineTo(95,460);
+		castle.lineTo(95,465);
+		castle.lineTo(90,465);
+		castle.lineTo(90,460);
+		castle.lineTo(85,460);
+		castle.lineTo(85,475);
+
+		castle.lineTo(70,475);
+
+		castle.lineTo(70,460);
+		castle.lineTo(65,460);
+		castle.lineTo(65,465);
+		castle.lineTo(60,465);
+		castle.lineTo(60,460);
+		castle.lineTo(55,460);
+		castle.lineTo(55,500);
+	castle.fill();
+	
+	castle.beginPath();
+		castle.fillStyle="#996633";
+		castle.moveTo(70,500);
+		castle.lineTo(70,485);
+		castle.quadraticCurveTo(77,480,85,485);
+		castle.lineTo(85,500);
+		castle.lineTo(70,500);
+	castle.fill();	
+
+	let shovel = document.getElementById("acanvas").getContext("2d");
+
+	shovel.beginPath();
+		shovel.lineWidth=3;
+		shovel.strokeStyle="#996633";
+		shovel.fillStyle="#996633";
+		shovel.moveTo(120,500);
+		shovel.lineTo(120,480);
+		shovel.arcTo(115,480,115,470,5);
+		shovel.lineTo(115,470);
+		shovel.lineTo(125,470);
+		shovel.arcTo(125,480,120,480,5);
+	shovel.fill();
+	shovel.stroke();	
 }
 
 function beach()
@@ -235,8 +292,7 @@ function beach()
 	let praia = document.getElementById("acanvas").getContext("2d");
 	let praia_gradient = praia.createLinearGradient(0,450,acanvas.width,acanvas.height);
 		praia_gradient.addColorStop(0.33, "#f4ebca");
-		praia_gradient.addColorStop(0.66, "#f5e9bd");
-		praia_gradient.addColorStop(0.99, "#efdfaa");
+		praia_gradient.addColorStop(0.99, "#ebd694");
 
 	praia.beginPath()
 		praia.fillStyle=praia_gradient;
@@ -251,7 +307,9 @@ function beach()
 
 	beach_towel();
 		
-	picnic_basket()
+	picnic_basket();
+
+	beach_toys();
 }
 
 /*
@@ -271,9 +329,11 @@ function background()
 /*******************************************************************************************
 								**MODELO DA FIGURA**
 ********************************************************************************************/
+
 /*
 	-->Partes do Modelo
 */
+
 function hair(x,y)
 {
     this.x=x;
@@ -282,26 +342,29 @@ function hair(x,y)
 
     this.draw = function()
     {
-        let hair = document.getElementById("acanvas").getContext("2d");
+		let hair = document.getElementById("acanvas").getContext("2d");
+		let hair_gradient = hair.createLinearGradient(0,330,acanvas.width,480);
+			hair_gradient.addColorStop(0.33,"#804000");
+			hair_gradient.addColorStop(0.66,"#663300");
+
         hair.beginPath();
-        hair.fillStyle="brown";
-        hair.moveTo(this.x,this.y);
-        hair.bezierCurveTo(this.x+4,this.y-6,this.x+8,this.y+2,this.x+16,this.y-2);
-        hair.quadraticCurveTo(this.x+30,this.y-2,this.x+26,this.y+10);
-        hair.quadraticCurveTo(this.x+18,this.y+24,this.x+30,this.y+24);
-        hair.quadraticCurveTo(this.x+32,this.y+22,this.x+30,this.y+18);
-        hair.bezierCurveTo(this.x+26,this.y+18,this.x+46,this.y+8,this.x+30,this.y-6);
-        hair.quadraticCurveTo(this.x+20,this.y-22,this.x,this.y-12);
-        hair.quadraticCurveTo(this.x-8,this.y-16,this.x-2,this.y-20);
-        hair.quadraticCurveTo(this.x-22,this.y-12,this.x,this.y);
-        hair.stroke();
+			hair.fillStyle=hair_gradient;
+			hair.moveTo(this.x,this.y);
+			hair.bezierCurveTo(this.x+4,this.y-6,this.x+8,this.y+2,this.x+16,this.y-2);
+			hair.quadraticCurveTo(this.x+30,this.y-2,this.x+26,this.y+10);
+			hair.quadraticCurveTo(this.x+18,this.y+24,this.x+30,this.y+24);
+			hair.quadraticCurveTo(this.x+32,this.y+22,this.x+30,this.y+18);
+			hair.bezierCurveTo(this.x+26,this.y+18,this.x+46,this.y+8,this.x+30,this.y-6);
+			hair.quadraticCurveTo(this.x+20,this.y-22,this.x,this.y-12);
+			hair.quadraticCurveTo(this.x-8,this.y-16,this.x-2,this.y-20);
+			hair.quadraticCurveTo(this.x-22,this.y-12,this.x,this.y);
         hair.fill();
     }
 
     this.update = function()
 	{	
-			this.x-=2;
-			this.draw();
+		this.x-=2;
+		this.draw();
 	
 	}
 }
@@ -315,9 +378,7 @@ function head(x,y)
 
 	this.draw = function()
 	{
-        /*
-            Cabeça
-        */
+        //Pescoço
         h.beginPath();
             h.fillStyle="pink";
             h.moveTo(this.x,this.y);
@@ -325,7 +386,7 @@ function head(x,y)
             h.lineTo(this.x-18,this.y-18);
             h.lineTo(this.x-18,this.y);
         h.fill();
-
+		//Formato Cabeça
         h.beginPath();    
             h.moveTo(this.x-8,this.y-12);
             h.quadraticCurveTo(this.x-22,this.y-2,this.x-28,this.y-18);
@@ -334,32 +395,34 @@ function head(x,y)
             h.bezierCurveTo(this.x-20,this.y-42,this.x-16,this.y-34,this.x-8,this.y-38);
             h.quadraticCurveTo(this.x+6,this.y-38,this.x+2,this.y-26);
             h.quadraticCurveTo(this.x-2,this.y-12,this.x-8,this.y-12);
-            h.stroke();
         h.fill();
-
+		//Boca
         h.beginPath();
             h.arcTo(this.x-18,this.y-28,this.x-16,this.y-28,6);
             h.moveTo(this.x-26,this.y-12);
             h.quadraticCurveTo(this.x-22,this.y-14,this.x-22,this.y-16);
         h.stroke();
-        
-        /*
-            Cabelo
-        */
-        
 	}
 
 	this.update = function()
 	{
 
-			this.x-=2;
-			this.draw();
+		this.x-=2;
+		this.draw();
 	}
 }
 
 function body(x,y) 
 {
 	let body = document.getElementById("acanvas").getContext("2d");
+	let body_gradient = body.createLinearGradient(0,330,acanvas.width,480);
+			body_gradient.addColorStop(0.33,"#ffb833");
+			body_gradient.addColorStop(0.66,"#ffa500");
+
+	let calcoes = document.getElementById("acanvas").getContext("2d");		
+	let calcoes_gradient = calcoes.createLinearGradient(0,330,acanvas.width,480);
+		calcoes_gradient.addColorStop(0.33,"#808080");
+		calcoes_gradient.addColorStop(0.66,"#666666");
 
 	this.x=x;  
 	this.y=y;
@@ -367,44 +430,41 @@ function body(x,y)
 
 	this.draw = function()
 	{
-            //-->Blusa
-            body.beginPath();
-            body.fillStyle="orange";
-            body.moveTo(this.x ,this.y);
-            body.lineTo(this.x+16,this.y-2);
-            body.quadraticCurveTo(this.x+32,this.y+2,this.x+40,this.y-40);
-            body.moveTo(this.x+40,this.y-34);
-            body.quadraticCurveTo(this.x+40,this.y-32,this.x+52,this.y-42);
-            body.quadraticCurveTo(this.x+40,this.y-32,this.x+52,this.y-42);
-            body.quadraticCurveTo(this.x+32,this.y-48,this.x+24,this.y-46);
-            body.quadraticCurveTo(this.x+17,this.y-34,this.x+4,this.y-46);
-            body.quadraticCurveTo(this.x-12,this.y-44,this.x-22,this.y-42);
-            body.quadraticCurveTo(this.x-20,this.y-40,this.x-16,this.y-30);
-            body.lineTo(this.x-4,this.y-32);
-            body.lineTo(this.x,this.y);
-            body.stroke();
-            body.fill();
+        //-->Blusa
+        body.beginPath();
+			body.fillStyle=body_gradient;
+			body.moveTo(this.x ,this.y);
+			body.lineTo(this.x+16,this.y-2);
+			body.quadraticCurveTo(this.x+32,this.y+2,this.x+40,this.y-40);
+			body.moveTo(this.x+40,this.y-34);
+			body.quadraticCurveTo(this.x+40,this.y-32,this.x+52,this.y-42);
+			body.quadraticCurveTo(this.x+40,this.y-32,this.x+52,this.y-42);
+			body.quadraticCurveTo(this.x+32,this.y-48,this.x+24,this.y-46);
+			body.quadraticCurveTo(this.x+17,this.y-34,this.x+4,this.y-46);
+			body.quadraticCurveTo(this.x-12,this.y-44,this.x-22,this.y-42);
+			body.quadraticCurveTo(this.x-20,this.y-40,this.x-16,this.y-30);
+			body.lineTo(this.x-4,this.y-32);
+			body.lineTo(this.x,this.y);
+        body.fill();
             
-            //--> Calções
-            body.beginPath();
-            body.fillStyle="gray";
-            body.moveTo(this.x,this.y);
-            body.quadraticCurveTo(this.x-4,this.y+10,this.x+4,this.y+30);
-            body.quadraticCurveTo(this.x+10,this.y+32,this.x+20,this.y+28);
-            body.quadraticCurveTo(this.x+16,this.y+20,this.x+18,this.y+12);
-            body.quadraticCurveTo(this.x+24,this.y+20,this.x+30,this.y+32);
-            body.lineTo(this.x+44,this.y+20);
-            body.quadraticCurveTo(this.x+42,this.y+20,this.x+26,this.y-6);
-            body.stroke();
-            body.fill();
-
+        //--> Calções
+        calcoes.beginPath();
+        calcoes.fillStyle=calcoes_gradient;
+			calcoes.moveTo(this.x,this.y);
+			calcoes.quadraticCurveTo(this.x-4,this.y+10,this.x+4,this.y+30);
+			calcoes.quadraticCurveTo(this.x+10,this.y+32,this.x+20,this.y+28);
+			calcoes.quadraticCurveTo(this.x+16,this.y+20,this.x+18,this.y+12);
+			calcoes.quadraticCurveTo(this.x+24,this.y+20,this.x+30,this.y+32);
+			calcoes.lineTo(this.x+44,this.y+20);
+			calcoes.quadraticCurveTo(this.x+42,this.y+20,this.x+26,this.y-6);
+		calcoes.fill();
 	}
 
 	this.update = function()
 	{
 	
-			this.x-=2;
-			this.draw();
+		this.x-=2;
+		this.draw();
 	}
 
 }
@@ -426,14 +486,13 @@ function r_leg(x,y)
         rLeg.quadraticCurveTo(this.x-10,this.y+28,this.x,this.y+34);
         rLeg.quadraticCurveTo(this.x+12,this.y+36,this.x+2,this.y+28);
         rLeg.bezierCurveTo(this.x-2,this.y+14,this.x+18,this.y+2,this.x+14,this.y-2);
-        rLeg.stroke();
     rLeg.fill();
 	}
 
 	this.update = function()
 	{	
-			this.x-=2;
-			this.draw();
+		this.x-=2;
+		this.draw();
 	}
 	
 }
@@ -449,16 +508,15 @@ function l_leg(x,y)
 	this.draw = function()
 	{
 		lLeg.beginPath();
-        lLeg.fillStyle="pink";
-                lLeg.moveTo(this.x,this.y);
-                lLeg.lineTo(this.x+6,this.y+6);
-                lLeg.lineTo(this.x+6,this.y+6);
-                lLeg.lineTo(this.x-2,this.y+30);
-                lLeg.quadraticCurveTo(this.x-6,this.y+32,this.x+2,this.y+40);
-                lLeg.quadraticCurveTo(this.x+10,this.y+42,this.x+8,this.y+34);
-                lLeg.bezierCurveTo(this.x-2,this.y+30,this.x+22,this.y+4,this.x+14,this.y-6);
-                lLeg.stroke();
-            lLeg.fill();
+        	lLeg.fillStyle="pink";
+            lLeg.moveTo(this.x,this.y);
+            lLeg.lineTo(this.x+6,this.y+6);
+            lLeg.lineTo(this.x+6,this.y+6);
+            lLeg.lineTo(this.x-2,this.y+30);
+            lLeg.quadraticCurveTo(this.x-6,this.y+32,this.x+2,this.y+40);
+            lLeg.quadraticCurveTo(this.x+10,this.y+42,this.x+8,this.y+34);
+            lLeg.bezierCurveTo(this.x-2,this.y+30,this.x+22,this.y+4,this.x+14,this.y-6);
+        lLeg.fill();
 	}
 
 	this.update = function()
@@ -479,25 +537,24 @@ function r_arm(x,y)
 	this.draw = function()
 	{
 		rArm.beginPath();
-        rArm.fillStyle="pink";
-        rArm.moveTo(this.x,this.y);
-        rArm.lineTo(this.x-12,this.y+4);
-        rArm.lineTo(this.x-16,this.y+30);
-        rArm.quadraticCurveTo(this.x-14,this.y+32,this.x-16,this.y+42);
-        rArm.quadraticCurveTo(this.x-18,this.y+44,this.x-20,this.y+34);
-        rArm.quadraticCurveTo(this.x-26,this.y+40,this.x-24,this.y+44);
-        rArm.quadraticCurveTo(this.x-40,this.y+48,this.x-30,this.y+28);
-        rArm.quadraticCurveTo(this.x-24,this.y+18,this.x-22,this.y+8);
-        rArm.quadraticCurveTo(this.x-22,this.y-4,this.x-4,this.y-12);
-        rArm.stroke();
+			rArm.fillStyle="pink";
+			rArm.moveTo(this.x,this.y);
+			rArm.lineTo(this.x-12,this.y+4);
+			rArm.lineTo(this.x-16,this.y+30);
+			rArm.quadraticCurveTo(this.x-14,this.y+32,this.x-16,this.y+42);
+			rArm.quadraticCurveTo(this.x-18,this.y+44,this.x-20,this.y+34);
+			rArm.quadraticCurveTo(this.x-26,this.y+40,this.x-24,this.y+44);
+			rArm.quadraticCurveTo(this.x-40,this.y+48,this.x-30,this.y+28);
+			rArm.quadraticCurveTo(this.x-24,this.y+18,this.x-22,this.y+8);
+			rArm.quadraticCurveTo(this.x-22,this.y-4,this.x-4,this.y-12);
         rArm.fill();
 	}
 
 	this.update = function()
 	{
 		
-			this.x-=2;
-			this.draw();
+		this.x-=2;
+		this.draw();
 
 	}
 	
@@ -514,12 +571,11 @@ function l_arm(x,y)
 	this.draw = function()
 	{
         lArm.beginPath();
-        lArm.fillStyle="pink";
-        lArm.moveTo(this.x,this.y);
-        lArm.quadraticCurveTo(this.x+12,this.y+10,this.x+52,this.y+21);
-        lArm.quadraticCurveTo(this.x+67,this.y+16,this.x+32,this.y+6);
-        lArm.quadraticCurveTo(this.x+32,this.y+6,this.x+12,this.y-8);
-        lArm.stroke();
+			lArm.fillStyle="pink";
+			lArm.moveTo(this.x,this.y);
+			lArm.quadraticCurveTo(this.x+12,this.y+10,this.x+52,this.y+21);
+			lArm.quadraticCurveTo(this.x+67,this.y+16,this.x+32,this.y+6);
+			lArm.quadraticCurveTo(this.x+32,this.y+6,this.x+12,this.y-8);
         lArm.fill();	
 	}
 
@@ -589,9 +645,11 @@ function model(x,y)
         cabelo.update();
     }
 }
+
 /*******************************************************************************************
 							**OBJETO COMPANHEIRO**
 ********************************************************************************************/
+
 function object(x,y)
 {
 	this.x=x;
@@ -607,21 +665,16 @@ function object(x,y)
 	this.draw = function()
 	{
        prancha.beginPath();
-        prancha.fillStyle=prancha_gradient;
-        prancha.moveTo(this.x,this.y);
-        prancha.quadraticCurveTo(this.x+25,this.y+5,this.x+100,this.y-5);
-        prancha.quadraticCurveTo(this.x+110,this.y-15,this.x+100,this.y-25);
-        prancha.quadraticCurveTo(this.x+25,this.y-35,this.x-20,this.y-15);
-        prancha.quadraticCurveTo(this.x-40,this.y-5,this.x,this.y);
-        prancha.stroke();
-        prancha.fill();
-		
-		
+			prancha.fillStyle=prancha_gradient;
+			prancha.moveTo(this.x,this.y);
+			prancha.quadraticCurveTo(this.x+25,this.y+5,this.x+100,this.y-5);
+			prancha.quadraticCurveTo(this.x+110,this.y-15,this.x+100,this.y-25);
+			prancha.quadraticCurveTo(this.x+25,this.y-35,this.x-20,this.y-15);
+			prancha.quadraticCurveTo(this.x-40,this.y-5,this.x,this.y);
+        prancha.fill();	
 	}
 
-	this.update = function() 
-	{
-		this.update = function()
+	this.update = function()
 	{
 		if(this.x <= -180)
 		{
@@ -635,15 +688,16 @@ function object(x,y)
 			this.draw();
 		}
 	}
-	}
 }
+
 /********************************************************************************************
 									**MAIN**
 *********************************************************************************************/
+
 function main()
 {	
     //Definir Background	
-    background();
+    let fundo = background();
 	
     //Definir Objeto Companheiro
     let objeto = new object(1020,337);
@@ -653,22 +707,22 @@ function main()
     let modelo = new model(1060,260);
 	modelo.draw();
 	
+	//Definir Onda
 	let onda = new wave(1150,340);
-	onda.draw();
-	
+	onda.draw();	
 	
 	//Função de Animação
 	function animate()
-    {
+	{
 		requestAnimationFrame(animate);	
 		background();
 		objeto.update();
 		modelo.update();
-		onda.update();					
-	}	
-	
+		onda.update();	
+	}
+
 	//Animação
-    animate();	 
+    animate()	 
 
 
 }
