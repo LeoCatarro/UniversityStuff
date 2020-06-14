@@ -28,224 +28,286 @@ var scene = new THREE.Scene();
     MODELO 3D DA PALAVRA : Canelado
 
 */
-//Letra: C    ALTURA=27   LARGURA=23
+var extrudeSettings = {
+    steps: 1,
+    depth: 0.5,
+    bevelEnabled: true,
+    bevelThickness: 0,
+    bevelSize: 0,
+    bevelOffset: 0,
+    bevelSegments: 1
+};
 
-var path = new THREE.Path();
-    path.moveTo(1,2);
-    path.lineTo(3,3.5);
-    path.lineTo(-3,7);
-    path.quadraticCurveTo(-20,-5,-3,-20);
-    path.quadraticCurveTo(2,-17,3,-15);
+//Letra C
+var path_C = new THREE.Shape();
+path_C.moveTo(1,2);
+path_C.lineTo(3,3.5);
+path_C.lineTo(-3,7);
+path_C.quadraticCurveTo(-20,-5,-3,-20);
+path_C.quadraticCurveTo(2,-17,3,-15);
 
-    path.quadraticCurveTo(-5,-18,-10,-5);
-    path.quadraticCurveTo(-10,0,-4,5);
-    path.lineTo(1,2);
+path_C.quadraticCurveTo(-5,-18,-10,-5);
+path_C.quadraticCurveTo(-10,0,-4,5);
+path_C.lineTo(1,2);
+
+  
+    var geometry = new THREE.ExtrudeGeometry( path_C, extrudeSettings );
+    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00} );
+    var path_C = new THREE.Mesh( geometry, material ) ;
+    path_C.translateX(-62); //Translate letter C -20 units on X axis
+    path_C.translateY(17);
+
+    scene.add( path_C );
     
-var points = path.getPoints();
-
-var geometry = new THREE.BufferGeometry().setFromPoints( points );
-var material = new THREE.LineBasicMaterial( { color: 0xffffff } );
-
-var line = new THREE.Line( geometry, material );
-line.translateX(-22); //Translate letter C -20 units on X axis
-line.translateY(20);
-scene.add( line );
-renderer.render( scene, camera );
 
 
+//Letra A
+var path_A = new THREE.Shape();
+path_A.moveTo(0,0);
+path_A.quadraticCurveTo(0.5,-2,3,-3);
+path_A.lineTo(5,-1);
+path_A.quadraticCurveTo(3,-1,3,0);
+path_A.lineTo(3,13);
+path_A.lineTo(4,14);
+path_A.lineTo(-2,17);  //(-2,-3)
+path_A.quadraticCurveTo(-8,15,-9,14);
+path_A.lineTo(-8,13);
+path_A.lineTo(-5,15);
+path_A.lineTo(0,14);
+path_A.lineTo(0,0);
 
-//Letra: A      ALTURA = 20 LARGURA= 20
-var path = new THREE.Path();
-    path.moveTo(0,0);
-    path.quadraticCurveTo(0.5,-2,3,-3);
-    path.lineTo(5,-1);
-    path.quadraticCurveTo(3,-1,3,0);
-    path.lineTo(3,13);
-    path.lineTo(4,14);
-    path.lineTo(-2,17);  //(-2,-3)
-    path.quadraticCurveTo(-8,15,-9,14);
-    path.lineTo(-8,13);
-    path.lineTo(-5,15);
-    path.lineTo(0,14);
-    path.lineTo(0,0);
-
-    path.moveTo(0,10);
-    path.quadraticCurveTo(-17,5,-6,-3);
-    path.quadraticCurveTo(-2,-2.5,0,0);
-    path.lineTo(0,2);
-    path.bezierCurveTo(-10,-4,-10,8,0,8);
-    
-var points = path.getPoints();
-
-var geometry = new THREE.BufferGeometry().setFromPoints( points );
-var material = new THREE.LineBasicMaterial( { color: 0xffffff } );
-
-var line = new THREE.Line( geometry, material );
-line.translateX(-6);
-line.translateY(3);
-
-scene.add( line );
-renderer.render( scene, camera );
+path_A.moveTo(0,10);
+    path_A.quadraticCurveTo(-17,5,-6,-3);
+    path_A.quadraticCurveTo(-2,-2.5,0,0);
+    path_A.lineTo(0,2);
+    path_A.bezierCurveTo(-10,-4,-10,8,0,8);
 
 
+    var geometry = new THREE.ExtrudeGeometry( path_A, extrudeSettings );
+    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    var path_A = new THREE.Mesh( geometry, material ) ;
+    path_A.translateX(-42); //Translate letter C -20 units on X axis
+    path_A.translateY(0);
 
-//Letra: N   ALTURA=20 LARGURA = 20
-var path = new THREE.Path();
-    path.moveTo(2,0);
-    //path.lineTo(2,2);
-    path.quadraticCurveTo(0.5,1,0,4);
-    path.lineTo(0,14);
-    path.quadraticCurveTo(-3,16,-6,14);
-    path.lineTo(-6,4);
-    path.quadraticCurveTo(-5,1,-4,2);
-    path.lineTo(-6,0);
-    path.quadraticCurveTo(-8,2,-8,4);
-    path.lineTo(-8,14);
-    path.quadraticCurveTo(-8,16,-10,18);
-    path.lineTo(-8,20);
-    path.quadraticCurveTo(-6,18,-6,16);
-    path.lineTo(-1,19);
-    path.quadraticCurveTo(2.5,18,2,14);
-    path.lineTo(2,4);
-    path.quadraticCurveTo(2.5,1,4,2);
-    path.lineTo(2,0);
+    scene.add( path_A );
    
+
+
     
-var points = path.getPoints();
+//Letra N
+var path_N = new THREE.Shape();
+path_N.moveTo(2,0);
+path_N.quadraticCurveTo(0.5,1,0,4);
+path_N.lineTo(0,14);
+path_N.quadraticCurveTo(-3,16,-6,14);
+path_N.lineTo(-6,4);
+path_N.quadraticCurveTo(-5,1,-4,2);
+path_N.lineTo(-6,0);
+path_N.quadraticCurveTo(-8,2,-8,4);
+path_N.lineTo(-8,14);
+path_N.quadraticCurveTo(-8,16,-10,18);
+path_N.lineTo(-8,20);
+path_N.quadraticCurveTo(-6,18,-6,16);
+path_N.lineTo(-1,19);
+path_N.quadraticCurveTo(2.5,18,2,14);
+path_N.lineTo(2,4);
+path_N.quadraticCurveTo(2.5,1,4,2);
+path_N.lineTo(2,0);
 
-var geometry = new THREE.BufferGeometry().setFromPoints( points );
-var material = new THREE.LineBasicMaterial( { color: 0xffffff } );
+var geometry = new THREE.ExtrudeGeometry(path_N, extrudeSettings );
+var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+var path_N = new THREE.Mesh( geometry, material ) ;
+path_N.translateX(-22); 
+path_N.translateY(-3);
 
-var line = new THREE.Line( geometry, material );
-line.translateX(10);
-
-scene.add( line );
-renderer.render( scene, camera );
-
+scene.add( path_N );
 
 
-//Letra: E   ALTURA=20 LARGURA = 20
-var path = new THREE.Path();
-    path.moveTo(0,0);
-    path.quadraticCurveTo(2,1,4,4);
-    path.bezierCurveTo(-5,2,-6,10,-1,17);
-    path.lineTo(2,15);
-    path.lineTo(-4,8);
-    path.lineTo(-3.6,7);
-    path.lineTo(4,16);
-    path.lineTo(0,18);
-    path.bezierCurveTo(-8,14,-8,4,0,0);
+
+//Letra E
+var path_E = new THREE.Shape();
+path_E.moveTo(0,0);
+    path_E.quadraticCurveTo(2,1,4,4);
+    path_E.bezierCurveTo(-5,2,-6,10,-1,18);
+    path_E.lineTo(2,15);
+    path_E.lineTo(-4,8);
+    path_E.lineTo(-3.6,7);
+    path_E.lineTo(4,16);
+    path_E.lineTo(0,20);
+    path_E.bezierCurveTo(-8,14,-8,4,0,0);
  
-var points = path.getPoints();
+    var geometry = new THREE.ExtrudeGeometry( path_E, extrudeSettings );
+    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    var path_E = new THREE.Mesh( geometry, material ) ;
+    path_E.translateX(-8); //Translate letter C -20 units on X axis
+    path_E.translateY(-3);
 
-var geometry = new THREE.BufferGeometry().setFromPoints( points );
-var material = new THREE.LineBasicMaterial( { color: 0xffffff } );
-
-var line = new THREE.Line( geometry, material );
-line.translateX(20);
-
-scene.add( line );
-renderer.render( scene, camera );
+    scene.add( path_E );
+   
 
 
+//Letra L
+var path_L = new THREE.Shape();
+path_L.moveTo(0,0);
+path_L.lineTo(2,2);
+path_L.quadraticCurveTo(-1,3,-1,4);
+path_L.lineTo(-1,27);
+path_L.lineTo(-4,24);
+path_L.quadraticCurveTo(-3,23,-3,20);
+path_L.lineTo(-3,4);
+path_L.quadraticCurveTo(-3,1,0,0);
+
+    var geometry = new THREE.ExtrudeGeometry(  path_L, extrudeSettings );
+    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    var  path_L = new THREE.Mesh( geometry, material ) ;
+    path_L.translateX(4); //Translate letter C -20 units on X axis
+    path_L.translateY(-3);
+
+    scene.add(  path_L );
+   
 
 
 
+//Letra A
+var path_A2 = new THREE.Shape();
+path_A2.moveTo(0,0);
+path_A2.quadraticCurveTo(0.5,-2,3,-3);
+path_A2.lineTo(5,-1);
+path_A2.quadraticCurveTo(3,-1,3,0);
+path_A2.lineTo(3,13);
+path_A2.lineTo(4,14);
+path_A2.lineTo(-2,17);  //(-2,-3)
+path_A2.quadraticCurveTo(-8,15,-9,14);
+path_A2.lineTo(-8,13);
+path_A2.lineTo(-5,15);
+path_A2.lineTo(0,14);
+path_A2.lineTo(0,0);
+
+path_A2.moveTo(0,10);
+    path_A2.quadraticCurveTo(-17,5,-6,-3);
+    path_A2.quadraticCurveTo(-2,-2.5,0,0);
+    path_A2.lineTo(0,2);
+    path_A2.bezierCurveTo(-10,-4,-10,8,0,8);
 
 
+    var geometry = new THREE.ExtrudeGeometry( path_A2, extrudeSettings );
+    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    var path_A2 = new THREE.Mesh( geometry, material ) ;
+    path_A2.translateX(20); //Translate letter C -20 units on X axis
+    path_A2.translateY(0);
+
+    scene.add( path_A2 );
+
+//Letra D
+var path_D = new THREE.Shape();
+path_D.moveTo(0,0);
+path_D.quadraticCurveTo(0.5,-2,3,-3);
+path_D.lineTo(5,-1);
+path_D.quadraticCurveTo(3,-1,3,0);
+path_D.lineTo(3,24);
+path_D.lineTo(-2,22);
+path_D.quadraticCurveTo(0,21.5,0,20);
+    
+path_D.lineTo(0,14);
+path_D.lineTo(-5,16);
+path_D.bezierCurveTo(-14,10,-14,1,-3,-3);
+path_D.quadraticCurveTo(-1,-2,0,0);
+path_D.lineTo(0,2);
+path_D.bezierCurveTo(-8,-5,-13,10,-4,14);
+path_D.lineTo(0,12);
+path_D.lineTo(0,2);
 
 
+    var geometry = new THREE.ExtrudeGeometry( path_D, extrudeSettings );
+    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    var path_D = new THREE.Mesh( geometry, material ) ;
+    path_D.translateX(40); //Translate letter C -20 units on X axis
+    path_D.translateY(0);
+
+    scene.add( path_D );
+    
 
 
+/*
+//Letra O
+var path_O = new THREE.Shape();
+path_O.moveTo(0,0);
+    //path.bezierCurveTo(10,4,10,16,2,20);
+    path_O.quadraticCurveTo(15,4,2,20);
+    path_O.quadraticCurveTo(-15,18,0,0);
+
+    path_O.moveTo(0,4);
+    path_O.bezierCurveTo(10,8,4,14,-1,17);
+    path_O.bezierCurveTo(-10,16,-2,6,0,4);
 
 
+    var geometry = new THREE.ExtrudeGeometry( path_O, extrudeSettings );
+    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    var path_O = new THREE.Mesh( geometry, material ) ;
+    
+ 
+    var path_O = new THREE.Shape();
 
+    path_O.moveTo(0,4);
+    path_O.bezierCurveTo(10,8,4,14,-1,17);
+    path_O.bezierCurveTo(-10,16,-2,6,0,4);
 
+    var material = new THREE.MeshPhongMaterial({
+        color: 0x000000,
+        opacity: 1,
+        transparent: true
+    });
+
+    path_O.translateX(55); //Translate letter C -20 units on X axis
+    path_O.translateY(-3);
+
+    scene.add( path_O );
+*/
 
 
 /*
 
-    ANIMAÇÃO
+    LUZ
 
 */
-/*
+var light = new THREE.PointLight( 0xff0000, 1, 100 );
+light.position.set( 0, 0, 0 );
+scene.add( light );
+
+
+//renderer.render( scene, camera );
+
 //Função de Animação    
 function animate()
 {
     requestAnimationFrame(animate);
 
-    letter_A.rotation.x += 0.01;
-    letter_A.rotation.y += 0.01;
+    path_C.rotation.x += 0.01;
+    path_C.rotation.y += 0.01;
 
+    path_A.rotation.x += 0.01;
+    path_A.rotation.y += 0.01;
+
+    path_N.rotation.x += 0.01;
+    path_N.rotation.y += 0.01;
+
+    path_E.rotation.x += 0.01;
+    path_E.rotation.y += 0.01;
+
+    path_L.rotation.x += 0.01;
+    path_L.rotation.y += 0.01;
+
+    path_A2.rotation.x += 0.01;
+    path_A2.rotation.y += 0.01
+
+    path_D.rotation.x += 0.01;
+    path_D.rotation.y += 0.01;
+/*
+    path_O.rotation.x += 0.01;
+    path_O.rotation.y += 0.01;
+*/
     renderer.render( scene, camera );
 }
 
 //Chamada da função de Animação
 animate();
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-            MAKE A PATH IN A 3D GEOMETRY
-
-*/
-
-
-
-/*
-var path = new THREE.Shape();
-path.moveTo(1,2);
-path.lineTo(3,4);
-path.lineTo(-3,7);
-path.quadraticCurveTo(-20,-5,-3,-20);
-path.quadraticCurveTo(2,-17,3,-15);
-
-path.quadraticCurveTo(-5,-18,-10,-5);
-path.quadraticCurveTo(-10,0,-4,5);
-path.lineTo(1,2);
-   
-
-    var extrudeSettings = {
-        steps: 2,
-        depth: 4,
-        bevelEnabled: true,
-        bevelThickness: 1,
-        bevelSize: 1,
-        bevelOffset: 0,
-        bevelSegments: 1
-    };
-  
-    var geometry = new THREE.ExtrudeGeometry( path, extrudeSettings );
-    var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-    var letter_A = new THREE.Mesh( geometry, material ) ;
-
-    scene.add( letter_A );
-    renderer.render( scene, camera );
-*/
