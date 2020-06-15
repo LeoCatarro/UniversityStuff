@@ -26,7 +26,7 @@ function wave(x,y)
 		wave_gradient.addColorStop(0.33,"#1ab2ff");
 		wave_gradient.addColorStop(0.66,"#0088cc");
 	
-		this.x=x;
+	this.x=x;
 	this.y=y;
 	let inicio=x;
 
