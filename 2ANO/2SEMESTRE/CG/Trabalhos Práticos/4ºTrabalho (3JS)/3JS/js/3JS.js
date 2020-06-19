@@ -13,7 +13,7 @@ document.body.appendChild( renderer.domElement );
 
 */
 var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
-camera.position.set( 0, 0, 100 );
+camera.position.set( 0, 0, 250 );
 camera.lookAt( 0, 0, 0 );
 
 /*
@@ -32,10 +32,10 @@ scene.background = new THREE.Color( 0x031d49 );     //Mudar a cor do Background
 */
 
 var fundo = new THREE.PlaneGeometry(10000,10000,100,100);
-var fundo_material = new THREE.MeshLambertMaterial( { color: 0x503009} );
+var fundo_material = new THREE.MeshLambertMaterial( { color: 0x503009 } );
 var fundo_mesh = new THREE.Mesh(fundo, fundo_material);
 fundo_mesh.rotation.x = -90 * Math.PI / 180;
-fundo_mesh.position.y = -50;
+fundo_mesh.position.y = -25;
 scene.add(fundo_mesh);
 
 
@@ -44,9 +44,10 @@ scene.add(fundo_mesh);
     LIGHT
 
 */
-var light = new THREE.AmbientLight(0xffff00, 2, 600);
+var light = new THREE.AmbientLight(0xffff00, 0.5, 600);
+light.position.set(0,100,0);
+light.lookAt(0,0,0);
 scene.add( light );
-
 
 /*
 
@@ -82,14 +83,13 @@ var path_C = new THREE.Shape();
     var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
     var path_C = new THREE.Mesh( geometry, material) ;
 
-
-    path_C.translateX(0); //Translate letter C -20 units on X axis
-    path_C.translateY(0);
-
+    
+    path_C.translateX(-60); //Translate letter C -20 units on X axis
+    path_C.translateY(-3);
 
     scene.add( path_C );
     
-/*
+
 //Letra A
 var path_A = new THREE.Shape();
     path_A.moveTo(0,0);
@@ -113,12 +113,12 @@ var path_A = new THREE.Shape();
 
 
     var geometry = new THREE.ExtrudeGeometry( path_A, extrudeSettings );
-    var material = new THREE.MeshBasicMaterial( { color: 0xF3FFE2 } );
+    var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
     var path_A = new THREE.Mesh( geometry, material ) ;
    
    
     path_A.translateX(-42); //Translate letter C -20 units on X axis
-    path_A.translateY(0);
+    path_A.translateY(-20);
 
 
     scene.add( path_A );
@@ -146,12 +146,12 @@ var path_N = new THREE.Shape();
 
         
     var geometry = new THREE.ExtrudeGeometry(path_N, extrudeSettings );
-    var material = new THREE.MeshBasicMaterial( { color: 0xF3FFE2 } );
+    var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
     var path_N = new THREE.Mesh( geometry, material ) ;
     
     
     path_N.translateX(-22); 
-    path_N.translateY(-3);
+    path_N.translateY(-23);
 
 
     scene.add( path_N );
@@ -171,12 +171,12 @@ var path_E = new THREE.Shape();
  
 
     var geometry = new THREE.ExtrudeGeometry( path_E, extrudeSettings );
-    var material = new THREE.MeshBasicMaterial( { color: 0xF3FFE2 } );
+    var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );;
     var path_E = new THREE.Mesh( geometry, material ) ;
 
 
     path_E.translateX(-8); //Translate letter C -20 units on X axis
-    path_E.translateY(-3);
+    path_E.translateY(-23);
 
 
     scene.add( path_E );
@@ -195,12 +195,12 @@ var path_L = new THREE.Shape();
 
 
     var geometry = new THREE.ExtrudeGeometry(  path_L, extrudeSettings );
-    var material = new THREE.MeshBasicMaterial( { color: 0xF3FFE2 } );
+    var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
     var  path_L = new THREE.Mesh( geometry, material ) ;
 
 
     path_L.translateX(4); //Translate letter C -20 units on X axis
-    path_L.translateY(-3);
+    path_L.translateY(-23);
 
 
     scene.add(  path_L );
@@ -229,12 +229,12 @@ var path_A2 = new THREE.Shape();
 
 
     var geometry = new THREE.ExtrudeGeometry( path_A2, extrudeSettings );
-    var material = new THREE.MeshBasicMaterial( { color: 0xF3FFE2 } );
+    var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
     var path_A2 = new THREE.Mesh( geometry, material ) ;
     
     
     path_A2.translateX(20); //Translate letter C -20 units on X axis
-    path_A2.translateY(0);
+    path_A2.translateY(-20);
 
 
     scene.add( path_A2 );
@@ -261,12 +261,12 @@ var path_D = new THREE.Shape();
 
 
     var geometry = new THREE.ExtrudeGeometry( path_D, extrudeSettings );
-    var material = new THREE.MeshBasicMaterial( { color: 0xF3FFE2 } );
+    var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
     var path_D = new THREE.Mesh( geometry, material ) ;
 
 
     path_D.translateX(40); //Translate letter C -20 units on X axis
-    path_D.translateY(0);
+    path_D.translateY(-20);
 
 
     scene.add( path_D );
@@ -280,12 +280,12 @@ var path_O_1 = new THREE.Shape();
     
     
     var geometry = new THREE.ExtrudeGeometry( path_O_1, extrudeSettings );
-    var material = new THREE.MeshBasicMaterial({color : 0xF3FFE2 } );
+    var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
     var path_O_1 = new THREE.Mesh( geometry, material ) ;
     
     
     path_O_1.translateX(60); //Translate letter C -20 units on X axis
-    path_O_1.translateY(-3);
+    path_O_1.translateY(-23);
     
     scene.add( path_O_1 );
   
@@ -308,16 +308,16 @@ var path_O_2 = new THREE.Shape();
 
 
     var geometry = new THREE.ExtrudeGeometry( path_O_2, extrudeSettings2 );
-    var material = new THREE.MeshBasicMaterial({color : 0x000000});
+    var material = new THREE.MeshLambertMaterial( { color: 0x503009} );
     var path_O_2 = new THREE.Mesh( geometry, material ) ;
     
     
     path_O_2.translateX(60); //Translate letter C -20 units on X axis
-    path_O_2.translateY(-3);
+    path_O_2.translateY(-23);
 
 
     scene.add( path_O_2 );
-*/
+
 
 
 
@@ -329,10 +329,8 @@ var path_O_2 = new THREE.Shape();
 function animate()
 {
     requestAnimationFrame(animate);
-
-
-    path_C.rotation.x += 0.01;
-    path_C.rotation.y += 0.01;
+    //path_C.rotation.x += 0.01;
+    //path_C.rotation.y += 0.01;
 
 /*
     path_A.rotation.x += 0.01;
@@ -364,7 +362,6 @@ function animate()
     path_O_2.rotation.x += 0.01;
     path_O_2.rotation.y += 0.01;
 */
-
     renderer.render( scene, camera );
 }
 //Chamada da função de Animação
