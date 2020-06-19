@@ -36,6 +36,7 @@ var fundo_material = new THREE.MeshLambertMaterial( { color: 0x503009 } );
 var fundo_mesh = new THREE.Mesh(fundo, fundo_material);
 fundo_mesh.rotation.x = -90 * Math.PI / 180;
 fundo_mesh.position.y = -25;
+fundo_mesh.recieveShadow = true;
 scene.add(fundo_mesh);
 
 
@@ -44,10 +45,11 @@ scene.add(fundo_mesh);
     LIGHT
 
 */
-var light = new THREE.AmbientLight(0xffff00, 0.5, 600);
-light.position.set(0,100,0);
-light.lookAt(0,0,0);
+//var light = new THREE.AmbientLight(0xffff00, 1, 600);
+var light = new THREE.PointLight(0xffff00, 1, 600);
+light.position.set(-50,0,100);
 scene.add( light );
+
 
 /*
 
@@ -85,7 +87,7 @@ var path_C = new THREE.Shape();
 
     
     path_C.translateX(-60); //Translate letter C -20 units on X axis
-    path_C.translateY(-3);
+    path_C.translateY(30);
 
     scene.add( path_C );
     
@@ -118,7 +120,7 @@ var path_A = new THREE.Shape();
    
    
     path_A.translateX(-42); //Translate letter C -20 units on X axis
-    path_A.translateY(-20);
+    path_A.translateY(13);
 
 
     scene.add( path_A );
@@ -151,7 +153,7 @@ var path_N = new THREE.Shape();
     
     
     path_N.translateX(-22); 
-    path_N.translateY(-23);
+    path_N.translateY(10);
 
 
     scene.add( path_N );
@@ -176,7 +178,7 @@ var path_E = new THREE.Shape();
 
 
     path_E.translateX(-8); //Translate letter C -20 units on X axis
-    path_E.translateY(-23);
+    path_E.translateY(10);
 
 
     scene.add( path_E );
@@ -200,7 +202,7 @@ var path_L = new THREE.Shape();
 
 
     path_L.translateX(4); //Translate letter C -20 units on X axis
-    path_L.translateY(-23);
+    path_L.translateY(10);
 
 
     scene.add(  path_L );
@@ -234,7 +236,7 @@ var path_A2 = new THREE.Shape();
     
     
     path_A2.translateX(20); //Translate letter C -20 units on X axis
-    path_A2.translateY(-20);
+    path_A2.translateY(13);
 
 
     scene.add( path_A2 );
@@ -266,7 +268,7 @@ var path_D = new THREE.Shape();
 
 
     path_D.translateX(40); //Translate letter C -20 units on X axis
-    path_D.translateY(-20);
+    path_D.translateY(13);
 
 
     scene.add( path_D );
@@ -285,7 +287,7 @@ var path_O_1 = new THREE.Shape();
     
     
     path_O_1.translateX(60); //Translate letter C -20 units on X axis
-    path_O_1.translateY(-23);
+    path_O_1.translateY(10);
     
     scene.add( path_O_1 );
   
@@ -313,12 +315,10 @@ var path_O_2 = new THREE.Shape();
     
     
     path_O_2.translateX(60); //Translate letter C -20 units on X axis
-    path_O_2.translateY(-23);
+    path_O_2.translateY(10);
 
 
     scene.add( path_O_2 );
-
-
 
 
 /*
@@ -329,10 +329,11 @@ var path_O_2 = new THREE.Shape();
 function animate()
 {
     requestAnimationFrame(animate);
-    //path_C.rotation.x += 0.01;
-    //path_C.rotation.y += 0.01;
+    
+    path_C.rotation.x += 0.01;
+    path_C.rotation.y += 0.01;
 
-/*
+
     path_A.rotation.x += 0.01;
     path_A.rotation.y += 0.01;
 
@@ -361,7 +362,7 @@ function animate()
     path_O_1.rotation.y += 0.01;
     path_O_2.rotation.x += 0.01;
     path_O_2.rotation.y += 0.01;
-*/
+
     renderer.render( scene, camera );
 }
 //Chamada da função de Animação
