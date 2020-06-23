@@ -112,96 +112,73 @@
 
         -->
             <!-- Peixes Laranjas e Brancos -->
+            <g id="peixes_laranja_brancos">
                 <path id="peixe1_1" fill="url(#gradiente_peixes_LaranjaBranco)" d="
                     M 100 200
                     Q 125 175 150 200
                     Q 125 225 100 200
                     L 85 185
                     L 85 215
-                    L 100 200" >
-                    <animateMotion dur="9s" repeatCount="indefinite" >
-                        <mpath xlink:href="#caminho_peixe1"/>
-                    </animateMotion> 
-                </path>    
-                <circle id="olho_peixe1" cx="140" cy="198" r="1">
-                    <animateMotion dur="9s" repeatCount="indefinite" >
-                        <mpath xlink:href="#caminho_peixe1"/>
-                    </animateMotion>
-                </circle>
-                
+                    L 100 200"
+                /> 
+                <circle id="olho_peixe1" cx="140" cy="198" r="1"/>
                 <path id="peixe1_2" fill="url(#gradiente_peixes_LaranjaBranco)" d="
                     M 0 250
                     Q 25 225 50 250
                     Q 25 275 0 250
                     L -15 235
                     L -15 265
-                    L 0 250" >
-                    <animateMotion dur="9s" repeatCount="indefinite" >
-                        <mpath xlink:href="#caminho_peixe1"/>
-                    </animateMotion> 
-                </path>    
-                <circle id="olho_peixe1" cx="40" cy="248" r="1">
-                    <animateMotion dur="9s" repeatCount="indefinite" >
-                        <mpath xlink:href="#caminho_peixe1"/>
-                    </animateMotion>
-                </circle>
-
+                    L 0 250" 
+                />  
+                <circle id="olho_peixe1" cx="40" cy="248" r="1"/>  
+                <animateMotion dur="9s" repeatCount="indefinite">
+                    <mpath xlink:href="#caminho_peixe1"/>
+                </animateMotion>
+            </g>
             <!-- Peixes Azuis e Amarelos -->
+            <g id="peixes_azuis_amarelos">
                 <path id="peixe2_1" fill="url(#gradiente_peixes_AzulAmarelo)" d="
                     M 900 110
                     Q 950 50 1000 110
                     L 1025 100
                     L 1025 130
                     L 1000 115
-                    Q 950 150 900 110">
-                    <animateMotion dur="9s" repeatCount="indefinite" >
-                        <mpath xlink:href="#caminho_peixe2"/>
-                    </animateMotion>
-                </path>    
-                <circle id="olho_peixe2" cx="925" cy="105" r="2">
-                    <animateMotion dur="9s" repeatCount="indefinite" >
-                        <mpath xlink:href="#caminho_peixe2"/>
-                    </animateMotion>
-                </circle>
-
+                    Q 950 150 900 110"
+                />  
+                <circle id="olho_peixe2" cx="925" cy="105" r="2"/>
+                
                 <path id="peixe2_2" fill="url(#gradiente_peixes_AzulAmarelo)" d="
                     M 950 60
                     Q 1000 0 1050 60
                     L 1075 50
                     L 1075 80
                     L 1050 65
-                    Q 1000 100 950 60">
-                    <animateMotion dur="9s" repeatCount="indefinite" >
-                        <mpath xlink:href="#caminho_peixe2"/>
-                    </animateMotion>
-                </path>    
-                <circle id="olho_peixe2" cx="975" cy="55" r="2">
-                    <animateMotion dur="9s" repeatCount="indefinite" >
-                        <mpath xlink:href="#caminho_peixe2"/>
-                    </animateMotion>
-                </circle>
-                
+                    Q 1000 100 950 60"
+                />
+                      
+
+                <circle id="olho_peixe2" cx="975" cy="55" r="2"/>
+                    
                 <path id="peixe2_3" fill="url(#gradiente_peixes_AzulAmarelo)" d="
                     M 1050 160
                     Q 1100 100 1150 160
                     L 1175 150
                     L 1175 180
                     L 1150 165
-                    Q 1100 200 1050 160">
-                    <animateMotion dur="9s" repeatCount="indefinite" >
-                        <mpath xlink:href="#caminho_peixe2"/>
-                    </animateMotion>
-                </path>    
-                <circle id="olho_peixe2" cx="1075" cy="155" r="2">
-                    <animateMotion dur="9s" repeatCount="indefinite" >
-                        <mpath xlink:href="#caminho_peixe2"/>
-                    </animateMotion>
-                </circle> 
+                    Q 1100 200 1050 160"
+                />
+                <circle id="olho_peixe2" cx="1075" cy="155" r="2"/>
+
+                <animateMotion dur="9s" repeatCount="indefinite">
+                    <mpath xlink:href="#caminho_peixe2"/>
+                </animateMotion>
+            </g>    
         <!-- 
             
             Bottle 
             
         -->
+        <g id="bottle">
             <path id="lost_bottle" fill="#339933" d="
                 M 80 490
                 L 120 490
@@ -216,12 +193,13 @@
                 L 110 500
                 L 80 490"
             />
-
+        </g>
         <!-- 
             
             Alga 1 
             
-        -->      
+        -->   
+        <g id="algas">   
             <path id="alga1_1" fill="seagreen" d="
                 M 500 500
                 Q 525 450 500 400
@@ -300,27 +278,20 @@
             Alga 3 
             
         -->
-            <circle id="bolhas3_1" cx="690" cy="350" r="4" stroke="#ffffff" fill="#007a99">
-                <animateMotion dur="2s" repeatCount="indefinite" >
-                    <mpath xlink:href="#caminho_bolhas"/>
-                </animateMotion>
-            </circle>    
-            <circle id="bolhas3_2" cx="715" cy="370" r="4" stroke="#ffffff" fill="#007a99">
-                <animateMotion dur="2s" repeatCount="indefinite" >
-                    <mpath xlink:href="#caminho_bolhas"/>
-                </animateMotion> 
-            </circle>
-            <circle id="bolhas3_3" cx="745" cy="380" r="4" stroke="#ffffff" fill="#007a99">
-                <animateMotion dur="2s" repeatCount="indefinite" >
-                    <mpath xlink:href="#caminho_bolhas"/>
-                </animateMotion> 
-            </circle>     
-            <circle id="bolhas3_4" cx="765" cy="320" r="4" stroke="#ffffff" fill="#007a99">
-                <animateMotion dur="2s" repeatCount="indefinite" >
-                    <mpath xlink:href="#caminho_bolhas"/>
-                </animateMotion>
-            </circle> 
-   
+        <g id="bolhas_algas">
+            <circle id="bolhas3_1" cx="690" cy="350" r="4" stroke="#ffffff" fill="#007a99"/>
+                  
+            <circle id="bolhas3_2" cx="715" cy="370" r="4" stroke="#ffffff" fill="#007a99"/>
+               
+            <circle id="bolhas3_3" cx="745" cy="380" r="4" stroke="#ffffff" fill="#007a99"/>
+                     
+            <circle id="bolhas3_4" cx="765" cy="320" r="4" stroke="#ffffff" fill="#007a99"/>
+               
+            <animateMotion dur="2s" repeatCount="indefinite" >
+                <mpath xlink:href="#caminho_bolhas"/>
+            </animateMotion>
+        </g>
+
             <path id="alga3" fill="seagreen" d="
                 M 700 425
                 Q 675 400 675 350
@@ -343,7 +314,7 @@
                 Q 730 395 780 400
                 Q 788 405 794 425"
             />                  
-
+        </g>
     <!--######################-->        
     <!--   MODELO DA FIGURA   -->
     <!--######################-->
@@ -352,6 +323,7 @@
             Corpo 
             
         -->
+        <g id="modelo_figura">
             <path id="corpo" stroke="none" fill="#ffc61a" d="
                 M 128 128
                 L 158 128
@@ -363,35 +335,23 @@
                 L 164 152
                 M 158 152
                 L 128 152
-                Q 124 136 128 128">
-                <animateMotion dur="9s" repeatCount="indefinite" >
-                    <mpath xlink:href="#caminho"/>
-                </animateMotion>
-            </path>
+                Q 124 136 128 128"/>
+                
             <!--Ligação Peito-Braço para preencher todo o corpo sem haver espaços brancos no preenchimento do corpo!-->
             <path id="ligação" stroke="none" fill="#ffc61a" d=
                 "M 158 128
                 L 164 128
                 L 164 152
                 L 128 152
-                L 128 128">
-                <animateMotion dur="9s" repeatCount="indefinite" >
-                    <mpath xlink:href="#caminho"/>
-                </animateMotion>
-            </path>
+                L 128 128"/>
+               
 
             <!-- Peito -->
-            <circle id="peito_direito" cx="155" cy="146" r="1" stroke="brown" fill="brown">
-                <animateMotion dur="9s" repeatCount="indefinite" >
-                    <mpath xlink:href="#caminho"/>
-                </animateMotion>
-            </circle>
+            <circle id="peito_direito" cx="155" cy="146" r="1" stroke="brown" fill="brown"/>
+               
             
-            <circle id="peito_esquerdo" cx="155" cy="134" r="1" stroke="brown" fill="brown">
-                <animateMotion dur="9s" repeatCount="indefinite" >
-                    <mpath xlink:href="#caminho"/>
-                </animateMotion>
-            </circle>
+            <circle id="peito_esquerdo" cx="155" cy="134" r="1" stroke="brown" fill="brown"/>
+                
 
             <!-- Abdominais -->
             <path id="abdominal" stroke="brown" d="
@@ -408,12 +368,9 @@
                 M 130 136
                 Q 128 138 130 140
                 M 130 142
-                Q 128 144 130 146">
-                <animateMotion dur="9s" repeatCount="indefinite" >
-                    <mpath xlink:href="#caminho"/>
-                </animateMotion>
-            </path>
-
+                Q 128 144 130 146"
+            />
+                  
         <!-- 
             
             Braço Direito 
@@ -423,12 +380,9 @@
             "M 158 128
             Q 148 120 144 90
             Q 149 85 150 95
-            Q 158 120 164 128">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-            </animateMotion>
-        </path>
-        
+            Q 158 120 164 128"
+        />
+            
         <!-- 
             
             Barbatana 
@@ -443,11 +397,9 @@
             M 128 152
             C 100 160 70 140 60 146
             Q 60 156 30 152
-            Q 35 144 50 142">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-            </animateMotion>    
-        </path>
+            Q 35 144 50 142"
+        />
+           
 
         <path id="escamas_barbatana" stroke="#006644" fill="none" d="
             M 124 132
@@ -485,57 +437,38 @@
             M 55 145
             L 40 150
             M 55 138
-            L 40 133">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-            </animateMotion>    
-        </path>
-    
+            L 40 133"
+        />
+            
         <!-- 
             
             Cabeça 
             
         -->
-        <circle id="cabeça" cx = "180" cy="139" r = "12" stroke="none" fill = "#ffc61a">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-            </animateMotion>
-        </circle>
-
+        <circle id="cabeça" cx = "180" cy="139" r = "12" stroke="none" fill = "#ffc61a"/>
+     
         <path id="boca" stroke="none" fill="black" d="
             M 174 134
             Q 172 138 174 144
-            Q 166 138 174 134">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-            </animateMotion>
-        </path>
-
-        <circle id="olho_direito" cx = "184" cy="134" r = "2" stroke="none" fill = "black">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-            </animateMotion>
-        </circle>
-        <circle id="olho_esquerdo" cx = "184" cy="144" r = "2" stroke="none" fill = "black">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-            </animateMotion>
-        </circle>
-
+            Q 166 138 174 134"
+        />
+  
+        <circle id="olho_direito" cx = "184" cy="134" r = "2" stroke="none" fill = "black"/>  
+        <circle id="olho_esquerdo" cx = "184" cy="144" r = "2" stroke="none" fill = "black"/>
+       
         <path id="cabelo" stroke="none" fill="#00cc88" d="
                 M 180 127
                 Q 190 130 190 133
                 Q 189 138 190 146
                 Q 190 145 180 151
                 Q 196 154 196 139
-                Q 196 124 180 127">
-                <animateMotion dur="9s" repeatCount="indefinite" >
-                    <mpath xlink:href="#caminho"/>
-                </animateMotion>
-            </path>
+                Q 196 124 180 127"
+        />       
+        
     <!--########################-->        
     <!--   OBJETO COMPANHEIRO   -->
     <!--########################-->
+    <g id="tridente">
         <path id="tridente" stroke="brown" stroke-width="0.25%" fill="none" d="
             M 100 160
             L 275 160
@@ -547,11 +480,9 @@
             L 310 160
 
             M 275 160
-            Q 275 176 300 176">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-            </animateMotion>
-        </path>    
+            Q 275 176 300 176"
+        />
+             
         <path id="bicos_tridente" stroke="none" fill="brown" d="
             M 300 138
             L 300 150
@@ -566,12 +497,9 @@
             M 300 169
             L 300 181
             L 310 176
-            L 300 169">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-                </animateMotion>
-        </path>
-
+            L 300 169"
+        />
+    </g>        
     <!--########################-->        
     <!--   RESTANTE MODELO      -->
     <!--########################-->
@@ -580,10 +508,11 @@
             Q 174 158 205 158
             Q 210 163 205 163
             Q 174 162 164 160
-            Q 160 160 158 152">
-            <animateMotion dur="9s" repeatCount="indefinite" >
-                <mpath xlink:href="#caminho"/>
-            </animateMotion>
-        </path>                               
+            Q 160 160 158 152"
+        />
+        <animateMotion dur="9s" repeatCount="indefinite" >
+            <mpath xlink:href="#caminho"/>
+        </animateMotion>  
+    </g>                                 
 </svg>
 
