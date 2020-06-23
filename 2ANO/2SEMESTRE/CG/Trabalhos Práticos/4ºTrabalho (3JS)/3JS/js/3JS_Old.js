@@ -1,36 +1,42 @@
+
 /*
 
     RENDERER
 
 */
+/*
 var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
+*/
 
 /*
 
     CAMERA
 
 */
+/*
 var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
 camera.position.set( 0, 0, 250 );
 camera.lookAt( 0, 0, 0 );
+*/
 
 /*
 
     CENA
 
 */
+/*
 var scene = new THREE.Scene();
 scene.background = new THREE.Color( 0x031d49 );     //Mudar a cor do Background
-
+*/
 
 /*
 
     FUNDO
 
 */
-
+/*
 var fundo = new THREE.PlaneGeometry(10000,10000,100,100);
 var fundo_material = new THREE.MeshLambertMaterial( { color: 0x503009 } );
 var fundo_mesh = new THREE.Mesh(fundo, fundo_material);
@@ -38,23 +44,26 @@ fundo_mesh.rotation.x = -90 * Math.PI / 180;
 fundo_mesh.position.y = -25;
 fundo_mesh.recieveShadow = true;
 scene.add(fundo_mesh);
-
+*/
 
 /*
 
     LIGHT
 
 */
+/*
 //var light = new THREE.AmbientLight(0xffff00, 1, 600);
 var light = new THREE.PointLight(0xffff00, 2, 600);
 light.position.set(-50,0,100);
 scene.add( light );
+*/
 
 /*
 
     MODELO 3D DA PALAVRA : Canelado
 
 */
+
 //Definições de Extrude
 var extrudeSettings = {
     steps: 1,
@@ -72,6 +81,7 @@ function C(x,y)
     this.x = x; //1
     this.y = y; 
 
+    
         var path_C = new THREE.Shape();
         path_C.moveTo(this.x,2);
         path_C.lineTo(this.x+2,3.5);
@@ -84,17 +94,22 @@ function C(x,y)
         path_C.lineTo(this.x,2);
 
 
+
         var geometry = new THREE.ExtrudeGeometry( path_C, extrudeSettings );
         var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
         var path_C = new THREE.Mesh( geometry, material) ;
 
-        
+      
+        var targetPosition1 = new THREE.Vector3( 70, 0, 0 );
+        var tween1 = new TWEEN.Tween( path_C.position ).to( targetPosition1, 1000 );
+        tween1.start(); 
         //path_C.translateX(-60); //Translate letter C -20 units on X axis
-        path_C.translateY(17);
-
-        scene.add( path_C );  
-}    
-
+        //path_C.translateY(17);
+        
+        scene.add(path_C);
+}  
+  
+/*
 //Letra A
 function A(x,y)
 {
@@ -325,7 +340,7 @@ function O_small(x,y)
 
         scene.add( path_O_2 );
 }
-
+*/
 
 /*
 
@@ -334,21 +349,84 @@ function O_small(x,y)
 */ 
 function main()
 {
+    /*
+        RENDERER
+    */
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+
+
+    /*
+        CAMERA
+    */
+    var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+    camera.position.set( 0, 0, 250 );
+    camera.lookAt( 0, 0, 0 );
+
+
+    /*
+        CENA
+    */
+    var scene = new THREE.Scene();
+    scene.background = new THREE.Color( 0x031d49 );     //Mudar a cor do Background
+
+
+    /*
+        FUNDO
+    */
+    var fundo = new THREE.PlaneGeometry(10000,10000,100,100);
+    var fundo_material = new THREE.MeshLambertMaterial( { color: 0x503009 } );
+    var fundo_mesh = new THREE.Mesh(fundo, fundo_material);
+    fundo_mesh.rotation.x = -90 * Math.PI / 180;
+    fundo_mesh.position.y = -25;
+    fundo_mesh.recieveShadow = true;
+    scene.add(fundo_mesh);
+
+
+    /*
+        LIGHT
+    */
+    var light = new THREE.PointLight(0xffff00, 2, 600);
+    light.position.set(-50,0,100);
+    scene.add( light );
+
+
+
     //Construção da Palavra: "Canelado"
-    letterC = new C(-50,0);
-    letterA = new A(-30,0);  
+    letterC = new C(-50,0); 
+    
+
+    /*letterA = new A(-30,0);  
     letterN = new N(-10,0);
     letterE = new E(10,0);
     letterL = new L(30,0);
     letterA2 = new A(50,0);
     letterD = new D(70,0);
     letterO_Big = new O_big(90,0);
-    letterO_Small = new O_small(90,0);
+    letterO_Small = new O_small(90,0);*/
 
-    //Função de Animação
-    function animate()
+    function animate(time)
     {
         requestAnimationFrame(animate);
+        
+        TWEEN.update(time);
+        
+
+        renderer.render( scene, camera );
+    }
+    animate();
+
+
+
+    //Função de Animação
+    //function animate()
+    //{
+        //requestAnimationFrame(animate);
+        
+        //letterC.update();
+
         /*
         letterC.rotation.x += 0.01;
         letterC.rotation.y += 0.01;
@@ -382,8 +460,10 @@ function main()
         letterO_Big.rotation.y += 0.01;
         letterO_Small.rotation.x += 0.01;
         letterO_Small.rotation.y += 0.01;*/
-        renderer.render( scene, camera );
-    }
+        //renderer.render( scene, camera );
+    //}
     //Chamada da função de Animação
-    animate();
+    //animate();
+
+    
 }
