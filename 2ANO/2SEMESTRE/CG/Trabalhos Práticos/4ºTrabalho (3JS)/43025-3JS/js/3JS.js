@@ -15,6 +15,8 @@ document.body.appendChild( renderer.domElement );
 var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
 camera.position.set( 0, 0, 250 );
 camera.lookAt( 0, 0, 0 );
+var angle = 0;
+var radius = 200; 
 
 /*
 
@@ -35,7 +37,7 @@ var fundo = new THREE.PlaneGeometry(10000,10000,100,100);
 var fundo_material = new THREE.MeshLambertMaterial( { color: 0x503009 } );
 var fundo_mesh = new THREE.Mesh(fundo, fundo_material);
 fundo_mesh.rotation.x = -90 * Math.PI / 180;
-fundo_mesh.position.y = -25;
+fundo_mesh.position.y = -30;
 fundo_mesh.recieveShadow = true;
 scene.add(fundo_mesh);
 
@@ -59,7 +61,7 @@ scene.add( light );
 //Definições de Extrude
 var extrudeSettings = {
     steps: 1,
-    depth: 0.5,
+    depth: 1,
     bevelEnabled: true,
     bevelThickness: 1,
     bevelSize: 0,
@@ -323,7 +325,7 @@ var path_O_1 = new THREE.Shape();
 
     var extrudeSettings2 = {
         steps: 1,
-        depth: 0.51,
+        depth: 1.01,
         bevelEnabled: true,
         bevelThickness: 1,
         bevelSize: 0,
@@ -361,41 +363,52 @@ function animate(time)
 {
     requestAnimationFrame(animate);
 
-    TWEEN.update( time );
+    if(TWEEN.update(time) == true)
+    {
+        TWEEN.update( time );
+    }
+
+    else 
+    {
+        path_C.rotation.x += 0.01;
+        path_C.rotation.y += 0.01;
+
+
+        path_A.rotation.x += 0.01;
+        path_A.rotation.y += 0.01;
+
+
+        path_N.rotation.x += 0.01;
+        path_N.rotation.y += 0.01;
+
+
+        path_E.rotation.x += 0.01;
+        path_E.rotation.y += 0.01;
+
+
+        path_L.rotation.x += 0.01;
+        path_L.rotation.y += 0.01;
+
+
+        path_A2.rotation.x += 0.01;
+        path_A2.rotation.y += 0.01
+
+
+        path_D.rotation.x += 0.01;
+        path_D.rotation.y += 0.01;
+
+
+        path_O_1.rotation.x += 0.01;
+        path_O_1.rotation.y += 0.01;
+        path_O_2.rotation.x += 0.01;
+        path_O_2.rotation.y += 0.01;
+
+        camera.position.x = radius * Math.cos( angle );
+        camera.position.z = radius * Math.sin( angle );
+        angle += 0.015;
+        camera.lookAt(0 ,0 ,0);
+    }
     
-    /*path_C.rotation.x += 0.01;
-    path_C.rotation.y += 0.01;
-
-
-    path_A.rotation.x += 0.01;
-    path_A.rotation.y += 0.01;
-
-
-    path_N.rotation.x += 0.01;
-    path_N.rotation.y += 0.01;
-
-
-    path_E.rotation.x += 0.01;
-    path_E.rotation.y += 0.01;
-
-
-    path_L.rotation.x += 0.01;
-    path_L.rotation.y += 0.01;
-
-
-    path_A2.rotation.x += 0.01;
-    path_A2.rotation.y += 0.01
-
-
-    path_D.rotation.x += 0.01;
-    path_D.rotation.y += 0.01;
-
-
-    path_O_1.rotation.x += 0.01;
-    path_O_1.rotation.y += 0.01;
-    path_O_2.rotation.x += 0.01;
-    path_O_2.rotation.y += 0.01;*/
-
     renderer.render( scene, camera );
 }
 //Chamada da função de Animação
