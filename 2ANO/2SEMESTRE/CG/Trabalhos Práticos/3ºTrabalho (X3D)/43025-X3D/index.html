@@ -17,16 +17,21 @@
     <x3d>
         <scene>
                 <!--
+
                     Luz
+
                 -->
-                <PointLight radius="500" intensity="1" location="-300 100 300" color="1 0.9 0.7"></PointLight>
+                <PointLight radius="500" intensity="1" location="0 100 100" color="1 0.9 0.7"></PointLight>
                 
                 
                 <!--
+
                     Secretária
+
                 -->
                     <!--Mesa-->
-                    <Transform DEF="desk">
+                <Transform DEF="desk">   
+                    <Transform DEF="desk_table">
                         <shape>
                             <appearance>
                                 <material diffuseColor="#ffa64d">
@@ -60,12 +65,15 @@
                         <shape USE="desk_foot">
                         </shape>
                     </Transform>
+                </Transform>         
     
-    
+
                 <!--
+
                     CAMPAINHA
+
                 -->
-                <Transform scale="0.8 0.8 0.8" translation="-2.5 0.1 0">
+                <Transform DEF="campainha" scale="0.8 0.8 0.8" translation="-2.5 0.1 0">
                     <shape DEF="bottom1">
                         <appearance>
                             <material diffuseColor="#693714">
@@ -142,155 +150,167 @@
     
     
                 <!--
+
                     DESKTOP
+
                 -->
-                <Transform translation="0,0.1,-1">
-                    <shape>
-                        <appearance>
-                            <material diffuseColor="black">
-                            </material>
-                        </appearance>
-                        <box size="1,0.1,0.5"></Box> 
-                    </shape>
-                </Transform>
-                
-                <Transform translation="0,0.21,-1">
-                    <shape>
-                        <appearance>
-                            <material diffuseColor="black">
-                            </material>
-                        </appearance>
-                        <box size="0.5,0.5,0.2"></Box> 
-                    </shape>
-                </Transform>  
+                <Transform DEF="computer">
+                    <Transform translation="0,0.1,-1">
+                        <shape>
+                            <appearance>
+                                <material diffuseColor="black">
+                                </material>
+                            </appearance>
+                            <box size="1,0.1,0.5"></Box> 
+                        </shape>
+                    </Transform>
+                    
+                    <Transform translation="0,0.21,-1">
+                        <shape>
+                            <appearance>
+                                <material diffuseColor="black">
+                                </material>
+                            </appearance>
+                            <box size="0.5,0.5,0.2"></Box> 
+                        </shape>
+                    </Transform>  
+        
+                    <Transform translation="0,1.3,-1">
+                        <shape>
+                            <appearance>
+                                <material diffuseColor="black">
+                                </material>
+                            </appearance>
+                            <box size="3.5,2,0.2"></Box> 
+                        </shape>
+                    </Transform>
+        
+                    <Transform translation="0,1.3,-0.94">
+                        <shape>
+                            <appearance>
+                                <material diffuseColor="gray">
+                                </material>    
+                            </appearance>        
+                            <box size="3.2,1.7,0.1"></Box>         
+                        </shape>
+                    </Transform>
+                </Transform>    
     
-                <Transform translation="0,1.3,-1">
-                    <shape>
-                        <appearance>
-                            <material diffuseColor="black">
-                            </material>
-                        </appearance>
-                        <box size="3.5,2,0.2"></Box> 
-                    </shape>
-                </Transform>
-    
-                <Transform translation="0,1.3,-0.94">
-                    <shape>
-                        <appearance>
-                            <material diffuseColor="gray">
-                            </material>    
-                        </appearance>        
-                        <box size="3.2,1.7,0.1"></Box>         
-                    </shape>
-                </Transform>
-    
-    
+
                 <!--
+
                     CESTO DO LIXO
+
                 -->
-                <Transform translation="-4,-2,0">
-                    <shape DEF="paper_basket">
-                        <appearance>
-                            <material diffuseColor="brown">
-                            </material>
-                        </appearance>
-                        <Cone topRadius="0.5" height="1" bottomRadius="0.45"></Cone>
-                    </shape>
-                </Transform>
+                <Transform DEF="cesto">
+                    <Transform translation="-4,-2,0">
+                        <shape DEF="paper_basket">
+                            <appearance>
+                                <material diffuseColor="brown">
+                                </material>
+                            </appearance>
+                            <Cone topRadius="0.5" height="1" bottomRadius="0.45"></Cone>
+                        </shape>
+                    </Transform>
+        
+                    <Transform translation="-4,-1.98,0">
+                        <shape>
+                            <appearance>
+                                <material diffuseColor="black">
+                                </material>
+                            </appearance>
+                            <Cone topRadius="0.45" height="1" bottomRadius="0.40"></Cone>
+                        </shape>
+                    </Transform>
+                </Transform>    
     
-                <Transform translation="-4,-1.98,0">
-                    <shape>
-                        <appearance>
-                            <material diffuseColor="black">
-                            </material>
-                        </appearance>
-                        <Cone topRadius="0.45" height="1" bottomRadius="0.40"></Cone>
-                    </shape>
-                </Transform>
-    
-    
+
                 <!--
+
                     FOLHAS
+
                 -->
-                <Transform translation="1.8,0.05,0">
-                    <shape DEF="folha">
-                        <appearance>
-                            <material diffuseColor="white">
-                            </material>
-                        </appearance>
-                        <box size="0.75,0.01,1.5"></Box> 
-                    </shape>
-                </Transform>
+                <Transform DEF="folhas">   
+                    <Transform translation="1.8,0.05,0">
+                        <shape DEF="folha">
+                            <appearance>
+                                <material diffuseColor="white">
+                                </material>
+                            </appearance>
+                            <box size="0.75,0.01,1.5"></Box> 
+                        </shape>
+                    </Transform>
+        
+                    <Transform rotation="0.0 1.0 0.0 -0.3" translation="1.8,0.05,0">
+                        <shape USE="folha">
+                        </shape>
+                    </Transform>
+                </Transform>     
     
-                <Transform rotation="0.0 1.0 0.0 -0.3" translation="1.8,0.05,0">
-                    <shape USE="folha">
-                    </shape>
-                </Transform>
-    
-    
+
                 <!--
+
                     CADEIRA(Estrutura)
+
                 -->
-                <Transform translation="0,-1.2,3">
-                    <shape>
-                        <appearance>
-                            <material diffuseColor="brown">
-                            </material>
-                        </appearance>
-                        <box size="1.5,0.1,1.5"></Box> 
-                    </shape>
-                </Transform>
+                <Transform DEF="chair">
+                    <Transform translation="0,-1.2,3">
+                        <shape>
+                            <appearance>
+                                <material diffuseColor="brown">
+                                </material>
+                            </appearance>
+                            <box size="1.5,0.1,1.5"></Box> 
+                        </shape>
+                    </Transform>
+        
+                    <Transform translation="0,-0.2,3.8">
+                        <shape>
+                            <appearance>
+                                <material diffuseColor="brown">
+                                </material>
+                            </appearance>
+                            <box size="1.5,2,0.1"></Box> 
+                        </shape>
+                    </Transform>
+        
+        
+                    <!--
+
+                        CADEIRA(Pés)
+                    
+                    -->
+                    <Transform translation="-0.6,-1.9,2.4">
+                        <shape DEF="chair_foot">
+                            <appearance>
+                                <material diffuseColor="#bfbfbf">
+                                </material>
+                            </appearance>
+                            <Box size="0.25,1.4,0.25"></Box>
+                        </shape>
+                    </Transform>
+        
+                    <Transform translation="0.6,-1.9,2.4">
+                        <shape USE="chair_foot">   
+                        </shape>
+                    </Transform>
+        
+                    <Transform translation="0.6,-1.9,3.6">
+                        <shape USE="chair_foot">   
+                        </shape>
+                    </Transform>
+        
+                    <Transform translation="-0.6,-1.9,3.6">
+                        <shape USE="chair_foot">   
+                        </shape>
+                    </Transform>
+                </Transform>    
     
-                <Transform translation="0,-0.2,3.8">
-                    <shape>
-                        <appearance>
-                            <material diffuseColor="brown">
-                            </material>
-                        </appearance>
-                        <box size="1.5,2,0.1"></Box> 
-                    </shape>
-                </Transform>
-    
-    
+
                 <!--
-                    CADEIRA(Pés)
-                
-                -->
-                <Transform translation="-0.6,-1.9,2.4">
-                    <shape DEF="chair_foot">
-                        <appearance>
-                            <material diffuseColor="#bfbfbf">
-                            </material>
-                        </appearance>
-                        <Box size="0.25,1.4,0.25"></Box>
-                    </shape>
-                </Transform>
-    
-                <Transform translation="0.6,-1.9,2.4">
-                    <shape USE="chair_foot">   
-                    </shape>
-                </Transform>
-    
-                <Transform translation="0.6,-1.9,3.6">
-                    <shape USE="chair_foot">   
-                    </shape>
-                </Transform>
-    
-                <Transform translation="-0.6,-1.9,3.6">
-                    <shape USE="chair_foot">   
-                    </shape>
-                </Transform>
-    
-    
-                <!--
-                    ANIMAÇÃO
-                -->
-                <!-- Animação: Secretária -->
-                      
-    
-    
-                <!--
+
                     Background
+
                 -->    
                     <Background DEF='Summer'
                     skyAngle='0.8,
@@ -311,7 +331,49 @@
                                 0.33604 0.405546 0.542,
                                 0.3612 0.469145 0.602,
                                 0.39471 0.522059 0.669'
-                    />         
+                    />
+                    
+                    
+                <!--
+
+                    ANIMAÇÃO
+
+                -->
+                <!-- Animação: Secretária -->
+                <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="0 8 0  0 3 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
+                <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
+	            <Route fromNode="move" fromField ="value_changed" toNode="desk" toField="translation"> </Route>  
+            
+                <!--Animação: Folhas-->
+                <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="0 8 0  0 3 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
+                <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
+	            <Route fromNode="move" fromField ="value_changed" toNode="folhas" toField="translation"> </Route>
+            
+                <!--Animação: CestoDoLixo-->
+                <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="-8 0 0  -3 0 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
+                <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
+                <Route fromNode="move" fromField ="value_changed" toNode="cesto" toField="translation"> </Route>
+                
+                <!--Animação: Cadeira-->
+                <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="0 0 10  0 0 2  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
+                <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
+                <Route fromNode="move" fromField ="value_changed" toNode="chair" toField="translation"> </Route>
+
+                <!--Animação: Computador-->
+                <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="0 8 0  0 3 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
+                <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
+                <Route fromNode="move" fromField ="value_changed" toNode="computer" toField="translation"> </Route>
+                
+                <!--Animação: Campainha-->
+                <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="-8 8 0  -3 3 0  -2.5 0.1 0  -2.5 0.1 0  -2.5 0.1 0  -2.5 0.1 0  -2.5 0.1 0"> </PositionInterpolator> 
+                <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
+                <Route fromNode="move" fromField ="value_changed" toNode="campainha" toField="translation"> </Route>
             </scene> 
         </x3d>       
 </body>
