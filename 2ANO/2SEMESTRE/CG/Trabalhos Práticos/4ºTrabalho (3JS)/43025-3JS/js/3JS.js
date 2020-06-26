@@ -24,7 +24,6 @@ var radius = 200;
 
 */
 var scene = new THREE.Scene();
-scene.background = new THREE.Color( 0x031d49 );     //Mudar a cor do Background
 
 
 /*
@@ -32,13 +31,27 @@ scene.background = new THREE.Color( 0x031d49 );     //Mudar a cor do Background
     FUNDO
 
 */
+//Paredes
+var fundo2 = new THREE.PlaneGeometry(10000,10000,100,100);
+var fundo_material2 = new THREE.MeshLambertMaterial( { color: 0x0240c7 } );
+var fundo_mesh2 = new THREE.Mesh(fundo2, fundo_material2);
+fundo_mesh2.position.z = -200;
+scene.add(fundo_mesh2);
 
+var fundo3 = new THREE.PlaneGeometry(10000,10000,100,100);
+var fundo_material3 = fundo_material2;
+var fundo_mesh3 = new THREE.Mesh(fundo3, fundo_material3);
+fundo_mesh3.rotation.x = Math.PI;
+fundo_mesh3.position.y = 200;
+fundo_mesh3.position.z = 200;
+scene.add( fundo_mesh3 );
+
+//Chão
 var fundo = new THREE.PlaneGeometry(10000,10000,100,100);
 var fundo_material = new THREE.MeshLambertMaterial( { color: 0x503009 } );
 var fundo_mesh = new THREE.Mesh(fundo, fundo_material);
 fundo_mesh.rotation.x = -90 * Math.PI / 180;
 fundo_mesh.position.y = -30;
-fundo_mesh.recieveShadow = true;
 scene.add(fundo_mesh);
 
 
@@ -47,17 +60,11 @@ scene.add(fundo_mesh);
     LIGHT
 
 */
-//var light = new THREE.AmbientLight(0xffff00, 1, 600);
-var light = new THREE.PointLight(0xffff00, 1, 600);
+var light = new THREE.PointLight(0xFFFF33, 1, 600);
 light.position.set(-50,0,100);
 scene.add( light );
 
 
-/*
-
-    MODELO 3D DA PALAVRA : Canelado
-
-*/
 //Definições de Extrude
 var extrudeSettings = {
     steps: 1,
@@ -67,11 +74,27 @@ var extrudeSettings = {
     bevelSize: 0,
     bevelOffset: 0,
     bevelSegments: 1
+}
+//Definições de Extrude(parte menor da letra: "O")
+var extrudeSettings2 = {
+    steps: 1,
+    depth: 1.01,
+    bevelEnabled: true,
+    bevelThickness: 1,
+    bevelSize: 0,
+    bevelOffset: 0,
+    bevelSegments: 1
 };
 
 
+
+/*
+
+    MODELO 3D DA PALAVRA : Canelado
+
+*/
 //Letra C
-var path_C = new THREE.Shape();
+    var path_C = new THREE.Shape();
     path_C.moveTo(1,2);
     path_C.lineTo(3,3.5);
     path_C.lineTo(-3,7);
@@ -95,7 +118,7 @@ var path_C = new THREE.Shape();
     tweenC.start();
 
     scene.add( path_C );
-    
+   
 
 //Letra A
 var path_A = new THREE.Shape();
@@ -131,8 +154,8 @@ var path_A = new THREE.Shape();
    
 
     scene.add( path_A );
-   
-   
+  
+    
 //Letra N
 var path_N = new THREE.Shape();
     path_N.moveTo(2,0);
@@ -196,8 +219,8 @@ var path_E = new THREE.Shape();
 
 
     scene.add( path_E );
-   
 
+    
 //Letra L
 var path_L = new THREE.Shape();
     path_L.moveTo(0,0);
@@ -224,9 +247,9 @@ var path_L = new THREE.Shape();
 
 
     scene.add(  path_L );
-   
 
-//Letra A
+
+//Letra A2
 var path_A2 = new THREE.Shape();
     path_A2.moveTo(0,0);
     path_A2.quadraticCurveTo(0.5,-2,3,-3);
@@ -294,46 +317,10 @@ var path_D = new THREE.Shape();
     var tweenD = new TWEEN.Tween( path_D.position ).to( targetPositionD, 1000 ); 
     tweenD.start();
 
-
-    
-
     scene.add( path_D );
- 
+
 
 //Letra O
-var path_O_1 = new THREE.Shape();
-    path_O_1.moveTo(0,0);
-    path_O_1.quadraticCurveTo(15,4,2,20);
-    path_O_1.quadraticCurveTo(-15,18,0,0);
-    
-    
-    var geometry = new THREE.ExtrudeGeometry( path_O_1, extrudeSettings );
-    var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
-    var path_O_1 = new THREE.Mesh( geometry, material ) ;
-    
-
-
-    path_O_1.position.set(-300, -3, 0);
-
-    var targetPositionO = new THREE.Vector3( 58, -3, 0 );
-    var tweenO = new TWEEN.Tween( path_O_1.position ).to( targetPositionO, 1000 ); 
-    tweenO.start();
-    
-
-    scene.add( path_O_1 );
-  
-
-    var extrudeSettings2 = {
-        steps: 1,
-        depth: 1.01,
-        bevelEnabled: true,
-        bevelThickness: 1,
-        bevelSize: 0,
-        bevelOffset: 0,
-        bevelSegments: 1
-    };    
-
-
 var path_O_2 = new THREE.Shape();
     path_O_2.moveTo(0,4);
     path_O_2.bezierCurveTo(10,8,4,14,-1,17);
@@ -341,9 +328,9 @@ var path_O_2 = new THREE.Shape();
 
 
     var geometry = new THREE.ExtrudeGeometry( path_O_2, extrudeSettings2 );
-    var material = new THREE.MeshLambertMaterial( { color: 0x031d49} );
+    var material = new THREE.MeshLambertMaterial( { color: 0x503009} );
     var path_O_2 = new THREE.Mesh( geometry, material ) ;
-    
+        
     path_O_2.position.set(-300, -3, 0);
 
     var targetPositionO = new THREE.Vector3( 58, -3, 0 );
@@ -354,11 +341,31 @@ var path_O_2 = new THREE.Shape();
     scene.add( path_O_2 );
 
 
+var path_O_1 = new THREE.Shape();
+    path_O_1.moveTo(0,0);
+    path_O_1.quadraticCurveTo(15,4,2,20);
+    path_O_1.quadraticCurveTo(-15,18,0,0);
+    
+    
+    var geometry = new THREE.ExtrudeGeometry( path_O_1, extrudeSettings );
+    var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
+    var path_O_1 = new THREE.Mesh( geometry, material ) ;
+    
+    path_O_1.position.set(-300, -3, 0);
+
+    var targetPositionO = new THREE.Vector3( 58, -3, 0 );
+    var tweenO = new TWEEN.Tween( path_O_1.position ).to( targetPositionO, 1000 ); 
+    tweenO.start();
+    
+
+    scene.add( path_O_1 );
+  
+
 /*
 
     ANIMAÇÃO
 
-*/ 
+*/
 function animate(time)
 {
     requestAnimationFrame(animate);
@@ -391,7 +398,7 @@ function animate(time)
 
 
         path_A2.rotation.x += 0.01;
-        path_A2.rotation.y += 0.01
+        path_A2.rotation.y += 0.01;
 
 
         path_D.rotation.x += 0.01;
@@ -405,11 +412,11 @@ function animate(time)
 
         camera.position.x = radius * Math.cos( angle );
         camera.position.z = radius * Math.sin( angle );
-        angle += 0.015;
+        angle += 0.01;
         camera.lookAt(0 ,0 ,0);
-    }
-    
+    } 
     renderer.render( scene, camera );
 }
 //Chamada da função de Animação
 animate();
+   

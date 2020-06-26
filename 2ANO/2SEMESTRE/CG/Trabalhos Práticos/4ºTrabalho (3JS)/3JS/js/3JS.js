@@ -3,18 +3,20 @@
     RENDERER
 
 */
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-document.body.appendChild( renderer.domElement );
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    document.body.appendChild( renderer.domElement );
+
 
 /*
 
     CAMERA
 
 */
-var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
-camera.position.set( 0, 0, 250 );
-camera.lookAt( 0, 0, 0 );
+    var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+    camera.position.set( 0, 0, 250 );
+    camera.lookAt( 0, 0, 0 );
+
 
 /*
 
@@ -30,7 +32,6 @@ scene.background = new THREE.Color( 0x031d49 );     //Mudar a cor do Background
     FUNDO
 
 */
-
 var fundo = new THREE.PlaneGeometry(10000,10000,100,100);
 var fundo_material = new THREE.MeshLambertMaterial( { color: 0x503009 } );
 var fundo_mesh = new THREE.Mesh(fundo, fundo_material);
@@ -51,11 +52,6 @@ light.position.set(-50,0,100);
 scene.add( light );
 
 
-/*
-
-    MODELO 3D DA PALAVRA : Canelado
-
-*/
 //Definições de Extrude
 var extrudeSettings = {
     steps: 1,
@@ -67,7 +63,25 @@ var extrudeSettings = {
     bevelSegments: 1
 };
 
+//Definições de Extrude (Parte menor da letra: "O")
+var extrudeSettings2 = {
+    steps: 1,
+    depth: 0.51,
+    bevelEnabled: true,
+    bevelThickness: 1,
+    bevelSize: 0,
+    bevelOffset: 0,
+    bevelSegments: 1
+};
 
+
+/*
+
+    MODELO 3D DA PALAVRA : Canelado
+
+*/
+function letterC()
+{
 //Letra C
 var path_C = new THREE.Shape();
     path_C.moveTo(1,2);
@@ -93,8 +107,10 @@ var path_C = new THREE.Shape();
     tweenC.start();
 
     scene.add( path_C );
-    
+}    
 
+function letterA()
+{
 //Letra A
 var path_A = new THREE.Shape();
     path_A.moveTo(0,0);
@@ -129,8 +145,10 @@ var path_A = new THREE.Shape();
    
 
     scene.add( path_A );
-   
-   
+}   
+ 
+function letterN()
+{
 //Letra N
 var path_N = new THREE.Shape();
     path_N.moveTo(2,0);
@@ -165,8 +183,10 @@ var path_N = new THREE.Shape();
     
   
     scene.add( path_N );
+}
 
-
+function letterE()
+{
 //Letra E
 var path_E = new THREE.Shape();
     path_E.moveTo(0,0);
@@ -194,8 +214,10 @@ var path_E = new THREE.Shape();
 
 
     scene.add( path_E );
-   
+}
 
+function letterL()
+{
 //Letra L
 var path_L = new THREE.Shape();
     path_L.moveTo(0,0);
@@ -222,8 +244,10 @@ var path_L = new THREE.Shape();
 
 
     scene.add(  path_L );
-   
+}
 
+function letterA2()
+{
 //Letra A
 var path_A2 = new THREE.Shape();
     path_A2.moveTo(0,0);
@@ -260,8 +284,10 @@ var path_A2 = new THREE.Shape();
 
 
     scene.add( path_A2 );
+}
 
-
+function letterD()
+{
 //Letra D
 var path_D = new THREE.Shape();
     path_D.moveTo(0,0);
@@ -293,11 +319,11 @@ var path_D = new THREE.Shape();
     tweenD.start();
 
 
-    
-
     scene.add( path_D );
- 
+}
 
+function letterO()
+{
 //Letra O
 var path_O_1 = new THREE.Shape();
     path_O_1.moveTo(0,0);
@@ -321,15 +347,7 @@ var path_O_1 = new THREE.Shape();
     scene.add( path_O_1 );
   
 
-    var extrudeSettings2 = {
-        steps: 1,
-        depth: 0.51,
-        bevelEnabled: true,
-        bevelThickness: 1,
-        bevelSize: 0,
-        bevelOffset: 0,
-        bevelSegments: 1
-    };    
+        
 
 
 var path_O_2 = new THREE.Shape();
@@ -350,15 +368,28 @@ var path_O_2 = new THREE.Shape();
 
 
     scene.add( path_O_2 );
-
+}
 
 /*
 
     ANIMAÇÃO
 
 */ 
-function animate(time)
+
+
+function main()
 {
+    letterC();
+    letterA();
+    letterN();
+    letterE();
+    letterL();
+    letterA2();
+    letterD();
+    letterO();
+
+    function animate(time)
+    {
     requestAnimationFrame(animate);
 
     TWEEN.update( time );
@@ -397,6 +428,6 @@ function animate(time)
     path_O_2.rotation.y += 0.01;*/
 
     renderer.render( scene, camera );
+    }
+    animate();
 }
-//Chamada da função de Animação
-animate();
