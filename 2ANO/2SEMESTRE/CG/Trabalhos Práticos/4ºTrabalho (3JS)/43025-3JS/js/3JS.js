@@ -7,6 +7,7 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
+
 /*
 
     CAMERA
@@ -17,6 +18,7 @@ camera.position.set( 0, 0, 250 );
 camera.lookAt( 0, 0, 0 );
 var angle = 0;
 var radius = 200; 
+
 
 /*
 
@@ -45,6 +47,7 @@ fundo_mesh3.rotation.x = Math.PI;
 fundo_mesh3.position.y = 200;
 fundo_mesh3.position.z = 200;
 scene.add( fundo_mesh3 );
+
 
 //Chão
 var fundo = new THREE.PlaneGeometry(10000,10000,100,100);
@@ -93,6 +96,8 @@ var extrudeSettings2 = {
     MODELO 3D DA PALAVRA : Canelado
 
 */
+function letterC()
+{
 //Letra C
     var path_C = new THREE.Shape();
     path_C.moveTo(1,2);
@@ -118,8 +123,11 @@ var extrudeSettings2 = {
     tweenC.start();
 
     scene.add( path_C );
-   
+} 
+    
 
+function letterA()
+{
 //Letra A
 var path_A = new THREE.Shape();
     path_A.moveTo(0,0);
@@ -154,8 +162,11 @@ var path_A = new THREE.Shape();
    
 
     scene.add( path_A );
-  
-    
+}  
+ 
+
+function letterN()
+{
 //Letra N
 var path_N = new THREE.Shape();
     path_N.moveTo(2,0);
@@ -190,8 +201,11 @@ var path_N = new THREE.Shape();
     
   
     scene.add( path_N );
+}
 
 
+function letterE()
+{
 //Letra E
 var path_E = new THREE.Shape();
     path_E.moveTo(0,0);
@@ -219,8 +233,11 @@ var path_E = new THREE.Shape();
 
 
     scene.add( path_E );
-
-    
+}
+ 
+  
+function letterL()
+{
 //Letra L
 var path_L = new THREE.Shape();
     path_L.moveTo(0,0);
@@ -247,8 +264,11 @@ var path_L = new THREE.Shape();
 
 
     scene.add(  path_L );
+}
 
 
+function letterA2()
+{
 //Letra A2
 var path_A2 = new THREE.Shape();
     path_A2.moveTo(0,0);
@@ -285,8 +305,11 @@ var path_A2 = new THREE.Shape();
 
 
     scene.add( path_A2 );
+}
 
 
+function letterD()
+{
 //Letra D
 var path_D = new THREE.Shape();
     path_D.moveTo(0,0);
@@ -318,8 +341,11 @@ var path_D = new THREE.Shape();
     tweenD.start();
 
     scene.add( path_D );
+}
 
 
+function letterO()
+{
 //Letra O
 var path_O_2 = new THREE.Shape();
     path_O_2.moveTo(0,4);
@@ -328,7 +354,7 @@ var path_O_2 = new THREE.Shape();
 
 
     var geometry = new THREE.ExtrudeGeometry( path_O_2, extrudeSettings2 );
-    var material = new THREE.MeshLambertMaterial( { color: 0x503009} );
+    var material = new THREE.MeshLambertMaterial( { color: 0x0240c7} );
     var path_O_2 = new THREE.Mesh( geometry, material ) ;
         
     path_O_2.position.set(-300, -3, 0);
@@ -359,7 +385,8 @@ var path_O_1 = new THREE.Shape();
     
 
     scene.add( path_O_1 );
-  
+} 
+    
 
 /*
 
@@ -377,46 +404,33 @@ function animate(time)
 
     else 
     {
-        path_C.rotation.x += 0.01;
-        path_C.rotation.y += 0.01;
-
-
-        path_A.rotation.x += 0.01;
-        path_A.rotation.y += 0.01;
-
-
-        path_N.rotation.x += 0.01;
-        path_N.rotation.y += 0.01;
-
-
-        path_E.rotation.x += 0.01;
-        path_E.rotation.y += 0.01;
-
-
-        path_L.rotation.x += 0.01;
-        path_L.rotation.y += 0.01;
-
-
-        path_A2.rotation.x += 0.01;
-        path_A2.rotation.y += 0.01;
-
-
-        path_D.rotation.x += 0.01;
-        path_D.rotation.y += 0.01;
-
-
-        path_O_1.rotation.x += 0.01;
-        path_O_1.rotation.y += 0.01;
-        path_O_2.rotation.x += 0.01;
-        path_O_2.rotation.y += 0.01;
-
         camera.position.x = radius * Math.cos( angle );
         camera.position.z = radius * Math.sin( angle );
         angle += 0.01;
         camera.lookAt(0 ,0 ,0);
     } 
+
     renderer.render( scene, camera );
 }
-//Chamada da função de Animação
-animate();
    
+
+
+/*
+
+    MAIN
+
+*/
+function main()
+{ 
+    //Construção da Palavra: Canelado
+    letterC();
+    letterA();
+    letterN();
+    letterE();
+    letterL();
+    letterA2();
+    letterD();
+    letterO();
+
+    animate();
+}

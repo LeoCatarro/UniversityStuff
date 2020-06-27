@@ -723,6 +723,7 @@ function main()
 	let onda = new wave(1150,340);
 	onda.draw();	
 	
+
 	//Função de Animação
 	function animate()
 	{
@@ -732,9 +733,6 @@ function main()
 		modelo.update();
 		onda.update();	
 	}
-
 	//Animação
-    animate()	 
-
-
+    animate();
 }

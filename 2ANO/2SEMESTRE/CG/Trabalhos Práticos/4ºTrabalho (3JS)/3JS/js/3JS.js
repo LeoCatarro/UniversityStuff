@@ -13,10 +13,11 @@
     CAMERA
 
 */
-    var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
-    camera.position.set( 0, 0, 250 );
-    camera.lookAt( 0, 0, 0 );
-
+var camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+camera.position.set( 0, 0, 250 );
+camera.lookAt( 0, 0, 0 );
+var angle = 0;
+var radius = 200; 
 
 /*
 
@@ -390,44 +391,20 @@ function main()
 
     function animate(time)
     {
-    requestAnimationFrame(animate);
+        requestAnimationFrame(animate);
 
-    TWEEN.update( time );
-    
-    /*path_C.rotation.x += 0.01;
-    path_C.rotation.y += 0.01;
-
-
-    path_A.rotation.x += 0.01;
-    path_A.rotation.y += 0.01;
-
-
-    path_N.rotation.x += 0.01;
-    path_N.rotation.y += 0.01;
-
-
-    path_E.rotation.x += 0.01;
-    path_E.rotation.y += 0.01;
-
-
-    path_L.rotation.x += 0.01;
-    path_L.rotation.y += 0.01;
-
-
-    path_A2.rotation.x += 0.01;
-    path_A2.rotation.y += 0.01
-
-
-    path_D.rotation.x += 0.01;
-    path_D.rotation.y += 0.01;
-
-
-    path_O_1.rotation.x += 0.01;
-    path_O_1.rotation.y += 0.01;
-    path_O_2.rotation.x += 0.01;
-    path_O_2.rotation.y += 0.01;*/
-
-    renderer.render( scene, camera );
+        if(TWEEN.update( time ) == true)
+        {
+            TWEEN.update( time );
+        }
+        else
+        {
+            camera.position.x = radius * Math.cos( angle );
+            camera.position.z = radius * Math.sin( angle );
+            angle += 0.01;
+            camera.lookAt(0 ,0 ,0);
+        }
+        renderer.render( scene, camera );
     }
     animate();
 }
