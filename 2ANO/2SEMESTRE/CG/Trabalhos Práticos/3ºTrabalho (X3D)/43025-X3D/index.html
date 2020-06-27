@@ -14,15 +14,21 @@
         <source src="media/BellRing.mp3" type="audio/mpeg">
     </audio> 
     <script src="js/x3d_script.js"></script>      
-    <x3d>
-        <scene>
+    <x3d width="1060px" height="530px">
+        <scene >
                 <!--
 
                     Luz
 
                 -->
-                <PointLight radius="500" intensity="1" location="0 100 100" color="1 0.9 0.7"></PointLight>
-                
+                <PointLight radius="500" intensity="1" location="0 200 100" color="1 0.9 0.7" shadowIntensity="0.5"></PointLight>
+               
+                <!--
+
+                    ViewPoint
+
+                -->
+                <ViewPoint position="0 2 15" orientation="0 0 0"></ViewPoint>
                 
                 <!--
 
@@ -341,19 +347,19 @@
                 -->
                 <!-- Animação: Secretária -->
                 <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
-                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="0 8 0  0 3 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="0 10 0  0 3 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
                 <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
 	            <Route fromNode="move" fromField ="value_changed" toNode="desk" toField="translation"> </Route>  
             
                 <!--Animação: Folhas-->
                 <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
-                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="0 8 0  0 3 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="0 10 0  0 3 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
                 <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
 	            <Route fromNode="move" fromField ="value_changed" toNode="folhas" toField="translation"> </Route>
             
                 <!--Animação: CestoDoLixo-->
                 <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
-                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="-8 0 0  -3 0 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="-10 0 0  -3 0 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
                 <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
                 <Route fromNode="move" fromField ="value_changed" toNode="cesto" toField="translation"> </Route>
                 
@@ -365,13 +371,13 @@
 
                 <!--Animação: Computador-->
                 <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
-                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="0 8 0  0 3 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="0 10 0  0 3 0  0 0 0  0 0 0  0 0 0  0 0 0  0 0 0"> </PositionInterpolator> 
                 <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
                 <Route fromNode="move" fromField ="value_changed" toNode="computer" toField="translation"> </Route>
                 
                 <!--Animação: Campainha-->
                 <timeSensor DEF="time" cycleInterval="2" loop="true"> </timeSensor>
-                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="-8 8 0  -3 3 0  -2.5 0.1 0  -2.5 0.1 0  -2.5 0.1 0  -2.5 0.1 0  -2.5 0.1 0"> </PositionInterpolator> 
+                <PositionInterpolator DEF="move" key="0 0.5 0.6 0.7 0.8 0.9 1" keyValue="-10 10 0  -4 4 0  -2.5 0.1 0  -2.5 0.1 0  -2.5 0.1 0  -2.5 0.1 0  -2.5 0.1 0"> </PositionInterpolator> 
                 <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"> </Route> 
                 <Route fromNode="move" fromField ="value_changed" toNode="campainha" toField="translation"> </Route>
             </scene> 
