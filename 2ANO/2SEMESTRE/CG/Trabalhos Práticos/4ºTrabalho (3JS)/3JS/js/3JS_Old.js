@@ -215,7 +215,7 @@ function E(x,y)
 
         scene.add( path_E );
 }   
-
+*/
 //Letra L
 function L(x,y)
 {
@@ -244,7 +244,7 @@ function L(x,y)
 
         scene.add(  path_L );
 }   
-
+/*
 //Letra D
 function D(x,y)
 {

@@ -353,35 +353,27 @@ var path_O_2 = new THREE.Shape();
     path_O_2.bezierCurveTo(-10,16,-2,6,0,4);
 
 
-    var geometry = new THREE.ExtrudeGeometry( path_O_2, extrudeSettings2 );
-    var material = new THREE.MeshLambertMaterial( { color: 0x0240c7} );
-    var path_O_2 = new THREE.Mesh( geometry, material ) ;
-        
-    path_O_2.position.set(-300, -3, 0);
-
-    var targetPositionO = new THREE.Vector3( 58, -3, 0 );
-    var tweenO = new TWEEN.Tween( path_O_2.position ).to( targetPositionO, 1000 ); 
-    tweenO.start();
-
-
-    scene.add( path_O_2 );
-
-
 var path_O_1 = new THREE.Shape();
     path_O_1.moveTo(0,0);
     path_O_1.quadraticCurveTo(15,4,2,20);
     path_O_1.quadraticCurveTo(-15,18,0,0);
     
+
+    path_O_1.holes.push(path_O_2);
     
+
     var geometry = new THREE.ExtrudeGeometry( path_O_1, extrudeSettings );
     var material = new THREE.MeshLambertMaterial( { color: 0xF3FFE2} );
     var path_O_1 = new THREE.Mesh( geometry, material ) ;
     
+
     path_O_1.position.set(-300, -3, 0);
 
+    
     var targetPositionO = new THREE.Vector3( 58, -3, 0 );
     var tweenO = new TWEEN.Tween( path_O_1.position ).to( targetPositionO, 1000 ); 
     tweenO.start();
+    
     
 
     scene.add( path_O_1 );
