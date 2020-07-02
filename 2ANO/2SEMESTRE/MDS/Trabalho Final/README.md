@@ -1,3 +1,3 @@
 # Link Repositório do Trabalho
 
-    * [Repositório](https://gitlab.com/DnisLpt/trabalhofinalmds)
+    * Repostório: https://gitlab.com/DnisLpt/trabalhofinalmds
