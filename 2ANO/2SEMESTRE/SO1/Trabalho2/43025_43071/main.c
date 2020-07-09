@@ -10,6 +10,7 @@
 
 int count = 0;
 int iterator = 0;
+int var = -1;
 
 typedef struct program
 {
@@ -117,7 +118,14 @@ struct Process *compare(int size, struct Process *arr[size], int pid)
 
 void print(struct Queue *ready, struct Queue *run, struct list *blocked, int count)
 {
-    printf("%d READY ", count);
+    printf("%d ", count);
+
+    if(var != -1)
+        printf(" stdout %d", var);
+    else
+        printf(" stdout ");
+
+    printf(" READY "); 
 
     printQueue(ready);
 
@@ -151,6 +159,8 @@ void updateScheduler(struct Queue *run, struct Queue *ready, struct list *blocke
         enqueue(compare(lines, arr, dequeue(ready)), run);
         p = getRunProcess(run, lines, arr);
 
+        //printf("1 P%d\n", p->pid);
+
         for(int i = 0; i < lines; i++)
         {
             if(p->pid == arr[i]->pid)
@@ -170,6 +180,8 @@ void updateScheduler(struct Queue *run, struct Queue *ready, struct list *blocke
     {
         enqueue(compare(lines, arr, dequeue(ready)), run);
         p = getRunProcess(run, lines, arr);
+
+        //printf("2 P%d\n", p->pid);
 
         for(int i = 0; i < lines; i++)
         {
@@ -197,6 +209,8 @@ void updateScheduler(struct Queue *run, struct Queue *ready, struct list *blocke
             enqueue(compare(lines, arr, dequeue(ready)), run);
             p = getRunProcess(run, lines, arr);
 
+            //printf("3 P%d\n", p->pid);
+
             for(int i = 0; i < lines; i++)
             {
                 if(p->pid == arr[i]->pid)
@@ -222,6 +236,8 @@ void updateScheduler(struct Queue *run, struct Queue *ready, struct list *blocke
         }
     }
 
+    //printf("%d\n", iterator);
+
     print(ready, run, blocked, count);
 
     count++;    
@@ -233,23 +249,41 @@ bool updateProgram(int lines, Program *program[lines], struct list *blocked, str
 {
     int aux = -1;
 
+    int n = 0;
+
     Program *p = program[iterator];
 
     for(int i = p->process->count; i < P_SIZE - 1;)
     {    
         p = program[iterator];
 
-        p->process->count = i;
+        for(int i = 0; i < P_SIZE -1; i++)
+        {
+            if(p->mem[i] == -1)
+                n = i;
+        }
 
         switch(p->mem[i])
         {
-            case -1:    iterator++;
+            case -1:    i = P_SIZE;
+                        if(findProcess(p->process, run) == true)
+                        {   
+                        i = P_SIZE;
+                        dequeue(run);
+                        }
+                        else if(findProcess(p->process, ready) == true)
+                        {
+                        i = P_SIZE;
+                        dequeue(ready);
+                        } 
+                        updateScheduler(run, ready, blocked, lines, arr, counter, aux1);
                         break;
 
             case 0: if(findProcess(p->process, run) == true)
                     {
                         aux = p->mem[i+1];
                         p->arr[aux] = 0;
+                        p->process->count += 2;
                         i += 2;
                     }
                     updateScheduler(run, ready, blocked, lines, arr, counter, aux1);
@@ -259,6 +293,7 @@ bool updateProgram(int lines, Program *program[lines], struct list *blocked, str
                     {
                         aux = p->mem[i+1];
                         p->arr[aux]++;
+                        p->process->count += 2;
                         i += 2;
                     }
                     updateScheduler(run, ready, blocked, lines, arr, counter, aux1);
@@ -293,9 +328,10 @@ bool updateProgram(int lines, Program *program[lines], struct list *blocked, str
             case 4: if(findProcess(p->process, run) == true)
                     {
                         aux = p->mem[i+1];
+                        p->process->count += aux;
                         i += aux;
                     }
-                    if(i >= P_SIZE - 1)
+                    if(i >= n)
                         printf("Erro de segmentacao do processo P%d\n", p->process->pid);
                     updateScheduler(run, ready, blocked, lines, arr, counter, aux1);      
                     break;           
@@ -303,6 +339,7 @@ bool updateProgram(int lines, Program *program[lines], struct list *blocked, str
             case 5: if(findProcess(p->process, run) == true)
                     {
                         aux = p->mem[i+1];
+                        p->process->count -= aux;
                         i -= aux;
                     }
                     if(i < 0)
@@ -317,6 +354,7 @@ bool updateProgram(int lines, Program *program[lines], struct list *blocked, str
                         if(isEmpty(run) == false)
                             dequeue(run);    
                         moveBlocked(blocked, p->process);
+                        p->process->count += 2;
                         i += 2;
                     }
                     else if(findProcess(p->process, ready) == true)
@@ -327,6 +365,7 @@ bool updateProgram(int lines, Program *program[lines], struct list *blocked, str
                         if(isEmpty(ready) == false)
                             dequeue(ready);    
                         moveBlocked(blocked, p->process);
+                        p->process->count += 2;
                         i += 2;
                     }
                     updateScheduler(run, ready, blocked, lines, arr, counter, aux1);
@@ -336,7 +375,10 @@ bool updateProgram(int lines, Program *program[lines], struct list *blocked, str
                     {
                         aux = p->mem[i+1];
                         if(aux == 0)
+                        {
+                            p->process->count += 2;
                             i += 2;
+                        }    
                     }
                     updateScheduler(run, ready, blocked, lines, arr, counter, aux1);        
                     break;
@@ -344,15 +386,22 @@ bool updateProgram(int lines, Program *program[lines], struct list *blocked, str
             case 8: if(findProcess(p->process, run) == true)
                     {
                         aux = p->mem[i+1];
-                        printf("X_%d = %d\n", aux, p->arr[aux]);
+                        var = p->arr[aux];
+                        p->process->count += 2;
                         i += 2;
                     }
                     updateScheduler(run, ready, blocked, lines, arr, counter, aux1);
                     break;
 
             case 9: if(findProcess(p->process, run) == true)
+                    {   
+                        i = P_SIZE;
+                        dequeue(run);
+                    }
+                    else if(findProcess(p->process, ready) == true)
                     {
                         i = P_SIZE;
+                        dequeue(ready);
                     }    
                     updateScheduler(run, ready, blocked, lines, arr, counter, aux1);
                     break;
@@ -382,7 +431,7 @@ int main(void)
     }
 
 
-    FILE *fp = fopen("C:\Users\Utilizador\Desktop\SO_2\test.txt", "r"); 
+    FILE *fp = fopen("/home/ds/Desktop/SO_2/test.txt", "r"); 
     int lines = nLines(fp, input);    
 
     struct Queue *run = queue_new(lines);
@@ -477,13 +526,16 @@ int main(void)
 
     printf("Round Robin Quantum %d\n", QUANTUM);
 
-    while (/*isEmpty(ready) == false || isEmpty(run) == false || list_empty(blocked) == false*/ count < 100)
+    while (isEmpty(ready) == false || isEmpty(run) == false || list_empty(blocked) == false)
     {
+        //printf("%d\n", count);
+
         if(updateProgram(lines, array, blocked, ready, run, arr, counter, aux) == false)
         {
             printf("Instrução invalida\n");
             break;
-        }        
+        }
+        
     }
 
     list_destroy(blocked);

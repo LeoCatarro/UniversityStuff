@@ -1,7 +1,6 @@
 # include <stdbool.h>
 # include "list.h"
 
-#define SIZE 5
 #define SIZE_S 19
 #define QUANTUM 3
 
@@ -24,7 +23,7 @@ struct Process
 };
 
 struct Queue *queue_new(int n);
-struct Process *process_new(int n, int entry, int arr[SIZE]);
+struct Process *process_new(int n, int entry);
 bool isFull(struct Queue *queue);
 bool isEmpty(struct Queue *queue);
 void enqueue (struct Process *p, struct Queue *queue);

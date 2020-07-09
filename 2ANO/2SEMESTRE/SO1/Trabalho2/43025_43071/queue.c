@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "queue.h"
 
-struct Process *process_new(int n, int entry, int array[SIZE])
+struct Process *process_new(int n, int entry)
 {
     struct Process *p = malloc(sizeof(struct Process));
 
