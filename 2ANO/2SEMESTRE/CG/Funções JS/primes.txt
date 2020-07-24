@@ -1,0 +1,37 @@
+function isPrime(n)
+{
+	let j;
+	let flag=1;
+
+	for(let j=2 ; j<=n/2 ; ++j)
+	{
+		if(n%j == 0)
+		{
+			flag=0;
+			break;
+		}
+	}
+	return flag;
+}
+
+
+function primes(a,b) 
+{
+	let res = [];
+
+	if(a<2)
+	{
+		++a;
+	}
+
+	for(let i= a+1 ; i<b ; ++i)
+	{
+		flag= isPrime(i);
+
+		if(flag == 1)
+		{
+			res.push(i);
+		}
+	}
+	return res;
+}

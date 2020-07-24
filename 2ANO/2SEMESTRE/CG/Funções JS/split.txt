@@ -1,0 +1,43 @@
+function split(p,x)
+	{
+		let verify = [];
+		let unverify = [];
+				
+		for(let i=0 ; i<x.length ; i++)
+		{
+			if(p(x[i]) == true)
+			{
+				verify.push(x[i]);
+			}
+			else
+			{
+				unverify.push(x[i]);
+			}
+		}
+        
+		let res = [];
+        res[0] = verify;
+        res[1] = unverify;
+
+        return res;
+	} 
+
+
+function split(p,a)
+{
+    let verify = [];
+    let unverify = [];
+    
+    for(let i=0 ; i<a.lenght ; i++)
+    {
+        if(p(a[i]) == true)
+        {
+            verify.push(a[i]);
+        }
+        else
+        {
+            unverify.push(a[i]);
+        }
+    }
+    return {verify, unverify};
+}

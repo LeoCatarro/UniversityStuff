@@ -1,0 +1,26 @@
+function hero_step(model) {
+  
+  if(model.motion === 1)
+  {
+      model.hero.x+=model.step_size;
+  }
+  if(model.motion === 2)
+  {
+      model.hero.x-=model.step_size;
+  }
+  if(model.motion === 3)
+  {
+      model.hero.y-=model.step_size;
+  }
+  if(model.motion === 4)
+  {
+      model.hero.y+=model.step_size;
+  }
+  else
+  {
+      model.hero.x = model.hero.x;
+      model.hero.y = model.hero.y;
+  }
+  
+  return model;
+}

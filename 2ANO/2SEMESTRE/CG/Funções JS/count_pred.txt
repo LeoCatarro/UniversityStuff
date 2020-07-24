@@ -1,0 +1,13 @@
+function count_pred(p,x)
+{
+    let res=0;
+
+    for(let i=0 ; i<x.length ; i++)
+    {
+        if(p(x[i]) == true)
+        {
+            res++;
+        }
+    }
+    return res;
+}

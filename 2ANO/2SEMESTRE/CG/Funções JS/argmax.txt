@@ -1,0 +1,40 @@
+#
+#	SEM DAR sort() NO ARRAY
+#
+
+function argmax(x)
+{
+    let arr = [];
+    for(let xi of x)
+    {
+	arr.push(xi);
+    }
+    
+    let index=-1;
+    let max=-Infinity;
+   
+    if(arr.length == 0)
+    {
+	return {index: index, value: max};
+    }
+
+    for(let i=0 ; i<arr.length; i++)
+    {
+	if(arr[i] > max)
+	{
+	    index=i;
+            max=arr[i];
+	}
+    }
+    
+    return {index: ""+index, value: max};
+}
+
+#
+#	COM sort() NO ARRAY
+#
+function argmax(x)
+{
+    x.sort();
+    return {index: x.lenght, value: x[x.length-1]};
+}

@@ -1,0 +1,11 @@
+function ball_step(model) {
+  //
+  let over_x = model.ball.x + model.ball.vx + model.ball.r >= model.width;
+  let under_x = model.ball.x + model.ball.vx - model.ball.r <= 0;
+  let over_y = model.ball.y + model.ball.vy + model.ball.r >= model.height;
+  let under_y = model.ball.y + model.ball.vy - model.ball.r <= 0;
+  if (over_x || under_x) { model.ball.vx *= -1; }
+  if (over_y || under_y) { model.ball.vy *= -1; }
+  //
+  return model;
+}

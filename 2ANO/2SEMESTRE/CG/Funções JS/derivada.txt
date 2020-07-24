@@ -1,0 +1,11 @@
+// O resultado vai ser testado com esta função.
+// Não a apague!
+function r(x) {
+    return Math.round(x * 1000) / 1000;
+}
+//
+// Resolva o Exercicio nas linhas seguintes.
+
+function derivada(func, epsilon) {
+    return x => (func(x + epsilon) - func(x - epsilon)) / (2.0 * epsilon);
+}
