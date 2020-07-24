@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script>
+
+function isPrime(n)
+{
+	let j;
+	let flag=1;
+
+	for(let j=2 ; j<=n/2 ; ++j)
+	{
+		if(n%j == 0)
+		{
+			flag=0;
+			break;
+		}
+	}
+	return flag;
+}
+
+
+function primes(a,b) 
+{
+	let res = [];
+
+	if(a<2)
+	{
+		++a;
+	}
+
+	for(let i= a+1 ; i<b ; ++i)
+	{
+		flag= isPrime(i);
+
+		if(flag == 1)
+		{
+			res.push(i);
+		}
+	}
+	return res;
+}
+
+function main(){
+	let consola = document.getElementById("xpto");
+	let resposta = primes(20,50);
+	console.log(resposta);
+	consola.innerHTML = resposta; 
+}
+
+        </script>
+    </head>
+    <body onload="main();">
+        <p id="xpto" />
+    </body>
+</html>

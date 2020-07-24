@@ -1,0 +1,95 @@
+/*
+
+Grupo I: Resolução
+
+*/
+
+1) O que define uma aplicação da Computação Gráfica?
+
+    R.: O processo computacional que transforma uma imagem noutra imagem. Por exemplo, mudar a cor do céu numa fotografia
+
+
+2) Escreva uma função slipt(p, a) que dada função p: int -> boolean e uma lista de inteiros a . Devolve 2 listas. A primeira com todos os elementos de a que verifiquem p e a segunda com todos os elementos de a que nao verifiquem primeira
+
+    R.:
+    function split(p,a)
+    {
+        let verifica = [];
+        let nao_verifica = [];
+        
+        for(let i=0 ; i<a.lenght ; i++)
+        {
+            if(p(a[i]) == true)
+            {
+                verifica.push(a[i]);
+            }
+            else
+            {
+                nao_verifica.push(a[i]);
+            }
+        }
+        return [verifica , nao_verifica];
+    }
+
+
+3) (Ver Figura)
+
+    R.: d=" M 50 90  C 100 50 20 0 70 20  L 90 10  L 20 10  Q 20 90 50 90 Z"
+
+
+4)  (Ver Codigo)
+
+    R.: Opção C
+
+
+5) (Ver Figura)
+
+    R.: T(50,50) R(-45) S(1, 0.5) T(-50,-50)
+
+
+6) (Ver Figura)
+
+    R.: Opção b
+
+
+7) (Ver Figura)
+
+    R.: Opção b    
+
+
+/*
+
+Grupo II
+
+*/
+
+-->02.A
+
+1) Ex: Faces
+
+    R.: FACES = [ [1,2,3], [0,1,3], [0,3,4], [0,4,5], [0,5,6], [1,0,6]]
+
+
+2) Ex: Função count_odds(x)
+    R.:
+    function count_odds(x)
+    {
+        let impar_amount = 0;
+
+        for(let i=0 ; i<x.lenght ; i++)
+        {
+            if(x[i]%2 != 0)
+            {
+                impar_amount++;
+            }
+        }
+        return impar_amount;
+    }
+
+-->02.B
+
+(Oralmente!)
+
+-->02.C
+
+(Oralmente!)

@@ -1,0 +1,17 @@
+let distance = Math.sqrt((model.square.x - model.ball.x) * (model.square.x - model.ball.x) + (model.square.y - model.ball.y) * (model.square.y - model.ball.y));
+function ball_step(model) {
+
+
+  let distance = Math.sqrt((model.square.x - model.ball.x) * (model.square.x - model.ball.x) + (model.square.y - model.ball.y) * (model.square.y - model.ball.y));
+
+  if (distance >= model.alert_distance)
+  {
+      model.ball.color = "seagreen";
+  }
+  else if (distance < model.alert_distance)
+  {
+      model.ball.color = "crimson";
+  }
+
+  return model;
+}

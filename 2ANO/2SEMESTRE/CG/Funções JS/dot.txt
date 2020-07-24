@@ -1,0 +1,42 @@
+// O resultado vai ser testado com esta função.
+// Não a apague!
+function r(x) {
+    return Math.round(x * 1000) / 1000;
+}
+//
+// Resolva o Exercicio nas linhas seguintes.
+
+function dot(a,b)
+{
+    return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+function norm(v)
+{
+    return Math.sqrt(dot(v,v));
+}
+
+function vers(v)
+{
+    let n = norm(v);
+
+    return{x: v.x / n, y: v.y / n, z: v.z / n};
+}
+
+function angle(u,v)
+{
+    let nu = norm(u);
+    let nv = norm(v);
+    let uv = dot(u,v);
+
+    return Math.acos(uv / (nu * nv));
+}
+
+function orth(u,v)
+{
+    let wx = u.y * v.z - u.z * v.y;
+    let wy = u.z * v.x - u.x * v.z;
+    let wz = u.x * v.y - u.y * v.x;
+
+    return {x: wx, y: wy, z: wz};
+}
