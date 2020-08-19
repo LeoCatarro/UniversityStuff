@@ -1,5 +1,18 @@
-# UniversityStuff
+**UniversityStuff**
+======================================
+<br>
 
-* That repository contains all my stuff from CS degree
-* If you would like to access it , ask me for that!
+<img src="https://www.agroportal.pt/wp-content/uploads/logo_horizontal_duas_linhas.jpg" alt="Universidade de Évora"/>
 
+<br>
+<br>
+<br>
+<br>
+
+* Este repositório contém todos os trabalhos, apontamentos e materiais usados durante a Lincenciatura
+* Curso: Engenharia Informática
+
+<br>
+<br>
+
+**Made by: LeoCatarro**
