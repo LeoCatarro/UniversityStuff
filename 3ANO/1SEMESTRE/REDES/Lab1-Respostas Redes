@@ -1,0 +1,57 @@
+#1 - nslookup
+193.136.216.21
+
+#2 - ping
+64 bytes from arachne.uevora.pt (2001:690:2006:200::21): icmp_seq=1 ttl=54 time=7.68 ms
+
+#3 - ping
+--- www.uevora.pt ping statistics ---
+69 packets transmitted, 69 received, 0% packet loss, time 68107ms
+rtt min/avg/max/mdev = 7.013/8.195/17.547/2.030 ms
+
+#4 - ping
+--- www.google.com ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4006ms
+rtt min/avg/max/mdev = 13.216/13.413/13.701/0.185 ms
+
+#5- traceroute
+A)
+ 1  meo.Home (192.168.1.254)  7.390 ms  7.414 ms  7.514 ms
+ 2  * * *
+ 3  * * *
+ 4  lis2-cr1-bu10-200.cprm.net (195.8.30.241)  8.889 ms  9.090 ms  9.679 ms
+ 5  FCCN.AS1930.gigapix.pt (193.136.251.1)  9.959 ms  10.298 ms  10.541 ms
+ 6  Router60.Lisboa.fccn.pt (194.210.6.202)  10.800 ms  4.543 ms  6.789 ms
+ 7  Router13.Lisboa.fccn.pt (194.210.6.211)  7.244 ms  7.426 ms  8.798 ms
+ 8  UEvora.Evora.fccn.pt (193.136.1.18)  10.733 ms  10.857 ms  11.266 ms
+ 9  router-ac.fw.uevora.pt (193.137.219.35)  12.736 ms  12.992 ms  8.918 ms
+10  www.uevora.pt (193.136.216.21)  7.012 ms  6.816 ms  7.690 ms
+
+B)
+ 1  meo.Home (192.168.1.254)  1.207 ms  1.470 ms  1.864 ms
+ 2  * * *
+ 3  telepac13-hsi.cprm.net (195.8.30.238)  7.375 ms  7.749 ms  7.915 ms
+ 4  lis1-cr1-bu10-200.cprm.net (195.8.30.237)  9.470 ms  10.051 ms  10.656 ms
+ 5  195.8.10.78 (195.8.10.78)  9.921 ms  10.615 ms  10.744 ms
+ 6  209.85.243.179 (209.85.243.179)  11.126 ms  10.836 ms  10.973 ms
+ 7  74.125.245.84 (74.125.245.84)  11.509 ms  7.497 ms  7.153 ms
+ 8  66.249.94.87 (66.249.94.87)  14.747 ms  15.044 ms  15.178 ms
+ 9  74.125.242.161 (74.125.242.161)  13.987 ms  14.346 ms  16.502 ms
+10  142.250.46.165 (142.250.46.165)  14.503 ms  14.268 ms  13.951 ms
+11  www.google.com (216.58.209.68)  14.155 ms  14.919 ms  14.887 ms
+
+C)
+ 1  meo.Home (192.168.1.254)  0.956 ms  1.321 ms  1.711 ms
+ 2  * * *
+ 3  * * *
+ 4  lis1-cr1-bu10-200.cprm.net (195.8.30.237)  8.054 ms  8.301 ms  8.614 ms
+ 5  80.231.159.133 (80.231.159.133)  9.455 ms  9.477 ms  12.140 ms
+ 6  80.231.158.5 (80.231.158.5)  168.880 ms  164.151 ms  164.222 ms
+ 7  80.231.158.30 (80.231.158.30)  164.891 ms  165.532 ms  165.784 ms
+ 8  if-ae-19-2.tcore2.l78-london.as6453.net (80.231.138.22)  167.712 ms  167.102 ms  167.408 ms
+ 9  if-ae-18-3.tcore1.nto-newyork.as6453.net (80.231.131.169)  159.837 ms  160.043 ms  162.682 ms
+10  if-ae-36-2.tcore1.sqn-sanjose.as6453.net (63.243.128.167)  160.519 ms  161.149 ms  161.412 ms
+11  if-ae-18-3.tcore2.sv1-santaclara.as6453.net (63.243.205.131)  160.774 ms  159.528 ms  159.700 ms
+12  209.58.86.30 (209.58.86.30)  160.136 ms  160.444 ms  160.800 ms
+13  104.193.88.21 (104.193.88.21)  168.758 ms  169.076 ms  170.608 ms
+14  104.193.88.123 (104.193.88.123)  161.843 ms  162.133 ms  160.399 ms
