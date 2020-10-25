@@ -1,0 +1,99 @@
+/*
+    NOTAS:
+        -Converter para em, usar: target(14)/context(16) exemplo!
+        -Default font-size: 1em ou 16px;
+
+*/
+
+
+/*
+    Marko One Font
+*/
+@font-face {
+    font-family: 'Marko One';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Marko One'), local('MarkoOne-Regular'), url(https://fonts.gstatic.com/s/markoone/v10/9Btq3DFG0cnVM5lw1haqLZ8e.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+ 
+/*
+    NAO PERCEBI ESTA PARTE!!!!!
+*/
+head.label {
+    font-weight: bold;
+    font-style: normal;
+    font-variant: small-caps;
+    
+}
+
+body {
+    font-family: Georgia;
+    font-size: small;
+    line-height: 1.75em;  /*Muda a altura entre linhas(espaçamento)*/
+}
+
+h1 {
+    font: 250% "Marko One";  /*DUVIDA SE ESTÁ CORRETO OU NAO!!!*/
+    color: purple;
+    text-align: center;
+
+    /*text-shadow: 'horizontal' 'vertical' 'blur' 'color'*/
+    text-shadow: .1em .1em .2em lightslategray;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 1em;
+    text-align: center;
+    color: purple;
+    line-height: .5em;
+}
+
+p {
+    /* 
+        Usar formula target(14)/context(16) para converter para unidades em:
+        14px/16=0.875em
+    */
+
+    font-size: 0.875em; 
+}
+
+dt {
+    color: sienna;
+}
+
+dl {
+    font-size: 0.875em;
+    font-weight: bold;
+}
+
+strong {
+    font-style: italic;
+    color:maroon;
+}
+
+/*
+All p elements inside div with id="info"    
+*/
+#info p{
+    font-style: italic;
+    color: grey;
+    text-align: center;
+}
+
+.price {
+    font-family: serif;
+    font-weight: italic;
+    color: grey;
+}
+
+.warning {
+    font-size: small;
+    color: red;
+}
+
+#appetizers p {
+    font-style: italic;
+    text-align: center;
+}
