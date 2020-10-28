@@ -1,0 +1,27 @@
+# Implemente a função do enunciado.
+#Função Auxiliar
+def checkRepetition(a):
+    seen = set()
+    uniq = set()
+    for x in a:
+        if x not in seen:
+            uniq.add(x)
+            seen.add(x)
+    
+    return uniq
+    
+    
+def symbols(delta):
+    
+    result = set()
+    
+    for i in range(len(delta)):
+        result.add(delta[i][1])
+        
+    return(checkRepetition(result))
+
+
+OU
+
+def symbols(delta):
+    return { x for (_, x, _) in delta }

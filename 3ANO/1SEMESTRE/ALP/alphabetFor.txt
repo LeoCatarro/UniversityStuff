@@ -1,0 +1,22 @@
+#Função Auxiliar
+def checkRepetition(a):
+    seen = set()
+    uniq = []
+    for x in a:
+        if x not in seen:
+            uniq.append(x)
+            seen.add(x)
+    
+    return uniq
+
+def alphabetFor(word, sep="_"):
+    result = []
+   
+    if sep == "_":
+        result = word.split(sep)
+        
+    if sep == "":
+        for el in word:
+            result.append(el)
+   
+    return checkRepetition(result)
