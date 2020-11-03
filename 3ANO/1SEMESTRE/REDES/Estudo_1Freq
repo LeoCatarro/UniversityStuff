@@ -1,0 +1,138 @@
+##############################
+#   -->Introdução:           #
+##############################
+
+Internet é uma rede de redes
+    -Cada uma com caracteristicas e tecnologias especificas
+    -Independencia
+    -Objetivos próprios
+
+Princípios para gerir a complexidade
+    -Extremo a Extremo
+        -Aplicações precisam de muitas funcionalidades: cumprir dados, assegurar autenticação, fiabilidade, ...
+        -Implementado apenas num nivel em que nao pode ser implementado corretamente num nivel mais juntos á app
+        -Deve ser implementado no interior da rede, o que é universal 
+
+        -Vantagens
+            -Só se paga o que se usa 
+            -Sistemas mais flexivel e extensivel
+            -Definir componentes, relaçoes e interfaces
+    
+    -Abstração
+    -Encapsulamento
+    -Flexibilidade
+    -Recursividade
+
+Estruturação das redes
+    -Na rede estão envolvidas muitas componentes(PC's, nós, canais, ...)
+    -Rede estruturada em sub-redes
+    -Pode ser estruturada em abstrações horizontais ou camadas
+    -Cada camada representa conjunto de funcionalidades, oferencendo 1 interface e 1 conjunto de serviços
+    -Cada camada utiliza os serviços da camada anterior
+
+Estruturação por camadas - Porquê?
+    -Cada camada exporta os serviçõs para a camada superior
+    -Esconde os detalhes de implementação
+    -Permite evolução independente de cada camada
+
+
+#######################
+#   -->Canais         #
+#######################
+
+    Canal de comunicação de dados(data link)
+        -Dispositivo que permitem a um conjunto de nós(de comunicação) trocarem mensagens, diretamente
+        -Formado por interfaces e um meio de propagação de sinal. As interfaces codificam a informação a transmitir. 
+        -Frames: mensagens transmitidas pelo meio de propagação
+
+    Canal
+        -interfaces + meio de comunicação
+        -Nó emissor: converte pacotes no formato adequado ; emite sinal correspondente
+        -Nó receptor: analisa sinal recebido ; verifica a existencia de erros ; extrai o pacote
+
+    Variantes dos canais
+        -Simplex: envia informação num sentido
+        -Full-duplex: equivalente a dois simplex, um em cada sentido
+        -Half-duplex: transmite nos 2 sentidos, um de cada vez
+
+        -Canais ponto a ponto e multi-ponto: 2 ou mais interfaces de comunicação
+        -Meios de propagação guiados vs nao guiados: fios vs atmosfera ou espaço
+
+    Tipos de meios de transmissão
+        -Suportes guiados: cabos coaxiais ; pares de fios de cobre ; fibra óptica
+        -Suportes não guiados: atmosfera ou espaço
+
+    Facetas de controlo dos canais 
+        -Codificação: forma de codificação dos bits no meio de transmissão
+        -Framing: bits transmitidos em sequencias designadas link layer Frames
+        -Deteção e controlo de erros: receptor controla a presença de erros atráves de somas de controlo
+        -Controlo de acesso ao canal(multi-ponto)
+        -Correção de erros e controlo de fluxo
+
+    Erros e seu tratamento
+        -Taxa de erros é média entre nmr de bits recebidos errados e totalidade dos bit transmitidos
+        -É possivel um frame com erros ser aceite como nao os tendo, necessário diminuir ao maximo isso!
+        -Usando códigos de controlo de erros
+        -Receptor, através de analise desses códigos, deteta erros com precisão
+        -2 tipos de códigos: código de deteção de erros e códigos de deteção e correção de erros
+
+    Códigos de correção de erros:
+        -Especie de funções de hash que devem ter colisão baixíssima, quase nula
+        -Mais comuns: CRC-Cyclic Redundancy Check
+        -Mais sofisticados: funções criptográficas
+
+    Tempo de transmissão:
+        -Tt = Dimensão do frame/Débito do canal
+
+    CONCLUSÕES:
+        -Todas as redes constituidas por sistemas terminais, canais e nos de comutação e caracterizados por:
+            -Débito: condiciona tempo que leva um frame a ser transmitidos
+            -Tt: condiciona o tempo de transito dos Frames
+            -Taxa de erros: condiciona a eficiencia
+            -Outros fatores: meio de suporte e seu modo de funcionamento        
+
+###########################
+#   -->nyquist-shanon     #
+###########################
+
+    Qualidade de um canal:
+        -T.Shannon: C=LB*Log2(1+ S/N)
+        -T.Nyquist: C=2*LB*Log2(V)
+
+        C->Capacidade máxima de um canal(bits por segundo)
+        LB->Largura de Banda(em Hz)
+        S/N->relaçao sinal-ruido(em db  NOTA: dB=10*Log10(S/N))
+        V->número de símbolos
+
+#############################
+#   -->Protocolo Stop&Wait  #
+#############################
+
+    Objetivos:
+        -A internet nao garante a entrega dos pacotes, pode perdê-los ou desordená-los
+        -Necessário encontrar forma de transferir dados de forma fiável entre 2 computadores
+        -Stop&Wait: forma para transferir dados fiavelmente
+
+    Hipóteses e Objetivo:
+        -Frame com erros são recusados/descartados e são transformados em perdas(omissoes)
+        -Rede pode introduzir perda de pacotes ou alteração da ordem de entrega 
+        -A rede pode perder pacotes, mas não a todos. Mais tarde ou mais cedo vao chegar ao receptor
+        -Objetivo: transferir dados de forma fiável e maximizar a taxa de transferência, débito, extremo a extremo
+
+    Problemas mal resolvidos:
+        -O problema da perda de um ACK, pode conduzir á aceitacao de um pacote em duplicado
+        -O mesmo problema pode ser introduzido por um receptor lento
+        -Um timeout(alarme) mal regulado, muito curto, pode levar ao mesmo problema
+        -Velocidades de recetor e emissor podem nao ser conhecidas
+        -Duracao de alarme muito elevado, leva a recuperacao demasiado lenta de uma perda
+
+    Protocolo Stop&Wait
+        -funcionamento
+            -Emissor:
+                -Cada pacote a transmitir com nmr de sequencia novo, transmite-o e ativa o alarme
+                Se chega com nmr de ACK esperado, passa á frente
+                Se temporizador dispara: reenvia pacote a activa de novo o alarme
+                Se chega um ACK com numero de sequencia errado: ignora-oferencendo
+
+            -Emissor:
+                Sempre que recebe pacote: envia ACK do ultimo pacote corretamente recebido. Se for novo guarda-o, senao ignora-o        
