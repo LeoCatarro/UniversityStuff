@@ -135,4 +135,16 @@ Estruturação por camadas - Porquê?
                 Se chega um ACK com numero de sequencia errado: ignora-oferencendo
 
             -Emissor:
-                Sempre que recebe pacote: envia ACK do ultimo pacote corretamente recebido. Se for novo guarda-o, senao ignora-o        
+                Sempre que recebe pacote: envia ACK do ultimo pacote corretamente recebido. Se for novo guarda-o, senao ignora-o  
+
+    Taxa de Utilizacao do Canal
+        Tu = Tt/(Tt + 2*Tp)    
+        Ou 
+        Tu = Tt/(Tt + RTT)
+
+        Tu->Taxa de Utilizacao
+        Tt->Taxa de transmissao
+        RTT->Round Trip Time (2*Tp)
+
+    NOTA:
+        -                

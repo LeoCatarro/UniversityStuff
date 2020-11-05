@@ -1,0 +1,30 @@
+bit stuffing
+01000011 0 1011 0 10010011 0 11 0 1000101
+
+
+--> destuffing
+Com correção:01000011 0 1011 0 10010011 0 11 0 1000101
+
+
+
+01000011101110010011111000101
+
+
+
+3)
+Sequencia: 110
+Mensagem: 1110011000001101100111110000011111
+
+Proposta de solução: a cada 1 que aperecer adicionar um 0
+
+Resposta: 10101000101000000101001010001010101010000001010101010
+(basicamente aplicas a proposta de solução á mensagem)
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,206 @@
+@charset "UTF-8";
+/* CSS Document */
+
+img, h1 {
+  max-width: 100%;
+  min-width: fit-content;
+}
+
+
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 100%;
+  margin: 0;
+
+/* background gradient at top of page, from http://www.colorzilla.com/gradient-editor/ */
+  background: -moz-linear-gradient(top,  #ffa853 0%, #fdf9bd 2%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffa853),color-stop(2%,#fdf9bd));
+  background: -webkit-linear-gradient(top,  #ffa853 0%,#fdf9bd 2%);
+  background: -o-linear-gradient(top,  #ffa853 0%,#fdf9bd 2%);
+  background: -ms-linear-gradient(top,  #ffa853 0%,#fdf9bd 2%);
+  background: linear-gradient(top,  #ffa853 0%,#fdf9bd 2%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa853', endColorstr='#fdf9bd',GradientType=0 );
+  background-repeat: repeat-x;
+  background-color: #fdf9bd; /* Old browsers */
+}
+
+
+/* link styles */
+a {
+	text-decoration: none;
+	border-bottom: 1px dotted;
+	padding-bottom: .1em;
+}
+a:link {
+    color: #C00;
+  }
+a:visited {
+    color: #921A66;
+  }
+a:focus {
+	color: #921A66;
+}
+a:hover {
+    color: #921A66;
+  }
+a:active {
+	color:#F00;
+}
+
+/* styles for the intro section */
+#intro {
+	text-align: center;
+	margin: 2em 0 1em;
+}
+#intro h1 {
+	margin-bottom: 0;
+}
+#intro h2 {
+	font-size: 1.2em;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	color: #f26521;
+	margin-top: -10px;
+}
+#intro p {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+	margin: 1em;
+}
+
+
+
+/* styles for navigation */
+#nav {
+   background-color: #751c54; /* dark plum */
+   overflow: hidden;
+   width: 100%;
+}
+#nav ul {
+   list-style:none;
+   padding: 0;
+   margin: 0 auto; 	
+   width: 19.5em; 
+} 
+#nav ul li {
+	font-weight: normal;
+    text-transform: uppercase;
+	float: left;
+}
+#nav ul li a { 	
+  display: block; 	
+  padding: .5em; 	
+  border: 1px solid #ba89a8; 
+  border-radius: .5em;	
+  margin: .25em; 
+}  
+#nav ul a:link {
+    color: #fff;
+  }
+#nav ul a:visited {
+    color: #fff;
+  }
+#nav ul a:focus {
+	color:#fc6;
+	border-color: #fff;
+}
+#nav ul a:hover {
+    color: #fc6;
+	border-color: #fff;
+  }
+#nav ul a:active {
+	color:#F00;
+}
+
+/* styles for the products section */
+
+#products {
+  background-color: #FFF;
+  line-height: 1.5em;
+  padding: 1em .5em;
+  border: double #FFBC53;
+  overflow: hidden;
+  }
+
+#products h2 {
+  font-size: 1.2em;
+  color: #ac267b;
+  text-align: center;
+  text-transform: uppercase;
+  }
+#products h3 {
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #F26521;
+  border-top: 1px solid;
+  border-left: 3px solid;
+  padding-left: 1em;
+}
+
+
+/* styles for the testimonials box */
+
+#testimonials {
+  background: #FFBC53 url(images/ex-circle-corner.gif) no-repeat left top;
+  line-height: 1.5em;
+  color: #633;
+  padding: 1em;
+  padding-left: 55px;
+  font-size: .875em;
+  }
+  
+#testimonials h2 {
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #F26521;
+  letter-spacing: 3px;
+  }
+
+
+/* miscellaneous styles */
+  
+em { 
+  color: #F26521;
+  }
+  
+p#copyright {
+  color:#663333; 
+  font-size: .8em;
+  text-align: center;
+  }
+
+
+/*Estilos para as imagens quando a pagina tem um determinado tamanho*/
+@media only screen and (min-width: 481px) {
+  img {
+    float:left;
+    margin: 0px 6px 0px 6px;
+  }
+
+  p#more_about {
+    clear: both;  /*Dá clear ao float da imagem!*/
+  }
+
+  #products {
+    margin: 1em;
+  }
+
+  #testimonials {
+    border-radius: 16px;
+    margin: 1em 5%;   /*2 valores deteta o primeiro como: cima e baixo e o segundo como:direita e equerda*/
+  }
+}
+
+
+
+@media only screen and (min-width: 780px) {
+  #products {
+    max-width: 55%;
+    margin: 0 2% 1em 2%;
+    float: left;
+  }
+
+  #testimonials {
+    margin: 1em 2% 1em 64%;
+  }
+}  
