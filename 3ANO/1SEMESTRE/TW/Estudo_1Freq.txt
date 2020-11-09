@@ -1,0 +1,429 @@
+#################################################
+#   A Web e Introdução ao desenvolvimento Web   #
+#################################################
+
+-->A Web
+Plataforma digital cada vez mais presente 
+World Wide Web não é a Internet
+Internet: Grande rede de computadores e diversos equipamentos
+É um dos serviços que assenta da Internet
+
+-->Origem da Web
+1989 por Tim Berners Lee
+Em 1992 existiam apenas 50 webservers
+Até 1992 apenas em modo textual
+1992 surge primeiro browser gráfico
+
+-->Software cliente e servidor
+Cliente: browser ou navegador - mostra conteudo
+Servidor: Webserver
+
+-->Site vs WebApp
+Web Site: recurso da Internet com páginas Web e ficheiros relacionados com um propósito
+Aplicação Web: é um software que é acedido com normas associadas á Web(via browser) ; Mais complexo que Web Site(Ex: Webmail, calendários, redes sociais)
+
+-->Algumas linguagens e normas
+Normas importantes da Web definidas por World Wide Web Consortium(W3C)
+HyperText Transfer Protocol(HTTP)
+HyperText Markup Language(HTML) : linguagem a delimitar os conteudos
+Cascading Style Sheet(CSS) : aparencia a dar ao conteudo
+Java Script(JS) : linguagem de scripting/programação, pode mudar o CSS de um elemento com um evento
+
+-->Desenvolvimento Web
+Implementação de soluções Web
+Vários Niveis de profundidade : ferramentas drag-and-drop(Ex: Wix) ; Desenvolvimento integral de todas as componentes(HTML,JS,SQL)
+
+-->Vertentes de Design
+Interaction Design(IxD) : eficácia e eficiência, facilidade de uso
+User Interface Design(UI) : organização das paginas(botões, links, ...)
+User Experience Design(Ux) : considera utilizadores e suas aptidões, procura experiência favorável
+
+-->Design: documentos usados
+Relatórios sobre utilizadores : necessidades, limitações ...
+Diagramas WireFrame : esboço das componentes e ligações sem preocupação com aspeto
+Dragrama de Site : foco nas ligações
+Storyboards : cenários de interação, ilustram os elementos visuais
+
+-->Web Developer
+Responsável pela implementação do site ou WebApp
+Em grandes projetos : Designer é que desenha o site
+Funções : criação de conteudos(HTML) , Formatação(CSS) , Programação(JS, ServerSide: Python, JAva, PHP ...)
+
+
+-->Desenvolvimento
+Cliente-Side : o que ocorre do lado do cliente, portanto browser
+Server-side : relativo ao processamento executado no servidor
+FrontEnd : corresponde ao que executará em client-side, componente mais externo
+BackEnd : parte menos exposta , tem a lógica de funcionamento, parte com que FrontEnd interage
+
+
+-->Site Map 
+Ficheiro XML com links para todas as páginas
+Pode ser uma representação visual da estrutura do site
+
+
+-->Robots.text
+Scripts para gerir ou apoiar tarefas e recolha de estatisticas do site
+Ficheiro na pasta base do site
+Informações para bots de processamento do site
+
+
+-->Web Page Authoring
+Software para criar conteudo web 
+Editores simples ou complexos
+    Relativamente ao modo de apresentação
+        WYSIWYG : exibição tel como o browser mostra
+        Editores de HTML : mostram o código
+
+
+-->HTML(HyperText Markup Language)
+Lingagem de marcação ou etiquetação
+Pagina HTML é documento ou pagina Web
+Tem estrutura lógica 
+Cada tag é representada entre < >
+<i> : italico
+<b> : negrito
+<a href="URL"> : Hiperligação
+
+
+-->Cascading Style Sheets(CSS)
+Definição do estilo
+Especificação do formato visual
+Propriedades CSS : tipo de fonte, cor, tamanho, cores de fundo, margens ...
+
+
+--> Publicação de um Site Web: alojar conteudos
+Web Hosting in-house
+Hosting remoto
+
+
+-->Publicação de um Site Web: domínio
+Registo de um dominio : nome facil de escrever e memorizar , relacionado com conteudo do site
+Gestão de conteudos
+
+
+
+###################
+#      CSS        #  
+###################
+
+-->Beneficios de usar CSS
+Precisão no layout control
+Menos trabalho
+Acessibilidade
+Flexibilidade
+
+
+-->Formato das regras CSS
+seletor + declaração
+
+img - tag img
+#intro - id intro 
+.intro - class intro
+
+
+-->Como definir estilo de apresentação CSS
+Externo: via tag link ou via @import
+Interno/Embebido
+Inline/Interno : dentro da tag <style> no ficheiro HTML
+
+
+-->Unidades Absolutas
+px - pixeis
+in - inches
+mm - milimetros
+cm - centimetro
+q - 1/4 milimetros
+pt - pontos(1/72 polegada)
+pc - pica(1pica = 12pontos = 1/6 polegada)
+
+
+-->Unidades Relativas
+em - igual ao tamanho da fonte atual
+ex - x-height, altura da letra x
+rem - root em
+ch - zero width
+vw - viewport width unit
+vh - viewport height unit
+vmin - viewport minimum unit
+vmax - viewport maximum unit
+
+
+-->Font Properties
+font-family
+font-size
+font-weight(bold,normal,bolder,lighter,...)
+font-style(italic,normal,oblique)
+font-variant(small-caps,normal)
+font (combinação de todas as anteriores)
+
+
+-->Text propreties
+text-indent(comprimento,percentagem)
+text-align(left,right,justify,start,end)
+text-decoration(none,underline,overline,...)
+text-transform(capitalize,lowercase,uppercase,...)
+text-shadow(horizontal-offset, none, blur-radius, ...)
+
+
+-->Lista
+Lista desordenada: ul 
+Lista ordenada: ol 
+
+
+-->Outros seletores
+#intro h1 - id de intro dentro da tag h1
+p#intro
+
+h1,img - 2 tags
+
+
+-->CSS : cores 
+RGB - rgb(xxx , xxx , xxx) numero ou percentagem
+RGBa
+HSL
+HSLa
+
+
+-->Gradiente
+linear-gradient(180deg, aqua, green)
+
+
+--> Float
+left and right none
+
+Ajusta a imagem a uma posição e faz o texto contorná-la
+
+
+-->Clear
+left, right, both, none
+Evita adjacência a floated element
+
+
+-->Posicionamento
+static
+relative : deslocado da sua posição base
+absolute : disposição relativa á janela(viewport) ou containing block
+fixed
+sticky
+
+top, right, bottom, left
+
+
+-->Ordenação de camadas Sobrepostas
+z-index(number,auto)
+
+z-index: 1
+z-index: 2
+z index: 3
+
+3 sobreposto a 2 e 2 sobreposto a 1
+
+
+
+#############################
+#   Web Design Resposivo    #
+#############################
+
+--> Componentes base de WDResposivo
+1)grelha flexível : possibilidade de os elementos poderem ser redimensionados
+2)imagens flexíveis : apresentação de imagens e elementos multimedia com diferentes tamanhos, ajustados de acordo com o tamanho da janela
+3)CSS media queries : mecanismo de teste/interrogação ás condições do browser
+
+
+-->viewport
+área retangular de apresentação de conteudo
+possivel de ajustar com CSS
+
+
+-->Grelha Flexível
+Estrutura flexível na composição do documento web é fundamental para
+um resultado equilibrado para diversos ecrãs
+
+
+-->Media queries
+verificações prévias á aplicação do estilo de Formatação
+forma sintática : @media type and (feature: value) { ... }
+
+podem ser usadas dentro de tags , exemplo tag img
+
+
+-->Breakpoints
+Ponto ou limiar relativo a uma media query em que se dá uma mudança no estilo
+inicia-se com uma estrutura curta e aplicam-se regras para configurações
+associado a uma medida(px ou em)
+
+
+-->Design Responsivo
+Hierarquia nos elementos
+estrutra visual
+tipografia
+navegação
+imagens
+
+
+-->Topografia
+relacionada com o tipo de fontes e propriedades do texto
+deve ser ajustada para os diversos formatos de ecrãs
+vitar fontes complexas em pequenos ecrãs
+tamanho para que cada linha contenha 45 a 75 caracteres
+altura de linha maior em ecrãs maiores
+maiores margens laterais em ecrãs maiores
+
+
+-->Imagens de largura variável e proporção variável
+<img src="strawberries-640.jpg" alt="baskets of ripe strawberries"
+srcset="strawberries-240.jpg 240w,
+strawberries-480.jpg 480w,
+strawberries-672.jpg 672w"
+sizes="(max-width: 480px) 100vw,
+(max-width: 960px) 70vw,
+240px">
+
+Em px de pagina fixos
+
+<picture>
+<source media="(min-width: 1024px)" srcset="icecream-large.jpg">
+<source media="(min-width: 760px)" srcset="icecream-medium.jpg">
+<img src="icecream-small.jpg" alt="hand holding ice cream cone and
+text that reads Savor the Summer">
+</picture>
+
+Muda a imagem de acordo com a tamanho da pagina
+
+
+-->Testar apresentação de um site
+Dispositivos Reais com ecrãs de dimensao diferente
+Emuladores
+Ferramentas de browsers
+
+
+
+
+#############
+#   Forms   #
+#############
+
+-->HTML Form 
+Mecanismo para preenchimento de dados em documentos web
+É mostrado pelo browser com campos de preenchiemento, com elemento de submissão
+Respostas processadas por qualquer tecnologia server-side : PHP , Microsoft ASP , Python, ...
+
+-->Elemento form 
+<form action="URL" method="POST or GET">
+    <!-- Form content and inputs here -->
+</form>
+
+agregador de todo o conteudo do formulário juntamente com os elementos
+elementos action e method sao elementos chave na interação com o servidor para envio de dados recolhidos
+
+
+-->Elemento action
+indica o destino dos dados do formulário previamente preenchido
+É um url curto ou completo
+
+– <form action="mailinglist.php" method="POST">
+– <form action="https://uevora.pt/tweb/registo"
+method="POST">
+
+
+-->Elemento method
+determina como os dados codificados serão enviados:
+    GET: dados acrescentados ao URL de destino: nome1=valor1&nome2=valor2
+    POST: dados nao expostos no endereço : name1=value1&name2=value2
+
+
+-->Elementos de Controlo de Input do Form
+<input type="text">
+<input type="submit">
+<input type="checkbox">
+<input type="password"> : texto inserido é ocultado
+<input type="search">
+<input type="email">
+<input type="tel">
+<input type="url">
+<select>
+<textarea></textarea> : com elementos rows,cols,maxlength,minlength
+
+
+cada variavel tem atributo name com indentificador do elemento em controlo
+
+o atributo value guarda os dados inseridos
+
+
+-->Botões
+<button> </button>
+<input type="button>
+<input type="radio"> : radio buttons, tem atributo value
+<input type="checkbox"> : com atributo value e checked(faz aparecer logo a opção marcada ao inicio)
+
+
+-->Drop-down Menus
+<p> What is your favorite 80s band?
+<select name="EightiesFave">
+<option>The Cure</option>
+<option>Cocteau Twins</option>
+<option>Tears for Fears</option>
+<option>Thompson Twins</option>
+<option value="EBTG">Everything But the Girl</option>
+<option>Depeche Mode</option>
+<option>The Smiths</option>
+<option>New Order</option>
+</select>
+</p>
+
+Tag select com atributo name, seguido das tag option com todas as opções para o Menus
+
+
+
+-->Scrolling Menus
+<select name="EightiesFave" size="6" multiple>
+<option>The Cure</option>
+...
+</select>
+</p>
+
+Idem drop-down so que com  value multiple na tag select
+
+
+-->Upload de ficheiros
+<input type="file">
+
+
+-->Campos escondidos
+<input type="hidden">
+
+
+-->Data e hora 
+value e name
+<input type="date">
+<input type="time">
+<input type="datetime-local">
+<input type="month">
+<input type="week">
+
+
+-->Controladores Numéricos
+<input type="number">
+<input type="range"> : barra com slider para aumentar
+
+
+-->Color picker
+<input type="color">
+
+
+-->Acessibilidade no Form
+os elementos relacionados com acessibilidade do form vão criar relações semânticas entre os elementos componentes do formulário
+
+
+-->Acessibilidade: Elementos fieldset e Legend
+
+feildset: define agrupamento logico de elementos de controlo de input
+legend: adiciona legenda aos elementos
+
+
+-->Recomendações no Design de Forms
+evitar questões desnecssárias.
+eliminar duvidas de interpretação
+agrupar elementos de input relacionados
+adequar o tipo de input aos dados a recolher

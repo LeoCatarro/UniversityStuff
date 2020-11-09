@@ -7,6 +7,10 @@
       ol, ul { 
      list-style-type: none;
       }
+
+      textarea{
+        resize: none;
+      }
    </style>
 </head>
 
@@ -24,8 +28,13 @@
   <legend>Contest Entry Information</legend>
     <ul>
     <li>Name:<input name="name" type="text"></li>
+    <br>
     <li>Email Address:<input name="email" type="text"></li>
+    <br>
     <li>State:<input name="state" type="text"></li>
+    <br>
+    <li>Birthday:<input name="bday" type="date"></li>
+    <br>
     <li>My shoes are SO old…</li><textarea name="texto" rows="4" cols="60">Máximo de 300 caracteres</textarea>
     </ul>
 </fieldset>
@@ -37,30 +46,33 @@
 
 <p>Color <em>(choose one)</em>:</p>
   <ul>
-  <li><input name="color" type="radio" value="red">Red</li>
+  <!--<li><input name="color" type="radio" value="red">Red</li>
   <li><input name="color" type="radio" value="blue">Blue</li>
   <li><input name="color" type="radio" value="black">Black</li>
   <li><input name="color" type="radio" value="silver">Silver</li>
+  -->
+  <input name="color" type="color">
   </ul>
 
 <p>Features <em>(Choose as many as you want)</em></p>
   <ul>
   <li><input name="features" type="checkbox" value="laces">laces</li>
-  <li><input name="features" type="checkbox" value="metallic_logo">Metallic logo</li>
+  <li><input name="features" type="checkbox" value="metallic_logo" checked>Metallic logo</li>
   <li><input name="features" type="checkbox" value="heels">Light-up heels</li>
   <li><input name="features" type="checkbox" value="mp3_enabled">MP3-enabled</li>
   </ul>
 
 <p>Size
 <select name="Size">
-  <option>38</option>
-  <option>39</option>
-  <option>40</option>
-  <option>41</option>
-  <option>42</option>
-  <option>43</option>
-  <option>44</option>
-  <option>45</option>
+  <option>5</option>
+  <option>6</option>
+  <option>7</option>
+  <option>8</option>
+  <option>9</option>
+  <option>10</option>
+  <option>11</option>
+  <option>12</option>
+  <option>13</option>
 </select>
 </p>
 
