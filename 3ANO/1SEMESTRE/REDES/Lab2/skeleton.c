@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <math.h>
 
-#define size_gerador 8
+
+#define size_gerador 7
 #define size_hamming 4
 
 unsigned char m_geradora[size_gerador] = {0b1101, 0b1011, 0b1000, 0b0111, 0b0100, 0b0010, 0b0001};
@@ -75,7 +77,7 @@ void bytedestuff(char* input, char* output)
 /*
     Hamming Code
 */
-void char_to_binary(char c, unsigned char* first, unsigned char* second)
+void char_to_binary(char c, char* first, char* second)
 {
     int j=0;
     int k=0;
@@ -113,11 +115,11 @@ void char_to_binary(char c, unsigned char* first, unsigned char* second)
 
 
 int count_ones_for_XOR(int n)
-{ 
+{
+    int count=0;
     // array to store binary number 
     int binaryNum[32]; 
-    //var to store number of '1' in array
-    
+  
     // counter for binary array 
     int i = 0; 
     while (n > 0) { 
@@ -128,65 +130,70 @@ int count_ones_for_XOR(int n)
         i++; 
     } 
 
-    int count=0;
-
-    for(int i=0 ; i<4 ; i++)
+    for(int i=0 ; i<32 ; i++)
     {
         if(binaryNum[i] == 1)
+        {
             count++;
+        }
     }
-
-    for(int i=0 ; binaryNum[i] != '\0' ; i++)
-    {
-        printf("%d", binaryNum[i]);
-    }
-
+    
     if(count % 2 == 0)
         return 0;
 
     else
-        return 1;    
-}        
+        return 1;
+}
 
 
-int binary_to_int(unsigned char* input)
+int binary_to_decimal(char* input)
 {
-    int result=0;
+    int result=0, str_size = 0;
+
+    for(int i=0 ; input[i] != '\0' ; i++)
+        str_size++;
 
     for(int i=0 ; input[i] != '\0' ; i++)
     {
         if(input[i] == '1')
-        {
-            result += pow(2, (strlen(input)-i)-1);  //Conversão para decimal do numero em binario presente no array
-        }
+            result += pow(2, (str_size-i)-1);  //Conversão para decimal do numero em binario presente no array
     }
     return result;
 }
 
 
-void hcode(unsigned char* input, unsigned char* output)
+void hcode(char* input, char* output)
 {  
     char first[5];
     char second[5];
-    char and_result[8];
+    int x[7];
+    char x_char[7];
+    int a=0;
+    int left=0;
+    int right=0;
 
     for(int i=0 ; input[i]!='\0' ; i++)
     {
         char_to_binary(input[i], first, second);
+
+        left = binary_to_decimal(first);
+        right = binary_to_decimal(second);
+
+        printf("%d  %d\n\n", left, right);
         
-        int left = binary_to_int(first);
-        int right = binary_to_int(second);
-
-        printf("\nLeft:%d Right:%d\n", left, right);
-
-        for(int j=0 ; j<6 ; j++)    //Numero de linhas da matriz Geradora (NÃO PERCEBI BEM PORQUE j<6 em vez de j<7)
+        for(int j=0 ; j<size_gerador ; j++)
         {
-            int a = m_geradora[j] & left;
-            printf("\nAND result:%d\n", a);
+            a = m_geradora[j] & left;
 
-            int x = count_ones_for_XOR(a);
-            printf("\nXOR result:%d\n", x);
-        }  
+            x[j] = count_ones_for_XOR(a);
+
+            //printf("%d", x[j]);
+        }
+
+        printf("\n");
+
+        for(int j=0 ; j<size_gerador ; j++)
+            printf("%d", x[j]);
     }
 }
         
@@ -195,7 +202,9 @@ void hcode(unsigned char* input, unsigned char* output)
 
 int main()
 {
-    char a[100], b[200], c[200];
+    char a[100]; 
+    char b[200]; 
+    //char c[200];
 
     //strcpy ( a , "ABCDEFGHHHHHIJKLMNOPQR1234567890abcdefghijklmnopqrstuvxyz  :-))))))");
 
@@ -242,9 +251,7 @@ int main()
     }*/
 
     hcode(a,b);
-
-
-
+    
     return 0;
 }
 
