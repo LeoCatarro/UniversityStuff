@@ -1,0 +1,77 @@
+#########################
+#       Introdução      #
+#########################
+
+-->Introdução
+
+AA é o estudo de algoritmos e sistemas que melhoram o seu desempenho com a experiência
+
+Aplicações de AA:
+    Assistente pessoal virtual - Siri, Alexa, ...
+    Cuidados de Saúde - Chatbots, Diagnostico por faceID , Reconhecimento de tecidos cancerosos
+    Redes Sociais - Sugestão de Amigos
+    Serviços de texto - Análise de textos, google translate, ...
+    Marketing e Vendas - Sugestão de produtos(Amazon, Netflix, ...)
+
+
+Conceitos a Reter:
+    Generalização - capacidade de generalizar além da experiência
+    Overfitting - sis memoriza a experiência, não existe Generalização
+    Avaliação do Sistema - ideia de quão bom será o sistema com novos dados
+    No Free Lunch Theorem - nenhum algoritmo é melhor que outro, quando avaliado sobre todos os problemas possíveis
+
+
+-->Conceitos Básicos
+
+Terminologia AA 
+    Objetos: unidade de entrada de um sis(instâncias)
+    Atributos: descritores dos objetos(caracteristicas)
+    Saída: o que o modelo associa ao objeto de entrada, pode ser grupo ou classe
+
+
+Ingredientes principais de AA
+    Tarefas: representações abstratas dos problemas a resolver
+    Modelos: resultado de um algoritmo de AA
+    Atributos: definem uma linguagem para descrever objetos
+
+
+Tarefas: Problemas que podem ser resolvidos
+    Aprendizagem supervisionada:
+        Classificação - prevê conjunto de classes discretas
+            Exemplos: distinção entre spam e não spam
+        Regressão - prevê numero real
+            Exemplo: avaliar urgência de um email
+
+    Aprendizagem não supervisionada:
+        Agrupamento - agrupa dados
+            Exemplo: agrupar mensagens em grupos
+        Descoberta de associações - encontra associações entre itens    
+            Exemplo: encontrar itens em cesto que ocorrem com frequência
+
+
+Modelos: o resultado da AA
+    Escolha ampla de Modelos
+    Algoritmos desenvolvidos por: matemáticos, engenheiros, psicólogos, etc...
+    Grupos de modelos: 
+        Geométricos:
+            Ideia: instâncias tem estrutura geométrica, usar sist cartesiano para atributos numéricos
+            Construido diretamente no espaço de instâncias
+            Vantagens: fácil visualização
+        Probabilisticos:
+            Ideia: X-representa valores dos atributos(entrada) ; Y-denota o objeto(saida)
+            Objetivo: modelar relação entre X e Y
+            Procedimento: utilizar dados para encontrar distribuição
+        Lógicos:
+            Ideia: construção de modelos que possam ser traduzidos mais facilmente ; regras organizadas em árvore(árvore de atributos)
+            Procedimento: atributos usados iterativamente para particionar o espaço ; folhas - áreas retangulares no espaço de isntancias
+            Vantagens: são mais inteligíveis pelos humanos
+
+
+Tipos de Atributos:
+    Simples: instâncias representadas por um vetor de valores
+            Dominio: real, booleano, conjunto finito arbitrário, inteiros
+
+    Estruturados: sequências(ex:string, ...), árvores(ex:estrutura HTML), Grafos(ex:redes socias)
+
+
+
