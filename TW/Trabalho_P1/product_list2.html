@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Apple Poor Store</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+        <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/> 
+        <script src="scripts/myscript.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <img id="shop_logo" src="media/apple_logo_black.png">
+           
+            <div class="top_nav">
+                <input class="search_bar" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search For Products...">    
+
+                <a href="advanced_search.html">
+                    <button class="advanced_search_button" type="button">Advanced Search</button> 
+                </a>
+            </div>
+        </header>
+
+        <section class="products">
+            <ul id="list" style="list-style-type:none;">
+                <li> 
+                    <div class="product_img">
+                        <img src="media/airpods.webp">
+                    </div>
+                    <div class="about_prod">
+                        <a href="#"><h1 class="brand_model">Air Pods 2019</h1></a>
+                        <p class="description">True Wireless - In Ear - Microfone - Branco</p>
+                        <p class="price">Desde 139€</p><p class="old_price">178€</p>
+                    </div>     
+                </li>
+
+                <li>      
+                    <div class="product_img">
+                        <img src="media/airpodspro.webp">
+                    </div>
+                    <div class="about_prod">
+                        <a href="#"><h1 class="brand_model">Air Pods Pro</h1></a>
+                        <p class="description">Apple airpods pro - In Ear - Microfone - Noise Canceling</p>
+                        <p class="price">Desde 219€</p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="buttons">
+                <p style="display:inline">Previous</p><a href="product_list.html" class="previous">&#8249;</a>
+                <a href="#" class="next">&#8250;</a><p style="display:inline">Next</p>
+            </div>
+        </section>
+        
+        
+        <!--
+            Rodapé
+        -->
+        <footer class="rodape">
+            <a href="#">
+                <p class="about_page">About this page</p>
+            </a>
+        </footer>
+    </body>
+</html> 

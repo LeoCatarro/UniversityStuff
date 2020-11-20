@@ -1,0 +1,201 @@
+/*
+    Cabeçalho
+*/
+header {
+    display:flex;
+    background: linear-gradient(to right, rgb(218, 223, 224), rgb(139, 143, 143));
+    width: auto;
+    height: 250px;
+}
+
+#shop_logo{
+    margin-top: 5px;
+    margin-left: 5px;
+    background-size: cover;
+    background-image: none;
+    height: 240px;
+    width: 250px;
+}
+
+
+.advanced_search_button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    background-color: white;
+    margin-left: 80px;
+    border-radius: 8px;
+}
+
+.header_stuff {
+    text-align: center;
+}
+
+.top_nav {
+    align-items: right;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.top_nav .search_bar {
+    width: 600px;
+    border-radius: 8px;
+}
+
+
+/*
+    Produtos
+*/
+.products li {
+    margin-top: 200px;
+    display: flex;          /*Mete todo o conteudo de cada produto na mesma "Linha"*/
+    align-items: center;
+}
+
+.product_img img {
+    margin-left: 100px;
+    width: 227px;
+}
+
+.about_prod {
+    margin-left: 100px;
+    font-family: 'Goldman', cursive;
+    line-height: 20px;
+    background-color:none;
+}
+
+.about_prod h1{
+    background-color: rgb(208, 207, 214);
+    font-size: 30px;
+    background: linear-gradient(to right, rgb(213, 215, 216), rgb(137, 139, 139));  /*Juntamente com as proximas 2 linhas, põe o texto com um gradiente linear*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*Fez efeito interessante (Verificar se DEIXAR OU NAO)*/
+.about_prod:hover{
+    background-color: rgb(208, 207, 214);
+    background: linear-gradient(to right, rgb(153, 155, 156), rgb(137, 139, 139));  /*Juntamente com as proximas 2 linhas, põe o texto com um gradiente linear*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: rgb(53, 26, 224);
+}
+
+.about_prod .description{
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+}
+
+.about_prod .price{
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+}
+
+.about_prod .old_price{
+    text-decoration: line-through;
+}
+
+
+/*
+    Rodapé
+*/
+footer {
+    margin-top: 200px;
+    text-align: left;
+    width: auto;
+    height: 50px;
+    background: linear-gradient(to right, rgb(218, 223, 224), rgb(139, 143, 143));
+}
+
+.about_page {
+    font-family: 'Goldman', cursive;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    color:black;
+    text-decoration: none;
+    border-bottom-style: none;
+}
+
+.about_page:hover {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+
+/*
+    Categorias
+*/
+.categorias {
+    position: relative;
+    top:-1920px;
+    height: 500px;
+    width: 500px;
+    background-color: lightblue;
+    float: right;
+}
+
+
+/*
+    Butoes Next e Previous
+*/ 
+.buttons {
+    margin-left: 50%;
+    padding-top: 200px;
+    
+}
+
+.previous {
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    color: black;
+    padding: 8px 16px;
+}
+ 
+.previous:hover {
+    border-radius: 50%;
+    background-color: #4a4d4a;
+    color: black;
+    padding: 8px 16px;
+}
+
+.next {
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    color: black;
+    padding: 8px 16px;
+}
+ 
+.next:hover {
+    border-radius: 50%;
+    background-color:#4a4d4a;
+    color: black;
+    padding: 8px 16px;
+}
+
+
+/*####################################################################################*/
+/*
+    Css para página responsiva
+*/
+/*Imagens dos Produtos*/
+@media screen and (max-width: 690px){
+    .product_img img {
+        margin-left: 100px;
+        width: 227px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .product_img img {
+        margin-left: 100px;
+        width: 180px;
+    }
+}
+
+@media screen and (maxwidth: 480px){
+    .product_img img {
+        margin-left: 100px;
+        width: 124px;
+    }
+}
