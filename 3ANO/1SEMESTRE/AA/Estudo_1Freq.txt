@@ -74,4 +74,9 @@ Tipos de Atributos:
     Estruturados: sequências(ex:string, ...), árvores(ex:estrutura HTML), Grafos(ex:redes socias)
 
 
-
+Engenharia de atributos
+    Objetivo: encontrar melhor atributos para a Tarefas
+    Operações:
+        Transformação: alterar atributo original através de remoção, alteração, ...
+        construção: construir novos atributos a partir dos originais
+        Seleção: selecionar sub-conjunto antes de aprendizagem
