@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Apple Poor Store</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+        <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/> 
+        <script src="scripts/myscript.js"></script>
+    </head>
+
+    <body>
+        <!--
+            Cabeçalho
+        -->
+        <header>
+            <a href="./"><img id="shop_logo" src="media/apple_logo_black.png"></a>
+           
+            <div class="top_nav">
+                <input class="search_bar" type="text" id="myInput"  placeholder="Search For Products...">
+                <button type="submit" onclick="searchFunction()"><i class="fa fa-search"></i></button>    
+
+                <a href="advanced_search.html">
+                    <button class="advanced_search_button" type="button">Advanced Search</button> 
+                </a>
+            </div>
+        </header>
+
+
+        
+
+
+
+        <!--
+            Lista de Produtos
+        -->
+        <div class="prods_categorias">
+            <div class="detalhes_produto">
+                <section>
+                    <ul id="list" style="list-style-type:none;">
+                        <li>      
+                            <div class="detalhes_product_img">
+                                <a href="media/macbook16.webp"><img src="media/macbook16.webp"></a>
+                            </div>
+                            <div class="about_prod">
+                                <h1 class="detalhes_brand_model">Mac Book Pro 16"</h1>
+                                <ul class="full_details">
+                                    <li>Processador : Intel Core™ i9 Octa Core</li>
+                                    <li>Frequência : 2,4 GHz</li>
+                                    <li>Turbo Boost/Burst : 5 GHz</li>
+                                    <li>Cache Processador : 16 MB</li>
+                                    <li>Memória Ram : 64 GB</li>
+                                    <li>Tipo Memória : DDR4-2666 MHz</li>
+                                    <li>Placa(s) Gráfica(s) : AMD Radeon Pro 5300M - Intel® UHD Graphics 630</li>
+                                    <li>Memória Gráfica : 4 GB GDDR6</li>
+                                    <li>Disco SSD : 4TB</li>
+                                    <li>Dimensão Ecrã : 16"</li>
+                                    <li>Sistema Áudio : ...</li>
+                                    <li>Tipo Ecrã : Retina Display com retroiluminação LED IPS 3072x1920 pixels</li>
+                                    <li>Drive Ótica : Não</li>
+                                    <li>Leitor de Cartões : Não</li>
+                                    <li>Portas : 4x Thunderbolt 3 (USB-C) - Jack 3,5mm</li>
+                                    <li>Câmara : FaceTime HD 720p</li>
+                                    <li>Comunicações : Wi-Fi 802.11ac - Compatível com IEEE 802.11a/b/g/n - Bluetooth 5.0</li>
+                                    <li>Sistema Operativo : macOS</li>
+                                    <li>Software : Fotografias - iMovie - GarageBand - Pages - Numbers - Keynote - Siri - Safari</li>
+                                </ul>    
+                                <p class="price">5809€</p>
+                            </div>
+                        </li>
+                    </ul>    
+                </section>
+            </div>
+
+
+            <!--
+                Categorias
+            -->
+            <div class="categorias">
+                <section>
+                    <p id="title">CATEGORIAS</p>
+                    <ul class="lista_categorias">
+                        <a href="#"><li>Notebooks </li></a>
+                        <a href="#"><li>Airpods</li></a>
+                        <a href="#"><li>Desktops</li></a>
+                    </ul>
+                </section>
+            </div>
+        </div>  <!--prods_cateogiras Close-->
+
+        <!--
+            Butoes Next e Previous
+        -->
+        <div class="buttons">
+            <p style="display:inline">Previous</p><a href="#" class="previous">&#8249;</a>
+            <a href="#" class="next">&#8250;</a><p style="display:inline">Next</p>
+        </div>
+
+
+        <!--
+            Rodapé
+        -->
+        <footer class="rodape">
+            <a href="#">
+                <p class="about_page">About this page</p>
+            </a>
+        </footer>
+    </body>
+</html> 

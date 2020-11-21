@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Apple Poor Store</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+        <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/> 
+        <!--<script src="scripts/myscript.js"></script>-->
+    </head>
+
+    <body>
+        <!--
+            Cabeçalho
+        -->
+        <header>
+            <a href="./"><img id="shop_logo" src="media/apple_logo_black.png"></a>
+           
+            <div class="top_nav">
+                <input class="search_bar" type="text" id="myInput"  placeholder="Search For Products...">
+                <button type="submit" onclick="searchFunction()"><i class="fa fa-search"></i></button>    
+
+                <a href="advanced_search.html">
+                    <button class="advanced_search_button" type="button">Advanced Search</button> 
+                </a>
+            </div>
+        </header>
+
+
+        <!--
+            Lista de Produtos
+        -->
+        <div class="prods_categorias">
+            <div class="products">
+                <section>
+                    <ul id="list" style="list-style-type:none;">
+                        <li>      
+                            <div class="product_img">
+                                <a href="product.html"><img src="media/macbook16.webp"></a>
+                            </div>
+                            <div class="about_prod">
+                                <a href="product.html"><h1 class="brand_model">Mac Book Pro 16"</h1></a>
+                                <p class="description">Apple Mac Book Pro 16" - Intel Core i9 - RAM: 64 GB - 4 TB SSD - AMD Radeon Pro 5500M</p>
+                                <p class="price">5809€</p>
+                            </div>
+                        </li>
+
+                        <hr>    <!--Linha horizontal que separa os produtos-->
+
+                        <li>      
+                            <div class="product_img">
+                                <a href="product.html"><img src="media/macbookairprateado.jpg"></a>
+                            </div>
+                            <div class="about_prod">
+                                <a href="product.html"><h1 class="brand_model">Mac Book Air Prateado</h1></a>
+                                <p class="description">Apple Mac Book Air 13.3" - Intel Core i3 - RAM: 8 GB - 256 GB SSD PCIe - Intel Iris Plus Graphics</p>
+                                <p class="price">998€</p><p class="old_price">1098€</p>
+                            </div>
+                        </li>
+
+                        <hr>    <!--Linha horizontal que separa os produtos-->
+
+                        <li>      
+                            <div class="product_img">
+                                <a href="product.html"><img src="media/macbookairM1.webp"></a>
+                            </div>
+                            <div class="about_prod">
+                                <a href="product.html"><h1 class="brand_model">Mac Book Air</h1></a>
+                                <p class="description">Apple M1 - 13.3" - RAM: 8 GB - 256 GB SSD - Integrada</p>
+                                <p class="price">Desde 1159€</p>
+                            </div>
+                        </li> 
+
+                        <hr>    <!--Linha horizontal que separa os produtos-->
+
+                        <li> 
+                            <div class="product_img">
+                                <a href="product.html"><img src="media/macbookproM1.webp"></a>
+                            </div>
+                            <div class="about_prod">
+                                <a href="product.html"><h1 class="brand_model">Mac Book Pro</h1></a>
+                                <p class="description">Apple M1 - 13.3" - RAM: 8GB - 256GB SSD - Integrada</p>
+                                <p class="price">Desde 1479€</p>
+                            </div>     
+                        </li>
+
+                        <hr>    <!--Linha horizontal que separa os produtos-->
+
+                        <li> 
+                            <div class="product_img">
+                                <a href="product.html"><img src="media/macminiM1.webp"></a>
+                            </div>
+                            <div class="about_prod">
+                                <a href="product.html"><h1 class="brand_model">Mac Mini</h1></a>
+                                <p class="description"> Apple's new mac mini with M1 chip</p>
+                                <p class="price">Desde 819€ </p>
+                            </div>     
+                        </li>
+                        
+                        <hr>    <!--Linha horizontal que separa os produtos-->
+
+                    </ul>    
+                </section>
+            </div>
+
+
+            <!--
+                Categorias
+            -->
+            <div class="categorias">
+                <section>
+                    <p id="title">CATEGORIAS</p>
+                    <ul class="lista_categorias">
+                        <a href="#"><li>Notebooks </li></a>
+                        <a href="#"><li>Airpods</li></a>
+                        <a href="#"><li>Desktops</li></a>
+                    </ul>
+                </section>
+            </div>
+        </div>  <!--prods_cateogiras Close-->
+
+        <!--
+            Butoes Next e Previous
+        -->
+        <div class="buttons">
+            <p style="display:inline">Previous</p><a href="#" class="previous">&#8249;</a>
+            <a href="#" class="next">&#8250;</a><p style="display:inline">Next</p>
+        </div>
+
+
+        <!--
+            Rodapé
+        -->
+        <footer class="rodape">
+            <a href="#">
+                <p class="about_page">About this page</p>
+            </a>
+        </footer>
+
+        
+    </body>
+</html> 

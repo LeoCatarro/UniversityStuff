@@ -1,3 +1,30 @@
+html {
+    max-width: 1280px;
+    margin: auto;
+    align-items: center;
+    
+    min-width: 480px;
+   /* border: 1px solid green;*/
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    text-align: justify;
+}
+
+hr {
+    color: gray;
+    position: relative;
+    top: 20px;
+}
+
+.prods_categorias {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 /*
     Cabeçalho
 */
@@ -30,30 +57,70 @@ header {
     text-align: center;
 }
 
-.top_nav {
-    align-items: right;
+.top_nav .search_bar {
+    width: 600px;
+    border-radius: 8px;
+}
+
+header .top_nav {
     margin: auto;
     border-radius: 8px;
 }
 
-.top_nav .search_bar {
-    width: 600px;
-    border-radius: 8px;
+
+/*
+    Categorias
+*/
+.categorias {
+    width: 205px;
+    text-align: center;
+    background-color: lightblue;
+    /*border: 1px solid blue;*/
+    font-family: 'Goldman', cursive;
+    line-height: 60px;
+    background: linear-gradient(to right, rgb(213, 215, 216), rgb(137, 139, 139));  /*Juntamente com as proximas 2 linhas, põe o texto com um gradiente linear*/
+   
+}
+
+.lista_categorias li:active{
+    color:black;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.lista_categorias li:hover{
+    color: white;
+    font-size: 25px;
+}
+
+#title {
+    font-size: 25px;
+    text-decoration: underline;
 }
 
 
 /*
     Produtos
 */
+.products {
+    /*border: 1px solid red;*/
+}
+
+
 .products li {
-    margin-top: 200px;
-    display: flex;          /*Mete todo o conteudo de cada produto na mesma "Linha"*/
+    padding-top: 100px;
+    display: flex;
+    flex: 50%;          /*Mete todo o conteudo de cada produto na mesma "Linha"*/
     align-items: center;
+
+    /*border: 1px solid red;*/
 }
 
 .product_img img {
     margin-left: 100px;
     width: 227px;
+
+    /*border: 1px solid red;*/
 }
 
 .about_prod {
@@ -61,9 +128,11 @@ header {
     font-family: 'Goldman', cursive;
     line-height: 20px;
     background-color:none;
+
+    /*border: 1px solid red;*/
 }
 
-.about_prod h1{
+.about_prod .brand_model{
     background-color: rgb(208, 207, 214);
     font-size: 30px;
     background: linear-gradient(to right, rgb(213, 215, 216), rgb(137, 139, 139));  /*Juntamente com as proximas 2 linhas, põe o texto com um gradiente linear*/
@@ -71,14 +140,12 @@ header {
     -webkit-text-fill-color: transparent;
 }
 
-/*Fez efeito interessante (Verificar se DEIXAR OU NAO)*/
-.about_prod:hover{
+
+.about_prod .brand_model:hover{
     background-color: rgb(208, 207, 214);
-    background: linear-gradient(to right, rgb(153, 155, 156), rgb(137, 139, 139));  /*Juntamente com as proximas 2 linhas, põe o texto com um gradiente linear*/
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-color: rgb(53, 26, 224);
+    font-size: 40px;
 }
+
 
 .about_prod .description{
     font-family: 'Poppins', sans-serif;
@@ -99,21 +166,27 @@ header {
     Rodapé
 */
 footer {
-    margin-top: 200px;
+    margin-top: 100px;
     text-align: left;
     width: auto;
     height: 50px;
     background: linear-gradient(to right, rgb(218, 223, 224), rgb(139, 143, 143));
+    
+
+    clear: both;
+
 }
 
 .about_page {
     font-family: 'Goldman', cursive;
+    margin: auto;
     font-size: 20px;
-    padding-top: 10px;
-    padding-left: 10px;
     color:black;
     text-decoration: none;
     border-bottom-style: none;
+
+    clear: both;
+
 }
 
 .about_page:hover {
@@ -124,25 +197,14 @@ footer {
 
 
 /*
-    Categorias
-*/
-.categorias {
-    position: relative;
-    top:-1920px;
-    height: 500px;
-    width: 500px;
-    background-color: lightblue;
-    float: right;
-}
-
-
-/*
     Butoes Next e Previous
 */ 
 .buttons {
-    margin-left: 50%;
-    padding-top: 200px;
+    align-items: center;
+    margin-left: 45%;
+    padding-top: 50px;
     
+    clear: both;
 }
 
 .previous {
@@ -174,28 +236,84 @@ footer {
 }
 
 
+
+/*
+    Detalhes do Produto
+*/
+.detalhes_produto {
+    width: 100%;
+    /*border: 1px solid red;*/
+}
+
+.detalhes_product_img img {
+    width: 300px;
+    float: left;
+    position: relative;
+    margin-right: 20px;
+    /*border: 1px solid red; */
+}
+
+.about_prod .detalhes_brand_model {
+    text-align: left;
+    background-color: rgb(208, 207, 214);
+    font-size: 30px;
+    background: linear-gradient(to right, rgb(213, 215, 216), rgb(137, 139, 139));  /*Juntamente com as proximas 2 linhas, põe o texto com um gradiente linear*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.full_details {
+    text-align: justify;
+    /*border: 1px solid blue;*/
+}
+
+
 /*####################################################################################*/
+
+
 /*
     Css para página responsiva
 */
 /*Imagens dos Produtos*/
-@media screen and (max-width: 690px){
+
+@media only screen and (max-width: 690px){
     .product_img img {
-        margin-left: 100px;
         width: 227px;
     }
 }
 
-@media screen and (max-width: 600px){
-    .product_img img {
-        margin-left: 100px;
+@media only screen and (max-width: 600px){
+    .product_img img {   
         width: 180px;
     }
 }
 
-@media screen and (maxwidth: 480px){
-    .product_img img {
-        margin-left: 100px;
+@media only screen and (max-width: 480px){
+    .product_img img {   
         width: 124px;
     }
 }
+
+
+/*Categorias*/
+
+@media only screen and (max-width: 750px){
+    .prods_categorias {
+        flex-direction: column;
+    }
+
+    .categorias {
+        width: 100%;
+    }
+
+    /*Opção por(manter?)*/
+    .products li {
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
