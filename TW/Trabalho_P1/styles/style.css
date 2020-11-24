@@ -104,6 +104,7 @@ header .top_nav {
 */
 .products {
     /*border: 1px solid red;*/
+    
 }
 
 
@@ -117,14 +118,15 @@ header .top_nav {
 }
 
 .product_img img {
-    margin-left: 100px;
+    display: flex;
     width: 227px;
-
+    margin-left: 100px;
+    
     /*border: 1px solid red;*/
 }
 
 .about_prod {
-    margin-left: 100px;
+    margin-left: 20px;
     font-family: 'Goldman', cursive;
     line-height: 20px;
     background-color:none;

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title id="titulo">Million Dollar WebApp</title>
+</head>
+
+<body>
+
+	<script>
+		/*
+			var x = document.getElementByTagName("...")  --> Retorna uma lista
+			Para aceder ao conteudo dessa lista : x[0].innerHTML
+		*/
+		// Your code goes here!
+		var originalTitle = document.getElementById("titulo").innerHTML;
+		/*
+		function showUnreadCount(unread)
+		{
+			return originalTitle + unread;
+		}
+
+		//Alteração do Titulo
+		titulo.innerHTML = showUnreadCount("TW");
+		*/
+
+		
+		function showUnreadCount(unread)
+		{
+			return originalTitle + " " + "(" + unread + " " + "new messages)!";
+		}
+
+		titulo.innerHTML = showUnreadCount(3);
+
+	</script>
+</body>
+</html>
