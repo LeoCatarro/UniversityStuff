@@ -4,7 +4,7 @@
 #include <unistd.h> 
 #include <string.h>
 #include <netdb.h> 
-#define PORT 13
+#define PORT 1300
 #define h_addr h_addr_list[0]
 
 int main(int argc, char const *argv[])
@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
 	serv_addr.sin_family = AF_INET; 
     serv_addr.sin_port = htons(PORT);
 
-	host_entity = gethostbyname("time.nist.gov");
+	host_entity = gethostbyname("localhost");
 	bcopy((char*)host_entity -> h_addr, (char*)&serv_addr.sin_addr.s_addr, host_entity ->h_length);
 	sock_x = socket(AF_INET, SOCK_STREAM, 0);
 	connect(sock_x, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
