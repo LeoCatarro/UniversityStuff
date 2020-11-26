@@ -10,6 +10,99 @@
     </head>
 
     <body>
-        <p>PAGE FOR ADVANCED SEARCH</p>
+        <!--
+            Cabeçalho
+        -->
+        <header>
+            <a href="./"><img class="shop_logo" src="media/apple_logo_black.png"></a>
+           
+            <div class="header_stuff">
+                <input class="search_bar" type="text" placeholder="Search For Products...">
+                <a href="http://localhost:8080/search.html"><button class="search_button" type="submit"><i class="fa fa-search"></i></button></a>      
+
+                <a href="advanced_search.html">
+                    <button class="advanced_search_button" type="button">Advanced Search</button> 
+                </a>
+            </div>
+        </header>
+
+
+        <!--
+            Lista de Produtos
+        -->
+        <div class="prods_categorias">
+            <div class="pesquisa_avançada">
+                <section>  
+                    <form class="adv_search_form">
+                        <label>Descrição do Produto</label>
+                        <br>
+                        <textarea class="product_description" placeholder="Descrição do Produto Aqui" rows="10"></textarea>
+                        <br>
+                        <br>
+                        <label>Categoria do Produto</label>
+                        <br>
+                        <select class="select_categoria">
+                            <option value="notebook">Notebooks</option>
+                            <option value="airpod">AirPods</option>
+                            <option value="desktop">Desktops</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label>Localização do Produto</label>
+                        <br>
+                        <select class="localizacao_loja">
+                            <option value="online">Loja Online</option>
+                            <option value="evora">Évora</option>
+                            <option value="lisboa">Lisboa</option>
+                            <option value="porto">Porto</option>
+                            <option value="coimbra">Coimbra</option>
+                            <option value="faro">Faro</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label>Data da 1ª Listação do Produto</label>
+                        <br>
+                        <input class="data_listado" type="date">
+                        <br>
+                        <br>
+                        <label>Data de Stock do Produto</label>
+                        <br>
+                        <input class="data_removido_site" type="date">
+                    </form>    
+                </section>
+            </div>
+
+
+            <!--
+                Categorias
+            -->
+            <div class="categorias">
+                <section>
+                    <p class="title">CATEGORIAS</p>
+                    <ul class="lista_categorias">
+                        <a href="#"><li id="notebooks">Notebooks </li></a>
+                        <a href="#"><li>Airpods</li></a>
+                        <a href="#"><li>Desktops</li></a>
+                    </ul>
+                </section>
+            </div>
+        </div>  <!--prods_cateogiras Close-->
+
+        <!--
+            Butoes Next e Previous
+        -->
+        <div class="buttons">
+            <p style="display:inline">Previous</p><a href="index.html" class="previous">&#8249;</a>
+        </div>
+
+
+        <!--
+            Rodapé
+        -->
+        <footer class="rodape">
+            <a href="#">
+                <p class="about_page">About this page</p>
+            </a>
+        </footer>
     </body>
 </html> 

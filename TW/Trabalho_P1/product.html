@@ -14,11 +14,11 @@
             Cabeçalho
         -->
         <header>
-            <a href="./"><img id="shop_logo" src="media/apple_logo_black.png"></a>
+            <a href="./"><img class="shop_logo" src="media/apple_logo_black.png"></a>
            
-            <div class="top_nav">
-                <input class="search_bar" type="text" id="myInput"  placeholder="Search For Products...">
-                <button type="submit" onclick="searchFunction()"><i class="fa fa-search"></i></button>    
+            <div class="header_stuff">
+                <input class="search_bar" type="text" placeholder="Search For Products...">
+                <a href="http://localhost:8080/search.html"><button class="search_button" type="submit"><i class="fa fa-search"></i></button></a>      
 
                 <a href="advanced_search.html">
                     <button class="advanced_search_button" type="button">Advanced Search</button> 
@@ -27,23 +27,17 @@
         </header>
 
 
-        
-
-
-
         <!--
             Lista de Produtos
         -->
         <div class="prods_categorias">
             <div class="detalhes_produto">
-                <section>
-                    <ul id="list" style="list-style-type:none;">
-                        <li>      
+                <section>   
+                        <h1 class="detalhes_brand_model">Mac Book Pro 16"</h1>  
                             <div class="detalhes_product_img">
-                                <a href="media/macbook16.webp"><img src="media/macbook16.webp"></a>
+                                <a href="media/macbook16.webp"><img class="detalhes_product_img" src="media/macbook16.webp"></a>
                             </div>
                             <div class="about_prod">
-                                <h1 class="detalhes_brand_model">Mac Book Pro 16"</h1>
                                 <ul class="full_details">
                                     <li>Processador : Intel Core™ i9 Octa Core</li>
                                     <li>Frequência : 2,4 GHz</li>
@@ -63,12 +57,17 @@
                                     <li>Câmara : FaceTime HD 720p</li>
                                     <li>Comunicações : Wi-Fi 802.11ac - Compatível com IEEE 802.11a/b/g/n - Bluetooth 5.0</li>
                                     <li>Sistema Operativo : macOS</li>
-                                    <li>Software : Fotografias - iMovie - GarageBand - Pages - Numbers - Keynote - Siri - Safari</li>
-                                </ul>    
-                                <p class="price">5809€</p>
-                            </div>
-                        </li>
-                    </ul>    
+                                    <li>Software : Fotografias - iMovie - GarageBand - Pages - Numbers - Keynote - Siri - Safari</li>  
+
+                                    <p class="price">5809€</p>
+
+                                    <li>3,99€ custos de envio</li>
+                                    <li>Entrega prevista no dia 12/12/2020</li>
+                                    <h2>Métodos de pagamento:</h2><img src="media/metodos_pagamento.jpg"/>
+                                    <li>Unidades:<input type="number" min="1"/></li>
+                                </ul>
+                                    <input type="submit" value="Finalizar Compra">                               
+                            </div>   
                 </section>
             </div>
 
@@ -78,9 +77,9 @@
             -->
             <div class="categorias">
                 <section>
-                    <p id="title">CATEGORIAS</p>
+                    <p class="title">CATEGORIAS</p>
                     <ul class="lista_categorias">
-                        <a href="#"><li>Notebooks </li></a>
+                        <a href="#"><li id="notebooks">Notebooks </li></a>
                         <a href="#"><li>Airpods</li></a>
                         <a href="#"><li>Desktops</li></a>
                     </ul>
@@ -92,8 +91,7 @@
             Butoes Next e Previous
         -->
         <div class="buttons">
-            <p style="display:inline">Previous</p><a href="#" class="previous">&#8249;</a>
-            <a href="#" class="next">&#8250;</a><p style="display:inline">Next</p>
+            <p style="display:inline">Previous</p><a href="index.html" class="previous">&#8249;</a>
         </div>
 
 

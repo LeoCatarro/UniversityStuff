@@ -14,11 +14,11 @@
             Cabeçalho
         -->
         <header>
-            <a href="./"><img id="shop_logo" src="media/apple_logo_black.png"></a>
+            <a href="./"><img class="shop_logo" src="media/apple_logo_black.png"></a>
            
-            <div class="top_nav">
-                <input class="search_bar" type="text" id="search" placeholder="Search For Products...">
-                <button type="submit"><i class="fa fa-search"></i></button>    
+            <div class="header_stuff">
+                <input class="search_bar" type="text" placeholder="Search For Products...">
+                <a href="http://localhost:8080/search.html"><button class="search_button" type="submit"><i class="fa fa-search"></i></button></a>  
 
                 <a href="advanced_search.html">
                     <button class="advanced_search_button" type="button">Advanced Search</button> 
@@ -33,7 +33,7 @@
         <div class="prods_categorias">
             <div class="products">
                 <section>
-                    <ul id="list" style="list-style-type:none;">
+                    <ul class="list" style="list-style-type:none;">
                         <li>      
                             <div class="product_img">
                                 <a href="product.html"><img src="media/macbook16.webp"></a>
@@ -49,10 +49,10 @@
 
                         <li>      
                             <div class="product_img">
-                                <a href="product.html"><img src="media/macbookairprateado.jpg"></a>
+                                <a href="#"><img src="media/macbookairprateado.jpg"></a>
                             </div>
                             <div class="about_prod">
-                                <a href="product.html"><h1 class="brand_model">Mac Book Air Prateado</h1></a>
+                                <a href="#"><h1 class="brand_model">Mac Book Air Prateado</h1></a>
                                 <p class="description">Apple Mac Book Air 13.3" - Intel Core i3 - RAM: 8 GB - 256 GB SSD PCIe - Intel Iris Plus Graphics</p>
                                 <p class="price">998€</p><p class="old_price">1098€</p>
                             </div>
@@ -62,7 +62,7 @@
 
                         <li>      
                             <div class="product_img">
-                                <a href="product.html"><img src="media/macbookairM1.webp"></a>
+                                <a href="#"><img src="media/macbookairM1.webp"></a>
                             </div>
                             <div class="about_prod">
                                 <a href="product.html"><h1 class="brand_model">Mac Book Air</h1></a>
@@ -75,10 +75,10 @@
 
                         <li> 
                             <div class="product_img">
-                                <a href="product.html"><img src="media/macbookproM1.webp"></a>
+                                <a href="#"><img src="media/macbookproM1.webp"></a>
                             </div>
                             <div class="about_prod">
-                                <a href="product.html"><h1 class="brand_model">Mac Book Pro</h1></a>
+                                <a href="#"><h1 class="brand_model">Mac Book Pro</h1></a>
                                 <p class="description">Apple M1 - 13.3" - RAM: 8GB - 256GB SSD - Integrada</p>
                                 <p class="price">Desde 1479€</p>
                             </div>     
@@ -88,17 +88,14 @@
 
                         <li> 
                             <div class="product_img">
-                                <a href="product.html"><img src="media/macminiM1.webp"></a>
+                                <a href="#"><img src="media/macminiM1.webp"></a>
                             </div>
                             <div class="about_prod">
-                                <a href="product.html"><h1 class="brand_model">Mac Mini</h1></a>
+                                <a href="#"><h1 class="brand_model">Mac Mini</h1></a>
                                 <p class="description"> Apple's new mac mini with M1 chip</p>
                                 <p class="price">Desde 819€ </p>
                             </div>     
-                        </li>
-                        
-                        <hr>    <!--Linha horizontal que separa os produtos-->
-
+                        </li>   
                     </ul>    
                 </section>
             </div>
@@ -109,9 +106,9 @@
             -->
             <div class="categorias">
                 <section>
-                    <p id="title">CATEGORIAS</p>
+                    <p class="title">CATEGORIAS</p>
                     <ul class="lista_categorias">
-                        <a href="#"><li>Notebooks </li></a>
+                        <a href="#"><li id="notebooks">Notebooks </li></a>
                         <a href="#"><li>Airpods</li></a>
                         <a href="#"><li>Desktops</li></a>
                     </ul>
@@ -123,7 +120,6 @@
             Butoes Next e Previous
         -->
         <div class="buttons">
-            <p style="display:inline">Previous</p><a href="#" class="previous">&#8249;</a>
             <a href="#" class="next">&#8250;</a><p style="display:inline">Next</p>
         </div>
 
@@ -136,7 +132,5 @@
                 <p class="about_page">About this page</p>
             </a>
         </footer>
-
-        
     </body>
 </html> 
