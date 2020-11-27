@@ -62,7 +62,8 @@ header {
 }
 
 .categorias {
-    width: 205px;
+    max-width: 205px;
+    min-width: 205px;
     text-align: center;
     background-color: lightblue;
     font-family: 'Goldman', cursive;
