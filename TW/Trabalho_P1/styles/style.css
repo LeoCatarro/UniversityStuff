@@ -369,6 +369,10 @@ footer {
     .header_stuff {
         width: 80px;
     }
+
+    .pesquisa_avançada{
+        margin-left: 0px;;
+    }
 }
 
 @media screen and (max-width: 600px){
