@@ -376,10 +376,6 @@ footer {
     }
 }
 
-
-/*
-    Media queries para responsividade da search_bar maioritariamente
-*/
 @media screen and (max-width: 1100px){
     .search_bar {
         width: 500px;
