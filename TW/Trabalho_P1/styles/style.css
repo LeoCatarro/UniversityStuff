@@ -103,6 +103,7 @@ header {
     text-align: left;
     width: 100%;
     border: 1px solid grey;
+    margin-left: 20px;
 }
 
 .products li {
@@ -135,8 +136,9 @@ header {
     text-decoration: none;
 }
 
-.about_prod .brand_model:hover{
-    background-color: rgb(208, 207, 214);
+.brand_model:hover{
+    font-weight: bolder;
+    font-size: 32px;
 }
 
 .about_prod .description{
@@ -352,6 +354,10 @@ footer {
     .products li {
         flex-direction: column;
         width: 100%;
+    }
+
+    .products{
+        margin-left: 0px;
     }
 
     .detalhes_produto {
