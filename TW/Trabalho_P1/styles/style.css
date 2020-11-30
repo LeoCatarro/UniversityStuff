@@ -1,5 +1,5 @@
 html {
-    max-width: 1280px;
+    max-width: 1028px;
     margin: auto;
 }
 
@@ -52,7 +52,7 @@ header {
 
 .search_bar{
     margin: auto;
-    width: 700px;
+    width: 550px;
     display: flex;
 }
 
