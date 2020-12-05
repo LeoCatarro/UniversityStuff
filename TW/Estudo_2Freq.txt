@@ -1,0 +1,258 @@
+
+
+#############################
+        Java Script         #
+#############################
+
+O que é JavaScript?
+    -client-side scripting language
+    -linguagem dinâmica
+    -interpretada pelo browser
+    -linguagem com tipagem fraca(Loosely typed)
+    -Script: programa/excerto de código JS que o browser vai executar
+
+Qual o propósito?
+    -JS permite adicionar interativadade:
+        -campos e estados de submissão
+        -mostrar/esconder conteudo no HTML
+        -completar espaço em caixa de pesquisa
+        - ...
+
+Incorporar scripts numa página HTML
+    -Modo Embebido: delimitado pela tag <script>JS code goes here</script>            
+    -Mode Externo: script externo ao HTML <script src="script.js"></script>
+
+Arrumação do Script:
+    1) Dento da tag head : quando necessário executar algo antes do carregamento do <body>
+    2)antes da etiqueta </body> : quando necessário fazer parse á estrutura do documento(DOM) antes da exec do script
+
+Sintaxe Elementar:
+    -JS diferencia "A" de "a" (case sensitive)
+    -Espaços/linhas em branco, são ignorados, excepto se entre " "
+    -Comentários:
+        -Line comment: //
+        -Multi-line comment: /* */
+
+Variáveis:
+    - var foo = 5;
+    -cada var tem nome e valor
+    -Regras sintáticas para o nome:
+        -iniciar com letra, com (_)
+        -nao conter espaços, unir com _
+        -nome alusivo, para inteligibilidade do código
+        -não incluir caracteres especiais
+
+Tipos de dados:
+    -undefined: var foo;
+    -null: var foo = null;
+    -number: var foo = 5;
+    -string: var foo = "ola";
+    -boolean: var foo = true;
+    -array: var foo = [];
+    -object: var person = {f_name: "John", l_name:"Doe", ...}
+    -function: function f(x) { ... }
+
+    Avaliar tipo de variável: typeof 3.14 OU typeof "Jonh Doe" ....
+
+Operadores para comparação
+    - == ; != ; ===(ser identico: ser igual e do mesmo tipo) ; !== ; > ; < ; >= ; <=                     
+
+Operadores aritméticos
+    - + ; - ; * ; / ; += ; ++ ; --
+
+Condicional
+    - if ; else
+
+Ciclos
+    - for
+
+Funções
+    - function f(x) { implementation };
+
+Âmbito de variáveis
+    -Vars declaradas em functions : âmbito local
+    -Vars acessiveis em todo o código : âmbito global
+
+Objeto que representa o browser
+    -Comunicação Js - browser: Com objeto window
+    -Alguns Métodos de window:
+        -event      -> estado de um evento
+        -history    ->URL's visitados num historico browser
+        -location   -> acesso leitura/escrita ao URL na barra de endereço
+        -status     ->define/devolve texto na barra de estado da janela
+        -alert()    ->mostra janela de alerta com botao OK e mensagem
+        -close()    ->fecha janela atual
+        -confirm()  ->mostra caixa de diálogo de confirmação(OK + Cancelar)
+        -focus()    ->coloca foco na janela
+
+Tratamento de Eventos
+    -ação detetada com JS e desencadeia execução de scripts:
+    -Exemplo de Eventos:
+        -onload         ->quando a pagina carrega
+        -onclick        ->quando rato clica num objeto
+        -onmouseover    ->quando ponteiro é movido sobre elemento
+        -onerror        ->quando há erro no carregamento do documento        
+
+    -Aplicados de 3 maneiras:
+        1)Atributo de um elemento HTML: <body onclick="myFunction()">
+        2)propriedade onclick do objeto(janela,botão, ..): window.onclick = myFunction;
+        3)Função addEventListener(): window.addEventListener("click", myFunction);
+
+DOM(Document Object Model)
+    -Interface para consultar e manipular conteudo do documento Web
+    -Estrutura de objetos com mapa do documento, com os elementos e conj de métodos para interagir com eles 
+    -Estrutura em Árvore
+
+Acesso aos nós
+    -Referir nós pelos objetos que representam
+    -Definir id para os elementos do HTML
+    - var foo = document.getElementById("beginner").innerHTML
+    -Objeto document representa página/documento web atual
+    -getElementById método que devolde o elemento com o id "beginner"
+    -innerHTML representa o conteudo HTML dentro do elemento
+
+Métodos para acessos aos nós
+    -getElementByTagName()
+    -getElementById()
+    -getElementByClassName()
+    -querySelectorAll()         ->devolve os nós que correspondem ao seletor CSS passado com argumento
+    -getAttribute()             ->devolve valor de um determinado atributo do nó atual
+
+Manipulação de nós
+    -setAttribute()
+    -innerHTML
+    -style
+
+Adicionar e remover elementos
+    -API DOM, permite alterar estrutrar do document WEB apartir de:
+        -createElement()
+        -createTextNode()
+        -appendChild()
+        -insertBefore()
+        -replaceChild()
+        -removeChild()
+
+Bibliotecas JavaScript
+    -coleção de funções e métodos que podem ser usados nos nossos scripts para simplificação da execução de tarefas
+    -Umas são frameworks muitos extensas, para apps complexas
+    -Outras são simples, como formulários ou desenhos de gráficos interativos
+    -jQuery: uma das mais populares bibliotecas                   
+
+Biblioteca jQuery
+    -incluir conteudo, com um script de fonte externa em head
+    -Exemplo:
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>$(document).ready(function(){$("p").click(function(){
+                    alert( 'You clicked in a p element' );
+                    });
+                });
+        </script>
+    </head>
+
+    -Possivel usar seletores CSS:
+        -Exemplo com id selector:
+            -document.getElementById("status);
+            -Com jQuery: $(#status)
+        -Exemplo com seletor de classe:
+            -Com jQuery: $(.header) 
+            (devolve os elementos com classe header, tal como getElementByClassName())
+
+    -Exemplo sintaxe compacta
+        -Alterar conteudo de id="p2" quando clicar em botao com id="btn1":
+            $("#btn1").click(function(){
+                $("#pt2").html("Novo texto <b>após</b> clique!");
+            });               
+
+
+#####################################################################
+        Aplicações Web: desenvolvimento do lado do servidor         
+#####################################################################        
+
+Aplicações Web 
+    -uma App Estática é muitas vezes referida como site 
+    -um site é estático se cada pedido para URL X , a resposta é sempre a mesma 
+
+    -Comportamento dinâmico de uma app web permite que:
+        a)resposta seja processada na hora(dinâmica)
+        b)pedidos para mesmo URL possam ter resposta diferente
+        c)execução de operações durante tratamento de um pedido http
+        d)ter noção do historico
+
+    -Comportamento dinâmico implica capacidade de executar do lado do server
+
+Exemplo de tarefas que requerem programação server-side:
+    -Armazenado persistente de dados(via HTTP)
+    -Procura de dados de uma BD
+    -Navegação personalizada
+    -Controlo de acessos detalhado
+    -Guardar sessão de utilização da webapp
+    -Analítica de dados
+
+Programação em cada lado: Cliente e servidor
+    -Componentes com âmbito e objetivos diferentes
+    -Usam-se linguagens e ferramentas diferentes
+    -Ambientes de execução diferentes:
+        -No cliente: browser(executa num SO), diferente do existente e distinto para vários utilizadores             
+        -No servidor: ambiente controlado. SO e restante ambiente conhecido
+
+Programação server-side
+    -Pode fazer-se em várias Lingaguens de Programação
+    -Web Devs recorrem a web frameworks
+    -Web framework: recurso de desenvolvimento de software que facilita conceção, programação, manutenção e operação de Aplicações
+        -Inclui ferramentas e bibliotecas que simplificam tarefas comuns:
+            -uso de sessões
+            -autenticação e autorização
+            -interação com base de dados
+
+Fatores a considerar na escolha de um framework  
+    -Esforço de aprendizagem/curva de aprendizagem
+    -Produtividade: 
+        -Opinionated(mais produtivos em tarefas comuns, menos flexiveis) vs Unopinionated 
+        -Batteries included vs Get it yourself : inclui bibliotecas para resolver todos os problemas com abordagem "por omissão", requerem desenvolvimento de bibliotecas externas; Segue/sugere adoção de boas práticas no desenvolvimento
+    -Desempenho
+    -Suporte para cache
+    -Escalabilidade
+    -Segurança: vulnerabilidades, mecanismos de proteção        
+
+Tecnologias paara desenvolvimento server-side, incluido Web apps
+    -Flask, TurboGears(Python)
+    -Express(Node.js/JavaScript)
+    -Laravel(PHP)
+    -ASP.NET
+    -Spring Boot(Java)
+    -Vaadin(Java)
+    -Ktor(Kotlin)
+
+MVC(Model-View-Controller)
+    -Arquitetura MVC é um padrão de desenvolvimento orientado para reutilização de código e separação de 3 componentes:
+        -Modelo
+            -Gere armazenamento de dados
+            -Não é influenciado pela Vista e Controlador
+        -Vista 
+            -View mostrada ao utilizador e interface com que interage
+        -Controlador
+            -Componente de Controlo
+            -Atualiza a Vista se Modelo tem atualizações
+            -Recebe notificações da Vista para pedido de modificação de Modelo
+
+Aplicações Web: Convencionais e separação
+    -WebApp Convencional:
+        -Mais comum
+        -Maior parte da lógica tratada no servidor
+        -É referida como MPA(Multiple Page Application) ou como Server Rendered Application
+        -Interações com browser desencadeiam pedido HTTP ao server, devolve nova página 
+        -Mais adequada para:
+            -interação simples, ou só de leitura
+            -logica reservada ao servidor
+            -menor experiência
+            -funcionar em browser sem suporte JavaScript
+
+    -Single Page App(SPA):
+        -Grande parte das interações ocorrem do lado cliente
+        -Inicialmente, browser descarrega código da app(HTML,CSS,JS)
+        -Comunicação seguinte com o servidor via API(Ex:REST)
+        -Mais adequada para:
+            -Apps com interface muito rica e com muitas funcionalidades
+            -Casos onde API do server já é necessária para outros serviºos
+            -Dominio da tecnologia JavaScript
