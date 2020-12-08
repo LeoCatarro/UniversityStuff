@@ -247,6 +247,11 @@ Aplicações Web: Convencionais e separação
             -logica reservada ao servidor
             -menor experiência
             -funcionar em browser sem suporte JavaScript
+        -Vantagens:
+            -Facilidade de dev, conceção, entendimento, debugging
+            -Menor tempo de carregamento inicial 
+            -Segurança
+            -Não exige suporte de JS
 
     -Single Page App(SPA):
         -Grande parte das interações ocorrem do lado cliente
@@ -254,5 +259,225 @@ Aplicações Web: Convencionais e separação
         -Comunicação seguinte com o servidor via API(Ex:REST)
         -Mais adequada para:
             -Apps com interface muito rica e com muitas funcionalidades
-            -Casos onde API do server já é necessária para outros serviºos
+            -Casos onde API do server já é necessária para outros serviços
             -Dominio da tecnologia JavaScript
+        -Vantagens:
+            -Tempo de resposta reduzido
+            -Comportamento sofisticado nas interfaces
+        -Tecnologias:
+            -React
+                -JS Library para coinstrução de "user interfaces"
+                -Estilo de programação funcionalidades  
+                -Curva de aprendizagem significativa
+                -Apoio facebook
+            -Angular    
+                -full framework
+                -Curva de aprendizagem significativa
+                -Apoio da Google
+                -Permite lingaguem TypeScript
+
+Progressive Web App(PWA)
+    -Modernas
+    -experiencia semelhante a das apps nativas
+    -Rapido, Fíavel ,cativante
+    -Permite funcionalidades offline
+
+    -Componentes:
+        -Service Worker: controlo do tráfego de rede e cache
+        -App Manifest: ficheiro de metadados importantes    
+
+
+############################################################
+        Aplicações Web em ambiente Java(sem framework)                  
+############################################################
+
+MVC e Java para desenvolvimento Web
+    -Modelo: parte operacional e acesso ao repositório de dados
+    -Controlador: 
+        -classe da servlet(estende HTTPServlet)
+        -para dados do utilizador para o Modelo
+        -passa resultados para a View
+    -View:
+        -página web devolvida ao utilizador(server-rendered)
+
+
+Tecnologia Java para WebApps
+    -Web app em java:
+        -servlet que funciona como Controlador
+        -modelo com implementação das funcionalidades
+        -view: código em Java ou JSP 
+        -ficheiro web.XML: configuração geral
+
+    -Componentes Web:
+        -Servlets: classes Java
+            -para serviços e funções de controlo
+        -JSP: páginas que misturam HTML(conteudo estático) com Java(conteudo dinâmico)
+            -para gerar XML, HTML, ...
+    
+    -Web Container
+        -aloja componentes web
+        -responsável por:
+            -Segurança
+            -concorrência
+            -transações
+            -gestão de nomes
+            -gestão do ciclo de vida do componente web
+        -Exemplos: Apache Tomcat, Jetty, Jboss
+
+
+Deployment
+    -implantar(deploy) os componentes web, num WebContainer, para serem usados
+    -alguns detalhes de funcionamento da WebApp configurados nesta fase 
+    -ficheiro XML com config geral da WebApp: WebApp deployment descriptor
+
+    -WebApp na tecnologia Java consiste em:
+        -Componentes Web
+        -Classes auxiliares, bibliotecas e recursos estáticos(imagens, videos, ...)
+        -deployment descriptor
+
+
+Ciclo de desenvolvimento
+    1)implementar componentes web
+    2)especificar webapp deployment descriptor
+    3)compilar código-fonte e classes auxiliares usadas na webapp
+    4)packaging(formar pacote com todo o conteudo da WebApp)
+    5)Deployment num WebContainer
+    6)Aceder ao URL da app
+
+
+Estrutura da WebApp
+    (por foto)
+
+
+Configuração
+    -Onde?
+        -no deployment descriptor
+        -ficheiro de propriedades, caso se use framework
+
+    -Opções a configurar
+        -mapeamento de URL's
+        -parametros de inicialização
+        -permissões
+        -definir welcome files 
+
+
+(ver 2 páginas em falta)
+
+
+Packaging e Deployment
+    -Web Archive(WAR)
+        -JAR file com o conteúdo base da WebApp
+        -Facilita arrumação e transporte da WebApp
+        -Packaging: criação do ficheiro .war
+
+    -Implatação da WebApp
+        1)Direta na diretoria base ou no repositorio do WebContainer
+        2)instalação do WAR file no WebContainer
+
+    NOTA: packaging e deployment devem ser feitos Automaticamente por algumas ferramentas
+
+
+Java Server Faces(JSF)
+    -JSF
+        -framework Java para dev de WebApps baseado em componentes de UI 
+        -cada elemento UI com um estado representado no server 
+        -Facilita validação e conversão de dados
+        -Server-side, MVC
+        -Facelet: objeto para decrever Views
+    
+    -Java Beans
+        -contexto de padronizar e simplificar desenvolvimento(atenção na lógica de negócio)
+        -componentes de software, alojados num software cotainer(entidade, sessão, message driven, ...)
+
+
+##############################################
+        Java Servlet e Java Server Page          
+##############################################
+
+
+
+
+
+################################
+            Sessão          
+################################
+
+Introdução
+    -HTTP protoloco stateless
+    -Cookie:
+        -pequeno elemento
+        -contem dados que server "pede" ao browser
+        -objetivo: enviar em pedidos posteriores
+        -Em server-side:
+            -visto programaticamente invocando getCookies() sobre o objeto que representa o pedido HTTP
+
+    -Sessão e autenticação são conceitos diferentes!
+        -Maior uso à sessão no momento da autenticação
+
+
+Sessão HTTP: o que é?
+    -periodo de atividade no site
+        -tem diversas interações browser-server(pares de pedido-resposta HTTP)
+        -coexiste em paralelo com outras sessões
+
+    -abrange conjunto de interações do cliente com WebApp desde inicio até que:
+        -fecha o browser
+        -termina explicitamente a sessão
+        -sessão expira por inatividade
+
+
+Sessão: o identificador
+    -Sessão controlada por um identificador:
+        -gerador pelo server, enviado ao browser, guardado em Cookie
+        -browser envia Session ID a cada interação
+        -server consegue distingir pedidos HTTP associados a diferentes sessões e utilizadores        
+
+    -A nivel de programação, sessão permite:
+        -manter interação e navegação coerentes
+        -associar dados a cada utilizador/sessão
+
+
+Sessão: no cliente
+    -browser normal espera-se uso de cookies 
+    -se limpar cookies em sessão ativa, sessão perder-se-á
+    -Em 2 browsers diferentes, na mesma máquina, normal é ter 2 sessões separadas
+    -Para um só browser:
+        -Acesso a sites diferentes, em separadores da mesma janela, costumam ter mesmma sessão
+        -Acesso em janelas diferentes: pode depender do browser!
+
+
+Sessão: onde está representada?
+    -Armazenamento da sessão:
+        -Memória do servidor(single server, não replicada)
+        -Persistencia em ficheiro
+        -Persistencia em BD
+    -Alternativa: ter dados no lado do cliente, em cookies(?)
+        -Facilitaria redundancia em servers(stateless)
+        -Implica envio sistematico dos cookies para o server
+        -Apenas se nao guarda eelementos críticos
+
+
+Sessão: do lado do servidor(Java)
+    -Objeto HTTPSession:
+        -Permite identificar utilizador
+        -Associa-lhe dados, ao longo das interações que faz com a app
+        -Métodos importantes:
+            -Object getAttribute(String name)
+            -Object setAttribute(String name, Object value)
+            -void invalidate()
+
+    -Objeto sessão obtido atraves de HttpServletRequest
+        -HttpSession getSession(boolean create) : devolve sessão atual, ou cria nova.
+
+
+Sessão: o que vamos fazer com isto?
+    -Possibilidade com uso de sessão:
+        -Implementar funcionalidades tipo carrinho de compras
+        -Saber escolhas do utilizador sem exigir submissão
+        -Manter contexto sem leitura de BD
+
+        -Experiencias Iniciais:
+            -gerir informaçoes de diversos utilizadores que usam, simultaneamente, a app
+
+        -Experiencias seguintes:
+            -sessão em conjunto com mecanismos de autenticação de utilizadores        
