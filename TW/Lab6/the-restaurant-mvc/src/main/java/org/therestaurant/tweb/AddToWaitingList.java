@@ -9,24 +9,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "AddToWaitingList", urlPatterns = {"waitingList"}, loadOnStartup = 1) 
-public class AddToWaitingList extends HttpServlet {
+public class AddToWaitingList extends HttpServlet
+{
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+			throws ServletException, IOException 
+	{
 		response.getWriter().append("Welcome to The Restaurant. ");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException
+	{
+
 		String name = request.getParameter("name");	//Guarda a string passada em name
 
-		if (name == null)
-			name = "World";
+		TheRestaurant.waitingList.add(name);
 
-		request.setAttribute("user", name);
+		request.setAttribute("clientName", name);
+		request.setAttribute("clientNumbers", TheRestaurant.waitingList.size());
+		request.setAttribute("clientList", TheRestaurant.waitingList.toString());
+
 		request.getRequestDispatcher("addClientToWaitingListResponse.jsp").forward(request, response);
-
-
 	}
 }
