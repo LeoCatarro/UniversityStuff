@@ -1,0 +1,167 @@
+##########################################
+#        Comités de Classificadores      #
+##########################################
+-->Comités
+-->Estratégias
+-->Comités de Árvores:
+    - Random Forest
+    - Extra Trees
+    - Gradient Boosting Machines
+
+
+#
+# Comités
+#
+
+-->Comités de Classificadores
+    Motivação: nenhum algoritmo apresenta sempre o melhor desempenho(no free lunch)
+    Proposta: combinar modelos para criar modelos poderosos
+    Obtenção de modelos:
+        -diferentes algoritmos
+        -diferentes hiper-parametros
+        -diferentes fontes
+        -diferentes conj. de treino 
+
+-->Combinação de Peritos
+    Multiplos peritos: classificadores trabalham em paralelo
+    Multiplas etapas: classificadores trabalham em serie
+
+-->Votação
+    Simples: todos peritos com = peso
+    Pesada: probabilidades a posteriori
+
+
+#
+# Estratégias
+#
+
+-->Bagging
+    -bootstrap aggregating
+    -multiplos peritos
+    -geraçao dos peritos atraves de bootstrap
+    -combinação dos peritos: votação Simples
+    -bootstrap: dado conj. de treino de tamanho N, retiram-se, aleatoriamente com reposição, N exemplo
+    
+    ->Desempenho:
+        -beneficia algoritmos instáveis
+        -robusto para dados com ruido
+ 
+-->Boosting
+    -multiplos peritos
+    -geração dos peritos: classificador
+
+    ->Desempenho:
+        -aprendizes fracos: Ex-decision tree de profundidade 1
+        -suscetível ao ruido e outliers
+        -comparação: -produz melhor classificadores que o bagging
+                     -pode sofrer sobre-ajustamento
+-->Stacking
+    -multiplos peritos
+    -combinação dos peritos é aprendida: combinador treinado com dados não usados na construção
+    -peritos o mais diferentes possivel(diferentes algoritmos)
+
+-->Cascading
+    -multiplas etapas
+    -peritos base ordenados por:
+        -complexidade(temporal e/ou espacial)
+        -custo da representação utilizada
+    -perito usado se classificadores precedentes confiáveis
+    -cada perito tem confiança associada
+
+
+#
+# Comité de árvore de decisão
+#
+
+-->Random Forest
+    -diversidade das árvores(introdução de processos aleatórios):
+        -na seleção dos exemplos usados
+        -na seleção dos atributols no teste de partição
+    -estratégia Bagging
+
+    ->Construção da árvore:
+        -criar amostra bootstrap dos dados:
+            -igual numero de dados que conj. original
+            -exemplos escolhidos aleatoriamente
+        -criar árvore com base na amostra:
+            -escolhido nó, pesquisado melhor partição envolvendo aqueles Atributos
+            -cada nó testa sub-conjunto diferente
+
+    ->Caracteristicas:
+        -modelo poderoso
+        -funciona bem sem grande esforço
+        -nao precisa se escalar os dados
+
+    ->Vantagens:
+        -paralizável
+        -funciona bem em conjuntos muito grandes
+
+    ->Desvantagens:
+        -não funciona bem em dados com muitas dimensões
+
+    ->Parâmetros importantes:
+        -nº de árvores a criar:
+            - +árvores => melhor modelo
+            - +árvores => mais memoria e tempo usados 
+        -nº de atributos a testar:
+            - sqrt(nº de atributos)
+        -estratégia de poda:
+            -limitar profundidade
+            -limitar nº de folhas
+
+-->Extremely Randomized Trees(Extra Trees)
+    -diversidade das árvores(introdução de processos aleatórios):
+        -na seleção dos atributos no teste de partição
+        -no limite a aplicar
+    -bagging
+    -menos pesado que Random Forest
+
+-->Gradient Boosting Machines(Gradient Boosted Regression Trees)
+    -diversidade das árvores:
+        -construidas sequencialmente
+        -corrige erros da anterior
+        -forte pré-poda
+    -boosting
+    -menos pesado que Random Forest
+    -mais sensível á definição
+
+    ->Parametros:
+        -nº de árvores a generar 
+        -profundidade da árvore
+        -taxa de aprendizagem:
+            - >maior => correções mais fortes
+    
+    ->Caracteristicas
+        -algoritmo poderoso
+        -muito usado
+
+    ->Vantagens
+        -não é necessário escalar dados
+        -funciona bem com dados binários e continuos, em conjunto\
+    
+    ->Desvantagens 
+        -necessita de afinação
+        -tempo de treino longo
+        -não funciona bem em dados esparsos
+
+
+
+
+#############################
+#       Redes Neuronais     #
+#############################
+-->Introdução
+-->Perceptrão
+-->Redes Multi-Camada
+-->Vantagens, Desvantagens e parâmetros
+
+
+#
+# Introdução
+#
+
+-->Redes Neuronais
+    -Rede Neuronal Feed-Forward
+    -Rede de função de Base Radial
+    -Rede Neuronal Recorrente
+    -Rede Neuronal Modular
