@@ -1,0 +1,447 @@
+#
+# Autenticação, Autorização, SSO, MFA 
+#
+
+-->Introdução: A & A
+    -Autenticação: garantia sobre identidade do interveniente num processo?
+        -Ex: "Quem é o interveniente?"guem ver conteudo da App)
+        -Não garante politica de autorização bem implementada
+        -Necessária para implementar autorização
+
+    -Autorização: 
+        -Garantia que acesso a uma operação por parte de um interveniente está de acordo com a politica de Segurança
+        -Politica de permissões(e/ou proibiçoes):(Ex: permissao de alguem ver conteudo da App)
+    
+
+-->Cenário
+    -Web App de empresa:
+        -Funcionarios consultam avaliação
+        -Supervisores alteram permissoes dos funcionários
+
+    -Regras:
+        -Funcionário: autentica-se para aceder á informaçoes
+        -Supervisor: autentica-se para ver ou editar informaçoes
+
+        -programadas na WebApp
+    
+    -separar funcionalidade de controlo de A & A
+
+
+-->A & A em WebApps:
+    -mecanismo de segurança associado ao container da app
+
+    -Autenticação delegada no container/servidor:
+        -programador pode focar-se nessa funcionalidade
+    
+    -Autorização delegada no servidor:
+        -fornece politica de segurança: regras com base em perfis ; pode indicar-se no código fonte
+
+
+-->SSO(Single Sing-On):
+    -mecanismo de autenticação válido para mais que 1 sistema
+    -permite que sistema use autenticação, previamente existente(Ex: login por facebook/google em outro site)
+
+    -SLO(Single Log-Out): mecanismo onde 1 só ação termina a sessão nos diversos sistemas
+        -SSO não implica SLO
+
+    -Funcionamento:
+        -Um ID Providor ou serviço(Gmail, facebook, ...) realiza autenticação e avisa outros serviços
+        -Forma de partilha de sessão autenticada varíavel:
+            -SAML(Security Assertion Markup Language): dados de A & A em .XML
+            -OIDC(OpenID Connect): IDProvider central ; informação do user e dominio em uso
+
+        -Authentication Token: id exportado pelo mecanismo de autenticação
+
+
+-->OAuth 2.0
+
+
+-->JWT(JSON Web Tokens)
+    -transmitir info seguramente e representada em objeto JSON
+
+    -Aplicações: 
+        1)Autorização: após SSO, mediante tokens
+        2)Troca de Informação: usando JWT para transportar dados, com segurança(criptografia assimétrica)
+
+    -Conteudo(Exemplo):
+        -codificado: hasfhuirg.heiuvidvneruigh.eiurhuihvuh
+        -descodificado: objeto JSON
+    
+-->MFA(Multi-Factor Authentication)
+    -tornar mais sólido a autenticação
+        -reduz risco de:
+            -acesso não autorização
+            -perda/sequestro de dados
+            -usurpação de identidade
+        -melhorar sistema de login(alem de password, usar conjunto N de entre M formas possiveis)
+
+    -Formas de completar autenticação:
+        -Código SMS 
+        -Dados biométricos
+        -código temporário
+        -chaves ou tokens , ...
+
+
+-->2FA(Two-Factor Authentication)
+    -MFA com 2 formas de autenticação: Password + outro
+
+    -Google Authenticator:
+        -serviço de autenticação(pode ser usado em WebApp), para 2FA
+        -gera códigos temporários
+
+
+-->Proteção de Dados:
+    -troca de dados entre browser e server deve ser protegida
+    -Dados sensíveis: passwords, dados financeiros, ...
+    Abordagem: Proteger canal de comunicação: Ativar HTTPS
+
+
+-->Ativação de SSL em apps Spring
+    -Configurar SSL para ativar HTTPS:
+        1)emite .war
+            -requerer HTTPS no server
+        2)gera app Java autonoma, que inclui webserver
+            -definir:
+                server.port=8443       /* ou 443 se disponível */
+                server.ssl.key-store=classpath:keystore.jks
+                server.ssl.key-store-password=secrets
+                erver.ssl.key-password=another-secret
+            -executar app
+            -adicionar certificado aos trusted certificates
+
+
+
+#
+# Vulnerabilidades comuns em WebApp
+#
+
+-->Erros de segurança comuns
+    -Confiar em elementos submetidos por user
+    -Autenticação ingénua
+    -Não usar 2FA
+    -Não validar dados recebidos
+    -Não revalidade autenticação, quando se alterar password
+    -Expor conteudos mais que o necessário
+    - ...
+
+
+-->Origem e alvo de um ataque
+    -Alvo:
+        -PC e user data
+        -Servers e sistemas que alojam WebApp
+    
+    -Origem:
+        -User PC:
+            -quando tomado pelo atacante
+            -quando atacante é utilizador da app
+        
+        -Servidor
+        -Infraestrutura de comunicação
+        -Origem remota: "Terceira máquina"
+
+
+-->Tipo de Vulnerabilidades:
+    -Técnicas: Relacionadas com programação ou configuração
+        -Exemplo: falta de SSL no envio de dados de login(password exposta)
+    
+    -Lógicas:
+        -Exemplo: usar parametros provenientes do cliente para calcular preço a pagar
+    
+
+-->Vulnerabilidades:
+    -Interentes á plataforma
+    -Associadas a backups
+    -Ligadas á própria App:
+        -Manipulação de cookies
+        -Buffer OverFlow
+        -SQL Injection
+        -No mapeamento de recursos
+        -Cross-site scripting
+
+
+-->Sobre a plataforma
+    -Versão antiga:
+        -vulnerabilidades acabam por surgir, risco de ataque aumenta
+
+    -Ligação a módulos externos com problemas:
+        -Uso de Realm externo(substituto para SQLite & Core Data)
+    
+    -Passwords fracas
+
+
+-->Controlo de origem no cliente:perigo
+    -Adulteração de cookies
+        Cookie                           --------->   Cookie
+        Cookie:role = guest                           Cookie: role=admin
+    
+    -Adulteração de parametros(hidden) em forms:
+        <input type=“hidden”            ----------->  <input type=“hidden”
+            name=“role”                                 name=“role”    
+            value=“guest”>                              value=“admin”>
+
+
+-->Referência direta a objetos
+    -Programar acesso a dados sem verificação de autorização
+    -Exemplo: quando revelado id do cliente no URL, podemos alterar id para outros
+
+
+-->Validação de credenciais simples
+    -Consulta elementar á BD pode ser +perigosa que o que se pensa
+
+
+-->Injeção de código SQL
+    -utilizador pode manipular campos para ajustar QuerySQL
+        -ler dados, alterar dados no login
+    -atacante pode usar ferramentas que submetem baterias de testes
+
+
+-->CSRF(Cross-Site Request Forgery)
+    -Ataque leva a brownser com sessão ativa a efetuar pedidos HTTP no âmbito dessa sessão
+    -Server entende esses pedidos com legitimos
+
+
+-->Sequestro de Sessão
+    -Apartir de cookie ou token de autenticação, atacante faz-se passar por interlocutor de uma sessão ativa
+
+
+-->Cross-site scripting(XSS)
+    -Leva browser da vitima a executar código fornecido por atacante:
+        -analisar cookies
+        -phishing
+        -procurar info de sessões
+    
+    -Possibilidades:
+        -código  tem origem no server do atacante
+            -gerado dinamicamente a cada pedido
+            -injeção persistente
+        -Man-in-the-middle:
+            -servidor atacante entre serviço e cliente
+    
+    -Outro Exemplo: mensagens com conteudo malicioso
+    -atacante cria mensagens para foruns/chats com JS preparado
+    
+
+-->Phishing
+    -Reproduzir look-and-feel da parte de login de um site popular 
+    -Direcionar vitima a introduzir credenciais nesse form
+    -dados ficam na posse do atacante
+
+
+-->Boas práticas
+    -input do user não considerado seguro
+    -acompanhar atividade de da app em busca de coisas anormais(monitorizar logs)
+    -análise ao código e desenho da app
+    -extensões e server aplicacional na versão +recente
+
+
+
+#
+# Testes a WebApps
+#
+
+-->Teste de desenvolvimento:
+    -Verificações sobre código-fonte, métodos ou módulos especificos, para validar correção dos mesmo e ausência de bugs
+
+    -Tipos de testes:
+        -Unitários: sobre função/método
+        -Integração: validação de interfaces
+        -Sistémicos: teste ao sistema como um todo
+        -Aceitação: determinar se está em conformidade com:
+                        -interesse do cliente
+                        -legislação
+                        -contratualização
+                        -critérios para versao de produção,(alfa)
+
+
+-->Testes à WebApp
+    -Verificação sobre comportamente e possiveis erros antes da disponibilizaçao ao publico
+
+    -Testes:
+        -Funcionais:
+            -Verificação das funcionalidades da App
+                -Links: há problemas?
+                -cookies: que acontece se forem eliminados
+                -formulários: preenchimento, erros, armazenamento em BD
+                -HTML e CSS: sintaxe, normas, ...
+                -Operações: usuais e sequencias inesperadas
+            -Manuais ou atomatizados
+        
+        -Usabilidade:
+            -verificação se user consegue utilizar app com sucesso e sem esforço desnecessário
+            -Aspetos a tratar:
+                -Navegação: menus, butoes, links ...
+                -Conteudo: Texto, Imagens, Design, Aspeto, ...
+            -Pode envolver:
+                -users especializados
+                -grupos de pessoas
+
+        -Segurança:
+            -validar não existencia de falhas no controlo de acessos
+                -testar formas de acesso nao autorizadas
+            -testar uso de sessões de terceiros apos logout ou expiração
+            -testar HTTPS e redirecionamentos
+
+        -Carga e desempenho:
+            -verificar desempenho e eficácia em situações de carga:
+                -como varia tempo de resposta com numero de pedido
+                -risco de erros em dados?
+            -como recupera o sistema em estado de inoperância
+            -avaliar perceção do users, quando sistema entra em sobrecarga
+            -testar opções de compressão de dados
+            -Jmeter
+        
+        -Compatibilidade:
+            -verificar compatibilidades com varios browsers e SO.
+            -validade confirmidade com normas da Web
+        
+        -Acessibilidade:
+            -garantir uso por todas as pessoas(com necessidades ou nao)
+        
+            -Testes:
+                -Funcionamento com leitores automaticos
+                -Ativação de alto contraste
+                -Ajustes dinâmicos do tamanho de letra
+                -Conformidade com norma WCAG
+                -AChecker
+
+
+-->Automatização de Testes
+    -Facilita repetição e agendamento
+    -Simplifica execução distribuida:
+        -testes de cargas mais realistas
+        -aferir diferenças de desempenho en função da origem dos pedidos
+    -Tarefas:
+        -Preparação
+        -Controlar execução de tarefas
+        -Comparar resultados
+        -Elaborar relatórios
+
+
+-->Selenium
+    -Ferramenta para testar WebApps
+    -Simplifica Automatização
+    -Multiplataforma
+    -Simula interações utilizador-browser
+
+    -Selenium WebDrive:
+        -Permite script para controlar testes
+        -Flexivel
+            -multiplas plataformas e browsers
+            -scripts podem ser escritos em várias linguagens(Java, Python, C#, ...)
+            -scripts aplicados em várias plataformas
+
+
+-->Monitorização
+    -Verificação sistemática do estado do sistema:
+        -A funcionar?
+        -BD a operacional e/ou acessível?
+        -Problemas? Real Time Alerts
+    
+    -Ferramentas:
+        -nagios
+        -pingdom
+        -siteUpTime ...
+
+
+
+#
+# Escala e Desempenho
+#
+
+-->Introdução
+    -protótipo diferente de webapp robusta(para milhares de utilizadores)
+
+    -Aplicação vitima do próprio sucesso!
+        - +pedidos pode esgotar capacidade de resposta
+        - >popularidade, pode aumentar probabilidade de ataque, DoS
+
+
+-->Distribuição
+    -solução web robusta é um SD(Sistema distruido)
+    -Aspetos com impacto no funcionamento:
+        -Fluxos de informação
+        -Zonas de processamento
+        -particionamento
+        -desempenho
+        -custo ...
+    
+
+-->Fases da escala de soluções web
+    -Arquitetura multicamada simples
+    -mantendo software, aumentar capadiade, largura de banda
+    -redudância de servidores, balanceamento
+    -particionamento da BD
+    -gerir consistência da BD e operacionalidade
+
+
+-->Proxy Server(opção de arquitetura)
+    -Proxy: nó itermediário entre users e servidores
+        -Podem realizar tarefas uteis como:
+            -compressão
+            -filtrar
+            -desencriptar/encriptar
+            -cache
+            -agrupar pedidos iguais num unico pedido
+
+
+-->Balanceamento 
+    -distribuição do trafego por vários servers
+        -varios servers a suportar o serviço
+        -se 1 avariar, mantem-se o serviço
+    -fundamental para eficácia da webapp
+    -balancear realiza deteção de DoS
+
+
+-->Balanceador e SSL
+    -Para pedidos com protocolo HTTPS(encriptado com SSL) há 2 abordagens:
+        1)SSL Termination: trafégo desencriptado pelo balanceador
+            -diminui-se carga sobre server(ganho de desempenho)
+            -pode haver preocupações de segurança, se canais de comunicação expostos
+        
+
+        2)SSL pass-through: pedidos encaminhados como chegam
+            -server responsável por operações criptográficas, pode afetar tempo de resposta
+            -menos preocupações de segurança
+
+
+-->Algoritmos para balanceamento
+    -Least Connection
+        -encaminhar para server com menos ligações
+        -especicalmente em situações de ligações persistente e pedidos não uniformes(requerem tempo variável)
+
+    -Least Response Time
+        -pedido encaminhado com menos ligações ativas, tempo de resposta médio +baixo
+
+    -Round Robin
+        -distribuição sequencial, rotativa
+        -util quano ligações persistentes não existentes, atendimento rapido
+
+    -IP Hash:
+        -usar endereço IP como critéro para escolher servidor de destino
+
+
+-->Balanceamento, num nível de abstração superior
+    -Elasticidade:
+        -escala dinâmica
+        -pool de servers frontend monitorizada sistematicamente(health check), para reação rapida a falhas
+        -adicionadas +instancias na pool, em resposta a pico de pedidos
+
+    -Critério Geográfico:
+        -gerir tráfego por área geográfica(eficacia e segurança)
+        -pedido enviados para centro de dados regional
+        -estes centros comunicam para coordenação
+        -Exemplo: redes sociais
+
+
+-->Balanceamento e as sessões
+    -varios servidores web traz desafio para manutenção da sessão
+    -Alternativas:
+        -balanceador detetar sessões e escolher sempre o mesmo server
+        -sessões passarem para área comum, de forma a cada objeto sessão estar disponivel a todos
+
+
+-->Ferramentas: tempo de resposta
+    -Avaliar termos de tempo e recursos:
+        -tempo de carregamento desde várias origens
+        -análise ao nmr de recursos carregados
+        -deteção de recursos não usados

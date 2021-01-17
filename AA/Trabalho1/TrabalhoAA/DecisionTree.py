@@ -15,7 +15,7 @@ class_list = []         #Lista para as classes
 #
 # Carregamento e Leitura dos Dados apartir do ficheiro
 #
-data = numpy.genfromtxt("soybean.csv", delimiter=",", dtype=None, encoding=None)
+data = numpy.genfromtxt("contact-lenses.csv", delimiter=",", dtype=None, encoding=None)
 xdata = data[1:,0:-1]     #dados: da segunda à ultima linha, da primeira à penúltima coluna
 ydata = data[1:,-1]       #classe: da segunda à ultima linha, só última coluna
 total = len(data)-1 
@@ -621,6 +621,6 @@ def print_tree(decision_tree, tree_nodes):
         print("", end="\n")        
 
 
-decision_tree = DecisionTreeREPrune("erro", False)
+decision_tree = DecisionTreeREPrune("entropia", False)
 
 decision_tree.fit(xdata, ydata)

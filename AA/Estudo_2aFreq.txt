@@ -165,3 +165,217 @@
     -Rede de função de Base Radial
     -Rede Neuronal Recorrente
     -Rede Neuronal Modular
+
+-->Perceptrão
+    -Modelo Linear:
+        -a saída é a soma pesada dos atributos de entrada X1, ..., Xn
+        (W1, ..., Wn) são paramêtros "aprendidos"
+
+        -função de decisão: sgn(y)
+    -coeficientes determinados iterativamente
+
+    -Algoritmo:
+        -atribuição de pesos aleatórios a cada entrada (Xi)
+        -aplicar o perceptrão a cada exemplo
+        -repetir até todos os exemplos serem classificados corretamente
+    
+    -Treino do Modelo:
+        -determinar coeficientes de entrada
+    
+    -Regra do perceptrão:
+        -Atualização dos Pesos:
+            wi = wi + n(t - o)Xi
+            t: valor Objetivo
+            o: valor saida perceptrão
+            n: ritmo de aprendizagem
+        -Convergência:
+            -exemplos linearmente separáveis
+            -ritmo de aprendizgem pequeno(<=0.1)
+    
+    -Regra do Menor Erro quadrático:
+        -atualização de pesos, utilizando o grandiente
+
+        -convergencia: mesmoq quando exemplo não linearmente separáveis
+
+
+    -Pesquisa:
+        erro(w) = 1/2 * Somatorio(Te - Ye)²
+        Te: valor objetivo do exemplo
+        Ye: saída da unidade linear
+
+        -Descida do gradiente:
+            -vetor pesos alterados a cada iteração, produzindo descida mais íngreme
+    
+    ->Resumo:
+        -Regra do Perceptrão:
+            -atualiza pesos de acordo com erro na saída do perceptrão
+            -converge após um número finito de iterações se:
+                -exemplos de treino linearmente separáveis
+                -ritmo de aprendizagem pequeno
+
+        -Regra do menor erro quadrático:
+            -atualiza pesos de acordo com erro na saída da unidade linear
+            -converge assimptoticamente para hipotese com menor error, se ritmo de aprendizagem pequeno
+                -mesmo com ruido em dados
+                -mesmo quando dados de treino linearmente separáveis
+
+
+-->Redes Multi-Camada
+    -Unidades básicas organizadas em camadas
+    -Topografia:
+        -1 camada de entrada
+        -1 ou mais camadas escondidas
+        -1 camada de saída
+
+    -Camadas e Unidades
+        -Camada de Entrada: atributos descritores
+        -Camada de Saída: saídas(1 ou mais nós)
+        -Camadas Escondidas: nº de unidades e camadas variável
+        -Unidades: nós, neurónios
+
+    -Funções de Ativação:
+        -á saída da componente linear é aplicada função nao linear e não-simétrica.
+            -sigmóide(sigmoid)
+            -tangente hiperbólica(tanh())
+            -rectifying non-linear
+
+    -Backpropagation:
+        -Processo de atualização de pesos
+        -Funciona em 2 fases:
+            1)Avanço dos padrões de entrada(feedforward):
+                -em cada unidade: calculada função de ativação, transmite-a a todas as unidades, propaga sinal até ás unidades de saída
+            2)Retrocesso da propagação dos erros(backpropagation):
+                -cada unidade de saída compara ativação com a saída desejada
+                -erro propagado aos nós diretamente ligados á saída, ajustando seus pesos
+        -Objetivo: otimização dos pesos
+
+        -Convergência do Algoritmo:
+            -garante convergencia para mínimo local
+            -utiliza gradiente
+            -porque o minimo global não é garantido
+        
+        -Momento:
+            -alteração da função de atualização de pesos
+            -Efeitos:
+                -continuar atualização
+                -acelerar convergência
+        
+        -Critério de Terminação:
+            -restringir iterações(numero fixo)
+            -erro de treino abaixo de certo valor
+            -aumento do ero no conjunto de validação
+
+
+-->Unidades e Camadas escondidas
+    -Unidades Escondidas:
+        -situadas nas camadas escondidas(entre a de entrada e a de saída)
+        -Permitem:
+            -aprendizagem de funções nao lineares
+            -representar combinações dos atributos de entradas
+        -Número:
+            -demais: rede memoriza padrões de entrada
+            -de menos: rede nao representa todas generalizações possíveis
+    
+    -Camadas Escondidas:
+        -Exemplos restrigem entradas e saídas:
+            -representação das unidades escondidas é aquela que minimiza o erro
+
+        -Consequência:
+            -originar caracteristicas nas camadas escondidas não explicitas
+
+-->Aprendizgem de coeficientes
+    -Algoritmos:
+        -sgd:     
+        -adam 
+        -l-bfgs
+    
+    -Vantagens:
+        -captação de informação em quantidades enormes de dados
+        -construção de modelos complexos incríveis
+    -Desvantagens:
+        -grande tempo de computação
+        -pre processamento dos dados
+        -afinação dos parâmetros
+    
+    -Camadas e unidades:
+        -Nº de camadas: treinar modelo com 1 ou 2 camadas, depois expandir
+        -Nº de unidades escondidas por camada: semelhante ao numero de entradas, raramente superior
+
+    -Ajuste dos parametros:
+        1)Criação de rede grande para sobre-ajustar
+        2)Alterar rede: reduzir tamanho ; aumentar alfa(aumenta regularização)
+    
+    -Poder de representação:
+        -Função Booleana
+        -Função continua limitada
+        -Função continua
+
+
+
+#
+# Regressão
+#
+-->Regressão
+-->Algoritmos: KNN, Modelos lineares, Árvores, outros...
+
+-->Regressão:
+    -prever um valor continuo
+    -Exemplo: prever rendimento anual, apartir de educação, idade e onde vive 
+
+
+-->Algoritmos:
+    -KNN:
+        - 1 vizinho:
+            -previsão = valor do vizinho mais proximo
+            -previsão pouco estável
+        
+        - k vizinhos:
+            -previsão = média dos vizinhos relevantes
+            -previsão mais suave, não se ajustam tanto aos dados de treino
+    
+    -Modelo Linear:
+        -Aprendizagem: encontrar pesos que aproximam o conj. de dados
+        -Modelo: hiperplano(soma pesada dos atributos)
+
+        -grande variedade de modelos lineares
+        -Diferenciam-se:
+            -forma de aprendizagem dos parâmetros
+            -complexidade controlada
+        -Modelos populares:
+            -regressão linear
+            -regressão Ridge
+            -Lasso
+    
+    -Regressão Linear(Ordinary Least Squares(OLS)):
+        -modelo mais clássico e simples
+        -nao tem parametros
+        -impossivel controlar complexidade
+
+        -Aprendizagem:
+            -encontra W e B que minimizam erro quadrático.
+        -Erro quadrático:
+            -soma dos quadrados das diferenças entre previsões e real
+
+    -Regressão Ridge
+        -Modelo linear: mesma forma de previsões que OLS
+
+        -Escolha dos coeficientes:
+            -boas previsões no conj. treino
+            -magnitude dos coeficientes menor possivel
+
+    -Parametro Alfa:
+        -indica importância entre simplicidade e desempenho do treino
+        -Variação:
+            maior valor ->coeficientes proximos de 0 -> menor desempenho
+####################################################################
+NOTAS:
+    - Sobre-ajustamento:
+        valor de treino bastante alto
+        modelos ajustado aos dados de treino
+    
+    -Ideal:
+        diferença entre treino e teste minima(bastante pequeno)
+
+    -Sub-ajustamento: 
+        modelo + simples
+####################################################################       
