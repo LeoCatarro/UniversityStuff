@@ -1,0 +1,22 @@
+org/therestaurant/tweb/jpa/NewOrderController.java
+ org.therestaurant.tweb.jpa.NewOrderController
+org/therestaurant/tweb/jpa/TheRestaurantJpaApplication.java
+ org.therestaurant.tweb.jpa.TheRestaurantJpaApplication
+org/therestaurant/tweb/jpa/Orders.java
+ org.therestaurant.tweb.jpa.Orders
+org/therestaurant/tweb/jpa/WebSecurityConfig.java
+ org.therestaurant.tweb.jpa.WebSecurityConfig
+org/therestaurant/tweb/jpa/OrdersRepository.java
+ org.therestaurant.tweb.jpa.OrdersRepository
+org/therestaurant/tweb/jpa/MvcConfig.java
+ org.therestaurant.tweb.jpa.MvcConfig
+org/therestaurant/tweb/jpa/ListOrdersController.java
+ org.therestaurant.tweb.jpa.ListOrdersController
+org/therestaurant/tweb/jpa/ListClientsController.java
+ org.therestaurant.tweb.jpa.ListClientsController
+org/therestaurant/tweb/jpa/Client.java
+ org.therestaurant.tweb.jpa.Client
+org/therestaurant/tweb/jpa/ClientRepository.java
+ org.therestaurant.tweb.jpa.ClientRepository
+org/therestaurant/tweb/jpa/NewClientController.java
+ org.therestaurant.tweb.jpa.NewClientController
