@@ -1,4 +1,4 @@
-public class Classificacao{
+public class Classificacao implements Comparable<Classificacao>{
 
     private final Integer numero;
     private final Integer nota;
@@ -38,10 +38,9 @@ public class Classificacao{
                 '}';
     }
 
-    public static void main(String[] args) {
-
-        Classificacao c = new Classificacao(43025,15,"Podia ser melhor", "Excelente Aluno");
-
-        System.out.println(c.toString());
+    @Override
+    public int compareTo(Classificacao c) {
+        int result = this.nota.compareTo(c.nota);
+        return result == 0 ? this.nota.compareTo(c.nota) : result;
     }
 }
