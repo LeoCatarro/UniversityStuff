@@ -76,7 +76,11 @@ int main()
     scanf("%d %d %d", &n1, &n2, &n3);
     ordena(&n1, &n2, &n3);
 
-    printf("A: %d | B: %d | C: %d", n1, n2, n3);
+    printf("A: %d | B: %d | C: %d\n", n1, n2, n3);
+
+    ordena2(&n1, &n2, &n3);
+
+    printf("A: %d | B: %d | C: %d\n", n1, n2, n3);
 
     return 0;
 }
