@@ -1,0 +1,45 @@
+#
+# Melhores Submissões
+#
+#Nota: Usar RF, para obter valores superiores
+
+1)
+KNN
+5 neighbours
+Data Test: Without Id and Program
+
+Score: 0.95035
+
+#########################################
+
+2)
+RandomForest
+1000 estimators, random_state=100
+
+Score : 0.93706
+
+3)
+RandomForest
+estimators = 100
+Data Test: Without Id and Program
+
+Score: 0.92307
+
+##########################################
+
+4)
+Gradient Boosting Machines
+Data Test: Data without Id and Program
+
+Score: 0.92957
+
+##########################################
+
+5)
+LogisticRegression
+Data Test: Without Id and Program
+
+Score: 0.89655
+
+##########################################
+

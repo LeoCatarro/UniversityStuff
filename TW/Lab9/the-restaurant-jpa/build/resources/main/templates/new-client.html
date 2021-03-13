@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Criar cliente</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h3>Criar cliente</h3>
+    <form method='post' th:action='@{/new-client}'>
+
+		<label>Insira o seu nome:</label>
+		<input type="text" id="firstName" name="firstName"/> 
+		</br>
+		<label>Insira o seu apelido:</label>
+		<input type="text" id="lastName" name="lastName"/> 	
+		</br>
+		<label>Insira o seu mail:</label>
+		<input type="text" id="mail" name="mail"/> 
+		</br>
+		<input type="submit" value="Submit">
+	</form>
+
+	<form method='post' th:action='@{/logout}'>
+		<input type="submit" value="Logout">
+	</form>
+</body>
+</html>
