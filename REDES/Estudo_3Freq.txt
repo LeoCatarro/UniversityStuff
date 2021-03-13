@@ -1,0 +1,105 @@
+#
+# Endereços IP
+#
+
+-->Endereços de Rede
+    -Usar simbolos para designar ponto de ligação para se poder enviar pacotes
+    -Cada interface, endereço de rede distinto
+
+
+-->Requesitos
+    -Endereços Distintos globalmente
+    -Evitar afetar manualmente
+    -Evitar que sejam afetados por autoridade globalmente
+    -Facilitar implementação dos comutadores
+    -Evitar que comutadores sejam forwarding tables
+
+
+-->Frames Ethernet e Pacotes IP
+    -Frames contem mensagens dos níveis superiores
+    -Frames Ethernet transportam pacotes IP
+
+
+-->Endereços IP e Endereços Mac
+    -Endereços IP: 32(IPv4) ou 128bits (IPv6)
+        -do nível de rede
+        -afetados com estrutra hierarquica
+        -ligados á localização
+        -indentificam origem/destino dos datagramas IP
+    -Endereços LAN(ou MAC, Data-Link ou nível de Canal):
+        -indicam origem/destino de um frame num canal multi-ponto
+        -48bits
+        -únicos á saida da fábrica
+        -dificil uso na Internet
+
+
+-->Endereços IP(IPv4)
+    -32bits
+    -numero unico
+    -representado na notação: 193.136.126.43 (Quad Notation)
+
+
+-->Endereços IP são hierarquicos
+    -Classless(CIDR-Classless Inter Domain Routing)
+    -prefixo de rede e número do computador
+         (network)   e      (host)
+    
+    -network 24bits
+    -host 8bits
+
+    -193.134.158.0/24 é um prefixo com 24bits
+
+
+-->Prefixos IP são hierárquicos
+    -Organizados em intervalos de dim = 2^n
+    - >/numero => <dimensão do prefixo
+    -prefixos organizados em subconjuntos
+
+
+-->Explicações
+    -Separação de Controlo:
+        -Prefixos: afetados a instituição ou subrede
+        -Endereços: afetados pela instituição aos seus PC's 
+
+    -Quem afeta prefixos IP?:
+        -Internet Corporation for Assigned Names and Numbers
+            -afeta blocos de endereços ás RIR
+        
+        -Regional Internet Registries(RIRs):
+            -RIPE
+            -afetam prefixos aos Internet Service Providers
+        
+        -Internet Service Providers(ISPs)
+            -afetam prefixos aos seus clientes
+    
+
+-->Encaminhamento
+    -Cada comutador com sua tabela de encaminhamento
+        -mapeia prefixos para interfaces
+    
+    -Quando recebe um pacote
+        -Procura na tabela a entrada correspondente ao prefixo
+        -Envia pacote para interface indicada
+    
+    -Se endereço corresponder várias entradas?
+        -Longest Prefix Match Forwarding: prefixo escolhido pela regra de maior prefixo
+    
+
+-->Escalabilidade Baseia-se na Hierarquia
+    -Hierarquia estrita
+        -ótima para Escalabilidade
+        -reduz tamanho das tabelas
+        -reduz numéro de atualizações, a cada alteração
+    
+    -Hierarquia não uniforme(..../xx)
+        -util, pois redes  são de dimesões diferentes
+        -evita que tabelas crescam muito
+
+
+-->Conclusões
+    -Endereços de IP tem 2 partes: prefixo e número de computador
+    -Prefixos associados a subparte da internet(ex: ISP,instituição, edificios, ...)
+    -Conceito é hierarquico, pois conjunto com unico prefixo pode decompor-se em mais sub-prefixos
+    -Decomposição acaba nos prefixos dos canais
+    -Hierarquia fundamental para Escalabilidade do encaminhamento na Internet
+        
