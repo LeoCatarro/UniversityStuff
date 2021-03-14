@@ -59,6 +59,8 @@ int main()
     float *h = malloc(sizeof(float));
     float *s = malloc(sizeof(float));
     float *v = malloc(sizeof(float));
+
+    printf("Insira as componenete RGB: ");
     scanf("%d %d %d", &R, &G, &B);
     
     rgb2hsv(R, G, B, h, s, v);

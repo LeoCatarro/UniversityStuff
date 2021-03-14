@@ -11,6 +11,8 @@ int *vmaior(int *v1, int *v2)
 int main() 
 {
     int n1, n2;
+
+    printf("Insira dois valores: ");
     scanf("%d %d", &n1, &n2);
     
     printf("Maior: endereco=%p , valor=%d\n", &(*vmaior(&n1, &n2)), *vmaior(&n1, &n2));
