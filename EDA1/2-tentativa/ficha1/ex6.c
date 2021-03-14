@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>       //Used fmod() function: This function returns the remainder of dividing x/y.
 
 void rgb2hsv( int R, int G, int B, float *h, float *s, float *v )
 {
-    printf("Teste\n");
-    float R1 = R/255;
-    float G1 = G/255;
-    float B1 = B/255;
+    double R1 = R/255.0;
+    double G1 = G/255.0;
+    double B1 = B/255.0;
 
-    int sorted[3] = {R1, G1, B1};
-    int max=0;
+    double sorted[3] = {R1, G1, B1};
+    double max=0;
 
     //Check max of RGB
     for(int i=0; i<3 ; i++)
@@ -17,8 +17,8 @@ void rgb2hsv( int R, int G, int B, float *h, float *s, float *v )
         if(sorted[i] > max)
             max = sorted[i];
     }
-    printf("Teste\n");
-    int min = max;
+    
+    double min = max;
 
     //Check min of RGB
     for(int i=0; i<3 ; i++)
@@ -27,42 +27,29 @@ void rgb2hsv( int R, int G, int B, float *h, float *s, float *v )
             min = sorted[i];
     }
 
-    
-
     //
     //HSV maths
     //
     //H maths
-    if(max==R1 && G1>=R1)
-    {
-        printf("Teste1\n");
-        *h = (float)(60 *((G1-B1) / (max-min)));
-        printf("Teste2\n");
-    }
+    double diff = max - min;
 
-    if(max==R1 && G1<R1)
-    {
-        *h = (float)((60*((G1-B1) / (max-min))) + 360);
-    }
+    if(max == min)
+        *h = 0;
 
-    if(max==B1)
-    {
-        *h = (float)((60*((B1-R1) / (max-min))) + 120);
-    }
+    if(max == R1)
+        *h = fmod((60 * ((G1 - B1) / diff) + 360), 360.0);      
     
-    if(max==G1)
-    {
-        *h = (float)(60*((R1-G1) / (max-min)));
-    }
+    if(max == G1)
+        *h = fmod((60 * ((B1 - R1) / diff) + 120), 360.0);
 
+    if(max == B1)
+       *h = fmod((60 * ((R1 - G1) / diff) + 240), 360.0);
     
-
     //S maths
-    *s = (float)((max-min)/max);
-
+    *s = ((max-min)/max);
 
     //V maths
-    *v = (float)max;
+    *v = max;
 
 }
 
@@ -76,7 +63,7 @@ int main()
     
     rgb2hsv(R, G, B, h, s, v);
 
-    printf("RGB=(%d, %d, %d) <=> HSV=(%f, %f, %f)", R, G, B, *h, *s, *v);
+    printf("RGB=(%d, %d, %d) <=> HSV=(%f, %f, %f)\n", R, G, B, *h, *s, *v);
 
     return 0;
 }
