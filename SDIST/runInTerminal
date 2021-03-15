@@ -1,0 +1,11 @@
+//Run in terminal 
+
+1) Compilar tudo!
+    (Compila todas as classes iniciadas por Echo do package sd)
+    javac -d classes/ src/sd.Echo*java
+
+2) Run  
+    (Dá Run da classe EchoClient com as args a b c)
+    java -classpath classes/ sd.EchoClient a b c
+
+
