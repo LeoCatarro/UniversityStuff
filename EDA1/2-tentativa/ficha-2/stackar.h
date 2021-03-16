@@ -21,4 +21,6 @@ ElementType Pop( Stack S );
 
 void PrintStack(Stack S);
 
+int ParentesisMatch( char *s );
+
 #endif  /* _Stack_h */

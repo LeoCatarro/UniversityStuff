@@ -102,37 +102,24 @@ void PrintStack(Stack S)
 	for(int i=0 ; i<=S->TopOfStack ; i++)
 		printf("%d\n", S->Array[i]);
 
-	printf("# End Of Stack #\n");
+	printf("# End Of Stack #\n\n");
 }
 
 
+int ParentesisMatch( char *s )
+{	
+	int leftPar = 0;
+	int rightPar = 0;
 
-int main()
-{
-	Stack stack = CreateStack(5);
+	//Check '(' && ')' occurrences
+	for(int i=0; s[i] != '\0' ; i++)
+	{
+		if(s[i] == '(')
+			leftPar++;
+		
+		else if(s[i] == ')')
+			rightPar++;
+	}
 
-	printf("IsEmpty? : %d\n", IsEmpty(stack));
-
-	Push(5, stack);
-	printf("%d\n", stack->Array[0]);
-	
-	printf("IsEmpty? : %d\n", IsEmpty(stack));
-	printf("Top Element : %d\n", Top(stack));
-
-	Push(12, stack);
-	printf("%d\n", stack->Array[0]);
-	printf("%d\n", stack->Array[1]);
-	Push(5938, stack);
-	Push(511, stack);
-
-	printf("isFull? : %d\n", IsFull(stack));
-	printf("Top Element : %d\n", Top(stack));
-
-	PrintStack(stack);
-
-	printf("POP : %d\n", Pop(stack));
-
-	PrintStack(stack);
-
-	return 0;
+	return( leftPar == rightPar ? 1 : 0);
 }
