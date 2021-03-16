@@ -19,4 +19,6 @@ void Push( ElementType X, Stack S );
 ElementType Top( Stack S );
 ElementType Pop( Stack S );
 
+void PrintStack(Stack S);
+
 #endif  /* _Stack_h */
