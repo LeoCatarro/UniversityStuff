@@ -28,7 +28,7 @@ int main()
 
 	PrintStack(stack);
 
-	char *str = "(1+2)9()";
+	char *str = "(1+2)9(){}";
 	
 	printf("Check Parentesis Balance: %d\n", ParentesisMatch(str));
 

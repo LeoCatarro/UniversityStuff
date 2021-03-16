@@ -96,8 +96,7 @@ ElementType Pop( Stack S )
 
 void PrintStack(Stack S)
 {
-	//int Stack
-	printf("\n# Current Stack #\n");
+	printf("\n# Top of the Stack #\n");
 	
 	for(int i=0 ; i<=S->TopOfStack ; i++)
 		printf("%d\n", S->Array[i]);
@@ -108,18 +107,45 @@ void PrintStack(Stack S)
 
 int ParentesisMatch( char *s )
 {	
-	int leftPar = 0;
-	int rightPar = 0;
+	int leftCurve = 0;
+	int rightCurve = 0;
+	int leftRect = 0;
+	int rightRect = 0;
+	int leftBrace = 0;
+	int rightBrace = 0;
 
 	//Check '(' && ')' occurrences
 	for(int i=0; s[i] != '\0' ; i++)
 	{
-		if(s[i] == '(')
-			leftPar++;
-		
-		else if(s[i] == ')')
-			rightPar++;
+		switch (s[i])
+		{
+		case '(':
+			leftCurve++;
+			break;
+
+		case '[':
+			rightCurve++;
+			break;
+
+		case '{':
+			leftBrace++;
+			break;
+
+		case ')':
+			rightCurve++;
+			break;
+		case ']':
+			rightRect++;
+			break;
+
+		case '}':
+			rightBrace++;
+			break;
+
+		default:
+			break;
+		}
 	}
 
-	return( leftPar == rightPar ? 1 : 0);
+	return( (leftCurve == rightCurve && leftRect==rightRect && leftBrace==rightBrace) ? 1 : 0);
 }
