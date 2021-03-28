@@ -1,4 +1,4 @@
-typedef int ElementType;
+typedef char ElementType;
 
 #ifndef _Stack_h
 #define _Stack_h
@@ -22,5 +22,6 @@ ElementType Pop( Stack S );
 void PrintStack(Stack S);
 
 int ParentesisMatch( char *s );
+int ParentesisMatchUsingStack( char *s );
 
 #endif  /* _Stack_h */

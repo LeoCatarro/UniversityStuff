@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "stackar.c"
 
 
 int main()
 {
-	Stack stack = CreateStack(5);
-
+	//Stack stack = CreateStack(10);
+/*
 	printf("IsEmpty? : %d\n", IsEmpty(stack));
 
 	Push(5, stack);
@@ -27,10 +28,11 @@ int main()
 	printf("POP : %d\n", Pop(stack));
 
 	PrintStack(stack);
-
-	char *str = "(1+2)9(){}";
+*/
+	char *str = "(1+2)9({}";
 	
 	printf("Check Parentesis Balance: %d\n", ParentesisMatch(str));
+	printf("Check Parentesis Balance: %d\n", ParentesisMatchUsingStack(str));
 
 	return 0;
 }
