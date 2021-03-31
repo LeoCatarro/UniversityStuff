@@ -81,7 +81,7 @@ ElementType Front( Queue Q ){
     return Q->Array[Q->Front];
 }
 
-
+// fhdhf
 void Enqueue( ElementType X, Queue Q ){
     if (size(Q) <= Q->Capacity-1)
     {
