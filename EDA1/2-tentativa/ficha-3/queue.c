@@ -81,6 +81,7 @@ ElementType Front( Queue Q ){
     return Q->Array[Q->Front];
 }
 
+
 void Enqueue( ElementType X, Queue Q ){
     if (size(Q) <= Q->Capacity-1)
     {
@@ -103,4 +104,10 @@ ElementType Dequeue( Queue Q ){
     }
     else
         Error("Queue is Empty!");
+}
+
+//Função que recebe uma Queue e retorna uma queue invertida
+Queue inverte( Queue Q )
+{
+    return Q;
 }
