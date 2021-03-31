@@ -64,7 +64,7 @@ int IsFull( Stack S )
 
 void MakeEmpty( Stack S )
 {
-	free(S->Array);
+	S->TopOfStack = EmptyTOS;
 }
 
 
