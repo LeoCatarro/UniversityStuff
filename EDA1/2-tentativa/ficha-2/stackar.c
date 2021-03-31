@@ -59,7 +59,7 @@ int IsEmpty( Stack S )
 
 int IsFull( Stack S )
 {
-	return(S->TopOfStack == S->Capacity ? 1 : 0);
+	return(S->TopOfStack == S->Capacity-1 ? 1 : 0);
 }
 
 
