@@ -17,13 +17,17 @@ struct QueueRecord{
 /* FUNCOES AUXILIARES */
 /* numero de elementos na fila */
 int size( Queue Q ){
+    int size = (Q->Capacity-Q->Front+Q->Rear) % Q->Capacity;
+    return size;
 }
 
 
+/* Comentário: sinceramente nao percebi a utilidade da função */
 /* indice do proximo elemento  */
 int successor( int i, Queue Q ){
+    printf("\t TODO() \t\n");
+    return 0;
 }
-
 
 
 /* FUNCOES DE MANIPULACAO DE QUEUES */
@@ -57,24 +61,47 @@ void DisposeQueue( Queue Q ){
 
 
 bool IsEmptyQueue( Queue Q ){
+    return(Q->Front==Q->Rear ? true : false);
 }
 
 
 bool IsFullQueue( Queue Q ){
+    int Qsize = size(Q);
+    return (Q->Capacity == Qsize-1 ? true : false);
 }
 
 
 void MakeEmptyQueue( Queue Q ){
-}
-
-
-void Enqueue( ElementType X, Queue Q ){
+    Q->Front = 0;
+    Q->Rear = 0;
 }
 
 
 ElementType Front( Queue Q ){
+    return Q->Array[Q->Front];
+}
+
+
+void Enqueue( ElementType X, Queue Q ){
+    if (size(Q) <= Q->Capacity-1)
+    {
+        Q->Array[Q->Rear] = X;
+        Q->Rear++;
+    }
+    else
+        Error("Queue is Full!");
 }
 
 
 ElementType Dequeue( Queue Q ){
+    ElementType dequeued;
+
+    if(!IsEmptyQueue(Q))
+    {
+        dequeued = Q->Array[Q->Front]; 
+        Q->Front++;
+        return dequeued;
+    }
+    else
+        Error("Queue is Empty!");
 }
