@@ -1,6 +1,7 @@
 #include "stackar.h"
 #include "fatal.h"
 #include <stdlib.h>
+#include <string.h>
 
 
 #define EmptyTOS ( -1 )
@@ -148,4 +149,44 @@ int ParentesisMatch( char *s )
 	}
 
 	return( (leftCurve == rightCurve && leftRect==rightRect && leftBrace==rightBrace) ? 1 : 0);
+}
+
+
+int ParentesisMatchUsingStack(char *s)
+{
+	Stack stack = CreateStack(10);
+
+	for(int i=0; s[i] != '\0' ; i++)
+	{
+		switch (s[i])
+		{
+		case '(':
+			Push(s[i], stack);
+			break;
+
+		case '[':
+			Push(s[i], stack);
+			break;
+
+		case '{':
+			Push(s[i], stack);
+			break;
+
+		case ')':
+			Pop(stack);
+			break;
+		case ']':
+			Pop(stack);
+			break;
+
+		case '}':
+			Pop(stack);
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	return (IsEmpty(stack)==1 ? 1 : 0);
 }
