@@ -45,7 +45,7 @@ Queue CreateQueue( int MaxElements ){
     if( Q->Array == NULL )
         FatalError( "Out of space!!!" );
 
-    Q->Capacity = MaxElements+1;
+    Q->Capacity = MaxElements;
     MakeEmptyQueue( Q );
 
     return Q;
@@ -125,9 +125,16 @@ void PrintQueue(Queue Q)
 
 
 //Função que recebe uma Queue e retorna uma queue invertida
-Queue inverte( Queue Q )
+Queue ReverseQueue( Queue q )
 {
-    return Q;
+    Queue reversedQueue = CreateQueue(q->Capacity);
+
+    for(int i=q->Front ; i<q->Rear ; i++)
+    {
+        printf("TESTE\n");
+        Enqueue(q->Array[q->Rear-i], reversedQueue);
+    }
+    return reversedQueue;
 }
 
 
@@ -136,11 +143,11 @@ int main()
     Queue Q = CreateQueue(5);
 
     if(IsEmptyQueue(Q))
-        printf("Is Empty!\n");
+        printf("Is Empty!");
 
+    Enqueue(1, Q);
     Enqueue(2, Q);
-    Enqueue(22, Q);
-    Enqueue(34756, Q);
+    Enqueue(3, Q);
 
     PrintQueue(Q);
 
@@ -148,25 +155,15 @@ int main()
 
     PrintQueue(Q);
 
-    Enqueue(2, Q);
-    Enqueue(22, Q);
-    Enqueue(34756, Q);
+    Enqueue(3, Q);
+    Enqueue(4, Q);
+    Enqueue(5, Q);
 
     PrintQueue(Q);
 
-    if(IsFullQueue(Q))
-        printf("Is Full!");
-    else
-        printf("Isnt Full!");
-
-    printf("Dequeued-> %d", Dequeue(Q));
-    PrintQueue(Q);
-
-    if(IsFullQueue(Q))
-        printf("Is Full!");
-    else
-        printf("Isnt Full!");
-
+    //Queue rQueue = CreateQueue(5);
+    Queue rQueue = ReverseQueue(Q);
+    PrintQueue(rQueue);
 
     return 0;
 }
