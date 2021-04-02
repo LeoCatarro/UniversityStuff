@@ -15,7 +15,7 @@ public class EchoServer {
     private int serverPort;	
     
     public EchoServer(int p) {
-	serverPort= p;		
+		this.serverPort= p;		
     }
     
     
@@ -46,13 +46,16 @@ public class EchoServer {
 			// exercicio 2: inicializar um socket para aceitar ligacoes...
 			try {
 				ServerSocket svSocket = new ServerSocket(serverPort);
-				
+				System.err.println("Started server on port " + serverPort);
+
 				//Connections cycle
 				while(true) {
 					Socket data = svSocket.accept();
+					System.err.println("Accepted connection from client");
 
 					try{
 						//Read data sent by client
+
 						BufferedReader breader = new BufferedReader(new InputStreamReader(data.getInputStream()));
 						String msg = breader.readLine();
 
@@ -69,7 +72,8 @@ public class EchoServer {
 
 					finally {
 						try {
-							data.close();
+							//data.close();
+							svSocket.close();
 						}
 						catch(Exception e) {
 							e.printStackTrace();

@@ -67,7 +67,7 @@ bool IsEmptyQueue( Queue Q ){
 
 bool IsFullQueue( Queue Q ){
     int Qsize = size(Q);
-    return (Q->Capacity == Qsize-1 ? true : false);
+    return (Q->Capacity-1 == Qsize ? true : false);
 }
 
 
@@ -106,8 +106,67 @@ ElementType Dequeue( Queue Q ){
         Error("Queue is Empty!");
 }
 
+void PrintQueue(Queue Q) 
+{
+    if(IsEmptyQueue(Q))
+        Error("Queue is Empty!");
+    
+    else
+    {
+        printf("\n[");
+        for(int i=Q->Front; i<Q->Rear ; i++)
+        {
+            printf(" %d ", Q->Array[i]);
+        }
+        printf("]\n");
+    }
+}
+
+
+
 //Função que recebe uma Queue e retorna uma queue invertida
 Queue inverte( Queue Q )
 {
     return Q;
+}
+
+
+int main()
+{
+    Queue Q = CreateQueue(5);
+
+    if(IsEmptyQueue(Q))
+        printf("Is Empty!\n");
+
+    Enqueue(2, Q);
+    Enqueue(22, Q);
+    Enqueue(34756, Q);
+
+    PrintQueue(Q);
+
+    printf("Dequeued-> %d", Dequeue(Q));
+
+    PrintQueue(Q);
+
+    Enqueue(2, Q);
+    Enqueue(22, Q);
+    Enqueue(34756, Q);
+
+    PrintQueue(Q);
+
+    if(IsFullQueue(Q))
+        printf("Is Full!");
+    else
+        printf("Isnt Full!");
+
+    printf("Dequeued-> %d", Dequeue(Q));
+    PrintQueue(Q);
+
+    if(IsFullQueue(Q))
+        printf("Is Full!");
+    else
+        printf("Isnt Full!");
+
+
+    return 0;
 }

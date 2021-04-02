@@ -11,8 +11,8 @@ public class EchoClient {
     private int sPort= 0;
     
     public EchoClient(String add, int p) {
-	address= add;
-	sPort=p;
+		this.address= add;
+		this.sPort=p;
     }
     
     
@@ -25,7 +25,7 @@ public class EchoClient {
 	
 	try {
 	    String addr= args[0];
-	    int p= Integer.parseInt(args[1]);	
+	    int p = Integer.parseInt(args[1]);	
 	    
 	    EchoClient cl= new EchoClient(addr,p);
 	    
@@ -46,7 +46,7 @@ public class EchoClient {
 	
 		// exercicio 1: mostrar a mensagem que vai ser enviada
 		// ...
-		//System.out.println("Mensagem: " + msg);
+		System.out.println("Mensagem a ser Enviada: " + msg);
 		
 		
 		// ... exercicio 3

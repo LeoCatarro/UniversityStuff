@@ -16,5 +16,6 @@ void MakeEmptyQueue( Queue Q );
 ElementType Front( Queue Q );
 void Enqueue( ElementType X, Queue Q );
 ElementType Dequeue( Queue Q );
+void PrintQueue(Queue Q);
 
 #endif
