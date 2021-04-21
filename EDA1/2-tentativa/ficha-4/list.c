@@ -1,18 +1,8 @@
-#include "List.h"
+#include "list.h"
 #include <stdlib.h>
 #include "fatal.h"
 
 
-struct Node
-{
-    ElementType element;
-    struct Node* next;
-};
-
-struct List
-{
-    struct Node* head;
-};
 
 
 struct List *list_new(void)
@@ -27,33 +17,53 @@ struct List *list_new(void)
     return list;
 }
 
-static struct node* node_new(ElementType value, struct node* next)
+static struct Node* node_new(ElementType value, Node* next)
 {
     Node *node = malloc(sizeof(struct Node));
 
     if(node != NULL)
+    {
         node->element = value;
         node->next = next;
-
+    }
     return node;
 }
 
 
-bool list_insert(struct List *list, int value)
+bool list_insert(List *list, ElementType value)
 {
-    
+    Node *node = node_new(value, list->head);
+
+    if(node == NULL)
+        return false;
+
+    list->head = node;
+    return true;
 }
 void list_print(struct List *list) 
 {
-    
-}
+    Node *node = list->head;
 
+    putchar('[');
+
+    while(node != NULL)
+    {
+        printf("%d", node->element);
+
+        if(node->next != NULL)
+            printf(", ");
+
+        node = node->next;  
+    }
+    putchar(']');  
+}
+/*
 void list_destroy(struct List *list)
 {
     
 }
 
-void List_remove(struct List* list, int value)
+void list_remove(struct List* list, int value)
 {
     
 }
@@ -77,3 +87,5 @@ int list_nth(struct List* list, int n)
 {
     
 }
+*/
+
