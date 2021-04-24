@@ -10,10 +10,12 @@
 #include "list.h"
 
 
-
 int main(void)
 {
-	
-	
+	struct list *l = list_new();
+	list_insert(l, 2);
+	list_print(l);
+
+	printf("%d\n", l->head);
 	return 0;
 }

@@ -1,11 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <string.h>
 #include "stackar.c"
 
 
+bool Palindrome(char *txt)
+{
+
+	printf("%ld\n", strlen(txt));
+
+	Stack A = CreateStack(strlen(txt));
+	Stack B = CreateStack(strlen(txt));
+
+	for(int i=0 ; i<strlen(txt); i++)
+	{
+		Push(txt[i], A);
+		Push(txt[strlen(txt)-i-1], B);
+	}
+
+	while(!IsEmpty(A))
+	{
+		if(Pop(A) != Pop(B))
+			return false;
+	}
+	return true;
+}
+
+
 int main()
 {
+	
+	char *txt = "socorrammesubinoonibusemmarrocos";
+	//char *txt = "abcdef";
+	
+	printf("%d\n", Palindrome(txt));
+
+
 	//Stack stack = CreateStack(10);
 /*
 	printf("IsEmpty? : %d\n", IsEmpty(stack));
@@ -29,10 +60,10 @@ int main()
 
 	PrintStack(stack);
 */
-	char *str = "(1+2)9({}";
+	//char *str = "(1+2)9({}";
 	
-	printf("Check Parentesis Balance: %d\n", ParentesisMatch(str));
-	printf("Check Parentesis Balance: %d\n", ParentesisMatchUsingStack(str));
+	//printf("Check Parentesis Balance: %d\n", ParentesisMatch(str));
+	//printf("Check Parentesis Balance: %d\n", ParentesisMatchUsingStack(str));
 
 	return 0;
 }
