@@ -5,7 +5,7 @@
 
 
 #define EmptyTOS ( -1 )
-#define MinStackSize ( 5 )
+#define MinStackSize ( 1 )
 
 
 struct StackRecord
