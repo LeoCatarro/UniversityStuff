@@ -5,27 +5,27 @@ typedef int ElementType;
 #ifndef _List_H
 #define _List_H
 
-typedef struct Node
-{
-    ElementType element;
-    struct Node* next;
-}Node;
+struct Node;
+typedef struct Node *PtrToNode;
+typedef PtrToNode List;
+typedef PtrToNode Position;
 
-typedef struct List
-{
-    struct Node* head;
-}List;
+List CreateList();
+List MakeEmpty( List L );
+bool IsEmpty( List L );
+bool IsLast( Position P, List L );
 
-struct List *list_new(void);  
-bool list_insert(List *list, int value); 
-void list_print( List *list); 
-void list_destroy(List *list); 
+Position Find( ElementType X, List L );
+Position FindPrevious( ElementType X, List L );
 
+void Insert( ElementType X, List L, Position P );
+void Delete( ElementType X, List L );
+void DeleteList( List L );
 
-void list_remove(List* list, int value); 
-int list_lenght(List* list); 
-bool list_empty(List* list);  
-int list_find(List* list, int value); 
-int list_nth(List* list, int n); 
+Position Header( List L );
+Position First( List L );
+Position Advance( Position P );
+ElementType Retrieve( Position P );
+void PrintList(List L);
 
 #endif
