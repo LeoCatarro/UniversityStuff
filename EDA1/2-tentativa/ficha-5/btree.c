@@ -49,6 +49,30 @@ ElementType Retrieve( Position P ){
 }
 
 
+int FindMax( BTree T ) {
+    if(T == NULL)
+        return NULL;
+    
+    else
+        if(T->Right != NULL)
+            return FindMax(T->Right);
+        else
+            return NULL;
+}
+
+
+int FindMin( BTree T ) {
+    if(T == NULL)
+        return NULL;
+    
+    else
+        if(T->Left != NULL)
+            return FindMin(T->Left);
+        else
+            return NULL;
+}   
+
+
 int main()
 {
     BTree root = SetTree(1, NULL, NULL);
