@@ -116,6 +116,21 @@ Position First( List L )
 }
 
 
+Position Last( List L )
+{
+    Position currNode = First(L);
+
+    while(currNode != NULL)
+    {
+        if(currNode->Next == NULL)
+            return currNode;
+        else
+            currNode = currNode->Next;
+    }
+    return NULL;
+}
+
+
 Position Advance( Position P ) 
 {
     return P->Next;

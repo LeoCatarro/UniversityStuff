@@ -29,6 +29,19 @@ int main()
 
     Insert(500, l, Header(l));
 
+    Delete(7, l);
+
+    PrintList(l);
+
+    //Insert at the beggining of the list
+    Insert(2000, l, Header(l));
+
+    //Insert next to a specific node
+    Insert(3000, l, Find(235, l));
+
+    //Insert at the final of the list
+    Insert(1000, l, Last(l));
+
     PrintList(l);
 
     return 0;
