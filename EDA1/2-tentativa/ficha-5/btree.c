@@ -20,7 +20,12 @@ BTree MakeEmpty( BTree T ){
 
 
 BTree SetTree( ElementType X, BTree Left, BTree Right ){
-
+    BTree root = malloc(sizeof(struct TreeNode));
+    //printf("sizeof(root): %ld\n", sizeof(struct TreeNode));
+    root->Element = X;
+    root->Left = NULL;
+    root->Right = NULL;
+    return root;
 }
 
 
@@ -40,4 +45,14 @@ Position Find( ElementType X, BTree T ){
 
 
 ElementType Retrieve( Position P ){
+    return P->Element;
+}
+
+
+int main()
+{
+    BTree root = SetTree(1, NULL, NULL);
+
+    printf("%d\n", root->Element);
+    return 0;
 }
