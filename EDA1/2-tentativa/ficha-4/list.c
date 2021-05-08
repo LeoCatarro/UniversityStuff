@@ -8,6 +8,7 @@ struct Node{
     Position    Next;
 };
 
+
 List CreateList()
 {
     List L = (List)malloc(sizeof(struct Node));
@@ -15,14 +16,20 @@ List CreateList()
     return L;
 
 }
-/*
+
+
 List MakeEmpty( List L )
 {
-    L=(List)malloc(sizeof(struct Node));
-    //L->Element = NULL;
-    L->Next = NULL;
+    Position p = Header(L);
+
+    while(p != NULL)
+    {
+        p = p->Next;
+        free(p);
+    }
     return L;
-}*/
+}
+
 
 bool IsEmpty( List L ){
     if(First(L) == NULL)
@@ -83,14 +90,19 @@ void Insert( ElementType X, List L, Position P )
     P->Next = node;
     
 }
-/*
+
 void Delete( ElementType X, List L ){
+
+    Position node = FindPrevious(X, L);
+
+    //Like a soft delete, jumps over the node with X in Element
+    node->Next= node->Next->Next;
 }
 
 
 void DeleteList( List L ) {
+    free(L);
 }
-*/
 
 Position Header( List L ) 
 {
@@ -129,36 +141,4 @@ void PrintList(List L)
     }
 
     printf("]\n");
-}
-
-
-
-
-int main()
-{
-    
-    List l = CreateList();
-
-    if(IsEmpty(l))
-        printf("LIST IS EMPTY\n");
-
-    Insert(3, l, Header(l));
-
-    if(!IsEmpty(l))
-        printf("LIST IS NOT EMPTY\n");
-
-    IsEmpty(l);
-
-    Insert(7, l, Header(l));
-    Insert(235, l, Header(l));
-
-    PrintList(l);
-
-    Position pos = Find(3, l);
-    printf("%d\n", pos->Element);
-
-    pos = FindPrevious(235, l);
-    printf("%d\n", pos->Element);
-
-    return 0;
 }
