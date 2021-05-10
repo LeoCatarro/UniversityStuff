@@ -78,6 +78,17 @@ ElementType FindMin( BTree T ) {
             return FindMin(T->Left); 
 }   
 
+
+void PrintInOrder(BTree T)
+{
+    if (T != NULL) {
+        PrintInOrder(T->Left);
+        printf("%d ", T->Element);
+        PrintInOrder(T->Right);
+    }
+}
+
+
 int main()
 {
     BTree T = CreateTree(5);
@@ -88,6 +99,8 @@ int main()
     printf("%d\n", FindMax(T));
     printf("%d\n", FindMin(T));
 
+    //PrintInOrder Test
+    PrintInOrder(T);
 
     return 0;
 }
