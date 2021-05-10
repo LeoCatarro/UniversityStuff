@@ -24,14 +24,31 @@ BTree CreateTree()
     return T;
 }
 
-/*
+
 BTree SetTree( ElementType X, BTree Left, BTree Right ){
-    TreeNode root = malloc(sizeof(struct TreeNode));
-    //printf("sizeof(root): %ld\n", sizeof(struct TreeNode));
+    BTree root = malloc(sizeof(struct TreeNode));
     root->Element = X;
     root->Left = NULL;
     root->Right = NULL;
     return root;
+}
+
+/*
+BTree GetLeft(BTree T)
+{
+    if(T == NULL)
+        return NULL;
+    
+    return T->Left;
+}
+
+
+BTree GetRight(BTree T)
+{
+    if(T == NULL)
+        return NULL;
+    
+    return T->Right;
 }
 */
 
