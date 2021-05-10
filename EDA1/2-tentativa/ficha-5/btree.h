@@ -17,6 +17,9 @@ ElementType Retrieve( Position P );
 //Ficha-5
 ElementType FindMax( BTree T );
 ElementType FindMin( BTree T );
+
 void PrintInOrder(BTree T);
+void PrintPreOrder( BTree T );
+void PrintPosOrder( BTree T );
 
 #endif

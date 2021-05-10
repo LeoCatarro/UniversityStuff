@@ -88,6 +88,22 @@ void PrintInOrder(BTree T)
     }
 }
 
+void PrintPreOrder( BTree T ){
+    if(T != NULL){
+        printf("%d ", T->Element);
+        PrintPreOrder(T->Left);
+        PrintPreOrder(T->Right);
+    }
+}
+
+void PrintPosOrder( BTree T ){
+    if(T != NULL){
+        PrintPosOrder(T->Left);
+        PrintPosOrder(T->Right);
+        printf("%d ", T->Element);
+    }
+}
+
 
 int main()
 {
@@ -100,7 +116,20 @@ int main()
     printf("%d\n", FindMin(T));
 
     //PrintInOrder Test
+    printf("In Order: ");
     PrintInOrder(T);
+    printf("\n");
+
+    //PrintPreOrder Test
+     printf("Pre Order: ");
+    PrintPreOrder(T);
+    printf("\n");
+    
+    //PrintPosOrder Test
+    printf("Pos Order: ");
+    PrintPosOrder(T);
+    printf("\n");
+
 
     return 0;
 }
