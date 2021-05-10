@@ -37,24 +37,6 @@ BTree SetTree( ElementType X, BTree Left, BTree Right ){
     return node;
 }
 
-/*
-BTree GetLeft(BTree T)
-{
-    if(T == NULL)
-        return NULL;
-    
-    return T->Left;
-}
-
-
-BTree GetRight(BTree T)
-{
-    if(T == NULL)
-        return NULL;
-    
-    return T->Right;
-}
-*/
 
 Position Find( ElementType X, BTree T ){
     if( T == NULL )
@@ -81,7 +63,7 @@ ElementType FindMax( BTree T ) {
         return NULL;
     else
         if( T->Right == NULL )
-            return T->Element;
+            return Retrieve(T);
         else
             return FindMax( T->Right ); 
 }
@@ -91,7 +73,7 @@ ElementType FindMin( BTree T ) {
         return NULL;
     else
         if( T->Left == NULL )
-            return T->Element;
+            return Retrieve(T);
         else
             return FindMin(T->Left); 
 }   
@@ -99,13 +81,11 @@ ElementType FindMin( BTree T ) {
 int main()
 {
     BTree T = CreateTree(5);
-
     T->Left = SetTree(3, SetTree(1, NULL, NULL), SetTree(4, NULL, NULL));
-
     T->Right = SetTree(8, SetTree(7, NULL, NULL), SetTree(9, NULL, NULL));
 
-    printf("%d\n", FindMax(T));
 
+    printf("%d\n", FindMax(T));
     printf("%d\n", FindMin(T));
 
 
