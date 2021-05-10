@@ -18,19 +18,23 @@ BTree MakeEmpty( BTree T ){
     return NULL; 
 }
 
-BTree CreateTree()
+
+BTree CreateTree(ElementType rootElement)
 {
     BTree T = malloc(sizeof(struct TreeNode));
+    T->Element = rootElement;
+    T->Left = NULL;
+    T->Right = NULL;
     return T;
 }
 
 
 BTree SetTree( ElementType X, BTree Left, BTree Right ){
-    BTree root = malloc(sizeof(struct TreeNode));
-    root->Element = X;
-    root->Left = NULL;
-    root->Right = NULL;
-    return root;
+    BTree node = malloc(sizeof(struct TreeNode));
+    node->Element = X;
+    node->Left = Left;
+    node->Right = Right;
+    return node;
 }
 
 /*
@@ -73,32 +77,37 @@ ElementType Retrieve( Position P ){
 
 
 ElementType FindMax( BTree T ) {
-    if(T == NULL)
+    if( T == NULL )
         return NULL;
-    
     else
-        if(T->Right != NULL)
-            return FindMax(T->Right);
+        if( T->Right == NULL )
+            return T->Element;
         else
-            return NULL;
+            return FindMax( T->Right ); 
 }
 
-
 ElementType FindMin( BTree T ) {
-    if(T == NULL)
+    if( T == NULL )
         return NULL;
-    
     else
-        if(T->Left != NULL)
-            return FindMin(T->Left);
+        if( T->Left == NULL )
+            return T->Element;
         else
-            return NULL;
+            return FindMin(T->Left); 
 }   
-
 
 int main()
 {
-    BTree T = CreateTree();
-    
+    BTree T = CreateTree(5);
+
+    T->Left = SetTree(3, SetTree(1, NULL, NULL), SetTree(4, NULL, NULL));
+
+    T->Right = SetTree(8, SetTree(7, NULL, NULL), SetTree(9, NULL, NULL));
+
+    printf("%d\n", FindMax(T));
+
+    printf("%d\n", FindMin(T));
+
+
     return 0;
 }
