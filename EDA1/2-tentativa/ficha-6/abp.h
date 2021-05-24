@@ -15,4 +15,8 @@ SearchTree Insert( ElementType X, SearchTree T );
 SearchTree Delete( ElementType X, SearchTree T );
 ElementType Retrieve( Position P );
 
+void PrintInOrder( SearchTree T );
+void PrintPreOrder( SearchTree T );
+void PrintPosOrder( SearchTree T );
+
 #endif

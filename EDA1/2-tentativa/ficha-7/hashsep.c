@@ -1,0 +1,209 @@
+#include "fatal.h"
+#include "hashsep.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+
+#define MinTableSize (10)
+typedef unsigned int Index;
+typedef Position List;
+
+
+struct ListNode{
+    ElementType Element;
+    Position    Next;
+};
+
+
+struct HashTbl{
+    int TableSize;
+    List *TheLists;
+};
+
+
+/* Return next prime; assume N >= 10 */
+static int NextPrime( int N ){
+    int i;
+
+    if( N % 2 == 0 )
+        N++;
+    for( ; ; N += 2 ){
+        for( i = 3; i * i <= N; i += 2 )
+            if( N % i == 0 )
+                goto ContOuter;  /* Sorry about this! */
+        return N;
+      ContOuter: ;
+    }
+}
+
+
+/* Hash function for ints */
+Index Hash( ElementType Key, int TableSize ){
+    return Key % TableSize;
+}
+
+
+HashTable InitializeTable( int TableSize ){
+    HashTable H;
+    int i;
+
+    if( TableSize < MinTableSize ){
+        Error( "Table size too small" );
+        return NULL;
+    }
+
+    /* Allocate table */
+    H = malloc( sizeof( struct HashTbl ) );
+    if( H == NULL )
+        FatalError( "Out of space!!!" );
+
+        H->TableSize = NextPrime( TableSize );
+
+    /* Allocate array of lists */
+    H->TheLists = malloc( sizeof( List ) * H->TableSize );
+    if( H->TheLists == NULL )
+        FatalError( "Out of space!!!" );
+
+    /* Allocate list headers */
+    for( i = 0; i < H->TableSize; i++ ){
+        H->TheLists[ i ] = malloc( sizeof( struct ListNode ) );
+        if( H->TheLists[ i ] == NULL )
+            FatalError( "Out of space!!!" );
+        else
+            H->TheLists[ i ]->Next = NULL;
+    }
+
+    return H;
+}
+
+
+/* Find a Key in HashTable */
+Position Find( ElementType Key, HashTable H )
+{
+    List L = H->TheLists[Hash( Key, H->TableSize )];
+    Position P = L->Next;
+
+    while( P != NULL && P->Element != Key )
+        /* Probably need strcmp!! */
+        P = P->Next;
+    
+    return P;
+}
+
+
+void Insert( ElementType Key, HashTable H ){
+    Position Pos, NewCell;
+    List L;
+
+    Pos = Find( Key, H );
+
+    if( Pos == NULL ){  /* Key is not found */
+        NewCell = malloc( sizeof( struct ListNode ) );
+
+        if( NewCell == NULL )
+            FatalError( "Out of space!!!" );
+        
+        else{
+            L = H->TheLists[ Hash( Key, H->TableSize ) ];
+            NewCell->Next = L->Next;
+            NewCell->Element = Key;  /* Probably need strcpy! */
+            L->Next = NewCell;
+        }
+    }
+}
+
+
+ElementType Retrieve( Position P ){
+    return P->Element;
+}
+
+
+void DestroyTable( HashTable H ){
+    int i;
+
+    for( i = 0; i < H->TableSize; i++ )
+    {
+        Position P = H->TheLists[ i ];
+        Position Tmp;
+
+        while( P != NULL )
+        {
+            Tmp = P->Next;
+            free( P );
+            P = Tmp;
+        }
+    }
+
+    free( H->TheLists );
+    free( H );
+}
+
+
+HashTable Delete( ElementType X, HashTable T ){
+    
+    // Find the key of the Element X
+    int key = Hash(X, T->TableSize);
+
+    //Node with Element X
+    Position P = T->TheLists[key]->Next;
+    printf("%d\n", P->Element);
+
+    if(P->Element == X)
+    {
+        printf("FIND THE KEY\n");
+        /* Delete the node with X as Element */
+        T->TheLists[key-1]->Next = P->Next;
+        free(T->TheLists[key]);
+    }
+
+    else
+        FatalError("Element not present in HashTable");
+    
+    return T;
+}
+
+
+/*
+HashTable MakeEmpty( HashTable T ){
+}
+*/
+
+
+void PrintHashTable(HashTable T)
+{
+    printf("* Printing HashTable *\n");
+    printf("INDEX \t ELEMENT\n");
+
+    for(int i=0 ; i < T->TableSize ; i++)
+    {   
+        Position P = T->TheLists[i]->Next;
+
+        if(P != NULL)
+            printf("%d \t %d\n", i, P->Element);
+        else
+            printf("%d \t %s\n", i, "--");
+    }
+
+    printf("\n");
+}
+
+
+int main()
+{
+    HashTable H = InitializeTable(10);
+    printf("TABLE SIZE: %d\n", H->TableSize);
+
+    PrintHashTable(H);
+
+    Insert(20, H);
+    Insert(1, H);
+    Insert(123432150, H);
+
+    PrintHashTable(H);
+
+    Delete(1, H);
+
+    PrintHashTable(H);
+
+    return 0;
+}
