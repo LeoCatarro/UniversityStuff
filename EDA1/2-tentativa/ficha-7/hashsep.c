@@ -21,7 +21,7 @@ struct HashTbl{
 };
 
 
-/* Return next prime; assume N >= 10 */
+/* Return next prime; assume N >= MinTableSize */
 static int NextPrime( int N ){
     int i;
 
@@ -42,7 +42,9 @@ Index Hash( ElementType Key, int TableSize ){
     return Key % TableSize;
 }
 
-
+/* Initialize the Table, 
+making the correspondent malloc() and allocate the array of lists and them Headers 
+to use on HashTable positions */
 HashTable InitializeTable( int TableSize ){
     HashTable H;
     int i;
@@ -90,7 +92,7 @@ Position Find( ElementType Key, HashTable H )
     return P;
 }
 
-
+/* Insert the Element Key passed as argument in HashTable H */
 void Insert( ElementType Key, HashTable H ){
     Position Pos, NewCell;
     List L;
@@ -112,12 +114,12 @@ void Insert( ElementType Key, HashTable H ){
     }
 }
 
-
+/* Print the Element in Node P */
 ElementType Retrieve( Position P ){
     return P->Element;
 }
 
-
+/* Free the ram occupied from HashTable */
 void DestroyTable( HashTable H ){
     int i;
 
@@ -138,7 +140,7 @@ void DestroyTable( HashTable H ){
     free( H );
 }
 
-
+/* Removes the Element X from the HashTable */
 HashTable Delete( ElementType X, HashTable T ){
     
     // Find the key of the Element X
@@ -168,7 +170,7 @@ HashTable MakeEmpty( HashTable T ){
 }
 */
 
-
+/* Display All HashTable in Terminal */
 void PrintHashTable(HashTable T)
 {
     printf("* Printing HashTable *\n");

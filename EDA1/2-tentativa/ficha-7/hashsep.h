@@ -16,6 +16,7 @@ void DestroyTable( HashTable H );
 Position Find( ElementType Key, HashTable H );
 void Insert( ElementType Key, HashTable H );
 ElementType Retrieve( Position P );
+void PrintHashTable(HashTable T);
 
 HashTable Delete( ElementType X, HashTable T );
 HashTable MakeEmpty( HashTable T );
