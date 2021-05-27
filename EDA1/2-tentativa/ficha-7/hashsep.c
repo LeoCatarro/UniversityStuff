@@ -21,6 +21,34 @@ struct HashTbl{
 };
 
 
+Position FindInList(ElementType X, List L)
+{
+    Position node = L->Next;
+
+    while(node != NULL)
+    {
+        if(node->Element == X)
+            return node;
+        
+        node = node->Next;
+    }
+
+    return NULL;
+}
+
+
+void DeleteFromList( ElementType X, List L ){
+
+    Position node = L;
+
+    //Like a soft delete, jumps over the node with X in Element
+    node->Next= node->Next->Next;
+}
+
+
+
+
+
 /* Return next prime; assume N >= MinTableSize */
 static int NextPrime( int N ){
     int i;
@@ -157,19 +185,38 @@ HashTable Delete( ElementType X, HashTable T ){
     
     // Find the key of the Element X
     int key = Hash(X, T->TableSize);
+    printf("%d\n", key);
 
-    //Node with Element X
-    Position P = T->TheLists[key]->Next;
-    printf("%d\n", P->Element);
-
-    if(P->Element == X)
+    //Key finded
+    if(key != -1)
     {
-        printf("FIND THE KEY\n");
-        /* Delete the node with X as Element */
-        T->TheLists[key-1]->Next = P->Next;
-        free(T->TheLists[key]);
+        //If the key is finded we need to iterate over the List of that Key Hashtable Position to find the X
+        Position prevP = T->TheLists[key];
+        Position P = T->TheLists[key]->Next;
+
+        //X finded 
+        while(P != NULL)
+        {
+            if(P->Element == X && P->Next != NULL)
+            {   
+                printf("Deleted %d at index %d from HashTable\n", P->Element, key);
+                prevP->Next = P->Next->Next;
+                return T;
+            }
+
+            else if(P->Element == X && P->Next == NULL)
+            {
+                prevP->Next = NULL;
+                printf("Deleted %d at index %d from HashTable\n", P->Element, key);
+                return T;
+            }
+
+            prevP = P;
+            P = P->Next;       
+        }
     }
 
+    //Key not finded 
     else
         FatalError("Element not present in HashTable");
     
@@ -227,7 +274,16 @@ int main()
 
     PrintHashTable(H);
 
+    Insert(1000000, H);
+
+    PrintHashTable(H);
+
     Delete(1, H);
+
+    PrintHashTable(H);
+
+    Delete(1000000, H);
+    Delete(100, H);
 
     PrintHashTable(H);
 
