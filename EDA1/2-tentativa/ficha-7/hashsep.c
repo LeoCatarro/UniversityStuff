@@ -99,7 +99,8 @@ void Insert( ElementType Key, HashTable H ){
 
     Pos = Find( Key, H );
 
-    if( Pos == NULL ){  /* Key is not found */
+    /* Key is not found */
+    if( Pos == NULL ){  
         NewCell = malloc( sizeof( struct ListNode ) );
 
         if( NewCell == NULL )
@@ -111,6 +112,17 @@ void Insert( ElementType Key, HashTable H ){
             NewCell->Element = Key;  /* Probably need strcpy! */
             L->Next = NewCell;
         }
+    }
+
+    /* Key is found in HashTable */
+    else
+    {   
+        //If the key is found in HT, we need to create another node 
+        //to insert the element inside the list of the current hashtable position
+        NewCell = malloc( sizeof( struct ListNode ) );
+        Pos->Next = NewCell;
+        NewCell->Element = Key;
+        NewCell->Next = NULL;
     }
 }
 
@@ -174,19 +186,28 @@ HashTable MakeEmpty( HashTable T ){
 void PrintHashTable(HashTable T)
 {
     printf("* Printing HashTable *\n");
-    printf("INDEX \t ELEMENT\n");
 
     for(int i=0 ; i < T->TableSize ; i++)
     {   
         Position P = T->TheLists[i]->Next;
 
         if(P != NULL)
-            printf("%d \t %d\n", i, P->Element);
-        else
-            printf("%d \t %s\n", i, "--");
-    }
+        {
+            printf("%d\t[", i);
+            while(P != NULL)
+            {
+                printf("%d", P->Element);
+                P = P->Next;
 
-    printf("\n");
+                //If is not the last element
+                if(P != NULL)
+                    printf(", ");
+            }
+            printf("]\n");
+        }
+        else
+            printf("%d\t[%s]\n", i, "--");
+    }
 }
 
 
@@ -200,6 +221,9 @@ int main()
     Insert(20, H);
     Insert(1, H);
     Insert(123432150, H);
+    PrintHashTable(H);
+
+    Insert(100, H);
 
     PrintHashTable(H);
 
