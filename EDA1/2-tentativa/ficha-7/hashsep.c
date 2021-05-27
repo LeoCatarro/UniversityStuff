@@ -162,7 +162,6 @@ HashTable Delete( ElementType X, HashTable T ){
     
     // Find the key of the Element X
     int key = Hash(X, T->TableSize);
-    printf("%d\n", key);
 
     //Key finded
     if(key != -1)
@@ -201,10 +200,21 @@ HashTable Delete( ElementType X, HashTable T ){
 }
 
 
-/*
+/* Free the allocated memory of Hashtable */
 HashTable MakeEmpty( HashTable T ){
+    /*for(int i=0 ; i<T->TableSize; i++)
+    {
+        Position P = T->TheLists[i];
+        while(P->Next != NULL)
+        {
+            P = P->Next;
+            free(P);
+        }
+    }*/
+
+    printf("\nTODO()\n");
+    return T;
 }
-*/
 
 
 /* Display HashTable in Terminal */
@@ -263,6 +273,14 @@ int main()
     Delete(1000000, H);
     Delete(100, H);
 
+    PrintHashTable(H);
+
+    Insert(100, H);
+    Insert(1000000, H);
+
+    H = MakeEmpty(H);
+
+    printf("LAST PRINT\n");
     PrintHashTable(H);
 
     return 0;
