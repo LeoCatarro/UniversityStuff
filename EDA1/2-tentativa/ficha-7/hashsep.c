@@ -21,34 +21,6 @@ struct HashTbl{
 };
 
 
-Position FindInList(ElementType X, List L)
-{
-    Position node = L->Next;
-
-    while(node != NULL)
-    {
-        if(node->Element == X)
-            return node;
-        
-        node = node->Next;
-    }
-
-    return NULL;
-}
-
-
-void DeleteFromList( ElementType X, List L ){
-
-    Position node = L;
-
-    //Like a soft delete, jumps over the node with X in Element
-    node->Next= node->Next->Next;
-}
-
-
-
-
-
 /* Return next prime; assume N >= MinTableSize */
 static int NextPrime( int N ){
     int i;
@@ -69,6 +41,7 @@ static int NextPrime( int N ){
 Index Hash( ElementType Key, int TableSize ){
     return Key % TableSize;
 }
+
 
 /* Initialize the Table, 
 making the correspondent malloc() and allocate the array of lists and them Headers 
@@ -120,6 +93,7 @@ Position Find( ElementType Key, HashTable H )
     return P;
 }
 
+
 /* Insert the Element Key passed as argument in HashTable H */
 void Insert( ElementType Key, HashTable H ){
     Position Pos, NewCell;
@@ -154,10 +128,12 @@ void Insert( ElementType Key, HashTable H ){
     }
 }
 
+
 /* Print the Element in Node P */
 ElementType Retrieve( Position P ){
     return P->Element;
 }
+
 
 /* Free the ram occupied from HashTable */
 void DestroyTable( HashTable H ){
@@ -179,6 +155,7 @@ void DestroyTable( HashTable H ){
     free( H->TheLists );
     free( H );
 }
+
 
 /* Removes the Element X from the HashTable */
 HashTable Delete( ElementType X, HashTable T ){
@@ -229,7 +206,8 @@ HashTable MakeEmpty( HashTable T ){
 }
 */
 
-/* Display All HashTable in Terminal */
+
+/* Display HashTable in Terminal */
 void PrintHashTable(HashTable T)
 {
     printf("* Printing HashTable *\n");
