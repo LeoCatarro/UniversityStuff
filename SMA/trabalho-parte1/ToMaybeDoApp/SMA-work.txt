@@ -1,0 +1,14 @@
+# Ideias de projetos para SMA
+
+-> Game clone
+
+-> TODO() app
+	-Calendario para inserção de eventos
+	
+	-white board tirar notas
+	
+	-criação de diagramas
+	
+	-Dashboard para visualização de dados(Ex: visualização das notas tiradas, eventos existentes)
+	
+	
