@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<title>Apple Poor Store</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{style.css}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+	<link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h3>Criar encomenda</h3>
+    <form method='post' th:action='@{/new-order}'>
+		
+		<label>ID do Cliente:</label>
+		<input type="text" id="clientID" name="clientID"/> 
+		</br>
+		
+		<label>Entrada:</label>
+		<input type="text" id="entry" name="entry"/>
+		</br>
+
+		<label>Prato Principal:</label>
+		<input type="text" id="mainCourse" name="mainCourse"/>
+		</br>
+		
+		<label>Bebida:</label>
+		<input type="text" id="drink" name="drink"/>
+		</br>
+
+		<label>Sobremesa:</label>
+		<input type="text" id="dessert" name="dessert"/> 
+		</br>	
+		
+		<input type="submit" value="Submit">
+
+	</form>
+
+	<form method='post' th:action='@{/logout}'>
+		<input type="submit" value="Logout">
+	</form>
+</body>
+</html>

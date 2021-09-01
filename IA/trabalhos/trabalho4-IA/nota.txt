@@ -1,0 +1,15 @@
+INICIAL:
+obj1 --- Porto
+obj2 --- Lisboa
+obj3 --- Lisboa
+obj4 --- Évora 
+obj5 --- Évora
+c1   --- Lisboa
+c2   --- Lisboa
+
+FINAL:
+obj1 --- Évora
+obj2 --- Porto
+obj3 --- Évora
+obj4 --- Porto
+obj5 --- Lisboa

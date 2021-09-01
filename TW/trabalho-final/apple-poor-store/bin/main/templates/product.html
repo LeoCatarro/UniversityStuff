@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="prod_html" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{/css/style.css}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> <!--Font de icons-->
+        <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+        <title>Apple Poor Store</title>
+    </head>
+    <body>
+        <!--
+            Cabeçalho
+        -->
+        <header>
+            <a href="/homepage"><img class="shop_logo" src="images/apple_logo_black.png"></a>
+           
+            <div class="header_stuff">
+                <form th:action="@{/search}">
+                    <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+                    <input class="advanced_search_button" type="submit" value="Search" />
+                </form>
+
+                <a href="advanced_search.html">
+                    <button class="advanced_search_button" type="button">Advanced Search</button> 
+                </a>
+            </div>
+        </header>
+
+        <!--
+            Lista de Produtos
+        -->
+        <div class="prods_categorias">
+            <section class="products">
+                <ul class="list" style="list-style-type:none;">
+                    <li th:object="${prod}">
+                        <div class="product_img">
+                            <img th:src="${prod.imgUrl}">
+                        </div>
+                        <div class="about_prod">
+                            <a><h1 class="brand_model" th:text="${prod.productName}"></h1></a>
+                            <p class="description" th:text="${prod.description}"></p>
+                            <p class="price" th:text="${prod.price} + '€'"></p>
+                            <br>
+                            <br>
+                            <p class="description" th:text="${prod.fullDescription}"></p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <!--
+                Categorias
+            -->
+            <!--
+            <div class="categorias">
+                <section>
+                    <p class="title">CATEGORIAS</p>
+                    <ul class="lista_categorias">
+                        <a href="#"><li id="notebooks">Notebooks </li></a>
+                        <a href="#"><li>Airpods</li></a>
+                        <a href="#"><li>Desktops</li></a>
+                    </ul>
+                </section>
+            </div>
+            -->
+        </div>  <!--prods_cateogiras Close-->
+        <!--
+            Butoes Next e Previous
+        -->
+        <div class="buttons">
+            <p style="display:inline">Previous</p><a href="/homepage" class="previous">&#8249;</a>
+        </div>
+        <!--
+            Rodapé
+        -->
+        <footer class="rodape">
+            <a href="/about">
+                <p class="about_page">About this page</p>
+            </a>
+        </footer>
+    </div>
+    </body>
+</html> 

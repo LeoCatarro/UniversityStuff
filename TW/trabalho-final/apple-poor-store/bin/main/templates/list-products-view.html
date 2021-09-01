@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Apple Poor Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+
+    <style>
+    table, th, td {
+    	  border: 1px solid black;
+    	}
+    </style>
+
+</head>
+<body>
+
+<p>Lista de produtos</p>
+<p th:text="${productList}" />
+
+<p>Lista de produtos</p>
+<!--
+<table>
+    <tr th:each="product: ${prod}">
+        <td th:text="'ID: ' + ${product.id}"/>
+        <td th:text="'Nome: ' + ${product.productName}"/>
+        <td th:text="'Preço: ' + ${product.price}"/>
+        <td th:text="'Quantidade: ' + ${product.quantity}"/>
+        <td th:text="'Descrição: ' + ${product.description}"/>
+        <td th:text="'Categoria: ' + ${product.category}"/>
+        <td th:text="'Url da Imagem: ' + ${product.imgUrl}"/>
+    </tr>
+</table>
+    -->
+    <header>
+        <a href="./"><img class="shop_logo" src="media/apple_logo_black.png"></a>
+
+        <div class="header_stuff">
+            <input class="search_bar" type="text" placeholder="Search For Products...">
+            <a href="http://localhost:8080/search.html"><button class="search_button" type="submit"><i class="fa fa-search"></i></button></a>
+
+            <a href="advanced_search.html">
+                <button class="advanced_search_button" type="button">Advanced Search</button>
+            </a>
+        </div>
+    </header>
+
+    <section class="products">
+        <ul class="list" style="list-style-type:none;">
+            <li th:object="${prod}">
+                <div class="product_img">
+                    <img src="${prod.imgUrl}">
+                </div>
+                <div class="about_prod">
+                    <a href="/product"><h1 class="brand_model" th:text="${prod.productName}"></h1></a>
+                    <p class="description" th:text="${prod.description}"></p>
+                    <p class="price" th:text="${prod.price} + '€'"></p>
+                </div>
+
+
+            </li>
+        </ul>
+    </section>
+
+
+    <table>
+        <tr th:each="product: ${productList}">
+            <td th:text="'ID: ' + ${product.id}"/>
+            <td th:text="'Nome: ' + ${product.productName}"/>
+            <td th:text="'Preço: ' + ${product.price}"/>
+            <td th:text="'Quantidade: ' + ${product.quantity}"/>
+            <td th:text="'Descrição: ' + ${product.description}"/>
+            <td th:text="'Categoria: ' + ${product.category}"/>
+            <td th:text="'Url da Imagem: ' + ${product.imgUrl}"/>
+            <td th:text="'Decricao Detalhada ' + ${product.fullDescription}"/>
+        </tr>
+    </table>
+
+    <footer class="rodape">
+        <a href="#">
+            <p class="about_page">About this page</p>
+        </a>
+    </footer>
+</body>
+</html>

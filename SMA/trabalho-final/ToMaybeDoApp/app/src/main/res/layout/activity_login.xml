@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#666666"
+    tools:context=".LoginActivity">
+
+    <!--Title-->
+
+
+    <!--Sign Button-->
+
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="401dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="87dp"
+        android:fontFamily="@font/annie_use_your_telescope"
+        android:text="ToMaybeDo"
+        android:textAlignment="center"
+        android:textSize="80sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="396dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="192dp"
+        android:src="@drawable/ic_pencilicon_foreground"></ImageView>
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/SignButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="154dp"
+        app:buttonSize="wide" />
+</RelativeLayout>

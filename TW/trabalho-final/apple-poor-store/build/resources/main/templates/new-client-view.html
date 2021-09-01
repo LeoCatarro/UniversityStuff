@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Apple Poor Store</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:text="'Foi criado o utilizador com o nome: ' + ${name} + '!'" />
+    <p th:text="'Foi criado o utilizador com o apelido: ' + ${surname} + '!'" />
+    <p th:text="'Foi criado o utilizador com o mail: ' + ${mail} + '!'" />
+    <p th:text="'Foi criado o utilizador com o username: ' + ${username} + '!'" />
+</body>
+</html>

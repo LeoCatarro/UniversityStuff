@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<title>Apple Poor Store</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{style.css}" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+	<link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<header>
+		<div class="header_stuff"></div>
+	</header>
+
+	<div align="center">
+		<h1>APPLE POOR STORE</h1>
+		<h3>Criar cliente</h3>
+		<img href="/" src="images/apple_logo_black.png" width="250">
+		</br>
+		</br>
+		<form class="add_client_form" method='post' th:action='@{/new-client}'>
+			<label>Nome:</label>
+			<input type="text" id="firstName" name="firstName"/>
+			</br>
+			</br>
+			<label>Apelido:</label>
+			<input type="text" id="lastName" name="lastName"/>
+			</br>
+			</br>
+			<label>Email:</label>
+			<input type="text" id="mail" name="mail"/>
+			</br>
+			</br>
+			<label>Username:</label>
+			<input type="text" id="username" name="username"/>
+			</br>
+			</br>
+			<label>Password:</label>
+			<input type="password" id="password" name="password"/>
+			</br>
+			</br>
+			<input class="advanced_search_button" type="submit" value="Register">
+		</form>
+	</div>
+
+	<!--
+            RODAPE
+    -->
+	<footer class="rodape">
+		<a href="/about"><p class="about_page">About this page</p></a>
+	</footer>
+</body>
+</html>

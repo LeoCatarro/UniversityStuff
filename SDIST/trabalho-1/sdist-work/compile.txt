@@ -1,0 +1,5 @@
+# In root project folder
+
+Compile: javac -d classes/ src/main/java/sd/*.java
+
+Run: java -cp postgresql-42.2.20.jar:classes sd.Server localhost 9000

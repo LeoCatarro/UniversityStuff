@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DiagramCreator"
+    android:background="#cccccc">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:orientation="vertical">
+
+        <com.example.tomaybedoapp.diagramcreatorAux.DrawPath
+            android:id="@+id/PaintArea"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="100">
+
+    <ImageView
+            android:id="@+id/ControlUndo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="50"
+            android:src="@drawable/ic_baseline_undo"
+            android:background="#666666"/>
+
+        <ImageView
+            android:id="@+id/ControlRedo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="50"
+            android:src="@drawable/ic_baseline_redo"
+            android:background="#666666"/>
+
+        <ImageView
+            android:id="@+id/ClearAllPaths"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_weight="50"
+            android:src="@drawable/ic_delete"
+            android:background="#666666"/>
+    </LinearLayout>
+</LinearLayout>

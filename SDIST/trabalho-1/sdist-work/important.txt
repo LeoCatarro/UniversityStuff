@@ -1,0 +1,8 @@
+maven clean install --> gera .jar do projecto
+
+mando cena.jar ao cliente
+
+java -cp cena.jar sd.(Classname) (list of arguments)
+
+
+correr server no meu PC

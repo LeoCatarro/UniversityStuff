@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Change the purple color to get the negative and positive buttons color changed too-->
+    <color name="purple_200">#666666</color>
+    <color name="purple_500">#666666</color>
+    <!--Changed that color to top menu of android be equal of app top actionbar color-->
+    <color name="purple_700">#000000</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

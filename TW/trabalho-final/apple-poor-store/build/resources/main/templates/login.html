@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <title>Apple Poor Store</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{css/style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+    <header>
+        <div class="header_stuff"></div>
+    </header>
+
+    <div align="center">
+        <h1>APPLE POOR STORE</h1>
+        <img src="images/apple_logo_black.png" width="250">
+        <br><br>
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        <form class="login_form" th:action="@{/login}" method="post">
+            <label> UserName :</label>
+            <input type="text" name="username"/>
+            </br>
+            </br>
+            <label> Password:</label>
+            <input type="password" name="password"/>
+            </br>
+            </br>
+            <input class="advanced_search_button" type="submit" value="Sign In"/>
+        </form>
+    </div>
+    <!--
+            RODAPE
+    -->
+    <footer class="rodape">
+        <a href="/about"><p class="about_page">About this page</p></a>
+    </footer>
+</body>
+</html>

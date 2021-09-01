@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:c="http://www.w3.org/1999/xhtml" use-expressions="true">
+    <head>
+        <title>Apple Poor Store</title>
+        <link rel="stylesheet" type="text/css" th:href="@{css/style.css}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+        <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+    </head>
+    <body>
+        <!--
+            Cabeçalho
+        -->
+        <header>
+            <a href="/homepage"><img class="shop_logo" src="images/apple_logo_black.png"></a>
+           
+            <div class="header_stuff">
+                <form th:action="@{/search}">
+                    <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+                    <input class="advanced_search_button" type="submit" value="Search" />
+                </form>
+
+                <a href="/advanced-search">
+                    <button class="advanced_search_button" type="button">Advanced Search</button> 
+                </a>
+
+                <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+                    <input class="advanced_search_button" type="submit" value="Log Out" />
+                </form>
+
+                <form sec:authorize="hasAnyRole('ADMIN')" th:action="@{/add-product}">
+                    <sec:authorize access="hasAnyRole('ADMIN')" >
+                        <input class="advanced_search_button" type="submit" value="Add Product" />
+                    </sec:authorize>
+                </form>
+
+                <a href="/">
+                    <button sec:authorize="!isAuthenticated()" class="advanced_search_button" type="button">Login</button>
+                </a>
+
+                <a href="/shopping-cart">
+                    <button sec:authorize="isAuthenticated()" class="advanced_search_button" type="button">Cart</button>
+                </a>
+            </div>
+        </header>
+        <!--
+            Quantidade de Produtos
+        -->
+
+        <p class="quantidade_produtos" th:text="${productList.size()}"></p>
+        <!--
+            Lista de Produtos
+        -->
+        <div class="prods_categorias">      <!--Div que engloba os produtos e as categorias-->
+            <section class="products">
+                <ul class="list" style="list-style-type:none;">
+                    <li th:each="product: ${productList}">
+                        <div class="product_img">
+                            <a th:href="@{/product} + @{/{id} (id = ${product.id})}"><img th:src="${product.imgUrl}"></a>
+                        </div>
+                        <div class="about_prod">
+                            <a th:href="@{/product} + @{/{id} (id = ${product.id})}"><h1 class="brand_model" th:text="${product.productName}"></h1></a>
+                            <p class="description" th:text="${product.description}"></p>
+                            <p class="price" th:text="${product.price} + '€'"></p>
+                        </div>
+
+                        <a sec:authorize="hasAnyRole('ADMIN')" th:href="@{/remove-product/{id} (id = ${product.id})}">
+                            <sec:authorize access="hasAnyRole('ADMIN')" >
+                                <button>Remove</button>
+                            </sec:authorize>
+                        </a>
+
+                        <hr>   <!--Linha horizontal que separa os produtos-->
+                    </li>
+                </ul>
+            </section>
+            <!--
+                Categorias
+            -->
+            <div class="categorias">
+                <section>
+                    <p class="title">CATEGORIAS</p>
+                    <ul class="lista_categorias">
+                        <a href="/list-category"><li id="notebooks">Notebooks </li></a>
+                        <a href="#"><li>Airpods</li></a>
+                        <a href="#"><li>Desktops</li></a>
+                    </ul>
+                    </form>
+                </section>
+            </div>
+        </div>  <!--prods_categorias Close-->
+        <!--
+            Butoes Next e Previous
+        -->
+        <div class="buttons">
+            <a href="#" class="next">&#8250;</a><p style="display:inline">Next</p>
+        </div>
+        <!--
+            Rodapé
+        -->
+        <footer class="rodape">
+            <a href="/about"><p class="about_page">About this page</p></a>
+        </footer>
+
+        <link rel="stylesheet" type="text/css" th:href="@{css/style.css}">
+    </body>
+</html> 

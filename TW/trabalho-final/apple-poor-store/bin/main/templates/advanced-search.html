@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Apple Poor Store</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{css/style.css}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+        <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+    </head>
+    <body>
+        <!--
+            Cabeçalho
+        -->
+        <header>
+            <a href="/homepage"><img class="shop_logo" src="images/apple_logo_black.png"></a>
+           
+            <div class="header_stuff">
+                <form th:action="@{/search}">
+                    <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+                    <input class="advanced_search_button" type="submit" value="Search" />
+                </form>
+
+                <a href="/advanced-search">
+                    <button class="advanced_search_button" type="button">Advanced Search</button> 
+                </a>
+            </div>
+        </header>
+        <!--
+            Lista de Produtos
+        -->
+        <div class="prods_categorias">
+                <section class="pesquisa_avançada">  
+                    <form class="adv_search_form">
+                        <label>Descrição do Produto</label>
+                        <br>
+                        <textarea class="product_description" placeholder="Descrição do Produto Aqui" rows="10"></textarea>
+                        <br>
+                        <br>
+                        <label>Categoria do Produto</label>
+                        <br>
+                        <select class="select_categoria">
+                            <option value="notebook">Notebooks</option>
+                            <option value="airpod">AirPods</option>
+                            <option value="desktop">Desktops</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label>Localização do Produto</label>
+                        <br>
+                        <select class="localizacao_loja">
+                            <option value="online">Loja Online</option>
+                            <option value="evora">Évora</option>
+                            <option value="lisboa">Lisboa</option>
+                            <option value="porto">Porto</option>
+                            <option value="coimbra">Coimbra</option>
+                            <option value="faro">Faro</option>
+                        </select>
+                        <br>
+                        <br>
+                        <label>Produto Listado pela 1ª vez</label>
+                        <br>
+                        <input class="data_listado" type="date">
+                        <br>
+                        <br>
+                        <label>Produto Disponivel até</label>
+                        <br>
+                        <input class="data_removido_site" type="date">
+                    </form>    
+                </section>
+            <!--
+                Categorias
+            -->
+            <div class="categorias">
+                <section>
+                    <p class="title">CATEGORIAS</p>
+                    <ul class="lista_categorias">
+                        <a href="#"><li id="notebooks">Notebooks </li></a>
+                        <a href="#"><li>Airpods</li></a>
+                        <a href="#"><li>Desktops</li></a>
+                    </ul>
+                </section>
+            </div>
+        </div>  <!--prods_cateogiras Close-->
+        <!--
+            Butoes Next e Previous
+        -->
+        <div class="buttons">
+            <p style="display:inline">Previous</p><a href="/homepage" class="previous">&#8249;</a>
+        </div>
+        <!--
+            Rodapé
+        -->
+        <footer class="rodape">
+            <a href="#">
+                <p class="about_page">About this page</p>
+            </a>
+        </footer>
+    </body>
+</html> 

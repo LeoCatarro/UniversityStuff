@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Apple Poor Store</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{css/style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+    <header>
+        <div class="header_stuff"></div>
+    </header>
+
+    <div align="center">
+        <h3 style="align: center;">Adicionar Produto</h3>
+        <a href="/homepage"><img class="shop_logo" src="images/apple_logo_black.png"></a>
+        </br>
+        </br>
+        <form class="add_client_form" method='post' th:action='@{/new-product}'>
+
+            <label>Insira o seu nome:</label>
+            <input type="text" id="productName" name="productName"/>
+            </br>
+            </br>
+            <label>Insira a sua categoria:</label>
+            <input type="text" id="category" name="category"/>
+            </br>
+            </br>
+            <label>Insira o seu preço:</label>
+            <input type="number" id="price" name="price"/>
+            </br>
+            </br>
+            <label>Insira o seu quantidade:</label>
+            <input type="number" id="quantity" name="quantity"/>
+            </br>
+            </br>
+            <label>Insira a sua descrição:</label>
+            <input type="text" id="description" name="description"/>
+            </br>
+            </br>
+            <label>Insira o url da imagem:</label>
+            <input type="text" id="imgUrl" name="imgUrl"/>
+            </br>
+            </br>
+            <label>Insira a descrição detalhada:</label>
+            <textarea  type="textarea" maxlength="255" id="fullDescription" name="fullDescription"></textarea>
+            </br>
+            </br>
+            <input type="submit" value="Add Product">
+        </form>
+    </div>
+
+    <!--
+            RODAPE
+    -->
+    <footer class="rodape">
+        <a href="/about"><p class="about_page">About this page</p></a>
+    </footer>
+</body>
+</html>

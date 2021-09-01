@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Apple Poor Store</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{css/style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+    table, th, td {
+    	  border: 1px solid black;
+    	}
+    </style>
+
+</head>
+<body>
+    <header>
+        <a href="/homepage"><img class="shop_logo" src="images/apple_logo_black.png"></a>
+
+        <div class="header_stuff">
+            <form th:action="@{/search}">
+                <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+                <input class="advanced_search_button" type="submit" value="Search" />
+            </form>
+
+            <a href="advanced_search.html">
+                <button class="advanced_search_button" type="button">Advanced Search</button>
+            </a>
+        </div>
+    </header>
+
+    <h3 align="center">Produtos Adicionados ao Carrinho</h3>
+
+    <!--
+            RODAPE
+    -->
+    <footer class="rodape">
+        <a href="/about"><p class="about_page">About this page</p></a>
+    </footer>
+</body>
+</html>

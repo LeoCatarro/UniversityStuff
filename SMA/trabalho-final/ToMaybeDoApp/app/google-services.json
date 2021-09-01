@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "142941929012",
+    "project_id": "tomaybedo-3f061",
+    "storage_bucket": "tomaybedo-3f061.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142941929012:android:d442c6cb362cfc9a7b5461",
+        "android_client_info": {
+          "package_name": "com.example.tomaybedoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142941929012-qk1rdadpuga83knicnj15bki87s5la0b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tomaybedoapp",
+            "certificate_hash": "cc8c916609494e36573b7e5032ec55ead5e42e85"
+          }
+        },
+        {
+          "client_id": "142941929012-hvt7qjp5ccbffbqf6usdrb6tjap73mvt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSTO9-q4F8k8Oe4TSCYeZEAAUR4nJ2S-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142941929012-hvt7qjp5ccbffbqf6usdrb6tjap73mvt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "hashtable_keys.h": "c",
+        "hashtable_words.h": "c",
+        "string": "c"
+    }
+}

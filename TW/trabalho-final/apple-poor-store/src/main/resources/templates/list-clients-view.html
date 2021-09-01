@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Apple Poor Store</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{style.css}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Font de icons-->
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" rel="stylesheet"/>
+    
+    <style>
+    table, th, td {
+    	  border: 1px solid black;
+    	}
+    </style>
+    
+</head>
+<body>
+
+	<p>Lista de clientes</p>
+    <p th:text="${customerList}" />
+    
+    <p>Lista de clientes</p>
+    <table>
+    <tr th:each="client: ${customerList}">
+    	<td th:text="'ID: ' + ${client.id}"/>
+    	<td th:text="'Nome: ' + ${client.firstName}"/>
+        <td th:text="'Apelido: ' + ${client.lastName}"/>
+        <td th:text="'Mail: ' + ${client.mail}"/>
+        <td th:text="'Username: ' + ${client.username}"/>
+	
+    </tr>
+    </table>
+    
+
+    <form method='post' th:action='@{/logout}'>
+      <input type="submit" value="Logout">
+    </form>
+</body>
+</html>

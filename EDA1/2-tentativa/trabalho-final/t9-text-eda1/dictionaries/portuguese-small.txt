@@ -1,0 +1,5 @@
+word,count
+olá,500
+ola,100
+olà,200
+Leonardo,1

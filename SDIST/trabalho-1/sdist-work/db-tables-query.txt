@@ -1,0 +1,29 @@
+drop table if exists center_queue, person, vaccenter cascade;
+
+create table center_queue (
+    person_id  INT,
+    center_id  INT,
+    center_name VARCHAR(100),
+    person_name VARCHAR(100),
+    person_age INT
+);
+
+create table person (
+    person_id SERIAL,
+    name VARCHAR(100),
+    age INT,
+    gender CHAR(1),
+    vaccinated BOOL,
+    sec_effects VARCHAR(200),
+    vaccine_type VARCHAR(100),
+    vaccine_code serial,
+    vaccination_date DATE,
+    primary KEY(person_id)
+);
+
+create table vaccenter(
+    center_id serial,
+    name VARCHAR(100),
+    center_location VARCHAR(100),
+    primary KEY(center_id)
+);

@@ -1,0 +1,2 @@
+com/example/poorstore/ApplePoorStoreApplicationTests.java
+ com.example.poorstore.ApplePoorStoreApplicationTests
